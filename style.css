@@ -5,8 +5,8 @@ html {
 
 body {
     display: flex;
-    color: #fefefe;
-    background-color: #494f5c;
+    color: #ECEFF4;
+    background-color: #434C5E;
     font-family: 'Roboto', monospace;
     font-size: 1.6em;
     font-weight: 400;
@@ -16,7 +16,7 @@ body {
 
 a {
     font-weight: 700;
-    color: #fefefe;
+    color: #ECEFF4;
     text-decoration: none
 }
 
