@@ -5,8 +5,8 @@ html {
 
 body {
     display: flex;
-    color: #ECEFF4;
-    background-color: #434C5E;
+    color: #ffffff;
+    background-color: #000000;
     font-family: 'Roboto', monospace;
     font-size: 1.6em;
     font-weight: 400;
@@ -22,7 +22,7 @@ a {
 
 a:focus,
 a:hover {
-    text-decoration: underline
+    color: #BF616A;
 }
 
 p {
@@ -33,11 +33,6 @@ p a {
     font-weight: 400;
     text-decoration: underline;
     text-underline-position: under
-}
-
-p a:focus,
-p a:hover {
-    color: #36c
 }
 
 h1,
@@ -68,22 +63,23 @@ pre {
     overflow-x: auto
 }
 
-
 img {
+    border-style: solid;
+    border-width: 5px;
     max-width: 100%
 }
 
 .wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 95vh;
     width: 100%
 }
 
 .container {
     margin: 0 auto;
-    max-width: 120rem;
-    width: 100%;
+    max-width: 100rem;
+    width: 95%;
     padding-left: 2rem;
     padding-right: 2rem
 }
@@ -218,7 +214,7 @@ img {
 }
 
 .centered .about h2 {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     margin-bottom: .5rem;
     font-size: 2.4rem
 }
