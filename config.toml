@@ -29,18 +29,16 @@ title = "David Gasquez"
 subtitle = """
 Learning about anything and everything all of the time.
 
-Passionate about Data and Open Source.
-
-Did some data stuff @protocollabs, @buffer.
+Passionate about Data and Open Source. Did some data stuff @protocollabs, @buffer.
 """
 imageUrl = "avatar.jpg"
 imageWidth = 250
 imageHeight = 250
 imageTitle = "Profile Picture"
 
-[[params.profileMode.buttons]]
-name = "Handbook"
-url = "https://publish.obsidian.md/davidgasquez"
+# [[params.profileMode.buttons]]
+# name = "Handbook"
+# url = "https://publish.obsidian.md/davidgasquez"
 
 [[params.socialIcons]]
 name = "twitter"
@@ -72,10 +70,16 @@ Text = "Suggest Changes"
 appendFilePath = true
 
 [[menu.main]]
-identifier = "Posts"
-name = "Posts"
+identifier = "Blog"
+name = "Blog"
 url = "/posts/"
 weight = 10
+
+[[menu.main]]
+identifier = "Handbook"
+name = "Handbook"
+url = "https://publish.obsidian.md/davidgasquez"
+weight = 20
 
 [markup.highlight]
 noClasses = false

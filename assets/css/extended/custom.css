@@ -6,5 +6,13 @@
     --content: rgb(195, 195, 195);
     --hljs-bg: rgb(46, 46, 46);
     --code-bg: rgb(55, 55, 55);
-    --border: rgb(100, 100, 100);
+    --border: rgb(15, 15, 15);
+}
+
+.social-icons a:not(:last-of-type) {
+    margin-inline-end: 40px;
+}
+
+.social-icons {
+    padding: 30px 0;
 }
