@@ -1,6 +1,6 @@
 ---
 title: "My little and short experience with Nix"
-date: 2022-09-07
+date: 2022-12-28
 draft: false
 url: /posts/my-experience-with-nix
 cover:
