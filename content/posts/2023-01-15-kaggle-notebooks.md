@@ -8,7 +8,7 @@ For the last few years, I've been a pretty heavy user of Google Collab. Every ti
 
 Recently though, I've become a big fan of VS Code, and specially GitHub Copilot. Even though there is a way to [run Copilot in Colab](https://copilot.naklecha.com/), is not really the same flow as running it in VS Code.
 
-To overcome this, I created a shiny GitHub Repository, `datalab`, that contains all the boilerplate needed to run the official Kaggle Docker image in GitHub Codespaces or Devcontainers.
+To overcome this, I created a [shiny GitHub Repository, `datalab`](https://github.com/davidgasquez/datalab), that contains all the boilerplate needed to run the official Kaggle Docker image in GitHub Codespaces or Devcontainers.
 
 [![davidgasquez/datalab - GitHub](https://gh-card.dev/repos/davidgasquez/datalab.svg)](https://github.com/davidgasquez/datalab)
 
