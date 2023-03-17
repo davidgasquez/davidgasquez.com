@@ -1,14 +1,18 @@
 ---
-title: "Adapting Kaggle Notebooks to Codespaces"
+title: "Moving from Google Colab to GitHub Codespaces"
 date: 2023-01-15
 draft: false
+url: /posts/colab-codespace
+cover:
+    image: https://images.unsplash.com/photo-1516715094483-75da7dee9758?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80
+    caption: "Photo by Damian McCoig"
 ---
 
 For the last few years, I've been a pretty heavy user of Google Collab. Every time I wanted to play with a new package or idea, I created a new Jupyter Notebook.
 
 Recently though, I've become a big fan of VS Code, and specially GitHub Copilot. Even though there is a way to [run Copilot in Colab](https://copilot.naklecha.com/), is not really the same flow as running it in VS Code.
 
-To overcome this, I created a [shiny GitHub Repository, `datalab`](https://github.com/davidgasquez/datalab), that contains all the boilerplate needed to run the official Kaggle Docker image in GitHub Codespaces or Devcontainers.
+To overcome this, I created a [shiny GitHub Repository, `datalab`](https://github.com/davidgasquez/datalab), that contains all the boilerplate needed to run a great Jupyter Notebook experience in VS Code.
 
 [![davidgasquez/datalab - GitHub](https://gh-card.dev/repos/davidgasquez/datalab.svg)](https://github.com/davidgasquez/datalab)
 
