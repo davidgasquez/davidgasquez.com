@@ -1,6 +1,6 @@
 ---
 title: "Using MongoDB Change Streams to replicate data into BigQuery"
-date: 2023-03-17
+date: 2019-01-03
 draft: false
 url: /posts/mongodb-changestreams-bq
 cover:
