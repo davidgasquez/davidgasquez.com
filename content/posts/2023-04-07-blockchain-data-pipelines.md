@@ -41,9 +41,9 @@ If you do a bit of browsing, you'll find many companies and tools building ETLs 
 - [Digital Assets Examples](https://github.com/aws-samples/digital-assets-examples)
 - [Luabase](https://github.com/luabase)
 
-After compiling the list, I realized that only a few of these projects are open. **We can read the source code of the chains we use, but can't read the code of their data pipelines?** That's a bit weird. Specially when the data world is moving towards the other direction¹!
+After compiling the list, I realized that only a few of these projects are open. **We can read the source code of the chains we use, but can't read the code of their data pipelines?** That's a bit weird. Specially when the data world is moving towards the other direction [^1]!
 
-As the folks from [OpenDataCommunity](https://opendatacommunity.org/) pointed out, the data layer is, currently, mostly centralized² and closed source. Properties that don't represent the open spirit of the movement.
+As the folks from [OpenDataCommunity](https://opendatacommunity.org/) pointed out, the data layer is, currently, mostly centralized [^2] and closed source. Properties that don't represent the open spirit of the movement.
 
 On the other hand, projects like [Airbyte](https://airbyte.com/), [Estuary's Flow](https://github.com/estuary/flow), [Meltano](https://meltano.com/), [Cloudquery](https://github.com/cloudquery/cloudquery), and many others from the [MDS](https://www.moderndatastack.xyz/), are not only building tools to extract, transform, and load data, but also working on standards and protocols. And the community is building on top of them. This makes possible to have an end to end data pipeline in matter of minutes.
 
@@ -55,18 +55,18 @@ On the other hand, projects like [Airbyte](https://airbyte.com/), [Estuary's Flo
 So, my questions are:
 
 - **Where is the `tap-ethereum` connector?**
-- **Where is the `dbt-ethereum` package for people to collaborate³?**
+- **Where is the `dbt-ethereum` package for people to collaborate [^3]?**
 
-Personally, I think projects like TrueBlocks and Bacalhau hold the key to open the data layer a bit more⁴ but won't be possible without a community and standards we can all agree upon and share.
+Personally, I think projects like TrueBlocks and [Bacalhau](https://bacalhau.org/) hold the key to open the data layer a bit more [^4] but won't be possible without a community and standards we can all agree upon and share.
 
 Let me know what you think!
 
 ---
 
-¹ And the blockchains data is such a [great candidate for the open data movement](https://publish.obsidian.md/davidgasquez/Open+Data). **Chain data is open, verifiable and immutable! All great properties for open data.**
+[^1]: And the blockchains data is such a [great candidate for the open data movement](https://publish.obsidian.md/davidgasquez/Open+Data). **Chain data is open, verifiable and immutable! All great properties for open data.**
 
-² And I totally get it. Centralization makes working with data a less painful job!
+[^2] And I totally get it. Centralization makes working with data a less painful job!
 
-³ Dune has [the spellbook](https://github.com/duneanalytics/spellbook) and is awesome. I wish they did something similar for their pipelines though.
+[^3] Dune has [the spellbook](https://github.com/duneanalytics/spellbook) and is awesome. I wish they did something similar for their pipelines though.
 
-⁴ Bacalhau indexes the chain with TrueBlocks, puts the data into Parquet files on IPFS and you query it from anywhere using DuckDB!
+[^4] Bacalhau indexes the chain with TrueBlocks, puts the data into Parquet files on IPFS and you query it from anywhere using DuckDB!
