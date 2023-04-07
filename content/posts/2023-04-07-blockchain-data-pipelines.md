@@ -41,7 +41,7 @@ If you do a bit of browsing, you'll find many companies and tools building ETLs 
 - [Digital Assets Examples](https://github.com/aws-samples/digital-assets-examples)
 - [Luabase](https://github.com/luabase)
 
-After compiling the list, I realized that only a few of these projects are open. **We can read the source code of the chains we use, but can't read the code of their data pipelines?** That's a bit weird. Specially when the data world is moving towards the other direction³!
+After compiling the list, I realized that only a few of these projects are open. **We can read the source code of the chains we use, but can't read the code of their data pipelines?** That's a bit weird. Specially when the data world is moving towards the other direction¹!
 
 As the folks from [OpenDataCommunity](https://opendatacommunity.org/) pointed out, the data layer is, currently, mostly centralized² and closed source. Properties that don't represent the open spirit of the movement.
 
@@ -55,7 +55,7 @@ On the other hand, projects like [Airbyte](https://airbyte.com/), [Estuary's Flo
 So, my questions are:
 
 - **Where is the `tap-ethereum` connector?**
-- **Where is the `dbt-ethereum` package for people to collaborate¹?**
+- **Where is the `dbt-ethereum` package for people to collaborate³?**
 
 Personally, I think projects like TrueBlocks and Bacalhau hold the key to open the data layer a bit more⁴ but won't be possible without a community and standards we can all agree upon and share.
 
@@ -63,10 +63,10 @@ Let me know what you think!
 
 ---
 
-¹ I know Dune has the spells dbt package and is awesome. I wish they did something similar for their pipelines.
+¹ And the blockchains data is such a [great candidate for the open data movement](https://publish.obsidian.md/davidgasquez/Open+Data). **Chain data is open, verifiable and immutable! All great properties for open data.**
 
-² Centralization makes working with data a less painful job!
+² And I totally get it. Centralization makes working with data a less painful job!
 
-³ And the blockchains data is such a [great candidate for the open data movement](https://publish.obsidian.md/davidgasquez/Open+Data). **Chain data is open, verifiable and immutable! All great properties for open data.**
+³ Dune has [the spellbook](https://github.com/duneanalytics/spellbook) and is awesome. I wish they did something similar for their pipelines though.
 
 ⁴ Bacalhau indexes the chain with TrueBlocks, puts the data into Parquet files on IPFS and you query it from anywhere using DuckDB!
