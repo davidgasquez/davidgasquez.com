@@ -52,7 +52,7 @@ On the other hand, projects like [Airbyte](https://airbyte.com/), [Estuary's Flo
 3. Add a [dbt Package](https://hub.getdbt.com/fivetran/stripe/latest/) to your project.
 4. Done. You've gone from zero to a somewhat complex report of your Stripe subscriptions!
 
-Wouldn't it be great if we could do the same with blockchain data? **Add the `tap-ethereum` connector?, install the `dbt-ethereum` package and start to collaborate! [^3]?**
+Wouldn't it be great if we could do the same with blockchain data? **Add the `tap-ethereum` connector, install the `dbt-ethereum` package and start to collaborate! [^3]**
 
 Personally, I think projects like TrueBlocks and [Bacalhau](https://bacalhau.org/) hold the key to open the data layer a bit more [^4] but won't be possible without a community and standards we can all agree upon and share.
 
