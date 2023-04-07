@@ -2,6 +2,7 @@
 title: "On Blockchain Data Pipelines"
 date: 2023-04-07
 draft: false
+url: /posts/blockchain-data-pipelines
 cover:
     image: https://images.unsplash.com/photo-1599985853214-25355023ef15?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80
     caption: "Photo by kili wei on Unsplash"
