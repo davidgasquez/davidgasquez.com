@@ -46,10 +46,11 @@ After compiling the list, I realized that only a few of these projects are open.
 As the folks from [OpenDataCommunity](https://opendatacommunity.org/) pointed out, the data layer is, currently, mostly centralized² and closed source. Properties that don't represent the open spirit of the movement.
 
 On the other hand, projects like [Airbyte](https://airbyte.com/), [Estuary's Flow](https://github.com/estuary/flow), [Meltano](https://meltano.com/), [Cloudquery](https://github.com/cloudquery/cloudquery), and many others from the [MDS](https://www.moderndatastack.xyz/), are not only building tools to extract, transform, and load data, but also working on standards and protocols. And the community is building on top of them. This makes possible to have an end to end data pipeline in matter of minutes.
-    1. Connect an [Stripe source](https://github.com/singer-io/tap-stripe) to your warehouse. A few clicks.
-    2. Import the data. Some extra clicks.
-    3. Add a [dbt Package](https://hub.getdbt.com/fivetran/stripe/latest/) to your project.
-    4. Done. You've gone from zero to a somewhat complex report of your Stripe subscriptions!
+
+1. Connect an [Stripe source](https://github.com/singer-io/tap-stripe) to your warehouse. A few clicks.
+2. Import the data. Some extra clicks.
+3. Add a [dbt Package](https://hub.getdbt.com/fivetran/stripe/latest/) to your project.
+4. Done. You've gone from zero to a somewhat complex report of your Stripe subscriptions!
 
 So, my questions are:
 
