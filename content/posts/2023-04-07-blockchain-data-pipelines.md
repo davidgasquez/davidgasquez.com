@@ -53,7 +53,7 @@ If you do a bit of browsing, you'll find many companies and tools building ETLs 
 
 ## The Problem
 
-After compiling the list, I realized that only a few of these projects are open. **We can read the source code of the chains we use, but can't read the code of their data pipelines?** That's a bit weird. Specially when the data world is moving towards the other direction [^1]!
+After [compiling the list](https://publish.obsidian.md/davidgasquez/Web3#Blockchain+Indexing+Projects), I realized that only a few of these projects are open. **We can read the source code of the chains we use, but can't read the code of their data pipelines?** That's a bit weird. Specially when the data world is moving towards the other direction [^1]!
 
 As the folks from [OpenDataCommunity](https://opendatacommunity.org/) pointed out, the data layer is, currently, mostly centralized [^2] and closed source. Properties that don't represent the open spirit of the movement.
 
