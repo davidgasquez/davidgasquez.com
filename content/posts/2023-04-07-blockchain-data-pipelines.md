@@ -16,13 +16,28 @@ The main thing I'd love to explore is how, as a community, we're building the sa
 
 If you do a bit of browsing, you'll find many companies and tools building ETLs for different blockchains. I compiled this non-exhaustive list of tools to index chains and companies providing the final datasets. I'm sure I missed a few, so please [let me know](https://twitter.com/davidgasquez) if you know of any other projects!
 
-- [Dune](https://dune.com/)
-- [Flipside](https://flipsidecrypto.xyz/)
-- [Bitquery](https://github.com/bitquery/explorer)
-- [Tokenflow](https://docs.tokenflow.live/)
-- [Trueblocks](https://trueblocks.io/)
-- [Indexed.xyz](https://github.com/indexed-xyz)
+#### Companies
+
 - [Nansen](https://www.nansen.ai/)
+- [Tokenflow](https://docs.tokenflow.live/)
+- [BitQuery](https://bitquery.io/) ([GitHub](https://github.com/bitquery/explorer))
+- [Coherent](https://coherent.xyz/) ([GitHub](https://github.com/coherentopensource))
+- [Transpose](https://www.transpose.io/) ([GitHub](https://github.com/TransposeData))
+- [Covalent](https://www.covalenthq.com/) ([GitHub](https://github.com/covalenthq))
+- [Indexed.xyz](https://github.com/indexed-xyz)
+- [Footprint](https://www.footprint.network/) ([GitHub](https://github.com/footprintanalytics))
+- [Sentio](https://www.sentio.xyz/) ([GitHub](https://github.com/sentioxyz))
+- [GeniiData](https://geniidata.com/)
+- [Allium](https://twitter.com/alliumlabs)
+- [Kyve](https://www.kyve.network/)
+- [Token Terminal](https://tokenterminal.com/)
+- [Probably Nothing Labs](https://www.probablynothinglabs.xyz/)
+- [Space And Time](https://www.spaceandtime.io/)
+- [Credmark](https://credmark.com/) ([GitHub](https://github.com/credmark))
+
+#### Tools
+
+- [Trueblocks](https://trueblocks.io/)
 - [Blockchain ETL](https://github.com/blockchain-etl)
 - [Mars](https://github.com/deepeth/mars)
 - [Algoran Indexer](https://github.com/algorand/indexer)
@@ -32,15 +47,11 @@ If you do a bit of browsing, you'll find many companies and tools building ETLs 
 - [Apollo](https://github.com/chainbound/apollo)
 - [Ether SQL](https://github.com/analyseether/ether_sql)
 - [Spec](https://github.com/spec-dev)
-- [Transpose](https://www.transpose.io/)
-- [Allium](https://twitter.com/alliumlabs)
 - [Cosmos ETL](https://github.com/bizzyvinci/cosmos-etl)
-- [Kyve](https://www.kyve.network/)
-- [Token Terminal](https://tokenterminal.com/)
-- [Probably Nothing Labs](https://www.probablynothinglabs.xyz/)
-- [Space And Time](https://www.spaceandtime.io/)
-- [Digital Assets Examples](https://github.com/aws-samples/digital-assets-examples)
 - [Luabase](https://github.com/luabase)
+- [Digital Assets Examples](https://github.com/aws-samples/digital-assets-examples)
+
+## The Problem
 
 After compiling the list, I realized that only a few of these projects are open. **We can read the source code of the chains we use, but can't read the code of their data pipelines?** That's a bit weird. Specially when the data world is moving towards the other direction [^1]!
 
