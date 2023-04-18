@@ -16,7 +16,7 @@ The main thing I'd love to explore is how, as a community, we're building the sa
 
 If you do a bit of browsing, you'll find many companies and tools building ETLs for different blockchains. I compiled this non-exhaustive list of tools to index chains and companies providing the final datasets. I'm sure I missed a few, so please [let me know](https://twitter.com/davidgasquez) if you know of any other projects!
 
-#### Companies
+### Companies
 
 - [Nansen](https://www.nansen.ai/)
 - [Tokenflow](https://docs.tokenflow.live/)
@@ -35,7 +35,7 @@ If you do a bit of browsing, you'll find many companies and tools building ETLs 
 - [Space And Time](https://www.spaceandtime.io/)
 - [Credmark](https://credmark.com/) ([GitHub](https://github.com/credmark))
 
-#### Tools
+### Tools
 
 - [Trueblocks](https://trueblocks.io/)
 - [Blockchain ETL](https://github.com/blockchain-etl)
