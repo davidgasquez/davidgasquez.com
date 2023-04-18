@@ -12,7 +12,7 @@ I've never enjoyed SPARQL syntax and found it confussing coming from SQL. That h
 
 This, however, seems to have changed after being able to use ChatGPT to generate the queries for me. Or at least to guide me through the process. It's an amazing way to explore Wikidata without having to learn SPARQL syntax!
 
-I wanted to get some data about asteroids and I was able to do it with the following query... to ChatGPT!
+I wanted to get some data about asteroids and I was able to do it with the following query... to ChatGPT! Definitely not as [accurate or detailed as an official source could be](https://ssd.jpl.nasa.gov/tools/sbdb_query.html#!#results), but useful to quickly check some facts.
 
 ![screnshoot](https://user-images.githubusercontent.com/1682202/232730339-e608451a-1f44-4ca1-ad6a-00d0bf599103.png)
 
