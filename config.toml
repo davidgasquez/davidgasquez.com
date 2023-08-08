@@ -83,3 +83,6 @@ weight = 20
 
 [markup.highlight]
 noClasses = false
+
+[markup.goldmark.renderer]
+unsafe = true
