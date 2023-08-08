@@ -9,7 +9,7 @@
                 "html.format.templating": true
             },
             "extensions": [
-                "bungcip.better-toml",
+                "tamasfe.even-better-toml",
                 "davidanson.vscode-markdownlint",
                 "streetsidesoftware.code-spell-checker",
                 "yzhang.markdown-all-in-one"
