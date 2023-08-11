@@ -66,7 +66,7 @@ On the other hand, projects like [Airbyte](https://airbyte.com/), [Estuary's Flo
 
 Wouldn't it be great if we could do the same with blockchain data? **Add the `tap-ethereum` connector, install the `dbt-ethereum` package and start to collaborate! [^3]**
 
-Personally, I think projects like TrueBlocks, [Kamu](https://kamu.dev), and [Bacalhau](https://bacalhau.org/) hold the key to open the data layer a bit more [^4] but won't be possible without a community and standards we can all agree upon and share.
+Personally, I think projects like [Trueblocks](https://trueblocks.io/), [Kamu](https://kamu.dev), and [Bacalhau](https://bacalhau.org/) hold the key to open the data layer a bit more [^4] but won't be possible without a community and standards we can all agree upon and share.
 
 [^1]: And the blockchains data is such a [great candidate for the open data movement](https://publish.obsidian.md/davidgasquez/Open+Data). **Chain data is open, verifiable and immutable! All great properties for open data.**
 
@@ -74,4 +74,4 @@ Personally, I think projects like TrueBlocks, [Kamu](https://kamu.dev), and [Bac
 
 [^3]: Dune has [the spellbook](https://github.com/duneanalytics/spellbook) and is awesome. I wish they did something similar for their pipelines though.
 
-[^4]: Bacalhau indexes the chain with TrueBlocks, puts the data into Parquet files on IPFS and you query it from anywhere using DuckDB!
+[^4]: [Bacalhau](https://www.bacalhau.org/) indexes the chain with [Trueblocks](https://trueblocks.io/), puts the data into Parquet files on IPFS and you query it from anywhere using DuckDB!
