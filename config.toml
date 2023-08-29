@@ -4,7 +4,6 @@ title = 'David Gasquez'
 
 theme = 'PaperMod'
 
-# Theme Settings
 [params]
 DateFormat = "January 2, 2006"
 defaultTheme = "dark"
@@ -35,10 +34,6 @@ imageUrl = "avatar.jpg"
 imageWidth = 250
 imageHeight = 250
 imageTitle = "Profile Picture"
-
-# [[params.profileMode.buttons]]
-# name = "Handbook"
-# url = "https://publish.obsidian.md/davidgasquez"
 
 [[params.socialIcons]]
 name = "twitter"
