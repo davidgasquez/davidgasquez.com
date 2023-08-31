@@ -1,8 +1,6 @@
 ---
 title: "Making DuckDB understand IPFS CID's"
 date: 2023-02-22
-draft: false
-url: /posts/duckdb-ipfs
 ---
 
 Thanks to `fsspec`, you can query arbitrary filesystems with DuckDB quite easily.

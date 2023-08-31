@@ -1,0 +1,24 @@
+html,
+body {
+    display: block;
+    background-color: #222;
+    color: #fff;
+    font-family: system-ui, -apple-system, sans-serif;
+    max-width: 1000px;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: #ff8c8c;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff6a6a;
+    text-decoration: underline;
+}

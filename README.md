@@ -1,11 +1,15 @@
-# David Gasquez Personal Website
+# Personal Website
 
-Source code for my personal website and blog, [davidgasquez.com](https://davidgasquez.com).
+Source code for my personal website and blog. Built with Eleventy and some tears from a mainly Data Engineer.
 
 ## Development
 
-You can use the devcontainer environment to develop locally. Once inside the container, you can also use the `Makefile` to run Hugo server.
+You can use the Development Container environment to develop locally. Once inside the container, you can also use the `Makefile` to run serve the content locally.
 
 ## Deployment
 
-Pushing to the `main` branch will trigger a new deployment!
+Pushing to the `main` branch will trigger a new deployment! The website is hosted on GitHub Pages.
+
+## License
+
+MIT

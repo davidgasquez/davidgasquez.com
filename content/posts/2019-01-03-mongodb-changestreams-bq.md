@@ -1,14 +1,9 @@
 ---
 title: "Using MongoDB Change Streams to replicate data into BigQuery"
 date: 2019-01-03
-draft: false
-url: /posts/mongodb-changestreams-bq
-cover:
-    image: https://miro.medium.com/v2/resize:fit:4800/0*lvnw5cWvVpkLEu5s
-    caption: "Photo by Quinten de Graaf on Unsplash"
 ---
 
-### _Learnings and challenges we faced while building a MongoDB to BigQuery data pipeline using MongoDB Change Streams_
+## _Learnings and challenges we faced while building a MongoDB to BigQuery data pipeline using MongoDB Change Streams_
 
 Before jumping into the technical details, it’s good to review why we decided to build this pipeline. We had two main reasons to develop it:
 
@@ -42,8 +37,9 @@ The pipeline has the following components:
 1. A service running in Kubernetes ([`carden`](https://github.com/bufferapp/carden)) that reads the MongoDB Change Stream for each collection and pushes it to a simple Big Query table (appending all the records).
 2. A dbt cronjob that reads the source table with the raw data incrementally and materializes a query into a new table. This table contains the latest state for each row that changes since the last run. This is a sample of how the dbt SQL looks like in production.
 
+{% raw %}
 {{< gist davidgasquez 958559e5ac2cc8e4ec3abf66be7927fc >}}
-
+{% endraw %}
 With these two steps we have **data flowing from MongoDB to Big Query in real time**. We also keep track of deletions and we have all the changes that took place in the collections we’re replicating (useful for some kind of analysis that require information about the changes over a period of time).
 
 Since we don’t have any data before the date we started the MongoDB Change Streams crawling service we’re missing lots of records. To solve this we decided to backfill creating fake change events. We dumped the MongoDB collections and made a simple script that wrapped the documents as insertions. These records were sent into the same BigQuery table. Now, running the same dbt model give us the final table with all the backfilled records.

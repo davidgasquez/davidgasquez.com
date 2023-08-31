@@ -1,5 +1,2 @@
 serve:
-	hugo serve
-
-update:
-	git submodule update --remote --merge
+	npx @11ty/eleventy --serve

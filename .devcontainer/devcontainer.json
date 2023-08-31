@@ -1,8 +1,6 @@
 {
-    "name": "Hugo",
-    "build": {
-        "dockerfile": "../Dockerfile"
-    },
+    "name": "Blog",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node",
     "customizations": {
         "vscode": {
             "settings": {
@@ -12,12 +10,11 @@
                 "tamasfe.even-better-toml",
                 "davidanson.vscode-markdownlint",
                 "streetsidesoftware.code-spell-checker",
-                "yzhang.markdown-all-in-one"
+                "yzhang.markdown-all-in-one",
+                "ronnidc.nunjucks",
+                "okitavera.vscode-nunjucks-formatter"
             ]
         }
     },
-    "forwardPorts": [
-        1313
-    ],
     "remoteUser": "node"
 }
