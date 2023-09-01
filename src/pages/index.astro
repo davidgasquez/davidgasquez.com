@@ -1,0 +1,36 @@
+---
+import Base from "/layouts/Base.astro";
+
+import { Image } from "astro:assets";
+import avatar from "/assets/avatar.jpg";
+
+import { getCollection } from "astro:content";
+const blogEntries = await getCollection("blog");
+blogEntries.sort((a, b) => b.data.date - a.data.date);
+---
+
+<Base>
+    <div class="profile">
+        <Image src={avatar} alt="David" width="250" />
+
+        <p>Data at <a href="https://protocol.ai/">Protocol Labs</a>.</p>
+        <p>Learning about anything and everything all of the time.</p>
+    </div>
+
+    <h3>Posts</h3>
+    <ul>
+        {
+            blogEntries.map((blogPostEntry) => (
+                <li>
+                    <a href={`${blogPostEntry.slug}`}>
+                        {blogPostEntry.data.title}
+                    </a>
+                    —
+                    <time datetime={blogPostEntry.data.date.toISOString()}>
+                        {blogPostEntry.data.date.toDateString()}
+                    </time>
+                </li>
+            ))
+        }
+    </ul>
+</Base>

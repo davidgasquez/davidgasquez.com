@@ -11,8 +11,7 @@
                 "davidanson.vscode-markdownlint",
                 "streetsidesoftware.code-spell-checker",
                 "yzhang.markdown-all-in-one",
-                "ronnidc.nunjucks",
-                "okitavera.vscode-nunjucks-formatter"
+                "astro-build.astro-vscode"
             ]
         }
     },

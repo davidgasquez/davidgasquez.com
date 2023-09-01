@@ -1,5 +1,4 @@
 :root {
-    --nav-width: 1024px;
     --main-width: 720px;
     --background: rgb(15, 15, 15);
     --primary: rgb(220, 220, 220);
@@ -7,34 +6,23 @@
     --line-height: 1.5;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: var(--nav-width);
-}
-
-nav a {
-    color: var(--primary);
-}
-
 body {
     background-color: var(--background);
     color: var(--primary);
     line-height: var(--line-height);
     font-family: system-ui, -apple-system, sans-serif;
-    max-width: var(--main-width);
     padding: 2rem;
     font-size: 1.4rem;
     margin: 0 auto;
+    max-width: var(--main-width);
 }
 
-h1 {
-    line-height: calc(4rem / var(--line-height));
-}
-
-img {
-    max-width: 100%;
+nav {
+    display: flex;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    justify-content: space-between;
 }
 
 a {
@@ -49,11 +37,11 @@ a:hover {
 .profile {
     text-align: center;
     align-items: center;
-    padding: 2rem;
+    margin-top: 4rem;
 }
 
 .profile p {
-    margin: 0;
+    margin: 0.2rem 0;
 }
 
 .profile img {
@@ -62,6 +50,7 @@ a:hover {
 }
 
 footer {
+    margin-top: 4rem;
     text-align: center;
-    font-size: calc(1.5rem / var(--line-height));
+    font-size: 1rem;
 }

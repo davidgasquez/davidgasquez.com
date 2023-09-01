@@ -1,6 +1,6 @@
 # Personal Website
 
-Source code for my personal website and blog. Built with Eleventy and some tears from a mainly Data Engineer.
+Source code for my personal website and blog. Built with Astro and some tears from a mainly Data Engineer.
 
 ## Development
 

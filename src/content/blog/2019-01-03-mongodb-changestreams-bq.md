@@ -1,10 +1,8 @@
 ---
 title: "MongoDB Change Streams to BigQuery"
 date: 2019-01-03
-permalink: /mongodb-changestreams-bq
+slug: mongodb-changestreams-bq
 ---
-
-## _Learnings and challenges we faced while building a MongoDB to BigQuery data pipeline using MongoDB Change Streams_
 
 Before jumping into the technical details, it’s good to review why we decided to build this pipeline. We had two main reasons to develop it:
 

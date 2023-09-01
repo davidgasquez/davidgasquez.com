@@ -1,7 +1,7 @@
 ---
 title: "Exploring Wikidata with SPARQL and ChatGPT"
 date: 2023-04-18
-permalink: /wikidata-sparql-chatgpt
+slug: wikidata-sparql-chatgpt
 ---
 
 I've never enjoyed SPARQL syntax and found it confussing coming from SQL. That has made me not use or explore Wikidata as much as I wanted.

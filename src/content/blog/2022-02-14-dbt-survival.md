@@ -1,7 +1,7 @@
 ---
 title: "Kaplan-Meier Survival Curves in dbt"
 date: 2022-02-14
-permalink: /dbt-survival
+slug: dbt-survival
 ---
 
 Inspired by [Convoys](https://better.engineering/convoys/), I've tried to model conversion rates in SQL.
