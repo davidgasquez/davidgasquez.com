@@ -5,18 +5,18 @@ import Footer from "../components/Footer.astro";
 ---
 
 <!doctype html>
-<html lang="en">
-    <Head />
+<html lang="en" class="dark bg-slate-950 text-slate-100 text-lg font-sans antialiased p-6 mx-auto max-w-prose">
+  <Head />
 
-    <body>
-        <header>
-            <Navigation />
-        </header>
+  <body>
+    <header>
+      <Navigation />
+    </header>
 
-        <main>
-            <slot />
-        </main>
+    <main class="prose dark:prose-invert">
+      <slot />
+    </main>
 
-        <Footer />
-    </body>
+    <Footer />
+  </body>
 </html>

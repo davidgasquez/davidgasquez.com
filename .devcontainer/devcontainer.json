@@ -4,14 +4,18 @@
     "customizations": {
         "vscode": {
             "settings": {
-                "html.format.templating": true
+                "html.format.templating": true,
+                "css.validate": false,
+                "less.validate": false,
+                "scss.validate": false,
+                "prettier.printWidth": 120
             },
             "extensions": [
-                "tamasfe.even-better-toml",
-                "davidanson.vscode-markdownlint",
-                "streetsidesoftware.code-spell-checker",
+                "astro-build.astro-vscode",
                 "yzhang.markdown-all-in-one",
-                "astro-build.astro-vscode"
+                "davidanson.vscode-markdownlint",
+                "stylelint.vscode-stylelint"
+                // "esbenp.prettier-vscode"
             ]
         }
     },
