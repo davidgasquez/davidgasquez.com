@@ -1,6 +1,7 @@
 ---
 title: "On Blockchain Data Pipelines"
 date: 2023-04-07
+permalink: /blockchain-data-pipelines
 ---
 
 I've spent the last few months working on indexing and [building data pipelines for the Filecoin blockchain](https://github.com/filecoin-project/filet). While it's been a great and exciting learning experience, I've realized the space can learn a few things from the so called Modern Data ecosystem.

@@ -1,6 +1,7 @@
 ---
 title: "My little and short experience with Nix"
 date: 2022-12-28
+permalink: /nix-experience
 ---
 
 NixOS has somehow slowly gotten into all my feeds. So, after getting a new AMD GPU (Radeon 7900 XTX), I took the opportunity to install NixOS on my main desktop PC. This blog is to share how it played out.

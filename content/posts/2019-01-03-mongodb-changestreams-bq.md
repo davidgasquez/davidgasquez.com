@@ -1,6 +1,7 @@
 ---
-title: "Using MongoDB Change Streams to replicate data into BigQuery"
+title: "MongoDB Change Streams to BigQuery"
 date: 2019-01-03
+permalink: /mongodb-changestreams-bq
 ---
 
 ## _Learnings and challenges we faced while building a MongoDB to BigQuery data pipeline using MongoDB Change Streams_

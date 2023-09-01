@@ -2,9 +2,21 @@
 layout: default
 ---
 
-<h1>David Gasquez</h1>
+<div class="profile">
+    <img src=avatar.jpg alt="Profile Picture" height=250 width=250>
+    <p>Data at <a href="https://protocol.ai/">Protocol Labs</a>.</p>
+    <p>Learning about anything and everything all of the time.</p>
 
-<img src=avatar.jpg alt="Profile Picture" height=250 width=250>
+</div>
 
-<p>Learning about anything and everything all of the time.</p>
-<p>Passionate about Data and Open Source. Did some data stuff @protocollabs, @buffer.</p>
+<hr>
+
+<h3>Recent Posts</h3>
+
+<ul>
+    {%- for post in collections.posts | reverse -%}
+        <li>
+            <a href="{{ post.url }}">{{ post.data.title }}</a> - {{ post.date | postDate }}
+        </li>
+    {%- endfor -%}
+</ul>

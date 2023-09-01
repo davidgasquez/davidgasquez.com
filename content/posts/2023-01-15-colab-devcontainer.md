@@ -1,6 +1,7 @@
 ---
-title: "Moving from Google Colab to GitHub Codespaces"
+title: "From Google Colab to GitHub Codespaces"
 date: 2023-01-15
+permalink: /colab-devcontainer
 ---
 
 For the last few years, I've been a pretty heavy user of Google Collab. Every time I wanted to play with a new package or idea, I created a new Jupyter Notebook.

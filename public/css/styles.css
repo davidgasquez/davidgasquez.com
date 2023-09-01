@@ -1,12 +1,36 @@
-html,
+:root {
+    --nav-width: 1024px;
+    --main-width: 720px;
+    --background: rgb(15, 15, 15);
+    --primary: rgb(220, 220, 220);
+    --secondary: rgb(255, 100, 100);
+    --line-height: 1.5;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--nav-width);
+}
+
+nav a {
+    color: var(--primary);
+}
+
 body {
-    display: block;
-    background-color: #222;
-    color: #fff;
+    background-color: var(--background);
+    color: var(--primary);
+    line-height: var(--line-height);
     font-family: system-ui, -apple-system, sans-serif;
-    max-width: 1000px;
-    padding: 1rem;
-    font-size: 1.2rem;
+    max-width: var(--main-width);
+    padding: 2rem;
+    font-size: 1.4rem;
+    margin: 0 auto;
+}
+
+h1 {
+    line-height: calc(4rem / var(--line-height));
 }
 
 img {
@@ -14,11 +38,30 @@ img {
 }
 
 a {
-    color: #ff8c8c;
+    color: var(--secondary);
     text-decoration: none;
 }
 
 a:hover {
-    color: #ff6a6a;
     text-decoration: underline;
+}
+
+.profile {
+    text-align: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.profile p {
+    margin: 0;
+}
+
+.profile img {
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+footer {
+    text-align: center;
+    font-size: calc(1.5rem / var(--line-height));
 }

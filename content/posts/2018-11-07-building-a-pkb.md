@@ -1,6 +1,7 @@
 ---
 title: "Building a Personal Knowledge Base"
 date: 2018-11-07
+permalink: /building-a-pkb
 ---
 
 ## Building a Personal Knowledge Base
