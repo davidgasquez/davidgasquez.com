@@ -8,8 +8,6 @@ Inspired by [Convoys](https://better.engineering/convoys/), I've tried to model 
 
 The following macro computes the Kaplan-Meier survival curves and conversion rates given two timestamps and the groups. You can then generate these tables at runtime and plot them in your favorite BI tool.
 
-{% raw %}
-
 ```sql
 {% macro conversion_rate(relation, id, created, converted, groups, time_unit="minute") %}
 
@@ -70,9 +68,7 @@ select * from final
 {% endmacro %}
 ```
 
-{% endraw %}
 The usage then is as simple as:
-{% raw %}
 
 ```sql
 with dataset as (
@@ -95,7 +91,5 @@ select * from ({{
     )
 }})
 ```
-
-{% endraw %}
 
 I'm sure this can be improved and simplified. For now, is good enough and it works! If you're looking for an alternative in Looker, the folks at Montreal Analytitcs have you covered: [How to Leverage Product Survival Curves in Looker](https://blog.montrealanalytics.com/how-to-leverage-product-survival-curves-in-looker-9a31663d4ae6).
