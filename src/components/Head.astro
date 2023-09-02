@@ -1,0 +1,41 @@
+---
+import settings from "../data/settings.js";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  url?: URL | string;
+  name?: string;
+}
+
+const title = Astro.props.title || settings.title;
+const description = Astro.props.description || settings.description;
+const canonicalURL = Astro.props.url || settings.url;
+const name = Astro.props.name || settings.name;
+---
+
+<head>
+  <!-- Required Tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="author" content="David Gasquez" />
+  <link rel="canonical" href={canonicalURL} />
+  <meta name="author" content={name} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:creator" content="@davidgasquez" />
+  <meta property="twitter:description" content={description} />
+</head>

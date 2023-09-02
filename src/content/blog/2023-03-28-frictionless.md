@@ -1,10 +1,7 @@
 ---
-title: "Some thoughts on Frictionless Standards"
+title: "Thoughts on the Frictionless Standard"
 date: 2023-03-28
-url: /posts/frictionless
-cover:
-    image: https://images.unsplash.com/photo-1591320458429-9fc451b89057?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80
-    caption: "Photo by Greg Rosenke on Unsplash"
+slug: frictionless-standard
 ---
 
 So far I've enjoyed a lot [playing with Frictionless](https://github.com/davidgasquez/datalab/blob/main/notebooks/2023-03-14-Packaging%20Open%20Datasets.ipynb) and learning more about the internal design and specs.

@@ -1,11 +1,7 @@
 ---
 title: "Exploring Wikidata with SPARQL and ChatGPT"
 date: 2023-04-18
-draft: false
-url: /posts/wikidata-sparql-chatgpt
-cover:
-    image: https://images.unsplash.com/photo-1518419530812-e4cc91c95162?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80
-    caption: "Photo by Oziel Gómez on Unsplash"
+slug: wikidata-sparql-chatgpt
 ---
 
 I've never enjoyed SPARQL syntax and found it confussing coming from SQL. That has made me not use or explore Wikidata as much as I wanted.

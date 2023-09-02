@@ -1,23 +1,23 @@
 {
-    "name": "Hugo",
-    "build": {
-        "dockerfile": "../Dockerfile"
-    },
+    "name": "Blog",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node",
     "customizations": {
         "vscode": {
             "settings": {
-                "html.format.templating": true
+                "html.format.templating": true,
+                "css.validate": false,
+                "less.validate": false,
+                "scss.validate": false,
+                "prettier.printWidth": 120
             },
             "extensions": [
-                "tamasfe.even-better-toml",
+                "astro-build.astro-vscode",
+                "yzhang.markdown-all-in-one",
                 "davidanson.vscode-markdownlint",
-                "streetsidesoftware.code-spell-checker",
-                "yzhang.markdown-all-in-one"
+                "stylelint.vscode-stylelint"
+                // "esbenp.prettier-vscode"
             ]
         }
     },
-    "forwardPorts": [
-        1313
-    ],
     "remoteUser": "node"
 }

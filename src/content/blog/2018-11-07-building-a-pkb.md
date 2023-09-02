@@ -1,14 +1,8 @@
 ---
 title: "Building a Personal Knowledge Base"
 date: 2018-11-07
-draft: false
-url: /posts/building-a-pkb
-cover:
-    image: https://images.unsplash.com/photo-1483546416237-76fd26bbcdd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80
-    caption: "Photo by Jan Kahánek on Unsplash"
+slug: building-a-pkb
 ---
-
-
 
 For about 2 years now, I've been maintaining a **Personal Handbook**. In this collection of documents I add everything that I find worth remembering. It contains multiple topics. Some of them share my personal view of the world and how I aim to interact with it. Others are more technical and help me capture important principles and techniques.
 

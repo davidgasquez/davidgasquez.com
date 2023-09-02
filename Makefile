@@ -1,5 +1,2 @@
 serve:
-	hugo serve
-
-update:
-	git submodule update --remote --merge
+	npm run dev
