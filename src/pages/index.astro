@@ -11,7 +11,11 @@ blogEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 <Base>
   <div class="container mx-auto px-4 py-8 text-center">
-    <Image src={avatar} alt="David" class="rounded-full mx-auto w-32 h-32 mb-6" />
+    <Image
+      src={avatar}
+      alt="David"
+      class="rounded-full border-solid border-2 border-stone-900 mx-auto w-32 h-32 mb-6"
+    />
 
     <p>
       Data at <a href="https://protocol.ai/">Protocol Labs</a>
