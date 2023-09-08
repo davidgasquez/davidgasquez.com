@@ -5,7 +5,7 @@ import Footer from "components/Footer.astro";
 ---
 
 <!doctype html>
-<html lang="en" class="bg-stone-200 text-stone-950 text-lg font-sans antialiased p-6 mx-auto max-w-prose">
+<html lang="en" class="bg-neutral-900 text-neutral-100 text-lg font-sans antialiased p-6 mx-auto max-w-prose">
   <Head />
 
   <body>
@@ -13,7 +13,9 @@ import Footer from "components/Footer.astro";
       <Navigation />
     </header>
 
-    <main class="prose">
+    <main
+      class="prose prose-p:text-neutral-100 prose-em:text-neutral-100 prose-li:text-neutral-100 prose-a:text-yellow-600 prose-a:no-underline prose-blockquote:font-normal prose-blockquote:text-neutral-500 prose-code:text-yellow-200 prose-h1:text-neutral-100 prose-h2:text-neutral-100 prose-h3:text-neutral-100 prose-h4:text-neutral-100 prose-neutral-100 prose-quoteless prose-strong:text-white sm:prose-xl"
+    >
       <slot />
     </main>
 

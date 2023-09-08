@@ -1,5 +1,5 @@
 ---
-title: "DuckDB understands IPFS CID's"
+title: "DuckDB with IPFS CID's"
 date: 2023-02-22
 slug: duckdb-ipfs
 ---

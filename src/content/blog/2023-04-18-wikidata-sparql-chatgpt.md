@@ -1,5 +1,5 @@
 ---
-title: "Exploring Wikidata with SPARQL and ChatGPT"
+title: "Wikidata with SPARQL and ChatGPT"
 date: 2023-04-18
 slug: wikidata-sparql-chatgpt
 ---
