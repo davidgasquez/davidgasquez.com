@@ -6,6 +6,8 @@ slug: gitcoin-data
 
 Last week, I went on a rabbit hole after coming across [RegenData.xyz](https://gov.gitcoin.co/t/regendata-xyz-our-sybil-resistant-future-q3-2023-and-beyond/16474), an initiative to collect and surface grants data.
 
+If you don't want to read, [code is available at GitHub](https://github.com/davidgasquez/gitcoin-grants-data-portal). Check it out!
+
 This is very similar to the work I've been doing at Protocol Labs with the [Filecoin Data Portal](https://github.com/davidgasquez/filecoin-data-portal). A fully open source and local friendly data hub for Filecoin related data. Think of Dune, but in your laptop! All based in the [ideas I started exploring with Datadex a while back](https://github.com/davidgasquez/datadex).
 
 I decided to take a stab at building a similar data portal for Gitcoin Grant data that is being exposed via the [Indexer Grants Stack Data API](https://indexer-grants-stack.gitcoin.co/data/). Let's see!
