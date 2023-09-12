@@ -30,6 +30,48 @@ The main takeaways (which could probably derived from the code) are:
 <div class="github-card" data-github="davidgasquez/gitcoin-grants-data-portal" data-width="650" data-height="" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
-Since I already worked on the Filecoin Data Portal, I went with the same approach, reuse the Datadex ideas and stack. That is, Python with Dagster for the ETLs, dbt for the transformations, DuckDB as the database, and Notebooks/Quarto as the frontend.
+Since I already worked on the Filecoin Data Portal, I went with the same approach, reuse the Datadex ideas and stack. That is, Python with Dagster for the ingestion and loading, dbt for the transformations, DuckDB as the database, and Notebooks/Quarto as the frontend.
 
-The first thing was to created the [relevant Dagster assets](https://github.com/davidgasquez/gitcoin-grants-data-portal/blob/main/ggdp/assets.py). These act as the _extract_ and _load_ part of the pipeline and are [later _transformed_ by `dbt` with SQL queries](https://github.com/davidgasquez/gitcoin-grants-data-portal/blob/main/dbt/models/round_votes.sql). Saving both the rawest data and the transformations allows anyone to reuse either the raw data source or the transformed data source!
+The first thing was to created the [relevant Dagster assets](https://github.com/davidgasquez/gitcoin-grants-data-portal/blob/main/ggdp/assets.py). These act as the _extract_ and _load_ part of the pipeline and are [later _transformed_ by `dbt` with SQL queries](https://github.com/davidgasquez/gitcoin-grants-data-portal/blob/main/dbt/models/round_votes.sql). Data is finally exposed via [Parquet files](https://www.robinlinacre.com/parquet_api/) pushed to IPFS.
+
+All of the avobe unlocks some interesting properties relevant to Gitcoin and decentralized data in general:
+
+- **Decentralized**.
+  - Data can come from multiple sources and be exposed in multiple ways.
+  - The project runs on a laptop, a server, a CI runner (that's the way is working right now) or a even decentralized compute network like [Bacalhau](https://www.bacalhau.org/).
+  - Data is stored in IPFS. You can run it locally, and it'll generate the same IPFS files if nothing has changed. The more people runst it, the more distributed the IPFS files will be! [^1]
+- **Permissionless**.
+  - Clone and edit things away! You're not blocked by any API rate limits, or closed data like in Dune.
+  - All other git features like branching, merging, pull requests, ... are available because all the data is transformed declaratively as code.
+- **Data as Code**.
+  - Every commit generates all the table files and pushes them to IPFS. This means that we can always go back in time and see the data as it was at that point in time. For every commit, we'll have the data as it was at that point in time.
+- **Open**
+  - Play well with the ecosystem. Use open standards and share data in open formats.
+- **Modular**
+  - Each component can be replaced [^2], extended, or removed. Works well in many environments (your laptop, in a cluster, or from the browser), and with multiple tools (thanks to the Arrow ecosystem).
+- **Low friction**
+  - Data (raw and processed) is already there! No need to write your own scripts. You can always reproduce it but getting started is as easy as pasting [a SQL query in your browser](https://shell.duckdb.org/) or doing `pd.read_parquet(url)` in a Notebook.
+  - Every commit will also publish a set of Quarto Notebooks with the data. Could be used to generate reports/dahsboards, or as documentation.
+- **Modern**
+  - It supports all the cool things data engineers want; typing, tests, materialized views, dev branches, ...
+  - Uses best practices (declarative transformations) and state of the art tooling (DuckDB).
+
+Pretty cool, right? Some things you can tinker with right now:
+
+- Go to [the generated website with some query examples](https://bafybeieaztvldk23xghlpmzjz5ppry5jrd6bi2kag6q73huckhfrlrabby.ipfs.dweb.link/).
+- Run the following query (rounds by most votes) in [shell.duckdb.org](https://shell.duckdb.org/).
+
+```sql
+select
+    round_id,
+    count(id)
+from read_parquet('https://bafybeieaztvldk23xghlpmzjz5ppry5jrd6bi2kag6q73huckhfrlrabby.ipfs.w3s.link/round_votes.parquet')
+group by 1 order by 2 desc limit 10;
+```
+
+![DuckDB Example](https://user-images.githubusercontent.com/1682202/267361009-a416610e-3905-4399-adac-5d395975c2e5.png)
+
+That's all for now. Reach out if you have any feedback or ideas!
+
+[^1]: More related stuff: <https://github.com/davidgasquez/datadex/issues/27>
+[^2]: The easiest example is the BI layer. As long as is compatible with Postgres/DuckDB, you can explore the raw and modeled data as the entire database is snapshoted to IPFS. In our example, the CID hash of the folder was `bafybeieaztvldk23xghlpmzjz5ppry5jrd6bi2kag6q73huckhfrlrabby`, so the database is at <https://bafybeieaztvldk23xghlpmzjz5ppry5jrd6bi2kag6q73huckhfrlrabby.ipfs.dweb.link/dbt.duckdb>. Download it, spin up your [Metabase](https://www.metabase.com/data_sources/duckdb), Redash, or BI tool of choice and start exploring the data!
