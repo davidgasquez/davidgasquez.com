@@ -40,7 +40,7 @@ All of the avobe unlocks some interesting properties relevant to Gitcoin and dec
 
 - **Decentralized**.
   - Data can come from multiple sources and be exposed in multiple ways.
-  - The project runs on a laptop, a server, a CI runner (that's the way is working right now) or a even decentralized compute network like [Bacalhau](https://www.bacalhau.org/).
+  - The project runs on a laptop, a server, a CI runner (that's the way is working right now) or a even decentralized compute network like [Bacalhau](https://www.bacalhau.org/). Oh, it even works in GitHub Codespaces so you don't even need to setup anything locally!
   - Data is stored in IPFS. You can run it locally, and it'll generate the same IPFS files if nothing has changed. The more people runst it, the more distributed the IPFS files will be! [^1]
 - **Permissionless**.
   - Clone and edit things away! You're not blocked by any API rate limits, or closed data like in Dune.
