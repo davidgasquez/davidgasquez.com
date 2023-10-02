@@ -9,7 +9,13 @@ I sort of knew about `yt-dlp`, a fork of `youtube-dl` with some extra features, 
 As usually with awesome CLI tools, the solution was one command away!
 
 ```bash
-yt-dlp --sub-lang "es-en" --write-auto-sub --embed-subs --merge-output-format mp4 -S acodec:aac -S vcodec:h264 -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' :ytwatchlater --cookies-from-browser brave
+yt-dlp --sub-lang "es-en" \
+    --write-auto-sub \
+    --embed-subs \
+    --merge-output-format mp4 \
+    -S acodec:aac -S vcodec:h264 \
+    -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' \
+    :ytwatchlater --cookies-from-browser brave
 ```
 
 Let's break it down:
