@@ -4,7 +4,7 @@ date: 2023-10-01
 slug: download-watchlater
 ---
 
-I sort of knew about `yt-dlp`, a fork of `youtube-dl` with some extra features, but I never really used it until recently. The goal I was trying to archieve was to download all the videos I've been storing in my [Watch Later playlist](https://www.youtube.com/playlist?list=WL) over time so I could see them on my TV, without ads, and with Spanish subtitles.
+I sort of knew about [`yt-dlp`](https://github.com/yt-dlp/yt-dlp), a fork of [`youtube-dl`](https://github.com/ytdl-org/youtube-dl) with some extra features, but I never really used it until recently. The goal I was trying to archieve was to download all the videos I've been storing in my [Watch Later playlist](https://www.youtube.com/playlist?list=WL) over time so I could see them on my TV, without ads, and with Spanish subtitles.
 
 As usually with awesome CLI tools, the solution was one command away!
 
