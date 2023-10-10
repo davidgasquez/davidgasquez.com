@@ -23,25 +23,43 @@ blogEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
     <p>Learning about anything and everything all of the time.</p>
 
     <div class="m-5">
-      <a href="https://twitter.com/davidgasquez/" target="_blank" title="Twitter">Twitter</a>
+      <a
+        href="https://twitter.com/davidgasquez/"
+        target="_blank"
+        title="Twitter">Twitter</a
+      >
        ·
-      <a href="https://github.com/davidgasquez/" target="_blank" title="Github">GitHub</a>
+      <a href="https://github.com/davidgasquez/" target="_blank" title="Github"
+        >GitHub</a
+      >
        ·
-      <a href="https://www.linkedin.com/in/davidgasquez/" target="_blank" title="Linkedin">LinkedIn</a>
+      <a
+        href="https://www.linkedin.com/in/davidgasquez/"
+        target="_blank"
+        title="Linkedin">LinkedIn</a
+      >
        ·
-      <a href="mailto:davidgasquez@gmail.com" target="_blank" title="Email">Email</a>
+      <a href="mailto:davidgasquez@gmail.com" target="_blank" title="Email"
+        >Email</a
+      >
        ·
-      <a href="https://open.spotify.com/user/kalendos" target="_blank" title="Spotify">Spotify</a>
+      <a
+        href="https://open.spotify.com/user/kalendos"
+        target="_blank"
+        title="Spotify">Spotify</a
+      >
     </div>
   </div>
 
   <h3>Posts</h3>
   <ul>
     {
-      blogEntries.map((blogPostEntry) => (
+      blogEntries.map(blogPostEntry => (
         <li>
           <a href={`${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a> —
-          <time datetime={blogPostEntry.data.date.toISOString()}>{blogPostEntry.data.date.toDateString()}</time>
+          <time datetime={blogPostEntry.data.date.toISOString()}>
+            {blogPostEntry.data.date.toDateString()}
+          </time>
         </li>
       ))
     }

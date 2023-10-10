@@ -1,23 +1,20 @@
 {
-    "name": "Blog",
-    "image": "mcr.microsoft.com/devcontainers/javascript-node",
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "html.format.templating": true,
-                "css.validate": false,
-                "less.validate": false,
-                "scss.validate": false,
-                "prettier.printWidth": 120
-            },
-            "extensions": [
-                "astro-build.astro-vscode",
-                "yzhang.markdown-all-in-one",
-                "davidanson.vscode-markdownlint",
-                "stylelint.vscode-stylelint"
-                // "esbenp.prettier-vscode"
-            ]
-        }
-    },
-    "remoteUser": "node"
+  "name": "Blog",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "html.format.templating": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      },
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "astro-build.astro-vscode",
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        "stylelint.vscode-stylelint"
+      ]
+    }
+  },
+  "remoteUser": "node"
 }
