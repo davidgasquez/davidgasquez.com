@@ -1,6 +1,6 @@
 {
-  "name": "Blog",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node",
+  "name": "Website",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "customizations": {
     "vscode": {
       "settings": {

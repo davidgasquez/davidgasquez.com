@@ -1,6 +1,6 @@
 # Personal Website
 
-Source code for my personal website and blog. Built with Astro and some tears from a mainly Data Engineer.
+Source code for my personal website and blog. Built with Astro and some tears by a Data Engineer learning about the chaotic front end world.
 
 ## Development
 
