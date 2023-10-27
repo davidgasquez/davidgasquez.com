@@ -3,3 +3,6 @@ serve:
 
 install:
 	npm install
+
+update:
+	npm update
