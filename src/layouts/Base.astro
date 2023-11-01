@@ -1,0 +1,32 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+---
+
+<html lang="en" class="mx-auto bg-black p-6 px-8 py-4 font-sans text-lg text-white">
+  <head>
+    <BaseHead />
+  </head>
+  <body>
+    <header class="flex items-center justify-between">
+      <nav>
+        <div>
+          <span>
+            <a href="/">David Gasquez</a>
+          </span>
+        </div>
+
+        <div>
+          <div>
+            <a href="/brain/memo">Handbook</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="flex flex-col items-center justify-center">
+      <slot />
+    </main>
+    <footer class="flex flex-col items-center justify-center p-4">
+      <p>© 2023 David Gasquez</p>
+    </footer>
+  </body>
+</html>

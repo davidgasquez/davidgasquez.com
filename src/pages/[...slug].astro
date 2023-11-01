@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout>
+  <div class="prose prose-neutral prose-invert">
+    <h1 class="pt-6">{entry.data.title}</h1>
+    <em>{entry.data.date.toDateString()}</em>
+    <Content />
+  </div>
+
+  <div class="p-6 text-center">
+    <a href="/">← Back to home!</a>
+  </div>
+</Layout>
