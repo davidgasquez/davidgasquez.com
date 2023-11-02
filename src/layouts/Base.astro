@@ -1,27 +1,29 @@
 ---
-import Navigation from "components/Navigation.astro";
-import Head from "components/Head.astro";
-import Footer from "components/Footer.astro";
+import BaseHead from "../components/BaseHead.astro";
 ---
 
-<!doctype html>
-<html
-  lang="en"
-  class="bg-neutral-900 text-neutral-100 text-lg font-sans antialiased p-6 mx-auto max-w-prose min-w-[60%]"
->
-  <Head />
-
-  <body>
-    <header>
-      <Navigation />
+<html lang="en" class="mx-auto bg-neutral-950 p-6 px-8 py-4 font-sans text-lg text-neutral-50 antialiased">
+  <head>
+    <BaseHead />
+  </head>
+  <body class="m-auto max-w-screen-lg">
+    <header class="pb-4">
+      <nav>
+        <ul class="flex items-center justify-between">
+          <li>
+            <a class="font-semibold hover:text-yellow-600" href="/">David Gasquez</a>
+          </li>
+          <li>
+            <a class="hover:text-yellow-600" href="https://publish.obsidian.md/davidgasquez">Handbook</a>
+          </li>
+        </ul>
+      </nav>
     </header>
-
-    <main
-      class="prose prose-p:text-neutral-100 prose-em:text-neutral-100 prose-li:text-neutral-100 prose-a:text-yellow-600 prose-a:no-underline prose-blockquote:font-normal prose-blockquote:text-neutral-500 prose-code:text-yellow-200 prose-h1:text-neutral-100 prose-h2:text-neutral-100 prose-h3:text-neutral-100 prose-h4:text-neutral-100 prose-neutral-100 prose-quoteless prose-strong:text-white sm:prose-xl"
-    >
+    <main>
       <slot />
     </main>
-
-    <Footer />
+    <footer class="flex flex-col items-center justify-center p-4">
+      <p>© 2023 David Gasquez</p>
+    </footer>
   </body>
 </html>

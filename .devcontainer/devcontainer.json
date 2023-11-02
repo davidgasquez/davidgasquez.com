@@ -5,14 +5,21 @@
     "vscode": {
       "settings": {
         "html.format.templating": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.quickSuggestions": {
+          "strings": "on"
+        },
+        "tailwindCSS.includeLanguages": {
+          "astro": "html"
+        }
       },
       "extensions": [
         "esbenp.prettier-vscode",
         "astro-build.astro-vscode",
         "yzhang.markdown-all-in-one",
         "davidanson.vscode-markdownlint",
-        "stylelint.vscode-stylelint"
+        "stylelint.vscode-stylelint",
+        "bradlc.vscode-tailwindcss"
       ]
     }
   },
