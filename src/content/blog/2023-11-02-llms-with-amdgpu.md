@@ -80,7 +80,9 @@ And with that, we should be ready to run the model with `llama-cpp-python`:
 from llama_cpp import Llama
 
 llm = Llama(
-    model_path="mistral-7b-instruct-v0.1.Q4_K_M.gguf", n_gpu_layers=-1, main_gpu=1
+    model_path="mistral-7b-instruct-v0.1.Q4_K_M.gguf",
+    n_gpu_layers=-1,
+    main_gpu=1
 )
 
 output = llm(
@@ -99,7 +101,7 @@ For me, it printed the following:
 TODO
 ```
 
-:tada: :tada: :tada:
+🎉 🎉 🎉
 
 If you, like me, are wondering if the GPU was actually being used, you can install [nvtop](https://github.com/Syllo/nvtop) and execute it.
 
