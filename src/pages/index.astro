@@ -10,37 +10,47 @@ blogEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout>
-  <Image src={avatar} alt="David" class="mx-auto mb-6 h-32 w-32 rounded-full border-2 border-solid border-stone-900" />
+  <div class="container mx-auto px-4 py-8 text-center text-lg">
+    <Image src={avatar} alt="David" class="mx-auto mb-6 h-32 w-32 rounded-full" />
 
-  <h1 class="text-4xl font-bold">David Gasquez</h1>
-  <p>
-    Data at <a href="https://protocol.ai/">Protocol Labs</a>
-  </p>
-  <p>Learning about anything and everything all of the time.</p>
+    <p class="mb-2">
+      Data at <a class="text-yellow-600" href="https://protocol.ai/">Protocol Labs</a>
+    </p>
 
-  <div class="m-5">
-    <a href="https://twitter.com/davidgasquez/" target="_blank" title="Twitter">Twitter</a>
-     ·
-    <a href="https://github.com/davidgasquez/" target="_blank" title="Github">GitHub</a>
-     ·
-    <a href="https://www.linkedin.com/in/davidgasquez/" target="_blank" title="Linkedin">LinkedIn</a>
-     ·
-    <a href="https://mastodon.xyz/@davidgasquez" target="_blank" rel="me" title="Mastodon">Mastodon</a>
-     ·
-    <a href="mailto:davidgasquez@gmail.com" target="_blank" title="Email">Email</a>
-     ·
-    <a href="https://open.spotify.com/user/kalendos" target="_blank" title="Spotify">Spotify</a>
+    <p>Learning about anything and everything all of the time</p>
+
+    <div class="m-6">
+      <a class="text-yellow-600" href="https://twitter.com/davidgasquez/" target="_blank" title="Twitter">Twitter</a>
+       ·
+      <a class="text-yellow-600" href="https://github.com/davidgasquez/" target="_blank" title="Github">GitHub</a>
+       ·
+      <a class="text-yellow-600" href="https://www.linkedin.com/in/davidgasquez/" target="_blank" title="Linkedin"
+        >LinkedIn</a
+      >
+       ·
+      <a class="text-yellow-600" href="https://mastodon.xyz/@davidgasquez" target="_blank" rel="me" title="Mastodon"
+        >Mastodon</a
+      >
+       ·
+      <a class="text-yellow-600" href="mailto:davidgasquez@gmail.com" target="_blank" title="Email">Email</a>
+       ·
+      <a class="text-yellow-600" href="https://open.spotify.com/user/kalendos" target="_blank" title="Spotify"
+        >Spotify</a
+      >
+    </div>
   </div>
 
-  <h3>Posts</h3>
-  <ul>
-    {
-      blogEntries.map((blogPostEntry) => (
-        <li>
-          <a href={`${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a> —
-          <time datetime={blogPostEntry.data.date.toISOString()}>{blogPostEntry.data.date.toDateString()}</time>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="prose prose-invert">
+    <h3 class="text-2xl">Posts</h3>
+    <ul>
+      {
+        blogEntries.map((blogPostEntry) => (
+          <li>
+            <a href={`${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a> —
+            <time datetime={blogPostEntry.data.date.toISOString()}>{blogPostEntry.data.date.toDateString()}</time>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </Layout>
