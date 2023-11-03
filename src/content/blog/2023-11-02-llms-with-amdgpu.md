@@ -33,8 +33,6 @@ docker build --no-cache -t amd-llm .
 Now we can run the image with this ~complex~ precise command:
 
 ```bash
-
-```bash
 docker run -it --network=host --device=/dev/kfd \
     --device=/dev/dri --group-add=video --ipc=host \
     --cap-add=SYS_PTRACE --security-opt seccomp=unconfined \
