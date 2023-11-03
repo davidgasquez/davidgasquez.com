@@ -4,7 +4,7 @@ date: 2023-11-02
 slug: llms-with-amdgpu
 ---
 
-This might only work for a few months (or even days), but after spending a few hours trying to get LLMs to work on AMDGPUs inside Docker, I thought I'd share my findings. My GPU is an AMD 7900 XTX, but I think this should work for any [ROCm supported AMDGPUs](https://rocm.docs.amd.com/en/latest/).
+This might only work for a few months (or even days), but after spending a few hours trying to get an open source LLMs to work on AMDGPUs inside Docker, I thought I'd share my findings. My GPU is an AMD 7900 XTX, and I was only able to make it work with [the `llama-cpp` Python bindings](https://llama-cpp-python.readthedocs.io/en/latest/). This should work for any [ROCm supported AMDGPUs](https://rocm.docs.amd.com/en/latest/).
 
 The first thing is to build and setup our Docker image. This is what I ended up with:
 
@@ -63,7 +63,13 @@ res = tensor.to(0)
 If everything is working, you should see something like this:
 
 ```bash
-TODO
+True
+Radeon RX 7900 XTX
+CUDA available: True
+CUDA version: None
+CUDA arch list: ['gfx900', 'gfx906', 'gfx908', 'gfx90a', 'gfx1030', 'gfx1100']
+CUDNN available: True
+CUDNN version: 2020000
 ```
 
 Now, let's do some LLMing and put those graphical processing units to work with one of the latest models, Mistral!
@@ -97,12 +103,32 @@ print(output)
 
 For me, it printed the following:
 
-```bash
-TODO
+```json
+{
+   "id":"cmpl-f3887631-d106-43e8-97c0-5deee07dcd2f",
+   "object":"text_completion",
+   "created":1698995742,
+   "model":"mistral-7b-instruct-v0.1.Q4_K_M.gguf",
+   "choices":[
+      {
+         "text":"Q: Name the planets in the solar system. A: 1. Mercury, 2. Venus, 3. Earth, 4. Mars, 5. Jupiter, 6. Saturn, 7. Uranus, 8. Neptune",
+         "index":0,
+         "logprobs":"None",
+         "finish_reason":"stop"
+      }
+   ],
+   "usage":{
+      "prompt_tokens":14,
+      "completion_tokens":46,
+      "total_tokens":60
+   }
+}
 ```
 
 🎉 🎉 🎉
 
 If you, like me, are wondering if the GPU was actually being used, you can install [nvtop](https://github.com/Syllo/nvtop) and execute it.
 
-After a few hours and a bunch of tweaks, the GPU was using and Mistral 7B worked on my machine!
+![GPU usage]([./gpu-usage.png](https://user-images.githubusercontent.com/1682202/280206444-6cbc9942-eb44-460f-a279-f80181847be0.png))
+
+Finally, after a few hours and a bunch of tweaks, the GPU was using and Mistral 7B worked on my machine!
