@@ -129,6 +129,6 @@ For me, it printed the following:
 
 If you, like me, are wondering if the GPU was actually being used, you can install [nvtop](https://github.com/Syllo/nvtop) and execute it.
 
-![GPU usage]([./gpu-usage.png](https://user-images.githubusercontent.com/1682202/280206444-6cbc9942-eb44-460f-a279-f80181847be0.png))
+![GPU usage](https://user-images.githubusercontent.com/1682202/280206444-6cbc9942-eb44-460f-a279-f80181847be0.png)
 
 Finally, after a few hours and a bunch of tweaks, the GPU was using and Mistral 7B worked on my machine!
