@@ -6,3 +6,6 @@ install:
 
 update:
 	npm update
+
+clean:
+	rm -rf node_modules
