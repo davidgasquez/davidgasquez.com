@@ -1,4 +1,4 @@
-name: Publish to GitHub Pages
+name: Publish to Cloudflare Pages
 
 on:
   push:
@@ -6,27 +6,29 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Publish to Cloudflare Pages
     steps:
-      - name: Git Checkout
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm install
       - name: Build
-        uses: withastro/action@v0
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+        run: npm run build
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: fbe814d4a37d3d3d7fcfeec0ab929ff6
+          projectName: davidgasquez
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
