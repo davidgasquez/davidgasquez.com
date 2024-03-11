@@ -1,4 +1,4 @@
-# Personal Website
+# 🌐 Personal Website
 
 Source code for my personal website and blog. Built with Astro and some tears by a Data Engineer learning about the chaotic front end world.
 
