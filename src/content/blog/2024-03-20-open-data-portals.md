@@ -14,7 +14,7 @@ The gist of the idea I experimented with is:
 
 1. Rely on open source tools (Python, DuckDB, Dagster, dbt) and formats (Parquet, Arrow).
 2. Use declarative and stateless transformations tracked in git.
-3. Split the workload in two phases; **build and serve.**
+3. Split the workload in two phases; **build and serve** ¹.
    1. Build in your laptop, in GitHub Actions, or in a big server.
    2. Publish artifacts as static files.
       - Datasets as [Parquet files somewhere](https://www.robinlinacre.com/parquet_api/).
@@ -48,3 +48,10 @@ I'm also looking for other projects that are following a similar approach to lea
 - This overall pattern is similar to what Simon Willison calls [baked data](https://simonwillison.net/2021/Jul/28/baked-data/) or the [Splitgraph DDN](https://www.splitgraph.com/connect/query). At the same time, projects like [Evidence](https://evidence.dev/) and [Observable Framework](https://observablehq.com/) are also exploring similar ideas.
 
 If you're working on something similar or have any feedback, I'd love to hear from you!
+
+¹ Or as [Jake Thomas](https://www.linkedin.com/feed/update/urn:li:activity:7185534737313112065?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7185534737313112065%2C7186004090596859904%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287186004090596859904%2Curn%3Ali%3Aactivity%3A7185534737313112065%29) puts it:
+
+  1. Build the thing using generalized tools
+  2. Serve the thing using specialized tools for a particular workload
+
+You can tune and fiddle with basically everything this way - cost, performance, availability, etc.
