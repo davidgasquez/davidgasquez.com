@@ -9,6 +9,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 export default defineConfig({
   site: "https://davidgasquez.github.io/",
   integrations: [tailwind(), sitemap()],
+  trailingSlash: "ignore",
   markdown: {
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
   },
