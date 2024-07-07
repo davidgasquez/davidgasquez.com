@@ -1,0 +1,42 @@
+---
+title: "Observable Plot in Astro"
+date: 2024-07-06
+slug: observable-plot-astro
+---
+
+I've been playing with Observable Framework and Evidence for a while. One thing that I keep wishing is for those data focused static site generators to have a way to render everything at build time and only ship the fully rendered charts. No DuckDB WASM and querying things at loading time!
+
+Since I'm not very familiar with front end, I don't know how easy or hard is to get there though.
+
+At the same time, this is an opportunity for learning. Let's see how hard it is to embed Observable Plot in Astro in a lightweight way.
+
+## The Plot
+
+import Plot from "../../components/Plot.astro";
+
+<Plot />
+
+## The Code
+
+Start by creating a component, `Plot.astro`:
+
+```html
+<div id="myplot"></div>
+<script type="module">
+  import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+  const plot = Plot.rectY({ length: 10000 }, Plot.binX({ y: "count" }, { x: Math.random })).plot();
+  const div = document.querySelector("#myplot");
+  div.append(plot);
+</script>
+```
+
+Then, you can use it in any `.astro`, `.html` and `.mdx` file like this:
+
+```mdx
+import Plot from "../../components/Plot.astro";
+
+<Plot />
+```
+
+Next, let's see if we can get data from external sources at buildtime and pass it to the plot in a smart way.
