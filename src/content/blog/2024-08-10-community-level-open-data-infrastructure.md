@@ -8,6 +8,8 @@ slug: community-level-open-data-infrastructure
 
 My day job is as a data engineer in a small to medium sized company and I've been doing data for a while now. A while ago, I [started wondering about how we can make it easier for people to work with open data](https://handbook.davidgasquez.com/Open+Data), at least making it closer to the difficulty I encounter in my day job. Since then, I've worked on a [couple of data portals](/modern-open-data-portals) and been engaging with the open data community more.
 
+![Data Portal](/images/dataflow.png)
+
 ## Learnings
 
 One of the big things going on in the enterprise side is that working with data is becoming cheaper, simpler, and faster than ever. You can run [entire pipelines on GitHub actions](https://github.com/simonw/ca-fires-history), use [DuckDB to analyze gigabytes of information](https://x.com/severo_dev/status/1759537328228348220), run portable code across [many databases](https://ibis-project.org/), and publish [beautiful dashboards with a few lines of code](https://evidence.dev/).
