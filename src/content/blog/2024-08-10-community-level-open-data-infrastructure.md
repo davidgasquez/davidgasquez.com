@@ -12,7 +12,7 @@ I work as a data engineer in a small to medium sized company and I've been doing
 
 ## Learnings
 
-One of the big things going on in the enterprise side is that working with data is becoming cheaper, simpler, and faster than ever. You can run [entire pipelines on GitHub actions](https://github.com/simonw/ca-fires-history), use [DuckDB to analyze gigabytes of information](https://x.com/severo_dev/status/1759537328228348220), run portable code across [many databases](https://ibis-project.org/), and publish [beautiful dashboards with a few lines of code](https://evidence.dev/).
+One of the big things going on in the enterprise side is that working with data is becoming cheaper, simpler, and faster than ever. You can run [entire auto-updating pipelines on GitHub Actions](https://github.com/simonw/ca-fires-history), use [DuckDB to analyze gigabytes of information](https://x.com/severo_dev/status/1759537328228348220), run portable code across [many databases](https://ibis-project.org/), and publish [beautiful dashboards with a few lines of code](https://evidence.dev/).
 
 I didn't see much of this being used in the open data ecosystem. It is reasonable as the data field moves quite fast and, honestly, **open data problems are mostly people problems** more than technical ones. However, there are technical solutions that can help streamline the process.
 
@@ -43,7 +43,7 @@ They try to manage the glue in the simplest way possible and provide the dataset
 
 Finally, they also get humans excited about the curated datasets showcasing some potential use cases!
 
-The largest impact/value of Barefoot Data Portals is in making the curation and cleaning of the datasets a smoother process and bringing more people into the data collaboration process.
+The largest impact of Barefoot Data Portals is in **making curation, cleaning and joining datasets a smoother process** thus bringing more people into the collaboration process.
 
 ## Future
 
