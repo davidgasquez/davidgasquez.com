@@ -16,19 +16,17 @@ One of the big things going on in the enterprise side is that working with data 
 
 I didn't see much of this being used in the open data ecosystem. It is reasonable as the data field moves quite fast and, honestly, **open data problems are mostly people problems** more than technical ones. However, there are technical solutions that can help streamline the process.
 
-There are two big levels where people work on open data; at the government level covering thousands of datasets, and at the individual level where folks who are passionate about a topic publish a few datasets.
+There are two big levels where people work on open data; at the government level covering thousands of datasets (CKAN, Socrata, ...), and at the individual level where folks who are passionate about a topic (like ([Simon Willison](https://github.com/simonw/scrape-instances-social))) publish a few datasets about it. This results on **lots of datasets that are disconnected and still requires you to scrape, clean, and join it from all the heterogeneus sources** to answer interesting questions.
 
-This results on lots of datasets. Specially, disconnected datasets that still requires you to scrape, clean, and join it from all the heterogeneus sources.
-
-What I didn't see much of was open data at the community level, where a group of people who publish data that is useful to their community. Projects like [PUDL](https://github.com/catalyst-cooperative/pudl) and [OWID's ETLs](https://github.com/owid/etl/) are great examples of this.
+What I didn't see much of was open data at the community level, where a group of people curates and publish data that is useful to their community. Projects like [PUDL](https://github.com/catalyst-cooperative/pudl) and [OWID's ETLs](https://github.com/owid/etl/) are great examples of this.
 
 And in this level, small to medium communities, is where I think the future of open data lies. Here are a few reasons why:
 
-- **You can reuse the same data stack and infrastructure modern small to medium companies use**. This makes it easier to get started and to get help from technical folks that are not used to the traditional Open Data ecosystem tooling.
+- There is a lot of **low hanging fruit in terms of data that can be collected and packaged** in a way that is useful for the community. The data is probably out there, scattered in various sources, and the only thing missing is something that puts it together and publishes it.
+- **You can reuse the same data stack and infrastructure modern small to medium companies use**. This makes it easier to get started and to get help from technical folks that are not used to the traditional Open Data ecosystem tooling. These portals become the **community's data warehouse**.
 - The community's datasets probably requires some level of scraping, cleaning, and joining data from some niche data sources. This is hard to do both at the government level (too fine grained) and at the individual level (covers too much).
 - If the data is useful the community will share it within itself and spread the word, making people excited about open data.
 - You're **working closer to the problem** than say, curating yet another dataset covering economic indicators for all countries.
-- There is a lot of **low hanging fruit in terms of data that can be collected and packaged** in a way that is useful for the community.
 - With LLMs on the rise, community curated datasets become more important as they won't appear in big data dumps or large datasets collected by big companies.
 
 I'd like to think of these kind of portals as **barefoot data portals**, reusing the term from [Maggie Appleton's Home Cooked Software and Barefoot Developers](https://maggieappleton.com/home-cooked-software).
