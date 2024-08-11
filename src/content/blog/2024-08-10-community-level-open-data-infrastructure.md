@@ -20,7 +20,7 @@ There are two big levels where people work on open data; at the government level
 
 This results on lots of datasets. Specially, disconnected datasets that still requires you to scrape, clean, and join it from all the heterogeneus sources.
 
-What I didn't see much of was open data at the community level, where a group of people who publish data that is useful to their community. Projects like PUDL and OWID are great examples of this.
+What I didn't see much of was open data at the community level, where a group of people who publish data that is useful to their community. Projects like [PUDL](https://github.com/catalyst-cooperative/pudl) and [OWID's ETLs](https://github.com/owid/etl/) are great examples of this.
 
 And in this level, small to medium communities, is where I think the future of open data lies. Here are a few reasons why:
 
