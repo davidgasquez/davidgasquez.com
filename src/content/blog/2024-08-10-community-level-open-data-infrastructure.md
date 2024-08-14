@@ -6,13 +6,15 @@ slug: community-level-open-data-infrastructure
 
 [Inspired by Rufus Pollock](https://github.com/datopian/datahub/issues/1138#issuecomment-2198126846), I decided to write a post about learnings and what I think will be the future of open data infrastructure, more specifically **open data infrastructure at the community level**.
 
-I work as a data engineer in a small to medium sized company and I've been doing data for a while now. A while ago, I [started wondering about how we can make it easier for people to work with open data](https://handbook.davidgasquez.com/Open+Data), at least making it closer to the difficulty I encounter in my day job. Since then, I've worked on a [couple of data portals](/modern-open-data-portals) and been actively participated in various open data communities projects and discussions.
+As a data engineer working in a small to medium sized company, I [started wondering about how we can make it easier to work with open data](https://handbook.davidgasquez.com/Open+Data). At least, making it simpler thanks to the tools and frameworks I used in my daily job.
+
+Since then, I've worked on a [couple of data portals](/modern-open-data-portals) and been actively participating in various open data communities, projects, and discussions.
 
 ![Data Portal](/images/dataflow.png)
 
 ## Learnings
 
-One of the big things going on in the enterprise side is that working with data is becoming cheaper, simpler, and faster than ever. You can run [entire auto-updating pipelines on GitHub Actions](https://github.com/simonw/ca-fires-history), use [DuckDB to analyze gigabytes of information](https://x.com/severo_dev/status/1759537328228348220), run portable code across [many databases](https://ibis-project.org/), and publish [beautiful dashboards with a few lines of code](https://evidence.dev/).
+One of the big things going on in the enterprise side is that **working with data is becoming cheaper, simpler, and faster than ever**. You can run [entire auto-updating pipelines on GitHub Actions](https://github.com/simonw/ca-fires-history), use [DuckDB to analyze gigabytes of information](https://x.com/severo_dev/status/1759537328228348220), run portable code across [many databases](https://ibis-project.org/), and publish [beautiful dashboards with a few lines of code](https://evidence.dev/).
 
 I didn't see much of this being used in the open data ecosystem. It is reasonable as the data field moves quite fast and, honestly, **open data problems are mostly people problems** more than technical ones. However, there are technical solutions that can help streamline the process.
 
