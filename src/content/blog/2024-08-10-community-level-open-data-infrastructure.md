@@ -10,7 +10,7 @@ As a data engineer working in a small to medium sized company, I [started wonder
 
 Since then, I've worked on a [couple of data portals](/modern-open-data-portals) and been actively participating in various open data communities, projects, and discussions.
 
-![Data Portal](/images/dataflow.png)
+![Data Portal](../assets/../../assets/images/dataflow.png)
 
 ## Learnings
 

@@ -5,6 +5,7 @@ export interface Props {
   title?: string;
   description?: string;
   author?: string;
+  image?: string;
   url?: URL | string;
 }
 
@@ -13,8 +14,7 @@ const description = Astro.props.description || config.description;
 const author = Astro.props.author || config.author;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-// TODO: Image
-// const image = new URL(Astro.props.image || './social.png', Astro.site);
+const image = new URL(Astro.props.image || "/social.png", Astro.site);
 ---
 
 <meta charset="utf-8" />
@@ -34,13 +34,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<!-- <meta property="og:image" content={image} /> -->
+<meta property="og:image" content={image} />
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<!-- <meta property="twitter:image" content={image} /> -->
+<meta property="twitter:image" content={image} />
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />

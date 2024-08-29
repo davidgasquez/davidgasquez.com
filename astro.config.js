@@ -7,12 +7,18 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://davidgasquez.github.io/",
+  site: "https://davidgasquez.com/",
   integrations: [tailwind(), sitemap(), mdx()],
   trailingSlash: "ignore",
   markdown: {
-    rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, {
-      behavior: "wrap"
-    }]]
-  }
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "wrap",
+        },
+      ],
+    ],
+  },
 });
