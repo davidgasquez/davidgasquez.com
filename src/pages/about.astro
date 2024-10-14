@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Base.astro";
+
+import { Image } from "astro:assets";
+import avatar from "../assets/avatar.jpg";
+---
+
+<Layout>
+  <div class="container mx-auto px-4 py-8">
+    <div class="mb-8 text-center">
+      <Image src={avatar} alt="David" class="mx-auto mb-6 h-32 w-32 rounded-full" />
+    </div>
+
+    <section class="mb-8">
+      <h2 class="mb-4 text-2xl font-semibold text-yellow-600">About</h2>
+      <p>Passionate about data, open source and distributed/decentralized systems.</p>
+      <p>
+        Currently working on data stuff at <a class="text-yellow-600" href="https://protocol.ai/">Protocol Labs</a>.
+        Previously did some data stuff at <a class="text-yellow-600" href="https://buffer.com/">Buffer</a>.
+      </p>
+
+      <p>
+        I maintain a <a href="https://handbook.davidgasquez.com/" class="text-yellow-600">Handbook</a> where I share everything
+        I've learned over the years.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <div class="my-6 text-center">
+        <a class="text-yellow-600" href="https://twitter.com/davidgasquez/" target="_blank" title="Twitter">Twitter</a>
+        ·
+        <a class="text-yellow-600" href="https://github.com/davidgasquez/" target="_blank" title="Github">GitHub</a>
+        ·
+        <a class="text-yellow-600" href="https://www.linkedin.com/in/davidgasquez/" target="_blank" title="Linkedin"
+          >LinkedIn</a
+        >
+        ·
+        <a class="text-yellow-600" href="https://mastodon.xyz/@davidgasquez" target="_blank" rel="me" title="Mastodon"
+          >Mastodon</a
+        >
+        ·
+        <a class="text-yellow-600" href="mailto:davidgasquez@gmail.com" target="_blank" title="Email">Email</a>
+        ·
+        <a class="text-yellow-600" href="https://open.spotify.com/user/kalendos" target="_blank" title="Spotify"
+          >Spotify</a
+        >
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="mb-4 text-2xl font-semibold text-yellow-600">Interests</h2>
+      <ul class="list-inside list-disc">
+        <li>Data</li>
+        <li>Open Source, Open Data, Open Science</li>
+        <li>Decentralized and Permissionless Systems</li>
+        <li>Tools for Thought</li>
+        <li>Local First</li>
+        <li>Online FPS / Strategy Games</li>
+        <li>Progressive Metal</li>
+      </ul>
+    </section>
+  </div>
+</Layout>
