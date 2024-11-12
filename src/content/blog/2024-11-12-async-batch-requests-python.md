@@ -84,7 +84,7 @@ This works pretty well and might cover most of your use cases. However, there ar
 
 To handle this, we can use the [`aiometer`](https://github.com/florimondmanca/aiometer) library which allows us to limit the number of concurrent requests.
 
-The same 100 requests we did before, but with rate limiting looks like this:
+The same 100 requests we did before, but with rate limiting looks like this (extracted from the [aiometer example in their README](https://github.com/florimondmanca/aiometer?tab=readme-ov-file#example)):
 
 ```python
 import asyncio
