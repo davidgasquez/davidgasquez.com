@@ -6,7 +6,9 @@ slug: async-batch-requests-python
 
 As a data engineer, one of the most common tasks I perform is getting data from an API. For a long time, I've been using the `requests` library to make these requests.
 
-However, I recently discovered the `httpx` library, which has a built-in support for asynchronous requests. At the same time, I've worked on a couple of projects that required a smarter approach than just making sequential requests. Let's go through an example of doing 100 requests.
+However, I recently discovered the `httpx` library, which has a built-in support for asynchronous requests. At the same time, I've worked on a couple of projects that required a smarter approach than just making sequential requests, and I worked on [abatcher](https://github.com/davidgasquez/abatcher) to abstract away some of the complexity.
+
+Let's go through multiple examples of doing 100 requests with different approaches.
 
 ## Sequential Requests
 
@@ -122,6 +124,12 @@ You can tweak the `max_at_once` and `max_per_second` options to fine-tune concur
 The `httpx` library combined with the `aiometer` library is a great addition to your toolbelt if you're doing a lot of API requests.
 
 I've also made (alongside Cursor) a small and probably buggy Python package, [abatcher](https://github.com/davidgasquez/abatcher), with this functionality abstracted away behind a simple interface.
+
+<div style="text-align: center; margin: 2em 0;">
+  <a href="https://github.com/davidgasquez/abatcher">Check out abatcher on GitHub!</a>
+</div>
+
+Here's how you can use it:
 
 ```python
 from abatcher import AsyncHttpBatcher
