@@ -8,6 +8,8 @@ In the last few weeks, there has been a lot of activity on Bluesky. Bluesky is a
 
 This post is a quick glance at the AT Protocol and [its Python SDK](https://atproto.blue/en/latest/index.html). To do that we'll create a script to download all the `#dataBS` posters and create a graph with the connections around that community.
 
+You can [explore the final interactive graph online](https://public.graphext.com/2b808d92830c526b/index.html?section=graph&colorMap=cluster&areaMap=page_rank)!
+
 ## Setup
 
 To follow along, you'll need to install the [`atproto` Python package](https://github.com/MarshalX/atproto) and, since we'll be using some API endpoints that require authentication, you'll need to have an account there and get your credentials.
