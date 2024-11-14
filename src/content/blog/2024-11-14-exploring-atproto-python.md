@@ -10,6 +10,8 @@ This post is a quick glance at the AT Protocol and [its Python SDK](https://atpr
 
 You can [explore the final interactive graph online](https://public.graphext.com/2b808d92830c526b/index.html?section=graph&colorMap=cluster&areaMap=page_rank)!
 
+[![databs graph](../assets/../../assets/images/databs-graph.png)](https://public.graphext.com/2b808d92830c526b/index.html)
+
 ## Setup
 
 To follow along, you'll need to install the [`atproto` Python package](https://github.com/MarshalX/atproto) and, since we'll be using some API endpoints that require authentication, you'll need to have an account there and get your credentials.
@@ -88,7 +90,7 @@ Although there are many libraries to create graphs in Python, I've been a big fa
 
 Upload the `follows.csv` file to Graphext, make sure the columns are typed as `category` and, after creating a source-target graph, you should see something like this:
 
-![Data Portal](../assets/../../assets/images/databs-graph.png)
+![databs graph](../assets/../../assets/images/databs-graph.png)
 
 The graph is also [accessible and explorable online](https://public.graphext.com/2b808d92830c526b/index.html)!
 
