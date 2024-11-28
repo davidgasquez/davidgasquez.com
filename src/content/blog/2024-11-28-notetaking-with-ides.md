@@ -31,3 +31,5 @@ Using a modern IDE to take notes has been a great experience so far. Here are so
 ## Conclusion
 
 An IDE can be a great tool for note-taking. It allows you to reuse the same workflows you use for programming. This might not work for everyone. For me, it works great because my notes are mostly summaries of external content or link to interesting things I find online.
+
+Would love to hear more about how other people are taking notes and using AI to make them more useful for themselves! If you have any tips or tricks, please reach out!
