@@ -23,8 +23,9 @@ Using a modern IDE to take notes has been a great experience so far. Here are so
 
 - Reusing the same tooling for programming and note-taking.
 - AI integration is seamless.
-  - I usually **"chat with my notes"** to summarize them, ask questions, etc.
+  - I usually **"chat with my notes"** to summarize them, ask questions, etc. You can `@file` or `@folder` to reference a specific note or folder and focus on that.
   - Search can be done semantically. E.g: "Where do I mention something related to the benefits of X?"
+  - Where can I add some information about Y?
 - Automatic formatting.
 - Smoother git integration.
 
