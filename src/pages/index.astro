@@ -46,7 +46,7 @@ blogEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
       {
         blogEntries.map((blogPostEntry) => (
           <li>
-            <a href={`${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a> —
+            <a href={`${blogPostEntry.id}`}>{blogPostEntry.data.title}</a> —
             <time datetime={blogPostEntry.data.date.toISOString()}>{blogPostEntry.data.date.toDateString()}</time>
           </li>
         ))
