@@ -1,7 +1,7 @@
 ---
-title: "Useful LLMs (2024 Edition)"
+title: "Useful LLM tools (2024 Edition)"
 date: 2024-12-13
-slug: useful-llms-2024
+slug: useful-llm-tools-2024
 ---
 
 Since ChatGPT came out, I've been relying on LLMs for a lot of things. They've made me more productive and saved me a lot of time. More importantly, they've reduced the friction for doing interesting and small things (scripts, one off plots, etc). Wanted to share what tools I'm using and how I'm using them.
