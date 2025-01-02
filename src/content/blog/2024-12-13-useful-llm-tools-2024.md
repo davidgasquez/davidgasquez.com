@@ -23,8 +23,8 @@ This is my favorite tool. I've been using the [`llm` CLI](https://llm.datasette.
   - Autogenerate git commit messages following the Conventional Commits specification.
   - Suggest an emoji from any input.
   - Craft medium-length bash commands (`grep` this `awk` that `sed` and `sort` it).
-- Interrogate repositories using [`files-to-prompt`](https://github.com/simonw/files-to-prompt)
-- Ask [questions to any website](https://github.com/davidgasquez/dotfiles/blob/bb9df4a369dbaef95ca0c35642de491c7dd41269/shell/zshrc#L50-L73) using [markitdown](https://github.com/microsoft/markitdown)
+- Interrogate repositories using [`files-to-prompt`](https://github.com/simonw/files-to-prompt) or [`copychat`](https://github.com/jlowin/copychat).
+- Ask [questions to any website](https://github.com/davidgasquez/dotfiles/blob/bb9df4a369dbaef95ca0c35642de491c7dd41269/shell/zshrc#L50-L73) using [markitdown](https://github.com/microsoft/markitdown).
 - Ask [questions about any Youtube video](https://github.com/davidgasquez/dotfiles/blob/bb9df4a369dbaef95ca0c35642de491c7dd41269/shell/zshrc#L75-L99) using [yt-dlp](https://github.com/yt-dlp/yt-dlp)!
 
 ## Open Interpreter
