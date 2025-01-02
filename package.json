@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "update-handbook": "[ -d src/content/handbook ] && (cd src/content/handbook && git pull) || git clone https://github.com/davidgasquez/handbook.git src/content/handbook",
+    "update-handbook": "git submodule update --init --recursive --remote",
     "dev": "npm run update-handbook && astro dev --host 0.0.0.0",
     "start": "astro dev",
     "build": "npm run update-handbook && astro check && astro build",
