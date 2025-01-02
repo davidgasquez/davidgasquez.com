@@ -9,6 +9,14 @@ const blogCollection = defineCollection({
   }),
 });
 
+const handbookCollection = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: "./src/content/handbook" }),
+  schema: z.object({
+    title: z.string().optional(),
+  }),
+});
+
 export const collections = {
   blog: blogCollection,
+  handbook: handbookCollection,
 };

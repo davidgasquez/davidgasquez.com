@@ -3,9 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev --host 0.0.0.0",
+    "update-handbook": "[ -d src/content/handbook ] && (cd src/content/handbook && git pull) || git clone https://github.com/davidgasquez/handbook.git src/content/handbook",
+    "dev": "npm run update-handbook && astro dev --host 0.0.0.0",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "npm run update-handbook && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

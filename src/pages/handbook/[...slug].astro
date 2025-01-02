@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const handbookEntries = await getCollection("handbook");
+  return handbookEntries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout>
+  <div class="prose prose-neutral prose-invert mx-auto">
+    {entry.data.title && <h1 class="pt-6">{entry.data.title}</h1>}
+    <Content />
+  </div>
+</Layout>
