@@ -1,0 +1,92 @@
+---
+title: "DuckDB in Astro"
+date: 2025-01-03
+slug: duckdb-in-astro
+---
+
+Wanted to play with the new DuckDB Node Neo library and thought it would be interesting to see if I could make it work in Astro. Astro supports MDX, so I thought it would be a good fit. This is a very simple example of how to use it!
+
+The first thing I did was to install the DuckDB Node Neo library.
+
+```bash
+npm install @duckdb/node-api
+```
+
+Then I created a new component called `DuckDBQuery.astro` that would take a query as a prop and execute it using the DuckDB Node Neo library.
+
+```astro
+---
+const { query } = Astro.props;
+import { DuckDBInstance } from "@duckdb/node-api";
+const instance = await DuckDBInstance.create();
+const connection = await instance.connect();
+const reader = await connection.runAndReadAll(query);
+const rows = reader.getRows();
+const columns = reader.columnNames();
+---
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        {columns.map((column) => <th>{column}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((row) => (
+          <tr>
+            {Object.values(row).map((value) => (
+              <td>{value}</td>
+            ))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .table-container {
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+</style>
+```
+
+The component creates a DuckDB instance, connects to it, runs the query, and then displays the results in a _poorly formatted_ table.
+
+Now, I can use the component in an MDX file.
+
+```astro
+import DuckDBQuery from "../../components/DuckDBQuery.astro";
+
+<DuckDBQuery query="SELECT....;" />
+
+```
+
+That's it!
+
+For example, let's run a query to get the total price for each customer for the `orders.parquet` file that DuckDB provides.
+
+```sql
+select
+o_custkey as customer_id,
+sum(o_totalprice) as total_price
+from 'https://shell.duckdb.org/data/tpch/0_01/parquet/orders.parquet'
+group by o_custkey
+limit 10;
+```
+
+import DuckDBQuery from "../../components/DuckDBQuery.astro";
+
+<DuckDBQuery query={`
+  select
+    o_custkey as customer_id,
+    sum(o_totalprice) as total_price
+  from 'https://shell.duckdb.org/data/tpch/0_01/parquet/orders.parquet'
+  group by o_custkey
+  limit 10;
+`} />
+
+Rudimentary, but it works and is quite minimal. Thoughs, ideas, feedback? [Reach out](/)!

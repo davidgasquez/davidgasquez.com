@@ -1,0 +1,37 @@
+---
+const { query } = Astro.props;
+import { DuckDBInstance } from "@duckdb/node-api";
+const instance = await DuckDBInstance.create();
+const connection = await instance.connect();
+const reader = await connection.runAndReadAll(query);
+const rows = reader.getRows();
+const columns = reader.columnNames();
+---
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        {columns.map((column) => <th>{column}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((row) => (
+          <tr>
+            {Object.values(row).map((value) => (
+              <td>{value}</td>
+            ))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .table-container {
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+</style>
