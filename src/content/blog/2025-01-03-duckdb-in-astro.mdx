@@ -4,7 +4,9 @@ date: 2025-01-03
 slug: duckdb-in-astro
 ---
 
-Wanted to play with the new DuckDB Node Neo library and thought it would be interesting to see if I could make it work in Astro. Astro supports MDX, so I thought it would be a good fit. This is a very simple example of how to use it!
+Wanted to play with the new DuckDB Node Neo library and thought it would be interesting to see if I could make it work in Astro. Astro supports MDX, so I thought it would be a good fit.
+
+The query will be executed at build time and data rendered into a plain HTML file (no JS). Very useful to reference remote datasets (e.g: doing dashboards) while keeping things minimal. Let's see how it works!
 
 The first thing I did was to install the DuckDB Node Neo library.
 
@@ -89,4 +91,8 @@ import DuckDBQuery from "../../components/DuckDBQuery.astro";
   limit 10;
 `} />
 
-Rudimentary, but it works and is quite minimal. Thoughs, ideas, feedback? [Reach out](/)!
+Rudimentary, but it works and is quite minimal.
+
+A similar pattern can be done at the Astro Content Collection level to generate a page for each row of the dataset. E.g: get a list of countries, and build a page for each country with their stats from datasets like the [World Development Indicators](https://huggingface.co/datasets/datonic/world_development_indicators).
+
+Thoughs, ideas, feedback? [Reach out](/)!
