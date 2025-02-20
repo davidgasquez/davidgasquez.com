@@ -26,7 +26,7 @@ These are some of the **killer features** that I've become dependent on:
 
 Zed has recently released a new feature that made it more appealing to me; their customized and open source inline editing and edit prediction Model, **[Zeta](https://zed.dev/blog/edit-prediction)**. Zed feels very great, snappy and clean, so I decided to give it a try.
 
-Another big reason is that [Block](https://block.xyz/) recently released **[_Codename Goose_](https://block.github.io/goose/)**, a tool that allows you to run **LLMs with MCP support** from the CLI or GUI. With this tool, I should be able to replace Cursor Agent.
+Another big reason is that [Block](https://block.xyz/) recently released **[_Codename Goose_](https://block.github.io/goose/)**, a tool that allows you to run **LLMs with MCP support** from the CLI or GUI. With this tool and [some custom instructions](https://github.com/davidgasquez/dotfiles/blob/main/goose/.goosehints), I should be able to replace Cursor Agent.
 
 I started setting up some [keybindings to make it easy to run Goose](https://github.com/davidgasquez/dotfiles/blob/85489a4149cc01b375ee979075fb535d709e0324/zed/keymap.json), tweaking the `settings.json` with my preferences, and configuring the `python` language server.
 
