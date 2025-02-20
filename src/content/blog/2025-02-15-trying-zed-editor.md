@@ -4,7 +4,7 @@ date: 2025-02-15
 slug: trying-zed-editor
 ---
 
-I used to spend afternoons testing new distros and configuring them. I jumped to the next one as soon as I got bored, until I settled on **Arch Linux**.
+I used to spend afternoons testing new distros and configuring them. I jumped to the next one as soon as I got bored, until I settled on **Arch Linux**, btw.
 These days, **I'm doing the same thing with LLMs and IDEs**.
 
 For the last while, I've been using Cursor. It's been a great experience, specifically due to its LLM integrations.
