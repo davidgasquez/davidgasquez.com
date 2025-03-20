@@ -48,3 +48,5 @@ You can check the code in the [INE Data Exporter repository on GitHub](https://g
 Right now, the code works well but it requires at least 300GB of disk space to run. This makes it hard to schedule on a GitHub Action. I'm looking into ways a workload like this could be run on a "serverless" platform for free. Tinkered a bit trying to make a cronjob inside a HuggingFace Spaces, but the disk space is still an issue there.
 
 If you have any ideas, please let me know!
+
+_Check out the [Part 2](/exporting-ine-data-ii) blog post if you want to know more about the project._
