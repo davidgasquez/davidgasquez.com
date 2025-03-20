@@ -12,14 +12,14 @@ There are many ways I could've automated this pipeline but wanted to challenge m
 
 The problem was, **how do you run a script that generates 500GB worth of data for free**? Well, you probably can't [^2]. What you can do instead is optimizing the different steps to make the process more efficient. Let's go through some of the things I did to make the process more efficient.
 
-[^1]: This is the first project I work on end to end with the new Claude 3.7 model and was great! One thing I did to increase it's context was to work on the [documentation export script](https://github.com/davidgasquez/ine-data-exporter/blob/main/scripts/00-export-api-docs.sh) as soon as I picked up the project. One the model can see the docs, things improve a lot!
+[^1]: This is the first project I work on end to end with the new Claude 3.7 model and was great! One thing I did to increase its context was to work on the [documentation export script](https://github.com/davidgasquez/ine-data-exporter/blob/main/scripts/00-export-api-docs.sh) as soon as I picked up the project. Once the model can see the docs, things improve a lot!
 [^2]: There might be places where you can. I don't know all the infrastructure providers out there but would love to know if you find some!
 
 ### Optimizing Stuff
 
 I was using `aria2c` to tackle some classic file downloading optimizations; split the datasets in chunks and download them in parallel, download multiple files in parallel, resume downloads that failed, handle retries, etc.
 
-Something I discovered when revieweing the project was that I assumed `aria2c` was doing all of that, but, upon closer inspection, it was not. Turns out, **INE's servers don't really support range requests**. You can only download the whole file. And some files are larger than 100GBs (e.g: try downloading the `CSV: Separated by ;` file for [Travels, overnight stays and average stay by main features of the trips](https://www.ine.es/jaxiT3/Tabla.htm?t=15797&L=1))!
+Something I discovered when reviewing the project was that I assumed `aria2c` was doing all of that, but, upon closer inspection, it was not. Turns out, **INE's servers don't really support range requests**. You can only download the whole file. And some files are larger than 100GBs (e.g: try downloading the `CSV: Separated by ;` file for [Travels, overnight stays and average stay by main features of the trips](https://www.ine.es/jaxiT3/Tabla.htm?t=15797&L=1))!
 
 With that optimization gone, I started thinking on streaming sequential chunks of the remote CSV files into `zstd` compressed Parquet files as I was downloading them. This way, I could keep both memory and disk usage low. While playing with this idea, I discovered that downloading the files via `curl` was slower than using Chrome download manager. Huh! Chrome got to 25MB/s while `curl` was stuck at 8MB/s. How was that possible?
 
@@ -44,7 +44,7 @@ Transfer-Encoding: chunked
 
 If we force the `Accept-Encoding: gzip` header, we get better performance and much lower disk usage. As one could expect, the CSVs contain string columns with repeated values, making compression more effective. With `gzip` the files end up being 8 to 10 times smaller. They still don't fit in the small GitHub Actions runners but it's a good start.
 
-Going one step further, what if we compress the gzipped CSVs into Parquet files direclty? Then, we can iterate through all the datasets and keep only their optimized Parquet files. These final Parquet files are indeed an order of magnitude smaller than the original datasets so disk shouldn't be an isse.
+Going one step further, what if we compress the gzipped CSVs into Parquet files directly? Then, we can iterate through all the datasets and keep only their optimized Parquet files. These final Parquet files are indeed an order of magnitude smaller than the original datasets so disk shouldn't be an issue.
 
 That's exactly what I did. I used `duckdb` to read the compressed remote CSVs and do the transformation to Parquet on the fly using a couple of tricks; a custom `http` secret with the extra headers and a very large row group size to increase compression rates for large datasets. Here is the SQL that downloads the previous _Travels, overnight stays and average stay by main features of the trips_ table:
 
@@ -77,9 +77,9 @@ Now, it was a matter of creating a GitHub Action that looped through all the tab
 
 This task is "embarrassingly" parallelizable, so, I tried an async approach to it but the Actions runner were still struggling. I decided to try the trick where you [use the GitHub actions `matrix` feature](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow) to run variations of the same job in parallel.
 
-Added some extra `argparse` codee to the script to allow defining a split and the maximum number of splits that there are. With that, we can now split the 5030 tables into chunks. Each chunk will be processed independently on its own runner. [This worked like a charm](https://github.com/davidgasquez/ine-data-exporter/actions/runs/13951218869).
+Added some extra `argparse` code to the script to allow defining a split and the maximum number of splits that there are. With that, we can now split the 5030 tables into chunks. Each chunk will be processed independently on its own runner. [This worked like a charm](https://github.com/davidgasquez/ine-data-exporter/actions/runs/13951218869).
 
-Finally, I wrote a couple of extra scripts to download the tables' series metadata and generate [simple yet useful READMEs at the folder level](https://huggingface.co/datasets/davidgasquez/ine/blob/main/tablas/15797/README.md). Something fun here is that some of the table's metadata get requests can return a correct (status `200`) response with this ~JSON~ string: `{ "Status: error"}`.
+Finally, I wrote a couple of extra scripts to download the tables' series metadata and generate [simple yet useful READMEs at the folder level](https://huggingface.co/datasets/davidgasquez/ine/blob/main/tablas/15797/README.md). Something fun here is that some of the table's metadata get requests can return a correct (status `200`) response with this ~~JSON~~ string: `{ "Status: error"}`.
 
 And with that, the project was completed (for now) with success! 🎉
 
@@ -94,8 +94,8 @@ uv run https://raw.githubusercontent.com/davidgasquez/ine-data-exporter/refs/hea
 
 ## Conclusion
 
-It is quite amazing how much things can be optimized by [digging more into how things work](http://johnsalvatier.org/blog/2017/reality-has-a-surprising-amount-of-detail). This was a fun project to coma back too and learned quite a few things about servers, `curl`, async, parquet, ...
+It is quite amazing how much things can be optimized by [digging more into how things work](http://johnsalvatier.org/blog/2017/reality-has-a-surprising-amount-of-detail). This was a fun project to come back to and learned quite a few things about servers, `curl`, async, parquet, ...
 
 Next time, I'd love to generate a `ine.duckdb` database and host it somewhere so people can `ATTACH` to it and start querying right away!
 
-Also, I have this other idea on my mind of creating a frankendataset by joining datasets with the same dimensions. E.g: the table `deceased_by_provice_by_year` containes the same columns (`province, year, value`) as `births_by_provice_by_year` and could be combined into a long dataset like `province, year, indicator, value`. We will see!
+Also, I have this other idea on my mind of creating a frankendataset by joining datasets with the same dimensions. E.g: the table `deceased_by_province_by_year` contains the same columns (`province, year, value`) as `births_by_province_by_year` and could be combined into a long dataset like `province, year, indicator, value`. We will see!
