@@ -10,7 +10,10 @@ This last week, I've come back to the project with one goal: **automate it somew
 
 There are many ways I could've automated this pipeline but wanted to challenge myself adding a big constraint: [make it run on free infrastructure like GitHub Actions](https://bsky.app/profile/davidgasquez.com/post/3lkdroixbgs2s). I also wanted to try out the new Claude 3.7 model and needed a small project for it [^1].
 
-The problem was, **how do you run a script that generates 500GB worth of data for free**? Well, you probably can't [^2]. What you can do instead is optimizing the different steps to make the process more efficient. Let's go through some of the things I did to make the process more efficient.
+The problem was, **how do you run a script that generates 500GB worth of data for free**? Well, you probably can't [^2]. What you can do instead is optimizing the different steps to make the process more efficient.
+Let's go through some of the things I did so it can run on GitHub actions for free!
+
+Meanwhile, you can find [all INE's datasets kept up to date on HuggingFace](https://huggingface.co/datasets/davidgasquez/ine/) or [explore the code](https://github.com/davidgasquez/ine-data-exporter)! 🤗 You can even [query individual tables in your browser](https://shell.duckdb.org/#queries=v0,select-*-from-'https%3A%2F%2Fhuggingface.co%2Fdatasets%2Fdavidgasquez%2Fine%2Fresolve%2Fmain%2Ftablas%2F50904%2Fdatos.parquet'-limit-10~) in less than a second.
 
 [^1]: This is the first project I work on end to end with the new Claude 3.7 model and was great! One thing I did to increase its context was to work on the [documentation export script](https://github.com/davidgasquez/ine-data-exporter/blob/main/scripts/00-export-api-docs.sh) as soon as I picked up the project. Once the model can see the docs, things improve a lot!
 [^2]: There might be places where you can. I don't know all the infrastructure providers out there but would love to know if you find some!
