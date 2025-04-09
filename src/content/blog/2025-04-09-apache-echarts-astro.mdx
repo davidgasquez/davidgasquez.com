@@ -1,0 +1,146 @@
+---
+title: "Apache ECharts in Astro"
+date: 2025-04-09
+slug: apache-echarts-astro
+---
+
+Similar to [Observable Plot in Astro](/observable-plot-astro), I wanted to explore integrating Apache ECharts with Astro. ECharts is a powerful [and loved](https://news.ycombinator.com/item?id=43624220) charting library that offers a wide range of visualization options with excellent customization capabilities.
+
+## The Charts
+
+import ApacheEChart from "../../components/ApacheEChart.astro";
+
+Here's a basic bar chart example using default options:
+
+<ApacheEChart />
+
+And a customized line chart showing weekly temperature data:
+
+<ApacheEChart
+  height="300px"
+  options={{
+    title: {
+      text: "Weekly Temperature"
+    },
+    animation: false,
+    tooltip: {
+      trigger: "axis"
+    },
+    xAxis: {
+      type: "category",
+      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    },
+    yAxis: {
+      type: "value"
+    },
+    series: [
+      {
+        name: "Temperature",
+        type: "line",
+        smooth: true,
+        data: [18, 19, 22, 24, 20, 21, 19]
+      }
+    ]
+  }}
+/>
+
+## The Component
+
+First, create a reusable component `ApacheEChart.astro`:
+
+```astro
+---
+interface Props {
+  width?: string;
+  height?: string;
+  options?: Record<string, any>;
+}
+
+const { width = "100%", height = "400px", options = {} } = Astro.props;
+
+// Generate a unique ID for this chart instance
+const chartId = `echart-${Math.random().toString(36).substring(2, 11)}`;
+
+// Default chart options if none provided
+const defaultOptions = {
+  title: {
+    text: "ECharts Example"
+  },
+  tooltip: {},
+  xAxis: {
+    data: ["A", "B", "C", "D", "E"]
+  },
+  yAxis: {},
+  series: [
+    {
+      name: "Sales",
+      type: "bar",
+      data: [5, 20, 36, 10, 10]
+    }
+  ]
+};
+
+// Merge provided options with defaults
+const chartOptions = Object.keys(options).length > 0 ? options : defaultOptions;
+const serializedOptions = JSON.stringify(chartOptions);
+---
+
+<div id={chartId} style={`width: ${width}; height: ${height};`}></div>
+
+<script define:vars={{ chartOptions: serializedOptions, chartId }}>
+  // Load ECharts from CDN
+  document.addEventListener("DOMContentLoaded", async () => {
+    // Load ECharts core
+    const echarts = await import("https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.esm.min.js");
+
+    // Initialize chart
+    const chartContainer = document.getElementById(chartId);
+    const chart = echarts.init(chartContainer);
+
+    // Set chart options
+    const options = JSON.parse(chartOptions);
+    chart.setOption(options);
+
+    // Handle resize
+    window.addEventListener("resize", () => {
+      chart.resize();
+    });
+  });
+</script>
+```
+
+## Using the Component
+
+Then you can use it in any `.astro`, `.html`, or `.mdx` file like this:
+
+```mdx
+import ApacheEChart from "../../components/ApacheEChart.astro";
+
+<ApacheEChart />
+
+<ApacheEChart
+  height="300px"
+  options={{
+    // Your custom chart options
+  }}
+/>
+```
+
+## Advanced Usage
+
+ECharts supports many types of visualizations like scatter plots, pie charts, candlestick charts, and more. You can also add features like:
+
+- Multiple series
+- Interactive legends
+- Data zooming
+- Tooltips with rich content
+- Animation effects
+
+Check the [ECharts documentation](https://echarts.apache.org/en/option.html) for more examples and configuration options.
+
+## Next Steps
+
+In a future, I'd love to work on a post to explore:
+
+1. Loading [data at build time with DuckDB](/duckdb-in-astro) and passing it to the charts
+2. Building interactive dashboards with multiple charts

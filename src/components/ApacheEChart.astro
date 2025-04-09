@@ -1,0 +1,170 @@
+---
+interface Props {
+  width?: string;
+  height?: string;
+  options?: Record<string, any>;
+}
+
+// Chart option types
+type SeriesItem = {
+  name?: string;
+  type: string;
+  data: number[];
+  itemStyle?: Record<string, any>;
+  lineStyle?: Record<string, any>;
+  [key: string]: any;
+};
+
+type AxisConfig = {
+  data?: string[] | number[];
+  type?: string;
+  axisLine?: Record<string, any>;
+  axisLabel?: Record<string, any>;
+  [key: string]: any;
+};
+
+type ChartOptions = {
+  title?: Record<string, any>;
+  tooltip?: Record<string, any>;
+  xAxis?: AxisConfig | AxisConfig[];
+  yAxis?: AxisConfig | AxisConfig[];
+  series?: SeriesItem[];
+  textStyle?: Record<string, any>;
+  [key: string]: any;
+};
+
+const { width = "100%", height = "400px", options = {} } = Astro.props;
+
+// Generate a unique ID for this chart instance
+const chartId = `echart-${Math.random().toString(36).substring(2, 11)}`;
+
+// Default chart options if none provided
+const defaultOptions: ChartOptions = {
+  title: {
+    text: "ECharts Example",
+    textStyle: {
+      color: "#f8f8f8",
+    },
+  },
+  tooltip: {},
+  animation: false,
+  xAxis: {
+    data: ["A", "B", "C", "D", "E"],
+    axisLine: {
+      lineStyle: {
+        color: "#666",
+      },
+    },
+    axisLabel: {
+      color: "#f8f8f8",
+    },
+  },
+  yAxis: {
+    axisLine: {
+      lineStyle: {
+        color: "#666",
+      },
+    },
+    axisLabel: {
+      color: "#f8f8f8",
+    },
+  },
+  textStyle: {
+    color: "#f8f8f8",
+  },
+  series: [
+    {
+      name: "Sales",
+      type: "bar",
+      data: [5, 20, 36, 10, 10],
+      itemStyle: {
+        color: "#ca8a04",
+      },
+    },
+  ],
+};
+
+// Custom theme settings to apply to all charts
+const themeSettings = {
+  // Apply theme to user-provided options
+  applyTheme: (opts: ChartOptions): ChartOptions => {
+    // Apply color to line series
+    if (opts.series) {
+      opts.series.forEach((series: SeriesItem) => {
+        if (series.type === "line") {
+          series.itemStyle = series.itemStyle || {};
+          series.itemStyle.color = "#ca8a04";
+          series.lineStyle = series.lineStyle || {};
+          series.lineStyle.color = "#ca8a04";
+        }
+        if (series.type === "bar") {
+          series.itemStyle = series.itemStyle || {};
+          series.itemStyle.color = "#ca8a04";
+        }
+      });
+    }
+
+    // Apply text color to labels
+    opts.textStyle = opts.textStyle || {};
+    opts.textStyle.color = "#f8f8f8";
+
+    if (opts.title) {
+      opts.title.textStyle = opts.title.textStyle || {};
+      opts.title.textStyle.color = "#f8f8f8";
+    }
+
+    if (opts.xAxis) {
+      const axes = Array.isArray(opts.xAxis) ? opts.xAxis : [opts.xAxis];
+      axes.forEach((axis: AxisConfig) => {
+        axis.axisLabel = axis.axisLabel || {};
+        axis.axisLabel.color = "#f8f8f8";
+      });
+    }
+
+    if (opts.yAxis) {
+      const axes = Array.isArray(opts.yAxis) ? opts.yAxis : [opts.yAxis];
+      axes.forEach((axis: AxisConfig) => {
+        axis.axisLabel = axis.axisLabel || {};
+        axis.axisLabel.color = "#f8f8f8";
+      });
+    }
+
+    return opts;
+  },
+};
+
+// Merge provided options with defaults
+let chartOptions: ChartOptions = Object.keys(options).length > 0 ? options : defaultOptions;
+// Apply theme settings to the merged options
+chartOptions = themeSettings.applyTheme(chartOptions);
+const serializedOptions = JSON.stringify(chartOptions);
+---
+
+<div id={chartId} style={`width: ${width}; height: ${height};`}></div>
+
+<script define:vars={{ chartOptions: serializedOptions, chartId }}>
+  // Load ECharts from CDN
+  document.addEventListener("DOMContentLoaded", async () => {
+    // Load ECharts core
+    const echarts = await import("https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.esm.min.js");
+
+    // Initialize chart
+    const chartContainer = document.getElementById(chartId);
+    const chart = echarts.init(chartContainer);
+
+    // Set chart options
+    const options = JSON.parse(chartOptions);
+    chart.setOption(options);
+
+    // Handle resize
+    window.addEventListener("resize", () => {
+      chart.resize();
+    });
+  });
+</script>
+
+<style>
+  div {
+    margin: 1rem 0;
+  }
+</style>
