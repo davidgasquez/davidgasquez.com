@@ -1,5 +1,5 @@
 ---
-title: "Steering AIs"
+title: Steering AIs with Transparent and Effective ML Competitions
 date: 2025-05-10
 slug: steering-ais
 ---
