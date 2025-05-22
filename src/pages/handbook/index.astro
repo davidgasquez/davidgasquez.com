@@ -4,8 +4,26 @@ import { getCollection } from "astro:content";
 
 const entries = await getCollection("handbook");
 
-// Sort entries by their path
-const sortedEntries = entries.sort((a, b) => a.id.localeCompare(b.id));
+// Function to extract the first header from markdown content
+function extractFirstHeader(content: string): string | null {
+  const headerMatch = content.match(/^#\s+(.+)$/m);
+  return headerMatch ? headerMatch[1].trim() : null;
+}
+
+// Sort entries by their path and extract titles
+const sortedEntries = entries
+  .map((entry) => {
+    const title =
+      entry.data.title ||
+      extractFirstHeader(entry.body || "") ||
+      entry.id.split("/").pop()?.replace(".md", "") ||
+      entry.id;
+    return {
+      ...entry,
+      displayTitle: title,
+    };
+  })
+  .sort((a, b) => a.id.localeCompare(b.id));
 ---
 
 <Layout>
@@ -15,9 +33,7 @@ const sortedEntries = entries.sort((a, b) => a.id.localeCompare(b.id));
       {
         sortedEntries.map((entry) => (
           <li>
-            <a href={`/handbook/${entry.id}`}>
-              {entry.data.title || entry.id.split("/").pop()?.replace(".md", "") || entry.id}
-            </a>
+            <a href={`/handbook/${entry.id}`}>{entry.displayTitle}</a>
           </li>
         ))
       }
