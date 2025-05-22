@@ -1,8 +1,11 @@
 /* Global styles */
 :root {
-  --color-background: #0a0a0a; /* dark background */
-  --color-text: #f5f5f5; /* light text */
-  --color-accent: #ca8a04; /* yellow accent, similar to yellow-600 */
+  --color-background: #0a0a0a;
+  /* dark background */
+  --color-text: #f5f5f5;
+  /* light text */
+  --color-accent: #ca8a04;
+  /* yellow accent, similar to yellow-600 */
   --max-width: 1024px;
   --font-size: 1.125rem;
   --spacing-sm: 0.5rem;
@@ -34,7 +37,8 @@ a:hover {
   color: var(--color-accent);
 }
 
-.accent-link, a.accent-link {
+.accent-link,
+a.accent-link {
   color: var(--color-accent);
 }
 
@@ -71,7 +75,8 @@ footer {
 }
 
 /* Typography */
-h1, h2 {
+h1,
+h2 {
   font-weight: 700;
   letter-spacing: -0.025em;
 }
@@ -83,7 +88,7 @@ h3 {
 code {
   color: var(--color-accent);
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 0.2em 0.4em;
+  padding: 0.1em 0.2em;
   border-radius: 3px;
 }
 
@@ -190,6 +195,21 @@ code {
   margin-right: auto;
 }
 
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+}
+
 .prose h1 {
   font-size: 2.25rem;
   margin-top: 0;
@@ -233,7 +253,8 @@ code {
   display: block;
   margin-bottom: 2rem;
   font-style: italic;
-  color: #9ca3af; /* gray-400 equivalent */
+  color: #9ca3af;
+  /* gray-400 equivalent */
 }
 
 /* Code blocks */
@@ -259,7 +280,7 @@ pre code {
 }
 
 .astro-code {
-  padding: 0 !important;
-  margin: 0 !important;
-  background-color: transparent !important;
+  padding: 2 !important;
+  margin: 1 !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
