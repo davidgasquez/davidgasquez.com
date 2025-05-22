@@ -2,24 +2,25 @@
 import BaseHead from "../components/BaseHead.astro";
 ---
 
-<html lang="en" class="mx-auto bg-neutral-950 p-6 px-8 py-4 font-sans text-lg text-neutral-50 antialiased">
+<html lang="en">
   <head>
     <BaseHead />
+    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
-  <body class="m-auto max-w-screen-lg">
-    <header class="pb-4">
+  <body>
+    <header>
       <nav>
-        <ul class="flex items-center justify-between">
-          <div class="flex space-x-4">
+        <ul>
+          <div>
             <li>
-              <a class="font-semibold hover:text-yellow-600" href="/">David Gasquez</a>
+              <a href="/">David Gasquez</a>
             </li>
             <li>
-              <a class="hover:text-yellow-600" href="/about">About</a>
+              <a href="/about">About</a>
             </li>
           </div>
           <li>
-            <a class="hover:text-yellow-600" href="https://handbook.davidgasquez.com/">Handbook</a>
+            <a href="https://handbook.davidgasquez.com/">Handbook</a>
           </li>
         </ul>
       </nav>
@@ -27,7 +28,7 @@ import BaseHead from "../components/BaseHead.astro";
     <main>
       <slot />
     </main>
-    <footer class="flex flex-col items-center justify-center p-4">
+    <footer>
       <p>© 2024 David Gasquez</p>
     </footer>
   </body>

@@ -10,35 +10,35 @@ blogEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout>
-  <div class="container mx-auto px-4 py-8 text-center text-lg">
+  <div class="container py-8 text-center text-lg">
     <Image src={avatar} alt="David" height={150} width={150} loading="eager" class="mx-auto mb-6 rounded-full" />
 
-    <p class="mb-2">Data at <a class="text-yellow-600" href="https://protocol.ai/">Protocol Labs</a></p>
+    <p class="mb-2">Data at <a class="accent-link" href="https://protocol.ai/">Protocol Labs</a></p>
 
     <p>Learning about anything and everything all of the time.</p>
 
     <div class="m-6">
-      <a class="text-yellow-600" href="https://twitter.com/davidgasquez/" target="_blank" title="Twitter">Twitter</a>
+      <a class="accent-link" href="https://twitter.com/davidgasquez/" target="_blank" title="Twitter">Twitter</a>
       ·
-      <a class="text-yellow-600" href="https://github.com/davidgasquez/" target="_blank" title="Github">GitHub</a>
+      <a class="accent-link" href="https://github.com/davidgasquez/" target="_blank" title="Github">GitHub</a>
       ·
-      <a class="text-yellow-600" href="https://www.linkedin.com/in/davidgasquez/" target="_blank" title="Linkedin"
+      <a class="accent-link" href="https://www.linkedin.com/in/davidgasquez/" target="_blank" title="Linkedin"
         >LinkedIn</a
       >
       ·
-      <a class="text-yellow-600" href="https://bsky.app/profile/davidgasquez.com" target="_blank" title="Bluesky"
+      <a class="accent-link" href="https://bsky.app/profile/davidgasquez.com" target="_blank" title="Bluesky"
         >Bluesky</a
       >
       ·
-      <a class="text-yellow-600" href="mailto:davidgasquez@gmail.com" target="_blank" title="Email">Email</a>
+      <a class="accent-link" href="mailto:davidgasquez@gmail.com" target="_blank" title="Email">Email</a>
       ·
-      <a class="text-yellow-600" href="https://open.spotify.com/user/kalendos" target="_blank" title="Spotify"
+      <a class="accent-link" href="https://open.spotify.com/user/kalendos" target="_blank" title="Spotify"
         >Spotify</a
       >
     </div>
   </div>
 
-  <div class="prose prose-invert">
+  <div class="prose">
     <h3 class="text-2xl">Posts</h3>
     <ul class="list-none">
       {
