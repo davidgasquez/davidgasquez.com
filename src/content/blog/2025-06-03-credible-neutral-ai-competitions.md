@@ -62,15 +62,17 @@ Similar to the above, the easiest way to evaluate will be to run a script (`pyth
 
 ### Discussions and Other Goodies
 
-As a side effect of using a code platform, we have issues and discussions for participants to raise concerns, problems with the competition, or simply share their approaches or questions while the competition is running.
+As a side effect of using a `git` platform like GitHub or alternatives, we have issues and discussions for participants to raise concerns, problems with the competition, or simply share their approaches/questions while the competition is running.
 
-If the hosts want it, since we are on a git repository, participants could push (or link with a hash to) their models' code or any other artifacts. Anyone then (or GitHub actions) could replicate their results! This setup makes a great framework for encouraging open models and open code to be used.
+If the hosts wants it, participants could push (or link with a hash to) their models' code or any other artifacts. Anyone then (or GitHub actions) could replicate their results! This setup makes a great framework for encouraging open models and open code to be used.
 
 Finally, having a public record of changes to the code, participants can be rewarded for improving the competition infrastructure. This could be ad-hoc, retroactive, or even bounty style (e.g: $500 USDC if you make the leaderboard a website, ...)!
 
 ## Conclusion
 
-This is mostly a thought experiment but something that can probably work without doing too much for smaller competitions. Right now though, I'd say all the competitions on [Pond](https://cryptopond.xyz/) have been "small" (less than 20 serious participants).
+This is mostly a thought experiment but something that can probably work without doing too much for smaller competitions. Right now, I'd say all the competitions on [Pond](https://cryptopond.xyz/) have been "small" (less than 20 serious participants) and would be a good fit for this setup.
+
+Oh! One last benefit of using a git platform is that there will probably last more than any external platform (e.g: Kaggle, Pond, ...) and the community will have more control over it!
 
 I'm sure there are many optimizations to this process and [I'd love to hear them](https://davidgasquez.com/), so please reach out!
 
