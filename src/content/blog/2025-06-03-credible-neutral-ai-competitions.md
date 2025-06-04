@@ -29,7 +29,7 @@ There are a few properties we want on a platform that runs these sort of competi
 - The hosts might or might not run the evaluation script on the decrypted submissions and publish a temporary leaderboard based on a percentage of the test set.
 - Once the competition ends, a leaderboard is computed and the `competition_private.asc` is revealed, allowing any user to recreate the leaderboard and explore other participant's submissions.
 
-That's it!
+That's it! The setup is nothing revolutionary but it's a bit simple, open, and flexible.
 
 As there is a lot of hand-waving in there, let me go a bit deeper into different things and expand with more ideas.
 
@@ -54,7 +54,7 @@ A cool side effect of running things on git is that we can set up automations! T
 
 The most straightforward and open way to do this would be using GitHub Actions or similar! As soon as a participant sends a PR, an action could run all the data checks needed and rule conformance to either accept or deny the submission. Scheduled actions can generate a leaderboard, update datasets by revealing more data, ...
 
-GitHub Actions logs are public and you can check what is going on to verify code has been running as you'd expect.
+If you can codify a rule, you can automate it! GitHub Actions logs are public and you can check what is going on to verify code has been running as you'd expect.
 
 ### Evaluation
 
@@ -64,7 +64,7 @@ Similar to the above, the easiest way to evaluate will be to run a script (`pyth
 
 As a side effect of using a code platform, we have issues and discussions for participants to raise concerns, problems with the competition, or simply share their approaches or questions while the competition is running.
 
-If the hosts want it, since we are on a git repository, participants could push their models' code and other people (or GitHub actions) could replicate their results! Providing a great platform and framework for encouraging open models and open code to be used.
+If the hosts want it, since we are on a git repository, participants could push (or link with a hash to) their models' code or any other artifacts. Anyone then (or GitHub actions) could replicate their results! This setup makes a great framework for encouraging open models and open code to be used.
 
 Finally, having a public record of changes to the code, participants can be rewarded for improving the competition infrastructure. This could be ad-hoc, retroactive, or even bounty style (e.g: $500 USDC if you make the leaderboard a website, ...)!
 
