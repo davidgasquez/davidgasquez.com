@@ -74,6 +74,8 @@ This is mostly a thought experiment but something that can probably work without
 
 Oh! One last benefit of using a git platform is that there will probably last more than any external platform (e.g: Kaggle, Pond, ...) and the community will have more control over it!
 
+It might be worth (and fun) to explore how to make these sorts of competitions run on chain. That could boost the adoption and also expand the funding opportunities for the competitions.
+
 I'm sure there are many optimizations to this process and [I'd love to hear them](https://davidgasquez.com/), so please reach out!
 
 [^1]: An idea I am converging on is that participants should be only allowed to send one final submission and be evaluated on that one. The first reason is that this gives better sybil resistance to the competition (sybils have only one submission per account they control instead of the `3 * $DURATION_DAYS * $N_ACCOUNTS` that now causes that in some of the current competitions, it might be worth it to run a Bayesian Optimization on the public scores and approximate the shape of the function). The second reason is that real life doesn't have a leaderboard. When you are building a model, you don't have a "hidden test set" to get scored on. You have to build your own validation mechanism and think about how to avoid overfitting. Then you deploy or apply the model.
