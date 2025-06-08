@@ -29,7 +29,7 @@ There are a few properties we want on a platform that runs these sort of competi
 - The hosts might or might not run the evaluation script on the decrypted submissions and publish a temporary leaderboard based on a percentage of the test set.
 - Once the competition ends, a leaderboard is computed and the `competition_private.asc` is revealed, allowing any user to recreate the leaderboard and explore other participant's submissions.
 
-That's it! The setup is nothing revolutionary but it's a bit simple, open, and flexible.
+That's it! The setup is nothing revolutionary. It's a bit simple, open, and flexible. For a small community, it makes sense as this problem is not complex enough to warrant an entire platform focused on this kind of competitions. With this approach, the community has more control over the competition, can run it with less friction, and data is theirs to keep and use!
 
 As there is a lot of hand-waving in there, let me go a bit deeper into different things and expand with more ideas.
 
