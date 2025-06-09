@@ -250,8 +250,6 @@ img {
 }
 
 .prose em {
-  display: block;
-  margin-bottom: 2rem;
   font-style: italic;
   color: #9ca3af;
   /* gray-400 equivalent */
