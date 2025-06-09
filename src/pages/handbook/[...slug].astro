@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Base.astro";
+import HandbookLayout from "../../layouts/Handbook.astro";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -14,9 +14,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Layout>
-  <div class="prose prose-neutral prose-invert mx-auto">
-    {entry.data.title && <h1 class="pt-6">{entry.data.title}</h1>}
-    <Content />
-  </div>
-</Layout>
+<HandbookLayout currentSlug={entry.id}>
+  {entry.data.title && <h1 class="pt-6">{entry.data.title}</h1>}
+  <Content />
+</HandbookLayout>
