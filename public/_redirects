@@ -1,0 +1,2 @@
+# Redirect handbook subdomain to /handbook path
+https://handbook.davidgasquez.com/* https://davidgasquez.com/handbook/:splat 301!
