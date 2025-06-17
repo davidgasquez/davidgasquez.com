@@ -4,7 +4,7 @@ date: 2025-05-24
 slug: llm-friendly-projects
 ---
 
-Everyone who is using LLMs and "Agents" (a.k.a. LLMs using tools in a loop) to code is trying to [figure out what works and what doesn't](https://handbook.davidgasquez.com/Artificial+Intelligence+Models#Coding+Tips).
+Everyone who is using LLMs and "Agents" (a.k.a. LLMs using tools in a loop) to code is trying to figure out what works and what doesn't.
 This is far from trivial given the stochastic nature of these continuously evolving beasts.
 Being a good programmer doesn't make anyone a good LLM user automatically!
 
@@ -27,7 +27,7 @@ Before jumping into project structure specifics, let's go over a non-exhaustive 
 - Making things easy to run and test (Makefile, Docker, ...).
 - Using well-known frameworks that appear in their training data.
 
-With [these basic ideas](https://handbook.davidgasquez.com/Artificial+Intelligence+Models#Coding+Tips) in mind, let's see what we can do to make the most out of the current LLMs' capabilities.
+With these basic ideas in mind, let's see what we can do to make the most out of the current LLMs' capabilities.
 
 ## Project Structure
 
@@ -42,7 +42,7 @@ Pick any of your current projects or start a new one. These tips should work for
   - Location of the relevant documentation (architecture, API design, ...)
 - Soft-link your favorite LLM/Agent rules file (`CLAUDE.md`, `.cursor/rules.mdc`, `AGENTS.md`, ...) to `CONTRIBUTING.md`. If you use Cursor and your peers prefer to use Cline, with this approach, you have a common file for the rules! It also works with potential human collaborators, of course! You can `.gitignore` these soft-links to keep the repo clean.
 - Create a folder that's listed in `.gitignore` to add external resources. For me, this is the place where I clone other relevant repositories, export interesting posts as Markdown, add temporary notes, and do many other things. Having files locally makes it easy to `@reference.md` them.
-- Maintain [great documentation](https://handbook.davidgasquez.com/Documentation). This is crucial to make LLMs effective. Besides the standard advice, I've found these extra steps help agents considerably:
+- Maintain [great documentation](https://davidgasquez.com/handbook/documentation). This is crucial to make LLMs effective. Besides the standard advice, I've found these extra steps help agents considerably:
   - Add a `log` folder where you add things you've tried and how they turned out.
   - Split the docs into small files with clear instructions and boundaries!
   - A `STATUS.md` file to keep track of the current status of the project, what's next, and relevant things to keep in mind. I don't really do this much as I tend to keep things on GitHub Issues. It's still useful in some projects where you want to underscore what should be next and the current issues.

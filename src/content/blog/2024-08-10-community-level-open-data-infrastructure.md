@@ -6,7 +6,7 @@ slug: community-level-open-data-infrastructure
 
 [Inspired by Rufus Pollock](https://github.com/datopian/datahub/issues/1138#issuecomment-2198126846), I decided to write a post about learnings and what I think will be the future of open data infrastructure, more specifically **open data infrastructure at the community level**.
 
-As a data engineer working in a small to medium sized company, I [started wondering about how we can make it easier to work with open data](https://handbook.davidgasquez.com/Open+Data). At least, making it simpler thanks to the tools and frameworks I used in my daily job.
+As a data engineer working in a small to medium sized company, I [started wondering about how we can make it easier to work with open data](https://davidgasquez.com/handbook/open-data/). At least, making it simpler thanks to the tools and frameworks I used in my daily job.
 
 Since then, I've worked on a [couple of data portals](/modern-open-data-portals) and been actively participating in various open data communities, projects, and discussions.
 
