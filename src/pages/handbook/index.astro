@@ -1,40 +1,28 @@
 ---
 import HandbookLayout from "../../layouts/Handbook.astro";
-import { getCollection } from "astro:content";
-
-const entries = await getCollection("handbook");
-
-// Function to extract the first header from markdown content
-function extractFirstHeader(content: string): string | null {
-  const headerMatch = content.match(/^#\s+(.+)$/m);
-  return headerMatch ? headerMatch[1].trim() : null;
-}
-
-// Sort entries by their path and extract titles
-const sortedEntries = entries
-  .map((entry) => {
-    const title =
-      entry.data.title ||
-      extractFirstHeader(entry.body || "") ||
-      entry.id.split("/").pop()?.replace(".md", "") ||
-      entry.id;
-    return {
-      ...entry,
-      displayTitle: title,
-    };
-  })
-  .sort((a, b) => a.id.localeCompare(b.id));
 ---
 
 <HandbookLayout>
   <h1>Handbook</h1>
+  <img
+    src="https://images.unsplash.com/photo-1483546363825-7ebf25fb7513?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+    alt="Handbook cover image"
+  />
+  <small>
+    Photo by <a href="https://unsplash.com/@honza_kahanek">Jan Kahánek</a> on <a href="https://unsplash.com">Unsplash</a
+    >
+  </small>
+  <p>
+    Welcome to my personal handbook. A collection of thoughts, notes, and insights I've gathered over time that serve as
+    personal bits of living knowledge, open for everyone. This is where I cultivate ideas and document my learnings.
+  </p>
   <ul>
-    {
-      sortedEntries.map((entry) => (
-        <li>
-          <a href={`/handbook/${entry.id}`}>{entry.displayTitle}</a>
-        </li>
-      ))
-    }
+    <li>
+      🛠️ Explore <a href="https://github.com/davidgasquez/handbook">this Handbook on GitHub</a>. Send a <a
+        href="https://github.com/davidgasquez/handbook/pulls">Pull Request</a
+      > or <a href="https://github.com/davidgasquez/handbook/issues">fill an issue</a> if you have any feedback!
+    </li>
+    <li>🗺️ Explore any topic you find interesting on the left sidebar.</li>
+    <li>📣 <a href="https://davidgasquez.com/">Reach out</a> if you want to chat!</li>
   </ul>
 </HandbookLayout>
