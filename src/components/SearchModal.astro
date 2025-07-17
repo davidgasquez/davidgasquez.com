@@ -1,0 +1,356 @@
+---
+// SearchModal.astro
+---
+
+<div id="search-modal" class="search-modal hidden">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-input-container">
+      <input 
+        type="text" 
+        id="search-input" 
+        placeholder="Search handbook..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="search-close" class="search-close">×</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div>
+
+<script is:inline>
+let pagefind;
+
+async function initPagefind() {
+  if (!pagefind) {
+    try {
+      // Check if we're in development mode
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.warn('Pagefind is not available in development mode. Build the project first.');
+        return null;
+      }
+      pagefind = await import('/pagefind/pagefind.js');
+      await pagefind.init();
+    } catch (error) {
+      console.error('Failed to initialize pagefind:', error);
+      return null;
+    }
+  }
+  return pagefind;
+}
+
+function showSearchModal() {
+  const modal = document.getElementById('search-modal');
+  const input = document.getElementById('search-input');
+  if (modal && input) {
+    modal.classList.remove('hidden');
+    input.focus();
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function hideSearchModal() {
+  const modal = document.getElementById('search-modal');
+  const input = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  if (modal && input && results) {
+    modal.classList.add('hidden');
+    input.value = '';
+    results.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+}
+
+async function performSearch(query) {
+  if (!query.trim()) {
+    const results = document.getElementById('search-results');
+    if (results) results.innerHTML = '';
+    return;
+  }
+
+  const pf = await initPagefind();
+  if (!pf) {
+    const results = document.getElementById('search-results');
+    if (results) {
+      results.innerHTML = '<div class="search-dev-message">Search is only available in production mode. Run <code>npm run build</code> and serve the built files to test search functionality.</div>';
+    }
+    return;
+  }
+
+  try {
+    const search = await pf.search(query);
+    displayResults(search.results);
+  } catch (error) {
+    console.error('Search error:', error);
+    const results = document.getElementById('search-results');
+    if (results) results.innerHTML = '<div class="search-error">Search failed. Please try again.</div>';
+  }
+}
+
+async function displayResults(results) {
+  const container = document.getElementById('search-results');
+  if (!container) return;
+  
+  if (results.length === 0) {
+    container.innerHTML = '<div class="search-no-results">No results found</div>';
+    return;
+  }
+
+  const resultsHtml = await Promise.all(
+    results.slice(0, 10).map(async (result) => {
+      const data = await result.data();
+      return `
+        <a href="${data.url}" class="search-result-item">
+          <div class="search-result-header">
+            <div class="search-result-title">${data.meta.title || 'Untitled'}</div>
+            <div class="search-result-url">${data.url.replace(/^https?:\/\/[^\/]+/, '')}</div>
+          </div>
+          <div class="search-result-excerpt">${data.excerpt}</div>
+        </a>
+      `;
+    })
+  );
+
+  container.innerHTML = resultsHtml.join('');
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('search-modal');
+  const input = document.getElementById('search-input');
+  const closeBtn = document.getElementById('search-close');
+  const backdrop = document.querySelector('.search-modal-backdrop');
+
+  // Close modal events
+  if (closeBtn) closeBtn.addEventListener('click', hideSearchModal);
+  if (backdrop) backdrop.addEventListener('click', hideSearchModal);
+
+  // Keyboard events
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && modal && modal.classList.contains('hidden') && document.activeElement.tagName !== 'INPUT') {
+      e.preventDefault();
+      showSearchModal();
+    }
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      hideSearchModal();
+    }
+  });
+
+  // Search input
+  let searchTimeout;
+  if (input) {
+    input.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const target = e.target;
+        if (target) performSearch(target.value);
+      }, 300);
+    });
+  }
+
+  // Make showSearchModal globally available
+  window.showSearchModal = showSearchModal;
+});
+</script>
+
+<style is:global>
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vh;
+}
+
+.search-modal.hidden {
+  display: none;
+}
+
+.search-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.search-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 1rem;
+  background-color: var(--color-background, #1a1a1a);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.search-input-container {
+  position: relative;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#search-input {
+  width: 100%;
+  padding: 0.75rem 2rem 0.75rem 1rem;
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: var(--color-text, #fff);
+  outline: none;
+  box-sizing: border-box;
+}
+
+#search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#search-input:focus {
+  border-color: var(--color-accent, #3b82f6);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.search-close {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-close:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.search-results {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  display: block;
+  padding: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  color: var(--color-text, #fff);
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.search-result-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-left-color: var(--color-accent, #3b82f6);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.search-result-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #e2e8f0;
+  flex: 1;
+  min-width: 0;
+  letter-spacing: -0.025em;
+}
+
+.search-result-url {
+  font-size: 0.7rem;
+  color: #64748b;
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  flex-shrink: 0;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: rgba(100, 116, 139, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  border: 1px solid rgba(100, 116, 139, 0.2);
+}
+
+.search-result-excerpt {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  padding: 0.75rem;
+  border-left: 3px solid #3b82f6;
+  background-color: rgba(59, 130, 246, 0.05);
+  border-radius: 0 6px 6px 0;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.search-no-results,
+.search-error,
+.search-dev-message {
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-error {
+  color: #ef4444;
+}
+
+.search-dev-message {
+  color: #f59e0b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.search-dev-message code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Highlight search terms */
+.search-result-excerpt mark {
+  background-color: var(--color-accent, #3b82f6);
+  color: white;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.search-result-title mark {
+  background-color: rgba(255, 255, 0, 0.3);
+  color: var(--color-text, #fff);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-weight: 700;
+}
+</style>
