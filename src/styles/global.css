@@ -90,6 +90,8 @@ code {
   background-color: rgba(255, 255, 255, 0.1);
   padding: 0.1em 0.2em;
   border-radius: 3px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Layout Classes */
