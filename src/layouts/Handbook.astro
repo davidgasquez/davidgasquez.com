@@ -20,11 +20,10 @@ function extractFirstHeader(content: string): string | null {
 
 // Sort entries alphabetically by title or filename
 const sortedEntries = handbookEntries
-  .filter(entry => entry.id !== "README") // Exclude README
+  .filter((entry) => entry.id !== "README") // Exclude README
   .map((entry) => {
-    const title = entry.data.title || 
-                  extractFirstHeader(entry.body || "") || 
-                  entry.id.replace(/\.md$/, "").replace(/^.*\//, "");
+    const title =
+      entry.data.title || extractFirstHeader(entry.body || "") || entry.id.replace(/\.md$/, "").replace(/^.*\//, "");
     return {
       ...entry,
       displayTitle: title,
@@ -36,10 +35,10 @@ const sortedEntries = handbookEntries
 <Base>
   <div class="handbook-container">
     <!-- Sidebar -->
-    <aside class="handbook-sidebar">
+    <aside id="handbook-sidebar" class="handbook-sidebar">
       <nav>
         <div class="handbook-header">
-          <h2 class="handbook-nav-title">Handbook</h2>
+          <h2 class="handbook-nav-title">Notes</h2>
           <button id="search-trigger" class="search-trigger" onclick="showSearchModal()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"></circle>
@@ -48,25 +47,33 @@ const sortedEntries = handbookEntries
           </button>
         </div>
         <ul class="handbook-nav-list">
-          {sortedEntries.map((entry) => {
-            const isActive = currentSlug === entry.id;
-            return (
-              <li class="handbook-nav-item">
-                <a 
-                  href={`/handbook/${entry.id}`}
-                  class={isActive ? "handbook-nav-link active" : "handbook-nav-link"}
-                >
-                  {entry.displayTitle}
-                </a>
-              </li>
-            );
-          })}
+          {
+            sortedEntries.map((entry) => {
+              const isActive = currentSlug === entry.id;
+              return (
+                <li class="handbook-nav-item">
+                  <a href={`/handbook/${entry.id}`} class:list={["handbook-nav-link", { active: isActive }]}>
+                    {entry.displayTitle}
+                  </a>
+                </li>
+              );
+            })
+          }
         </ul>
       </nav>
     </aside>
 
     <!-- Main content -->
     <main class="handbook-main">
+      <!-- Mobile toggle button -->
+      <button id="sidebar-toggle" class="sidebar-toggle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <span>Notes</span>
+      </button>
       <div class="prose mx-auto">
         <slot />
       </div>
@@ -75,11 +82,54 @@ const sortedEntries = handbookEntries
 
   <SearchModal />
 
+  <script>
+    const sidebar = document.getElementById("handbook-sidebar");
+    const toggle = document.getElementById("sidebar-toggle");
+    const container = document.querySelector(".handbook-container");
+
+    toggle?.addEventListener("click", () => {
+      sidebar?.classList.toggle("show");
+      container?.classList.toggle("sidebar-open");
+    });
+
+    // Close sidebar on mobile when clicking outside
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth > 768 || !sidebar?.classList.contains("show")) return;
+
+      const target = e.target as HTMLElement;
+      if (!sidebar.contains(target) && !toggle?.contains(target)) {
+        sidebar.classList.remove("show");
+        container?.classList.remove("sidebar-open");
+      }
+    });
+  </script>
+
   <style>
     .handbook-container {
       display: flex;
       gap: 2rem;
       max-width: none;
+      position: relative;
+    }
+
+    .sidebar-toggle {
+      display: none;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      color: #a3a3a3;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-toggle:hover {
+      color: var(--color-text);
+      background-color: rgba(0, 0, 0, 0.9);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .handbook-sidebar {
@@ -92,6 +142,7 @@ const sortedEntries = handbookEntries
       overflow-y: auto;
       overflow-x: hidden;
       padding-right: 1rem;
+      transition: transform 0.3s ease;
     }
 
     .handbook-sidebar::-webkit-scrollbar {
@@ -156,7 +207,7 @@ const sortedEntries = handbookEntries
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 0.125rem;
     }
 
     .handbook-nav-item {
@@ -188,13 +239,43 @@ const sortedEntries = handbookEntries
       font-weight: 500;
     }
 
+    /* Mobile styles */
     @media (max-width: 768px) {
-      .handbook-sidebar {
-        display: none;
+      .sidebar-toggle {
+        display: flex;
       }
-      
+
+      .handbook-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        background: var(--color-background, #000);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        transform: translateX(-100%);
+        z-index: 50;
+        padding: 4rem 1rem 1rem;
+      }
+
+      .handbook-sidebar.show {
+        transform: translateX(0);
+      }
+
       .handbook-main {
         max-width: none;
+      }
+
+      .handbook-container {
+        gap: 0;
+      }
+
+      /* Backdrop overlay */
+      .handbook-container.sidebar-open::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 40;
       }
     }
   </style>
