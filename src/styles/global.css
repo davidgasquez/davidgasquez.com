@@ -63,7 +63,7 @@ nav a {
   text-decoration: none;
 }
 
-nav li:first-child a {
+header nav li:first-child a {
   font-weight: 600;
 }
 
