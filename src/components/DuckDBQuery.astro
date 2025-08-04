@@ -1,11 +1,52 @@
 ---
 const { query } = Astro.props;
 import { DuckDBInstance } from "@duckdb/node-api";
-const instance = await DuckDBInstance.create();
-const connection = await instance.connect();
-const reader = await connection.runAndReadAll(query);
-const rows = reader.getRows();
-const columns = reader.columnNames();
+
+let rows: any[] = [];
+let columns: string[] = [];
+let error: any = null;
+
+async function executeQueryWithRetry(maxRetries = 3) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const instance = await DuckDBInstance.create();
+      
+      // Configure DuckDB for better HTTP handling
+      const connection = await instance.connect();
+      
+      // Set force_download to help with remote file issues
+      await connection.run("SET force_download=true");
+      
+      const reader = await connection.runAndReadAll(query);
+      rows = reader.getRows();
+      columns = reader.columnNames();
+      
+      // Close the connection
+      connection.close();
+      
+      return; // Success, exit function
+    } catch (e) {
+      const errorMessage = e instanceof Error ? e.message : String(e);
+      console.error(`DuckDB query attempt ${attempt} failed:`, errorMessage);
+      error = e instanceof Error ? e : new Error(String(e));
+      
+      if (attempt < maxRetries) {
+        // Wait before retrying (exponential backoff)
+        await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+      }
+    }
+  }
+}
+
+// Execute the query with retry logic
+await executeQueryWithRetry();
+
+// If all retries failed, provide fallback data
+if (error !== null && rows.length === 0) {
+  console.error("All query attempts failed, using fallback data");
+  columns = ["Error"];
+  rows = [{ Error: `Failed to load data: ${error.message}` }];
+}
 ---
 
 <div class="table-container">
