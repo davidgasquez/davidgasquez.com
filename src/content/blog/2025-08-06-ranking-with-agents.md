@@ -204,8 +204,8 @@ Of course, I have a long list of things I'd like to continue exploring. There ar
 Overall, it was a very fun project and I'm very happy with the results (not so much with the costs [^2]).
 
 <div style="display: flex; gap: 10px;">
-<img src="/src/assets/images/ranking-agents-claude-max.png" alt="Claude" style="max-width: 350px; max-height: 350px;" />
-<img src="/src/assets/images/ranking-agents-gemini.png" alt="Gemini" style="max-width: 500px; max-height: 350px;" />
+<img src="/images/ranking-agents-claude-max.png" alt="Claude" style="max-width: 350px; max-height: 350px;" />
+<img src="/images/ranking-agents-gemini.png" alt="Gemini" style="max-width: 500px; max-height: 350px;" />
 </div>
 
 Before wrapping up, I wanted to leave with a meta reflection. Arbitron name was [decided by the tool itself](https://x.com/davidgasquez/status/1942164800487788579/photo/1) after I asked it to rank a bunch of names. I later realized I don't like the name Arbitron. The meta-lesson here being that **sometimes the more important thing is not better mechanisms for the final rank, but better mechanisms for discussing and coordinating what to propose in the first place**.
