@@ -142,14 +142,14 @@ const serializedOptions = JSON.stringify(chartOptions);
 
 <div id={chartId} style={`width: ${width}; height: ${height};`}></div>
 
-<script define:vars={{ chartOptions: serializedOptions, chartId }}>
+<script is:inline define:vars={{ chartOptions: serializedOptions, chartId }}>
   // Load ECharts from CDN
   document.addEventListener("DOMContentLoaded", async () => {
     // Load ECharts core
     const echarts = await import("https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.esm.min.js");
 
     // Initialize chart
-    const chartContainer = document.getElementById(chartId);
+    const chartContainer = document.getElementById(window.chartId);
     const chart = echarts.init(chartContainer);
 
     // Set chart options

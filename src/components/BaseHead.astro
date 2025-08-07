@@ -1,18 +1,12 @@
 ---
-export interface Props {
-  title?: string;
-  description?: string;
-  author?: string;
-  image?: string;
-  url?: URL | string;
-}
+const { 
+  title = "David Gasquez",
+  description = "David Gasquez personal website",
+  image = "/social.png"
+} = Astro.props;
 
-const title = Astro.props.title;
-const description = Astro.props.description;
-const author = Astro.props.author;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-const image = new URL(Astro.props.image || "/social.png", Astro.site);
+const ogImage = new URL(image, Astro.site);
 ---
 
 <meta charset="utf-8" />
@@ -25,20 +19,19 @@ const image = new URL(Astro.props.image || "/social.png", Astro.site);
 <!-- General Meta Tags -->
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="author" content={author} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={image} />
+<meta property="og:image" content={ogImage} />
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={image} />
+<meta property="twitter:image" content={ogImage} />
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
