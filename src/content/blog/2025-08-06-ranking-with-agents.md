@@ -4,6 +4,9 @@ date: 2025-08-06
 slug: ranking-with-agents
 ---
 
+> **TL;DR:** This post explores using a multi-agent systems for ranking tasks. Check out [Arbitron](https://github.com/davidgasquez/arbitron) if you want to see a working implementation of the pattern/ideas.
+
+
 One of the latest [Kaggle style competitions](https://github.com/deepfunding/) I've [been participating in](/steering-ais) got me thinking about the difficulties involved in collecting accurate and relevant preferences from humans and aggregating them in somewhat consistent rankings or weight distributions.
 
 I did some research around this general issue and, at the same time, [worked on a small tool to explore a potential approach for the competition](https://x.com/davidgasquez/status/1941525990024544418).
