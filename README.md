@@ -8,7 +8,7 @@ You can use the Development Container environment to develop locally. Once insid
 
 ## Deployment
 
-Pushing to the `main` branch will trigger a new deployment! The website is hosted on GitHub Pages.
+Pushing to the `main` branch will trigger a new deployment! The website is hosted on Cloudflare Pages.
 
 ## License
 

@@ -1,3 +1,0 @@
-[submodule "src/content/handbook"]
-	path = src/content/handbook
-	url = https://github.com/davidgasquez/handbook.git
