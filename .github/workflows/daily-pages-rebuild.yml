@@ -1,0 +1,18 @@
+name: Daily Cloudflare Pages Rebuild
+
+on:
+  schedule:
+    # Runs every day at 06:00 UTC. Adjust as needed.
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages deploy hook
+        env:
+          DEPLOY_HOOK_URL: ${{ secrets.CF_PAGES_DEPLOY_HOOK }}
+        run: |
+          set -euo pipefail
+          curl -X POST -sS "${DEPLOY_HOOK_URL}"
