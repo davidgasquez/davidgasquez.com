@@ -49,11 +49,11 @@ Choose your favorite formula for measuring the distance/agreement between the we
 
 There are many valid formulas to choose from. Personally, I think the formula you choose should:
 
-- Uses all the pairwise data you have. Not just a private subset. Use all the information you have.
-- Scale-invariant. Only relative weights within each pair matter; global rescaling can't game it.
+- Use all the information collected. Not just a private subset of the jury comparisons.
+- Scale-invariant. Only the relative weights within each pair matter, not the absolute values.
 - Avoid producing extreme logits if the data does not support it. A mechanism that outputs (0.99, 0.01) when the jury is very split should be penalized.
 - Be robust to noise and outliers in the data.
-- No parameters to fit so it is easy to use/understand and feel more neutral.
+- No parameters to fit (smoothness, break-point, ...) so it is easy to use/understand and feel more neutral.
 
 I'm sure there are a few options there! My hunch is that something simple like [Brier score](https://en.wikipedia.org/wiki/Brier_score) or log-loss on the pairwise comparisons could work well as starting points. Needs more thought and experiments!
 
