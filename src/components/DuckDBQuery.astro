@@ -21,8 +21,9 @@ async function executeQueryWithRetry(maxRetries = 3) {
       rows = reader.getRows();
       columns = reader.columnNames();
       
-      // Close the connection
-      connection.close();
+      // Close the connection and database instance
+      connection.closeSync();
+      instance.closeSync();
       
       return; // Success, exit function
     } catch (e) {
