@@ -2,8 +2,7 @@ name: Daily Cloudflare Pages Rebuild
 
 on:
   schedule:
-    # Runs every day at 06:00 UTC. Adjust as needed.
-    - cron: '0 6 * * *'
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 jobs:
