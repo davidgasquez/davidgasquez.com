@@ -63,3 +63,68 @@ In places like [Deep Funding](https://deepfunding.org/), we already have the pai
 The key insight is that we don't only need better jury data or weight-setting algorithms, but something to choose the most effective weight-setting mechanism! Without this, we are just optimizing blind.
 
 With diverse mechanisms, you can also unblock the possibility of combinations and evolutionary approaches. This could lead to a more robust and adaptable system that can better handle the complexities of real-world decision-making.
+
+---
+
+## Meta-Mechanism Example
+
+Here’s a tiny, concrete walk‑through using **popular GitHub repos as the items** and juror **pairwise choices** as the only data produced by ChatGPT!
+
+### Goal
+
+Pick the weight vector (w) (i.e., a mechanism’s output) that **agrees with jurors’ pairwise preferences most often**.
+
+**Score(w)** = fraction of observed pairs ((a \succ b)) where (w_a > w_b).
+(Equivalently, minimize Kendall disagreements on the observed pairs.)
+
+
+### Setup
+
+**Items (repos):**
+
+* **L** = `torvalds/linux`
+* **K** = `kubernetes/kubernetes`
+* **R** = `facebook/react`
+* **T** = `tensorflow/tensorflow`
+
+**Observed juror pairwise preferences (sparse subset of all pairs):**
+
+1. **L ≻ K**
+2. **K ≻ R**
+3. **R ≻ T**
+4. **L ≻ R**
+
+*(Only 4 comparisons; in practice you might have many more, but they can still be sparse.)*
+
+**Three candidate mechanisms (each outputs a normalized weight vector):**
+
+* **A (Expert‑style):** L 0.36, K 0.34, R 0.20, T 0.10
+* **B (Alt heuristic):** R 0.35, L 0.30, K 0.20, T 0.15
+* **C (Another method):** K 0.35, L 0.33, R 0.19, T 0.13
+
+---
+
+## Scoring by pairwise agreement
+
+| Observed pair | A (0.36/0.34/0.20/0.10) | B (0.30/0.20/0.35/0.15) | C (0.33/0.35/0.19/0.13) |
+| ------------- | ----------------------- | ----------------------- | ----------------------- |
+| **L ≻ K**     | ✓ (0.36>0.34)           | ✓ (0.30>0.20)           | ✗ (0.33>0.35)           |
+| **K ≻ R**     | ✓ (0.34>0.20)           | ✗ (0.20>0.35)           | ✓ (0.35>0.19)           |
+| **R ≻ T**     | ✓ (0.20>0.10)           | ✓ (0.35>0.15)           | ✓ (0.19>0.13)           |
+| **L ≻ R**     | ✓ (0.36>0.20)           | ✗ (0.30>0.35)           | ✓ (0.33>0.19)           |
+
+**Totals**
+
+* **A:** 4/4 correct (Kendall disagreements = 0)
+* **B:** 2/4 correct (disagreements = 2)
+* **C:** 3/4 correct (disagreements = 1)
+
+**Winner:** **Mechanism A** — its weight ordering matches all observed juror choices.
+
+---
+
+## Why this works
+
+* It’s **scale‑invariant** (only compares (w_a>w_b)).
+* It’s naturally **sparse‑friendly** (uses only the pairs you have).
+* It gives a **neutral yardstick** to compare mechanisms.
