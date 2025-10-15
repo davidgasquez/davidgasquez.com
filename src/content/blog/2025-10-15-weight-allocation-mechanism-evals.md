@@ -45,9 +45,9 @@ Why not **use [pairwise comparisons](https://davidgasquez.com/ranking-with-agent
 
 In experiments like Deep Funding, we already have jurors making pairwise comparisons (the data is being used to train models). Instead of [asking jurors which weight distribution they prefer](https://x.com/seer_pm/status/1977973181723099622), we can use all their pairwise comparisons to evaluate how well a weight distribution aligns with their preferences directly. Comparing weight distributions is not something humans are good at. It's easier to say "I prefer A over B" than "I think A should get 30% and B 20%". Imagine doing that for thousands of items! We need local preferences, not global ones.
 
-Figure out and choose your favorite formula for measuring the distance/agreement between the weight vector and the pairwise data and pick the vector whose is closest with all jurors' pairwise choices. This method uses only the observed pairs (so sparsity is fine) and it aligns exactly with the question "which vector would the jury choose if they had to choose one?"
+Choose your favorite formula for measuring the distance/agreement between the weight vector and the pairwise data. Then pick the closest vector to all jurors' pairwise choices. This way, you use only the observed pairs (so sparsity is fine) while the formula aligns with the question "which vector would the jury choose if they had to choose one?"
 
-There might be many valid formulas. Personally, I think the formula you choose should:
+There are many valid formulas to choose from. Personally, I think the formula you choose should:
 
 - Uses all the pairwise data you have. Not just a private subset. Use all the information you have.
 - Scale-invariant. Only relative weights within each pair matter; global rescaling can't game it.
