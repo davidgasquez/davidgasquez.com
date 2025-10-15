@@ -62,3 +62,5 @@ I'm sure there are a few options there! My hunch is that something simple like [
 The key insights are that (1) we don't only need better jury data or weight-setting algorithms, but something to choose the most effective weight-setting mechanism! And, (2) we should use data to choose the best mechanism, not human judgment of the mechanisms themselves. Without this, we might be just optimizing blindly.
 
 With diverse mechanisms, we unlock the possibility of combinations and evolutionary approaches. This could lead to a more robust and adaptable system that can better handle the complexities of real-world decision-making.
+
+Finally, I think these problems can be mapped to RLHF in some ways worth exploring more. Similar to [how LLMs use pairwise/ELO style rankings when retrieving](https://www.zeroentropy.dev/articles/improving-retrieval-with-elo-scores), there is a body of work around "models ranking things" that probably have some interesting insights for this problem.
