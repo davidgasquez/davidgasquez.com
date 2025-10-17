@@ -30,9 +30,17 @@ const sortedEntries = handbookEntries
     };
   })
   .sort((a, b) => a.displayTitle.localeCompare(b.displayTitle));
+
+const activeEntryTitle = currentSlug
+  ? sortedEntries.find((entry) => entry.id === currentSlug)?.displayTitle
+  : undefined;
+
+const pageTitle = activeEntryTitle
+  ? `${activeEntryTitle} | Handbook | David Gasquez`
+  : undefined;
 ---
 
-<Base>
+<Base title={pageTitle}>
   <div class="handbook-container">
     <!-- Sidebar -->
     <aside id="handbook-sidebar" class="handbook-sidebar">
