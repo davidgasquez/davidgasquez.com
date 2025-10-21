@@ -29,6 +29,12 @@ There are a few components to this problem.
 
 The simple and ideal setups for this problem are, for example, a local referendum (high _j_ and low _i_) where hundreds of voters assign a collective weight to a tiny option set (Yes / No), or the Hugo Awards, where there are ~5 finalists (_i_) and thousands of ranked ballots (_j_). This, sadly, is not viable if you want to do things like funding open source repositories (many _i_) of an entire ecosystem with only a few "experts" (few _j_). In these areas, we need [ways to scale human judgment](https://vitalik.eth.limo/general/2025/02/28/aihumans.html).
 
+|                        | Low _i_ (few items)                                                     | High _i_ (many items)                                                                |
+| ---------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Low _j_ (few jurors)   | Steward heuristic session, kitchen-table consensus, juror-written memo. | Funding open source repos with a tiny panel, expert triage queue, Delphi refinement. |
+| High _j_ (many jurors) | Local referendum (Yes/No), Hugo Awards ballots, ranked-choice sprint.   | Deep Funding, Quadratic Funding.                                                     |
+
+
 ## The Meta-Mechanism
 
 We should have a **meta-mechanism** to evaluate and compare mechanisms and not only focus on the weight-setting mechanism itself. We need a way to measure how "fit" a weight distribution is to the sparse preferences of the jurors. With this, we can do a few things:
