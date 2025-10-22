@@ -4,24 +4,28 @@ date: 2025-10-22
 slug: specializing-codex
 ---
 
-A while back I wrote about [how I was using Claude Code to do some scrappy data cleaning](/scrappy-data-cleaning). That was ages ago in LLM time and I am now using [Codex](https://github.com/openai/codex). This post is me sharing how I "fine-tuned" `codex` to work on a few different tasks (classification, voting, ...) over a large set of items.
+I've been using [Claude Code to take care of scrappy data cleaning tasks](/scrappy-data-cleaning) for a while. These days though, I'm using [Codex](https://github.com/openai/codex) as my coding agent. Similar to what I did with Claude, I've been "fine-tuning" Codex CLI to work on a few different vaguely defined tasks like classification, voting, filtering, or ranking.
 
-The main motivation behind using Codex or Claude Code for these kinds of tasks and not more minimal tools like [`llm`](https://github.com/simonw/llm) or [PydanticAI](https://ai.pydantic.dev/) is simple: **reuse my existing OpenAI/Claude subscription and avoid spending more money on AI stuff**. Also, they come with great tools and DX!
+The pattern in this post works surprisingly well when you have the following conditions:
+
+- Loosely defined open-ended tasks. e.g., tagging tweets with a set of predefined labels, extracting structured information from a GitHub issue, ...
+- Powerful agentic capabilities. Doing the task requires something more than a simple [`llm` call](https://github.com/simonw/llm) or [PydanticAI](https://ai.pydantic.dev/) script. e.g., using `gh api` CLI to get the number of stars of a repository.
+- [Structured outputs](https://github.com/openai/codex/blob/main/docs/exec.md#structured-output). You need a response in a certain shape! This is something `codex exec` can do that `claude` couldn't and is really powerful. e.g., return exactly `True` or `False` and nothing else.
+- Save money! Unlike `llm` or other tools/libraries that require an `OPENAI_API_KEY`, Codex can use your ChatGPT subscription, making things "free".
+
+Let's walk through an example of how everything fits together. We'll be building a very silly command, `chooser`, that compares two GitHub repositories and returns which one is friendlier to new users.
 
 ## How
 
-Customizing `codex` for a specific task is a bit trickier than [customizing Claude Code](/scrappy-data-cleaning). For `codex`, we have to create a new folder and set that up as the `CODEX_HOME`. Let's see an example. Here are the steps you need to do if you want a new CLI that takes two options and chooses one based on custom criteria.
+Since we want an isolated `codex exec` experience, the first thing to do is to create a folder to act as the new agent home.
 
-1. Create a new folder (`chooser`).
-2. Add a custom `AGENTS.md`, [`config.toml`](https://github.com/openai/codex/blob/main/docs/config.md) to the previous folder.
-3. Set `CODEX_HOME` environment variable pointing to that folder. Run `codex` to authenticate with ChatGPT interactively.
-4. Create a [structured output file](https://github.com/openai/codex/blob/main/docs/exec.md#structured-output) relevant to the task.
-5. Wrap the [`codex exec` command](https://github.com/openai/codex/blob/main/docs/exec.md) and flags in a custom script or alias. Redirect `stderr` with ` 2>/dev/null`.
-6. You can now run `chooser ItemA ItemB` and get your `{"winner":"item_b"}` or similar. Profit!
+```bash
+mkdir ~/.chooser
+```
 
-Here are all the files that will get you to a `chooser` style CLI.
+Once the folder is there, sign up with your ChatGPT subscription by running `CODEX_HOME=~/.chooser codex`.
 
-### `AGENTS.md`
+Now, add an `AGENTS.md` file there to be used as the "persona" or "instructions" prompt across all calls. Here is mine.
 
 ```md
 # Chooser
@@ -34,34 +38,48 @@ Choose which project is friendlier to new users. Take into account DX and reposi
 - **GitHub Readme**. You can read any repository README with `gh api repos/$USER/$REPOSITORY/readme --jq '.content' | base64 --decode`.
 ```
 
-### `schema.json`
+You can also add a [configuration file (`config.toml`)](https://github.com/openai/codex/blob/main/docs/config.md) to fix parameters like `model_reasoning_effort` or `model`.
+
+If your task can be mapped to a [structured output file](https://github.com/openai/codex/blob/main/docs/exec.md#structured-output), create a `schema.json` relevant to the task. This is the one I used for `chooser`.
 
 ```json
 {
-    "type": "object",
+  "type": "object",
     "properties": {
-        "winner": {
-            "type": "string",
+      "winner": {
+        "type": "string",
             "enum": [
-                "item_a",
+              "item_a",
                 "item_b"
             ]
         }
     },
     "required": [
-        "winner"
+      "winner"
     ],
     "additionalProperties": false
 }
 ```
 
-### `chooser`
+Finally, we can call a `codex exec` to tie things up.
+
+```bash
+CODEX_HOME=~/.chooser codex exec --full-auto --output-schema schema.json """
+  Which project is friendlier to new users? Check contributor diversity.
+  <item_a>Flask</item_a>
+  <item_b>Django</item_b>
+"""
+```
+
+In my case, codex took around 2 minutes (reasoning set to medium), used the `gh` CLI to do a bunch of calls, did a couple of web searches, and returned `{"winner":"item_b"}`. Yay! 🎉
+
+To wrap things up, I created a bash script to make a better interface to it. I wanted to be able to run `chooser ItemA ItemB` and get the JSON. No extra logs or context. Here is the script. Place it in `~/.local/bin` and call it from anywhere!
 
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
 
-export CODEX_HOME=chooser
+export CODEX_HOME=~/.chooser
 
 if (( $# < 2 )); then
   echo "Usage: ${0##*/} ITEM_A ITEM_B" >&2
@@ -86,7 +104,6 @@ codex_args=(
   -m gpt-5
   -c model_reasoning_effort="medium"
   -c model_verbosity="low"
-  --disable web_search_request
   --output-schema schema.json
   --full-auto
   --skip-git-repo-check
@@ -99,6 +116,10 @@ fi
 codex "${codex_args[@]}" "$prompt" 2>/dev/null
 ```
 
+I created yet another script, this time in Python to act as the orchestrator. From my tests, you can call up to 500 `chooser` instances at once without being rate-limited. Quite wild taking into account that is GPT-5 with thinking!
+
 ## Conclusion
 
-I've used this pattern to run more than 10,000 invocations for classification style tasks using GPT-5 with medium reasoning efforts. Not sure how expensive these calls would have been using plain OpenAI API calls, but this makes experimenting more "safe" for me. I don't need to worry about choosing the best model, just if it fits my usage limits quota of the day!
+I've done more than 10,000 invocations of `chooser` and friends for loosely defined tasks and am really happy with the results I'm getting. The main drawback I would note is that the "fine-tuned" command still has the [`codex` system prompt](https://github.com/openai/codex/blob/bac7acaa7c3476361859905f708eba82c53abf68/codex-rs/core/gpt_5_codex_prompt.md). One could fork and update it but my hunch is that doesn't work if you are using the ChatGPT subscription.
+
+I'm not sure how much I would have spent using plain OpenAI API calls, but having this pattern at hand makes experimenting a bit less scary for me. Also, I don't need to worry about model costs, just check if it fits that time window usage limits quota!
