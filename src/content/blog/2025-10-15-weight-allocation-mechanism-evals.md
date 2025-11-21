@@ -13,11 +13,11 @@ In this post, I explore the idea of having two different mechanisms:
 1. A process to assign relative weights to items.
 2. A process for choosing the best weight distribution mechanism.
 
-For number one, interesting proposals like [Deep Funding](https://deepfunding.org/) are already working on it. For the second one though, we need more research and development!
+For number one, interesting proposals like [Deep Funding](https://deepfunding.org/) are already working on it. For the second one though, we need more research and development! Fewer knobs and simpler rules leave less space for hidden privilege, so the meta-layer should default to simplicity and only add complexity when it clearly improves credibility or collusion resistance.
 
 ## TLDR
 
-We need a meta-mechanism to evaluate and compare mechanisms and not only focus on the weight-setting mechanisms themselves. A simple approach is to use pairwise comparisons from jurors to evaluate how well a weight distribution aligns with their preferences. This framework can be used to measure how close the output of a mechanism is to the preferences of the jurors, optimize and tune the mechanisms themselves, and compare different mechanisms against each other.
+We need a meta-mechanism to evaluate and compare mechanisms and not only focus on the weight-setting mechanisms themselves. A simple approach is to use pairwise comparisons from jurors to evaluate how well a weight distribution aligns with their preferences. This framework can be used to measure how close the output of a mechanism is to the preferences of the jurors, optimize and tune the mechanisms themselves, and compare different mechanisms against each other. Always check that any fancy mechanism beats a naive baseline; bad incentives are worse than none.
 
 ## Problem Definition
 
@@ -34,7 +34,6 @@ The simple and ideal setups for this problem are, for example, a local referendu
 | Low _j_ (few jurors)   | Steward heuristic session, kitchen-table consensus, juror-written memo. | Funding open source repos with a tiny panel, expert triage queue, Delphi refinement. |
 | High _j_ (many jurors) | Local referendum (Yes/No), Hugo Awards ballots, ranked-choice sprint.   | Deep Funding, Quadratic Funding.                                                     |
 
-
 ## The Meta-Mechanism
 
 We should have a **meta-mechanism** to evaluate and compare mechanisms and not only focus on the weight-setting mechanism itself. We need a way to measure how "fit" a weight distribution is to the sparse preferences of the jurors. With this, we can do a few things:
@@ -44,6 +43,8 @@ We should have a **meta-mechanism** to evaluate and compare mechanisms and not o
 - Compare different mechanisms against each other. A framework in which experiments can be run (e.g like double-blind experiments in science, or product A/B testing). A neutral way to compare the weights coming from different mechanisms.
   - Opening it up so anyone could send their own weight-distribution mechanism.
   - An evolutionary system where diversity can be introduced. There is a fitness function (how close to the jurors' preferences) and mechanisms can evolve over time.
+- Keep fast feedback loops: run multiple allocation rules in parallel, include a simple baseline (expert heuristic or random) as a control, and iterate quickly on what actually beats that baseline.
+- Make the rules legible and skin-in-the-game: jurors or selectors should feel the consequences of bad calls so incentives stay aligned.
 
 ## Pairwise Comparison Meta-Mechanism
 
@@ -60,14 +61,15 @@ There are many valid formulas to choose from. Personally, I think the formula yo
 - Avoid producing extreme logits if the data does not support it. A mechanism that outputs (0.99, 0.01) when the jury is very split should be penalized.
 - Be robust to noise and outliers in the data.
 - No parameters to fit (smoothness, break-point, ...) so it is easy to use/understand and feel more neutral.
+- Pair naturally with anti-metrics: if a mechanism produces a sharp split that jurors didn’t actually express, flag and down-rank it.
 
-I'm sure there are a few options there! My hunch is that something simple like [Brier score](https://en.wikipedia.org/wiki/Brier_score) or log-loss on the pairwise comparisons could work well as starting points. Needs more thought and experiments!
+I'm sure there are a few options there! My hunch is that something simple like [Brier score](https://en.wikipedia.org/wiki/Brier_score) or log-loss on the pairwise comparisons could work well as starting points. Needs more thought and experiments! Multi-armed bandits or genetic search could decide which evaluation formulas to explore next, balancing exploration and exploitation in the meta-layer.
 
 ## Conclusion
 
 The key insights are that (1) we don't only need better jury data or weight-setting algorithms, but something to choose the most effective weight-setting mechanism! And, (2) we should use data to choose the best mechanism, not human judgment of the mechanisms themselves. Without this, we might be just optimizing blindly.
 
-With diverse mechanisms, we unlock the possibility of combinations and evolutionary approaches. This could lead to a more robust and adaptable system that can better handle the complexities of real-world decision-making.
+With diverse mechanisms, we unlock the possibility of combinations and evolutionary approaches. This could lead to a more robust and adaptable system that can better handle the complexities of real-world decision-making. Permissionless, forkable evaluation infrastructure keeps the system credibly neutral and resistant to capture.
 
 Finally, I think these problems can be mapped to RLHF in some ways worth exploring more. Similar to [how LLMs use pairwise/ELO style rankings when retrieving](https://www.zeroentropy.dev/articles/improving-retrieval-with-elo-scores), there is a body of work around "models ranking things" that probably have some interesting insights for this problem.
 
