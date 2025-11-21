@@ -8,8 +8,13 @@
   --color-background-hover: rgba(255, 255, 255, 0.05);
   --color-background-active: rgba(255, 255, 255, 0.1);
 
-  --max-width: 1024px;
-  --font-size: 1.125rem;
+  --max-width: 1120px;
+  --font-size: 1.05rem;
+  --font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  --grid-size: 28px;
+  --grid-line-color: rgba(255, 255, 255, 0.02);
+  --panel-surface: rgba(255, 255, 255, 0.02);
 
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
@@ -20,11 +25,18 @@
 
 html {
   background-color: var(--color-background);
+  background-image:
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-attachment: fixed;
   color: var(--color-text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-family);
   font-size: var(--font-size);
-  line-height: 1.5;
+  line-height: 1.6;
+  min-height: 100%;
   padding: var(--spacing-md) var(--spacing-lg);
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -53,6 +65,7 @@ header {
 
 nav ul {
   display: flex;
+  align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -187,7 +200,7 @@ code {
 
 /* Blog/content styling */
 .prose {
-  max-width: 65ch;
+  max-width: 70ch;
   margin: 0 auto;
 }
 
@@ -272,7 +285,7 @@ pre code {
   background: transparent;
   padding: 0;
   color: var(--color-text);
-  font-family: monospace;
+  font-family: var(--font-family);
   font-size: 0.9rem;
   line-height: 1.5;
   white-space: pre-wrap;

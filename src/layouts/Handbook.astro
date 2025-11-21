@@ -115,6 +115,7 @@ const pageTitle = activeEntryTitle
   <style>
     .handbook-container {
       display: flex;
+      align-items: flex-start;
       gap: var(--spacing-xl);
       max-width: none;
       position: relative;
@@ -210,10 +211,13 @@ const pageTitle = activeEntryTitle
       display: flex;
       flex-direction: column;
       gap: var(--spacing-xs);
+      align-items: flex-start;
+      text-align: left;
     }
 
     .handbook-nav-link {
       display: block;
+      width: 100%;
       padding: var(--spacing-sm);
       font-size: 0.875rem;
       color: var(--color-text-muted);
