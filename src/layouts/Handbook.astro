@@ -35,9 +35,7 @@ const activeEntryTitle = currentSlug
   ? sortedEntries.find((entry) => entry.id === currentSlug)?.displayTitle
   : undefined;
 
-const pageTitle = activeEntryTitle
-  ? `${activeEntryTitle} | Handbook | David Gasquez`
-  : undefined;
+const pageTitle = activeEntryTitle ? `${activeEntryTitle} | Handbook | David Gasquez` : undefined;
 ---
 
 <Base title={pageTitle}>
@@ -169,7 +167,11 @@ const pageTitle = activeEntryTitle
     .handbook-main {
       flex: 1;
       min-width: 0;
-      max-width: 65ch;
+      max-width: 80ch;
+    }
+
+    .handbook-main .prose {
+      max-width: 80ch;
     }
 
     .handbook-header {

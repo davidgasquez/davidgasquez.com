@@ -13,7 +13,7 @@
   --font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --grid-size: 28px;
-  --grid-line-color: rgba(255, 255, 255, 0.02);
+  --grid-line-color: rgba(255, 255, 255, 0.025);
   --panel-surface: rgba(255, 255, 255, 0.02);
 
   --spacing-xs: 0.25rem;
@@ -130,6 +130,11 @@ code {
   margin: 0 auto;
 }
 
+.home-posts {
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
 /* Typography Classes */
 .text-lg {
   font-size: 1.125rem;
@@ -200,7 +205,7 @@ code {
 
 /* Blog/content styling */
 .prose {
-  max-width: 70ch;
+  max-width: 80ch;
   margin: 0 auto;
 }
 
