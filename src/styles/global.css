@@ -13,7 +13,7 @@
   --font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --grid-size: 28px;
-  --grid-line-color: rgba(255, 255, 255, 0.025);
+  --grid-line-color: rgba(255, 255, 255, 0.035);
   --panel-surface: rgba(255, 255, 255, 0.02);
 
   --spacing-xs: 0.25rem;
@@ -122,8 +122,12 @@ code {
   text-align: center;
 }
 
-.rounded-full {
-  border-radius: 9999px;
+.avatar-hex {
+  display: block;
+  width: clamp(160px, 35vw, 210px);
+  aspect-ratio: 1;
+  -webkit-clip-path: polygon(93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%, 50% 0%);
+  clip-path: polygon(93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%, 50% 0%);
 }
 
 .mx-auto {
