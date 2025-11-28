@@ -258,6 +258,11 @@ img {
   padding-left: 1.25rem;
 }
 
+.prose ol {
+  padding-left: calc(var(--spacing-lg) + var(--spacing-sm));
+  list-style-position: outside;
+}
+
 .prose li {
   margin: 0.25rem 0;
 }
