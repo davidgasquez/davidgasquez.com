@@ -1,5 +1,5 @@
 ---
-title: "Useful LLM tools (2024 Edition)"
+title: "Useful LLM workflows (2024 Edition)"
 date: 2024-12-13
 slug: useful-llm-tools-2024
 ---
