@@ -20,6 +20,8 @@ Keep any kind of state in plain files, and those files in git. Prompts, schemas,
 
 ## Help Agents Help You
 
+[I've written about this before](https://davidgasquez.com/llm-friendly-projects/#helping-llms-help-you).
+
 Keep the prompts minimal! Focus on making easier for the agent to get useful context than "Act as X".
 
 - Progressive disclosure
@@ -27,6 +29,7 @@ Keep the prompts minimal! Focus on making easier for the agent to get useful con
 - When the agent drifts, add one more constraint (or one more tool).
 - Avoid giant monolithic prompts.
 - Logs aren't just for debugging. They're feedback and context.
+- I now spend most of the time on the harness (skills, agents, commands, test setup, verification etc.), both because is funier than doing another ETL and because it really helps. Very similar to playing Satisfactory. You're not programming directly, but feels very close.
 
 ## Curated Style Guides
 
