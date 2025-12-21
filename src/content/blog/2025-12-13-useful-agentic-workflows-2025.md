@@ -6,7 +6,7 @@ slug: useful-agentic-workflows-2025
 
 _This is a very early draft_
 
-More or less one year ago, I shared [a few LLM workflows I was using](useful-llm-tools-2024) at the time. Things have changed quite a bit, so, here are some randomly sorted ~LLM~ agentic workflows I've found useful for work, data, productivity, and research!
+More or less one year ago, I shared [some LLM workflows](useful-llm-tools-2024) I was finding useful at the time. Things have changed quite a bit, so, here are some randomly sorted ~LLM~ agentic workflows I've found useful for work, data, productivity, and research!
 
 ## Magical UNIX Pipelines
 
@@ -46,18 +46,27 @@ Explore random datasets.
 I’ll run multiple attempts (sometimes in parallel), compare approaches, and keep what’s best.
 This is also my path from "vibe coding" to "vibe engineering": rebuild the same thing over and over as I learn what works and what doesn’t.
 Breadth > depth here: LLMs are great first-draft machines across many libraries and stacks.
+Disposable / "One-off" Software. LLMs allow for the creation of single-use tools ("artifacts") that solve immediate, niche problems.
+Small scripts. LLMs are “good enough” machines. They shine when “mostly right” is acceptable and the cost of being wrong is low.
+Exploit the verify/generate asymmetry
 
 ## Agentic Data Engineering
 
-### Dataset enrichment (LLM per row)
+**Agentic coding** is an initeresting approach for some parts of the boring data engineering tasks. People say you spend **80% of time cleaning data** when working with any dataset. This new approach can automate cleanup scripts, allowing analysts to focus on high-level storytelling and analysis.
+
+### Data Enrichment
 
 Run an LLM against every row to derive a new column (labels, normalization, location resolution, ...).
 Cheaper fast models make this viable; verification is still the work.
 
-### Agentic coding for data cleaning
+### Data Cleaning
 
 Data analysts spend most of their time cleaning data.
 Agentic coding flips the work: have the agent write the cleanup scripts, you verify the result. [Scrappy Data Cleaning](scrappy-data-cleaning).
+
+### Data Extraction
+
+Converting messy, unstructured documents (like thousands of scanned PDFs or police reports) into structured data (JSON/CSV).
 
 ## Useful Principles
 
@@ -70,17 +79,20 @@ Agentic coding flips the work: have the agent write the cleanup scripts, you ver
 - Bring the taste, let them do the cooking.
 - Exploit the verify/generate asymmetry
 
-## Workflow: Benchmarks as the goal
+## Curate Benchmarks
 
-When I can, I turn "good" into a number (test, metric, small eval set) and iterate until it improves.
+When I can, I [turn "good" into a number](https://news.ycombinator.com/item?id=46296725) (test, metric, small eval set) and iterate until it improves.
 At that point it becomes evolutionary: generate variants → score → keep winners.
+Evolutionary, GEPA, ...
 
-This thread captures the vibe well:
+## Better Research
 
-## Markdown Research Pipelines
+For research, I rely on Markdown files as much as I can. I write some, download related sources also as Markdown (linkweaver) and then produce a "prompt" that I use to gather more information/knowledge and iterate.
+Inside that prompt, I keep a list of open questions. This helps the LLM fill out the gaps.
+Retrieval + synthesis + verification -> redo initial prompt. Better than "dump everything into chat".
 
-For research, I want a reproducible trail: search → fetch sources as Markdown → synthesize into notes with links back to the originals.
-Retrieval + synthesis + verification beats "dump everything into chat".
+One thing I realized is that there is lots of value only in exploring frameworks and related ideas for a certain task.
+  - E.g: observable framework + prompt to replicate the idea, ...
 
 Weaving concepts together:
 
@@ -91,6 +103,7 @@ Weaving concepts together:
 
 ## Conclusion
 
+Bring your taste + context.
 I really enjoy experimenting and learning about different workflows. I used to spend a lot of time tweaking my dotfiles, now, I spent time exploring agentic workflows that iterate on the dotfiles! Using coding agents has been [my hammer](https://en.wikipedia.org/wiki/Law_of_the_instrument) this last year and I've had ton of fun sharpening it.
 
 Finally, there are many awesome folks sharing pragmatic ideas and tools in public! If you're interested in these kind of things, please follow [Simon Willison](https://simonwillison.net/), [Armin Ronacher](https://lucumr.pocoo.org/), [Peter Steinberger](https://steipete.me/), and [Mario Zechner](https://mariozechner.at/).
