@@ -6,30 +6,45 @@ slug: useful-agentic-workflows-2025
 
 _This is a very early draft_
 
-More or less one year ago, I shared [some LLM workflows](useful-llm-tools-2024) I was finding useful at the time. Things have changed quite a bit, so, here are some randomly sorted ~LLM~ agentic workflows I've found useful for work, data, productivity, and research!
+Last year, I shared [some LLM workflows](useful-llm-tools-2024) I was finding useful. Things have changed a lot. These days, I work in a completely different way, and I do/create many things I wouldn't dare to do before. I've been learning and relying more and more on the "agentic" programming way of working. So, here are some of the ~LLM~ agentic workflows I've found useful for work, data, productivity, and research. Hard to say these will for one year from now, but perhaps they will inspire you to try new things!
 
 ## Magical UNIX Pipelines
 
-I already mentioned `llm` last year. My usage has only increased. For almost any kind of task that involves text, I've been using the [`llm`](https://llm.datasette.io/) CLI with a bunch of custom templates. I've used it to summarize YouTube videos from their transcripts, tag documents automagically, extract structured data from a large corpus of files, generate additional columns for datasets, and many more little things.
+I mentioned `llm` last year. My usage has only gone up! For any small to medium task that involve text, using [`llm`](https://llm.datasette.io/) with a bunch of custom template is an amazingly simple solution. I've used it to summarize YouTube videos from their transcripts, tag documents automagically, extract structured data from many files, generate additional columns for datasets, caption images, and many more little things.
 
-I've assigned keyboard shorcuts to the most common `llm` templated tasks. I have a bunch of scripts that do something like; (1) take wathever is selected, (2) run `llm` with the appropriate template (e.g: fix typos, clean format, ...), and (3) replace the selection (or create a new terminal) with the output. I think of this as "smart text brushes" that I can use anywhere I can select text.
+I've also assigned keyboard shorcuts to the my most common `llm` templated tasks. I have a bunch of scripts that do something like; (1) take wathever is selected, (2) run `llm` with a fixed template (e.g: fix typos, clean format, ...), and (3) replace the selection (or create a new terminal) with the output. I use this workflow like a "[magic text brush](https://github.com/davidgasquez/dotfiles/blob/1bf35de417b122161828260cfda6f397b9311980/scripts/magic-brush)" that I can apply anywhere text can be selected.
 
-## Files as State
-
-Keep any kind of state in plain files, and those files in git. Prompts, schemas, experiment logs, results, should live next to the code/data and not trapped in a chat sidebars. This helps you keep track of what you've tried, and the agents to plan their next steps.
 
 ## Help Agents Help You
 
-[I've written about this before](https://davidgasquez.com/llm-friendly-projects/#helping-llms-help-you).
+[I've written about this before](https://davidgasquez.com/llm-friendly-projects/#helping-llms-help-you) and is still something I focus on a lot. Call it "context engineering" or whatever, but the idea is to make agents productive. Here are some principles that have worked well for me and that you've probably seen elsewhere:
 
-Keep the prompts minimal! Focus on making easier for the agent to get useful context than "Act as X".
-
-- Progressive disclosure
-- Start with the smallest useful rules file + one example.
-- When the agent drifts, add one more constraint (or one more tool).
-- Avoid giant monolithic prompts.
+- [Progressive disclose context](https://www.humanlayer.dev/blog/writing-a-good-claude-md).
+- Keep a lean AGENTS.md. Start with the smallest useful rules file + one example.
 - Logs aren't just for debugging. They're feedback and context.
-- I now spend most of the time on the harness (skills, agents, commands, test setup, verification etc.), both because is funier than doing another ETL and because it really helps. Very similar to playing Satisfactory. You're not programming directly, but feels very close.
+
+Honestly, I think I spend more time tweaking the agent harness (skills, commands, prompts, tests, verification etc.) than working on the projects themselves. Working on these things also helps me understand the problem better. That said, I'm not sure if I'm more efficient, but am having more fun than doing another ETL/dashboard. It's very similar to playing Satisfactory/Factorio. You are not literally programming, but tickles the same part of the brain and has a different experience (visually in gaming, conversation based in LLMs).
+
+### Files as State
+
+For any non obvious task, I keep all kind of things as plain files, and those files in git. Prompts, schemas, experiment logs, results, all live next to the code and not in a chat sidebar. Helps a lot keeping track of what I've tried, and it also helps agents plan their next steps.
+
+### Custom Benchmarks
+
+When possible, I set something that acts as the "goodness" metric (tests, a literal ML metric, a custom eval set, ...) and then just prompt the agent a few times while iterating towards better results. At this point it becomes almost like an evolutionary algorithm: generate many candidates, evaluate them, keep the best ones, and repeat. Which brings me to the next point...
+
+I’ll run multiple attempts (sometimes in parallel), compare approaches, and keep what’s best.
+Exploit the verify/generate asymmetry
+
+### Asynchronous Disposable Projects
+
+There are many things I want only done once. Write quick scraping scripts, explore random datasets, generate one off reports, etc. For these kinds of tasks, I fire a few Codex/Claude agents in web and then manually go through the results. LLMs are "good enough" machines. They shine when "mostly right" is acceptable and the cost of being wrong is low.
+
+### Prototyping
+
+This is also my path from "vibe coding" to "vibe engineering". Rebuild the same thing over and over as I learn what works and what doesn’t.
+Breadth > depth here: LLMs are great first-draft machines across many libraries and stacks.
+Disposable / "One-off" Software. LLMs allow for the creation of single-use tools ("artifacts") that solve immediate, niche problems.
 
 ## Curated Style Guides
 
@@ -39,16 +54,7 @@ That means that when I need the model to produce a specific kind of artifact, I 
 
 A recent example was to use `clig.dev` as reference for a small CLI I had to build. The CLI `codex` oneshotted was lovely!
 
-## Asynchronous Disposable Projects
-
-Write quick scraping scripts.
-Explore random datasets.
-I’ll run multiple attempts (sometimes in parallel), compare approaches, and keep what’s best.
-This is also my path from "vibe coding" to "vibe engineering": rebuild the same thing over and over as I learn what works and what doesn’t.
-Breadth > depth here: LLMs are great first-draft machines across many libraries and stacks.
-Disposable / "One-off" Software. LLMs allow for the creation of single-use tools ("artifacts") that solve immediate, niche problems.
-Small scripts. LLMs are “good enough” machines. They shine when “mostly right” is acceptable and the cost of being wrong is low.
-Exploit the verify/generate asymmetry
+This can be also [packaged as skills](https://agentskills.io/home)!
 
 ## Agentic Data Engineering
 
@@ -78,12 +84,6 @@ Converting messy, unstructured documents (like thousands of scanned PDFs or poli
 - Small end to end. Easy in data!
 - Bring the taste, let them do the cooking.
 - Exploit the verify/generate asymmetry
-
-## Curate Benchmarks
-
-When I can, I [turn "good" into a number](https://news.ycombinator.com/item?id=46296725) (test, metric, small eval set) and iterate until it improves.
-At that point it becomes evolutionary: generate variants → score → keep winners.
-Evolutionary, GEPA, ...
 
 ## Better Research
 
