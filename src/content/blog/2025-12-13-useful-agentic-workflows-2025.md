@@ -1,18 +1,20 @@
 ---
-title: "Useful Agentic Workflows (2025 Edition)"
+title: "Useful Agentic Workflows"
 date: 2025-12-13
 slug: useful-agentic-workflows-2025
 ---
 
-Last year, I shared [some LLM workflows](useful-llm-tools-2024) I was finding useful. Things have changed a lot in this space! These days, I work in a completely different way, and I do/create many things I wouldn't dare to do before. I've been learning and relying more and more on the "agentic" programming way of coding and working with computers overall. So, here are some of the ~LLM~ agentic workflows I've found useful for work, data, productivity, and research. Hard to say these will be here next year. Hopefully they will inspire you to try new things!
+## 2025 Edition
+
+Last year, I shared [some LLM workflows](useful-llm-tools-2024) I was finding useful. Since then my workflows have changed and I now build many things I would not have attempted before. Here are some agentic workflows I use for work, data, productivity, and research.
 
 ## Magical UNIX Pipelines
 
 I mentioned [`llm`](https://llm.datasette.io/) in last [year's post](useful-llm-tools-2024). My usage has only increased! For any small to medium task that involves text, I use [`llm`](https://llm.datasette.io/) with a custom template. It is amazingly simple and effective.
 
-I've used it to summarize and interrogate YouTube videos, tag documents automagically, extract structured data from many files, generate additional columns for datasets, caption images, and many more little things.
+I've used it to summarize and interrogate YouTube videos, tag documents, extract structured data from many files, generate additional columns for datasets, caption images, and many more little things.
 
-The most "unique" way I'm using it might be what I call "magic brushes". I've assigned keyboard shortcuts to the most common `llm` templated tasks I rely upon. I have a bunch of scripts that do something like: (1) take whatever is selected, (2) run `llm` with a fixed template (e.g. fix typos, clean format, ...), and (3) replace the selection, create a new terminal, or add to the clipboard the processed output. These are really "[magic text brushes](https://github.com/davidgasquez/dotfiles/blob/1bf35de417b122161828260cfda6f397b9311980/scripts/magic-brush)" that I can apply anywhere text can be selected!
+The most "unique" way I'm using it might be what I call **magic brushes**. I've assigned keyboard shortcuts to the most common `llm` templated tasks I rely upon. I have a bunch of scripts that do something like: (1) take whatever is selected, (2) run `llm` with a fixed template (e.g. fix typos, clean format, ...), and (3) replace the selection, create a new terminal, or add to the clipboard the processed output. These are really "[magic text brushes](https://github.com/davidgasquez/dotfiles/blob/1bf35de417b122161828260cfda6f397b9311980/scripts/magic-brush)" that I can apply anywhere text can be selected!
 
 ## Help Agents Help You
 
