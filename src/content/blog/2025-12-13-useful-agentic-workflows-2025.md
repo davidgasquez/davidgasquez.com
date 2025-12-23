@@ -29,6 +29,8 @@ Honestly, I think I spend more time tweaking the agent harness (skills, commands
 
 For any non obvious task, I keep all kind of things as plain files, and those files in git. Prompts, schemas, experiment logs, results, all live next to the code and not in a chat sidebar. Helps a lot keeping track of what I've tried, and it also helps agents plan their next steps.
 
+Iterate quickly. Game of context management and creating a solid testing feedback loop instead of trying to purely one-shot issues
+
 ### Custom Benchmarks
 
 When possible, I set something that acts as the "goodness" metric (tests, a literal ML metric, a custom eval set, ...) and then just prompt the agent a few times while iterating towards better results. At this point it becomes almost like an evolutionary algorithm: generate many candidates, evaluate them, keep the best ones, and repeat. Which brings me to the next point...
@@ -39,6 +41,8 @@ Exploit the verify/generate asymmetry
 ### Asynchronous Disposable Projects
 
 There are many things I want only done once. Write quick scraping scripts, explore random datasets, generate one off reports, etc. For these kinds of tasks, I fire a few Codex/Claude agents in web and then manually go through the results. LLMs are "good enough" machines. They shine when "mostly right" is acceptable and the cost of being wrong is low.
+
+You get to 80% fast, then spend longer on the last 20% than you would have building from scratch - because now you're debugging code you don't fully understand.
 
 ### Prototyping
 
