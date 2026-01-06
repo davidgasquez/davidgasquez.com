@@ -103,11 +103,48 @@
       text-transform: none;
     }
 
+    .hint {
+      margin: 12px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
     .prose p {
       margin: 0 0 16px;
       text-align: left;
       hyphens: auto;
       letter-spacing: 0.01em;
+      cursor: pointer;
+      display: grid;
+    }
+
+    .prose p .es,
+    .prose p .en {
+      grid-area: 1 / 1;
+      display: block;
+      transition: opacity 180ms ease;
+    }
+
+    .prose p .en {
+      opacity: 0;
+      color: #3a2f28;
+      font-style: italic;
+    }
+
+    .prose p .es {
+      opacity: 1;
+    }
+
+    .prose p:hover .es,
+    .prose p.show-en .es {
+      opacity: 0;
+    }
+
+    .prose p:hover .en,
+    .prose p.show-en .en {
+      opacity: 1;
     }
 
     .section-break {
@@ -165,633 +202,632 @@
           <a href="http://www.skyhunter.com/marcs/GentleSeduction.html" rel="noopener noreferrer">Gentle Seduction</a>
           <span class="source-note">Traducción por GPT 5.2</span>
         </p>
+        <p class="hint">Pasa el cursor o toca un párrafo para ver el original.</p>
       </header>
 
       <section class="prose">
-        <p>Él trabajaba con computadoras. Ella trabajaba con árboles y con las flores que se aferraban a los lados de la
-          Montaña.</p>
-        <p>Le sorprendía que él se interesara en ella. Él era tan inteligente, ella tan... normal. Pero él era
-          interesante. Siempre decía algo nuevo y distinto. Era amable.</p>
-        <p>Ella tenía 25. Él era mayor, casi 33. A veces Jack parecía muy viejo de verdad.</p>
-        <p>Un día caminaron por la niebla de un día gris junto a la Montaña. El bosque aquí, al borde de Rainier,
+        <p><span class="es">Él trabajaba con computadoras. Ella trabajaba con árboles y con las flores que se aferraban a los lados de la
+          Montaña.</span><span class="en">He worked with computers; she worked with trees, and the flowers that took hold on the sides of the Mountain.</span></p>
+        <p><span class="es">Le sorprendía que él se interesara en ella. Él era tan inteligente, ella tan... normal. Pero él era
+          interesante. Siempre decía algo nuevo y distinto. Era amable.</span><span class="en">She was surprised that he was interested in her. He was so smart; she was so ... normal. But he was interesting; he always said something new and different; he was nice.</span></p>
+        <p><span class="es">Ella tenía 25. Él era mayor, casi 33. A veces Jack parecía muy viejo de verdad.</span><span class="en">She was 25. He was older, almost 33; sometimes, Jack seemed very old indeed.</span></p>
+        <p><span class="es">Un día caminaron por la niebla de un día gris junto a la Montaña. El bosque aquí, al borde de Rainier,
           brillaba en la niebla, vivo con verdes frondosos. Ese día él le habló del futuro, del futuro que estaba
-          construyendo.</p>
-        <p>Otras veces, cuando él había hablado del futuro, una mirada salvaje le había entrado en los ojos. Pero ahora
+          construyendo.</span><span class="en">One day they walked through the mist of a gray day by the Mountain. The forest here on the edge of Rainier glowed in the mist, bright with lush greens. On this day he told her about the future, the future he was building.</span></p>
+        <p><span class="es">Otras veces, cuando él había hablado del futuro, una mirada salvaje le había entrado en los ojos. Pero ahora
           sus ojos estaban bien enfocados mientras hablaba, como si esta vez pudiera verlo todo con claridad. Hablaba
-          como si describiera algo tan real y obvio como las venas de una hoja colgando delante de ellos en el sendero.
-        </p>
-        <p>"¿Has oído hablar de la Singularidad?", preguntó.</p>
-        <p>Ella negó con la cabeza. "¿Qué es eso?"</p>
-        <p>"La Singularidad es un tiempo en el futuro. Ocurrirá cuando el ritmo de cambio de la tecnología sea muy
+          como si describiera algo tan real y obvio como las venas de una hoja colgando delante de ellos en el sendero.</span><span class="en">Other times when he had spoken of the future, a wild look had entered his eyes. But now his eyes were sharply focused as he talked, as if, this time, he could see it all very clearly. He spoke as if he were describing something as real and obvious as the veins of a leaf hanging down before them on the path.</span></p>
+        <p><span class="es">"¿Has oído hablar de la Singularidad?", preguntó.</span><span class="en">"Have you ever heard of Singularity?" he asked.</span></p>
+        <p><span class="es">Ella negó con la cabeza. "¿Qué es eso?"</span><span class="en">She shook her head. "What's that?"</span></p>
+        <p><span class="es">"La Singularidad es un tiempo en el futuro. Ocurrirá cuando el ritmo de cambio de la tecnología sea muy
           grande, tan grande que el esfuerzo por mantenernos al día nos sobrepase. La gente enfrentará un conjunto
           entero de problemas nuevos que ni siquiera podemos imaginar". Una gran tranquilidad alisó los surcos alrededor
           de sus ojos. "Por otro lado, todos nuestros problemas normales del día a día se desvanecen. Por ejemplo, serás
-          inmortal".</p>
-        <p>Ella negó con la cabeza con desagrado. "No quiero vivir para siempre", dijo.</p>
-        <p>Él sonrió, con los ojos brillantes. "Claro que sí, solo que aún no lo sabes".</p>
-        <p>Ella se estremeció. "El futuro me da miedo".</p>
-        <p>"No hay razón para temerlo. Te va a encantar". Él apartó la mirada de ella. Sus siguientes palabras fueron
-          amargas, pero su tono era resignado. "Me jode que tú vivas para verlo y yo no".</p>
-        <p>Al escuchar la tristeza en su voz, ella trató de animarlo. "Tú también vivirás para verlo", respondió.</p>
-        <p>Él negó con la cabeza. "No. Tengo el corazón malo. Mi padre murió joven de un ataque al corazón, y también el
+          inmortal".</span><span class="en">"Singularity is a time in the future. It'll occur when the rate of change of technology is very great--so great that the effort to keep up with the change will overwhelm us. People will face a whole new set of problems that we can't even imagine." A look of great tranquility smoothed the ridges around his eyes. "On the other hand, all our normal, day to day problems fade away. For example, you'll be immortal."</span></p>
+        <p><span class="es">Ella negó con la cabeza con desagrado. "No quiero vivir para siempre", dijo.</span><span class="en">She shook her head with distaste. "I don't want to live forever," she said.</span></p>
+        <p><span class="es">Él sonrió, con los ojos brillantes. "Claro que sí, solo que aún no lo sabes".</span><span class="en">He smiled, his eyes twinkling. "Of course you do, you just don't know it yet."</span></p>
+        <p><span class="es">Ella se estremeció. "El futuro me da miedo".</span><span class="en">She shuddered. "The future scares me."</span></p>
+        <p><span class="es">"No hay razón para temerlo. Te va a encantar". Él apartó la mirada de ella. Sus siguientes palabras fueron
+          amargas, pero su tono era resignado. "Me jode que tú vivas para verlo y yo no".</span><span class="en">"There's no reason to fear it. You'll love it." He looked away from her. His next words were bitter, but his tone was resigned. "It pisses me off that you'll live to see it and I won't."</span></p>
+        <p><span class="es">Al escuchar la tristeza en su voz, ella trató de animarlo. "Tú también vivirás para verlo", respondió.</span><span class="en">Speaking to the sorrow in his voice, she tried to cheer him. "You'll live to see it too," she replied.</span></p>
+        <p><span class="es">Él negó con la cabeza. "No. Tengo el corazón malo. Mi padre murió joven de un ataque al corazón, y también el
           padre de mi padre. Si tengo suerte, quizá me queden unos 30 años. Nos llevará al menos cien años llegar a la
-          Singularidad".</p>
-        <p>"Entonces yo también estaré muerta antes de que pase. Bien", dijo ella.</p>
-        <p>Él soltó una risita. "No. Vivirás lo suficiente para que descubran cómo hacerte vivir lo suficiente para que
-          puedas vivir más".</p>
-        <p>"Aun así solo eres 7 años mayor que yo".</p>
-        <p>"Ah, pero tú tienes los genes de tu madre. Ella se ve muy joven".</p>
-        <p>Ella sonrió y cambió de tema. "Tendré que decirle que dijiste eso. Le va a gustar".</p>
-        <p>Hubo una larga pausa. Luego confesó, "Mi abuelo tiene 92 y todavía corta el césped todas las semanas".</p>
-        <p>Jack sonrió triunfante. "¿Ves?"</p>
-        <p>Ella fue tajante. "Viviré hasta los 80 o 90. No quiero vivir más que eso".</p>
-        <p>"No si estás inválida, claro que no. Pero encontrarán formas de rejuvenecerte". Se rió con aire de saberlo.
-          "Te verás más vieja a los 60 que a los 120", dijo.</p>
-        <p>Ella solo negó con la cabeza.</p>
-        <p>Otra vez, mientras caminaban al sol por la playa de Fox Island, él le contó más sobre el futuro. "Tendrás una
+          Singularidad".</span><span class="en">He shook his head. "No. I have a bad heart. My father died young from a heart attack, and so did my father's father. If I'm lucky, I have maybe 30 more years. It'll take at least a hundred years for us to get to Singularity. "</span></p>
+        <p><span class="es">"Entonces yo también estaré muerta antes de que pase. Bien", dijo ella.</span><span class="en">"Then I'll be dead before it happens, too. Good," she said.</span></p>
+        <p><span class="es">Él soltó una risita. "No. Vivirás lo suficiente para que descubran cómo hacerte vivir lo suficiente para que
+          puedas vivir más".</span><span class="en">He chuckled. "No. You'll live long enough, so that they'll figure out how to make you live long enough so that you can live longer."</span></p>
+        <p><span class="es">"Aun así solo eres 7 años mayor que yo".</span><span class="en">"You're still only 7 years older than I am."</span></p>
+        <p><span class="es">"Ah, pero tú tienes los genes de tu madre. Ella se ve muy joven".</span><span class="en">"Ah, but you have your mother's genes. She looks very young."</span></p>
+        <p><span class="es">Ella sonrió y cambió de tema. "Tendré que decirle que dijiste eso. Le va a gustar".</span><span class="en">She smiled, and changed the subject. "I'll have to tell her you said that. She'll like it."</span></p>
+        <p><span class="es">Hubo una larga pausa. Luego confesó, "Mi abuelo tiene 92 y todavía corta el césped todas las semanas".</span><span class="en">There was a long pause. Then she confessed, "My grandfather is 92, and he still cuts the grass every week."</span></p>
+        <p><span class="es">Jack sonrió triunfante. "¿Ves?"</span><span class="en">Jack smiled triumphantly. "See?"</span></p>
+        <p><span class="es">Ella fue tajante. "Viviré hasta los 80 o 90. No quiero vivir más que eso".</span><span class="en">She was adamant. "I'll live to be 80 or 90. I don't want to live longer than that."</span></p>
+        <p><span class="es">"No si estás inválida, claro que no. Pero encontrarán formas de rejuvenecerte". Se rió con aire de saberlo.
+          "Te verás más vieja a los 60 que a los 120", dijo.</span><span class="en">"Not if you're crippled, of course not. But they'll find ways of rejuvenating you." He laughed knowingly. "You'll look older when you're 60 than when you're 120" he said.</span></p>
+        <p><span class="es">Ella solo negó con la cabeza.</span><span class="en">She just shook her head.</span></p>
+        <p><span class="es">Otra vez, mientras caminaban al sol por la playa de Fox Island, él le contó más sobre el futuro. "Tendrás una
           cinta en la cabeza". Pasó los dedos por su frente. Entrecerró los ojos cuando el viento le arrojó arena. "Te
-          permitirá hablarle directamente a tu computadora".</p>
-        <p>Ella frunció el ceño. "No quiero hablar con una computadora".</p>
-        <p>"Claro que sí. Bueno, lo harás. Tu computadora vigilará a tu bebé toda la noche. Si ve algo raro, te
+          permitirá hablarle directamente a tu computadora".</span><span class="en">Another time, as they walked in the sun along the beach of Fox Island, he told her more about the future. "You'll have a headband." He ran his fingers across his forehead; he squinted as the wind blew sand in his eyes. "It'll allow you to talk right to your computer."</span></p>
+        <p><span class="es">Ella frunció el ceño. "No quiero hablar con una computadora".</span><span class="en">She frowned. "I don't want to talk to a computer."</span></p>
+        <p><span class="es">"Claro que sí. Bueno, lo harás. Tu computadora vigilará a tu bebé toda la noche. Si ve algo raro, te
           despertará". Un deleite malicioso le ensanchó la sonrisa, y ella supo que ahora diría algo escandaloso.
           "Mientras estés en la cama con los ojos cerrados, mirarás a tu bebé a través de la cámara de tu computadora
-          para ver si es algo grave".</p>
-        <p>"Ugh".</p>
-        <p>"Claro, hay una posibilidad diminuta, <em>de verdad</em> diminuta, de que un accidente te revuelva los
-          recuerdos".</p>
-        <p>El pensamiento la mareó de horror. "Preferiría morir". Le agarró el brazo y lo arrastró bajo el puente, fuera
-          del viento. Se estremeció, sin saber si el escalofrío venía del viento o del miedo.</p>
-        <p>Él cambió de enfoque. Señalando un grupo de elaboradas mansiones junto al mar, al otro lado del agua,
-          preguntó, "¿Te gustaría vivir en una de esas?"</p>
-        <p>Ella las estudió. "Quizá en esa", dijo, señalando una hermosa casa victoriana antigua. "O esa". Señaló otra,
-          muy distinta de la primera, una serie de cortes diagonales con ventanas enormes.</p>
-        <p>"¿Has oído hablar de la nanotecnología?", preguntó.</p>
-        <p>"No".</p>
-        <p>"Bueno, con nanotecnología construirán diminutas máquinas, máquinas del tamaño de moléculas". Señaló la
+          para ver si es algo grave".</span><span class="en">"Sure you do. At least, you will. Your computer will watch your baby all night long. If it sees something wrong, it'll wake you." Wicked delight widened his smile, and she knew he would now tell her something outrageous. "While you're laying in bed with your eyes closed, you'll look at your baby through your computer's TV camera to see if it's something serious."</span></p>
+        <p><span class="es">"Ugh".</span><span class="en">"Ugh."</span></p>
+        <p><span class="es">"Claro, hay una posibilidad diminuta, <em>de verdad</em> diminuta, de que un accidente te revuelva los
+          recuerdos".</span><span class="en">"Of course, there's a tiny chance, really tiny, that an accident could scramble your memories."</span></p>
+        <p><span class="es">El pensamiento la mareó de horror. "Preferiría morir". Le agarró el brazo y lo arrastró bajo el puente, fuera
+          del viento. Se estremeció, sin saber si el escalofrío venía del viento o del miedo.</span><span class="en">The thought made her dizzy with horror. "I would rather die." She grabbed his arm and pulled him under the bridge, out of the wind. She shuddered, though unsure whether her chill came from the wind or the fear.</span></p>
+        <p><span class="es">Él cambió de enfoque. Señalando un grupo de elaboradas mansiones junto al mar, al otro lado del agua,
+          preguntó, "¿Te gustaría vivir en una de esas?"</span><span class="en">He changed his tack. Pointing at a scattering of elaborate seaside mansions across the water, he asked, "Would you like to live in one of those?"</span></p>
+        <p><span class="es">Ella las estudió. "Quizá en esa", dijo, señalando una hermosa casa victoriana antigua. "O esa". Señaló otra,
+          muy distinta de la primera, una serie de cortes diagonales con ventanas enormes.</span><span class="en">She studied them. "Maybe that one," she said, pointing at a beautiful old Victorian home. "Or that one." She pointed at another, very different from the first, a series of diagonal slashes with huge windows.</span></p>
+        <p><span class="es">"¿Has oído hablar de la nanotecnología?", preguntó.</span><span class="en">"Have you ever heard of nanotechnology?" he asked.</span></p>
+        <p><span class="es">"No".</span><span class="en">"Uh-uh."</span></p>
+        <p><span class="es">"Bueno, con nanotecnología construirán diminutas máquinas, máquinas del tamaño de moléculas". Señaló la
           bebida en su mano. "Pondrán mil millones en una nave del tamaño de una lata de Coca Cola y la dispararán hacia
           un asteroide. La lata reconstruirá el asteroide en mansiones y palacios. Tendrás un asteroide para ti sola, si
-          quieres".</p>
-        <p>"No quiero un asteroide. No quiero ir al espacio".</p>
-        <p>Él negó con la cabeza. "¿No quieres ver Marte? Te gustó el Gran Cañón. Recuerdo cómo me lo contaste. Marte
+          quieres".</span><span class="en">"Well, with nanotechnology they'll build these tiny little machines--machines the size of molecules." He pointed at the drink in her hand. "They'll put a billion of them in a spaceship the size of a Coke can, and shoot it off to an asteroid. The Coke can will rebuild the asteroid into mansions and palaces. You'll have an asteroid all to your self, if you want one."</span></p>
+        <p><span class="es">"No quiero un asteroide. No quiero ir al espacio".</span><span class="en">"I don't want an asteroid. I don't want to go into space."</span></p>
+        <p><span class="es">Él negó con la cabeza. "¿No quieres ver Marte? Te gustó el Gran Cañón. Recuerdo cómo me lo contaste. Marte
           tiene gargantas enormes. Hacen que el Gran Cañón parezca diminuto. ¿No quieres verlas? ¿No quieres caminar por
-          ellas?"</p>
-        <p>Le tomó mucho tiempo responder. "Supongo que sí", admitió.</p>
-        <p>"No te contaré todas las cosas que espero que pasen", sonrió con picardía. "Me da miedo asustarte <em>de
+          ellas?"</span><span class="en">He shook his head. "Don't you want to see Mars?You liked the Grand Canyon; I remember how you told me about it. Mars has huge gorges--they make the Grand Canyon look tiny. Don't you want to see them? Don't you want to hike across them?"</span></p>
+        <p><span class="es">Le tomó mucho tiempo responder. "Supongo que sí", admitió.</span><span class="en">It took her a long time to reply. "I guess so," she admitted.</span></p>
+        <p><span class="es">"No te contaré todas las cosas que espero que pasen", sonrió con picardía. "Me da miedo asustarte <em>de
             verdad</em>. Pero lo verás todo. Y recordarás que te lo dije". Su voz se volvió intensa. "Y recordarás que
-          yo sabía que lo recordarías".</p>
-        <p>Ella negó con la cabeza. A veces Jack era simplemente tonto.</p>
-        <p>Nunca hicieron el amor, aunque a menudo se dormían en los brazos del otro. A veces ella se preguntaba por
-          qué. A veces se preguntaba si él también se lo preguntaba. De algún modo no parecía importante.</p>
-        <p>Él parecía tan en casa en el bosque profundo, pertenecía tan claramente a la Montaña, que al principio ella
+          yo sabía que lo recordarías".</span><span class="en">"I won't tell you all the things I expect to happen," he smiled mischievously, "I'm afraid I'd <em>really</em> scare you. But you'll see it all. And you'll remember that I told you." His voice grew intense. "And you'll remember that I knew you'd remember."</span></p>
+        <p><span class="es">Ella negó con la cabeza. A veces Jack era simplemente tonto.</span><span class="en">She shook her head. Sometimes Jack was just silly.</span></p>
+        <p><span class="es">Nunca hicieron el amor, aunque a menudo se dormían en los brazos del otro. A veces ella se preguntaba por
+          qué. A veces se preguntaba si él también se lo preguntaba. De algún modo no parecía importante.</span><span class="en">They never made love, though often, they fell asleep in each other's arms. Sometimes she wondered why; she wondered if he also wondered why. Somehow it just didn't seem important.</span></p>
+        <p><span class="es">Él parecía tan en casa en el bosque profundo, pertenecía tan claramente a la Montaña, que al principio ella
           pensó que quizá estarían juntos para siempre. Pero un día fue con él a su oficina. Lo vio trabajar con
           computadoras, lo vio trabajar con otras personas. Él era tan natural en su mundo de computadoras como lo era
-          en su mundo de la Montaña.</p>
-        <p>Trabajando en ese mundo ajeno, él era una persona distinta. En el bosque era una fuente tranquila de fuerza
+          en su mundo de la Montaña.</span><span class="en">He seemed so at home in the deep forest, he so clearly belonged on the Mountain, she first thought they might stay together forever. But one day she went with him to his office. She watched as he worked with computers, as he worked with other people. He was as natural a part of their computer world as he was a part of her Mountain world.</span></p>
+        <p><span class="es">Trabajando en ese mundo ajeno, él era una persona distinta. En el bosque era una fuente tranquila de fuerza
           sostenedora. Aquí era un instructor febril. Su corazón pertenecía al bosque, pero su mente, se dio cuenta,
-          pertenecía a las máquinas que construirían su visión.</p>
-        <p>Un día recibió una llamada. Una empresa le hizo una oferta que no podía rechazar. Así que se fue a
-          California, a construir grandes computadoras, a acelerar la realización de su visión.</p>
-        <p>Ella se quedó junto a la Montaña. Caminó por las nieves y observó a los pájaros volar sobre su cabeza. Sin
+          pertenecía a las máquinas que construirían su visión.</span><span class="en">Working in that alien world, he was a different person. In the woods, he was a calm source of sustaining strength. Here, he was a feverish instructor. His heart belonged to the forest, but his mind, she realized, belonged to the machines that would build his vision.</span></p>
+        <p><span class="es">Un día recibió una llamada. Una empresa le hizo una oferta que no podía rechazar. Así que se fue a
+          California, a construir grandes computadoras, a acelerar la realización de su visión.</span><span class="en">One day he received a call. A distant company gave him an offer he could not refuse. So he went to California, to build great computers, to hurry his vision to fruition.</span></p>
+        <p><span class="es">Ella se quedó junto a la Montaña. Caminó por las nieves y observó a los pájaros volar sobre su cabeza. Sin
           embargo, ningún pájaro voló tan alto que ella no pudiera subir las laderas de Rainier hasta quedar por encima
-          de ellos.</p>
-        <p>Él venía a visitarla a veces los fines de semana, y hacían excursiones con mochilas, o esquiaban a campo
+          de ellos.</span><span class="en">She stayed by the Mountain. She walked the snows, and watched the birds fly overhead. Yet no bird flew so high that she could not climb the slopes of Rainier until she stood above them.</span></p>
+        <p><span class="es">Él venía a visitarla a veces los fines de semana, y hacían excursiones con mochilas, o esquiaban a campo
           traviesa. Pero sus visitas se hicieron menos frecuentes. En su lugar escribía. Eso también fue perdiendo
-          regularidad. Una carta fue la última, aunque ninguno de los dos lo sabía entonces.</p>
-        <p>Pasó un año. Y para entonces, ya no parecía importar.</p>
+          regularidad. Una carta fue la última, aunque ninguno de los dos lo sabía entonces.</span><span class="en">He would come to visit on weekends sometimes, and they would backpack, or ski cross country. But his visits became less frequent. He would write instead. That too decreased in regularity. One letter was the last, though neither of them knew it at the time.</span></p>
+        <p><span class="es">Pasó un año. Y para entonces, ya no parecía importar.</span><span class="en">A year passed. And by then, it just didn't seem to matter.</span></p>
 
         <hr class="section-break">
 
-        <p>Ella se casó con un guardabosques, un hombre brillante y callado, de ojos oscuros y rostro curtido. Tuvieron
+        <p><span class="es">Ella se casó con un guardabosques, un hombre brillante y callado, de ojos oscuros y rostro curtido. Tuvieron
           tres niños pequeños y dos perros grandes, perros amistosos de pelaje grueso y suave. Ella amaba a todos los
           miembros de su familia casi todo el tiempo. Era el tema que nunca cambiaba aunque pensara en cosas distintas
-          en distintos momentos.</p>
-        <p>Sus hijos crecieron y se fueron.</p>
-        <p>Erich, el hermoso chow chow rojo, se durmió una noche y nunca despertó.</p>
-        <p>Una terrible avalancha, desde una ladera aparentemente segura, cayó por la Montaña y sepultó a un equipo de
-          escalada, con su esposo entre ellos.</p>
-        <p>Haikku, su poderosa y fiel akita, gimoteó en su vejez. Canturreó su disculpa por dejarla sola, y esa noche se
-          unió a Erich y a su esposo.</p>
-        <p>Ella tenía 82. Había vivido una vida larga y feliz. No tenía miedo de morir. Pero se quedó afuera en la nieve
-          y enfrentó una decisión terrible.</p>
-        <p>De la noche a la mañana, una gruesa manta de polvo blanco nuevo cayó y enterró su acera. De pie en la nieve,
+          en distintos momentos.</span><span class="en">She married a forest ranger, a bright, quiet man with dark eyes and a rugged face. They had three small children and two large dogs, friendly dogs with thick soft fur. She loved all the members of her family, almost all the time; it was the theme that never changed though she thought about different things at different times.</span></p>
+        <p><span class="es">Sus hijos crecieron y se fueron.</span><span class="en">Her children grew up and moved away.</span></p>
+        <p><span class="es">Erich, el hermoso chow chow rojo, se durmió una noche y nunca despertó.</span><span class="en">Erich, the beautiful red chou, went to sleep one night and never awakened.</span></p>
+        <p><span class="es">Una terrible avalancha, desde una ladera aparentemente segura, cayó por la Montaña y sepultó a un equipo de
+          escalada, con su esposo entre ellos.</span><span class="en">A terrible avalanche, from a seemingly safe slope, fell down the Mountain and buried a climbing team, her husband among them.</span></p>
+        <p><span class="es">Haikku, su poderosa y fiel akita, gimoteó en su vejez. Canturreó su disculpa por dejarla sola, y esa noche se
+          unió a Erich y a su esposo.</span><span class="en">Haikku, her mighty and faithful akita,whimpered in his old age. He crooned his apology for leaving her alone, and that night he joined Erich and her husband.</span></p>
+        <p><span class="es">Ella tenía 82. Había vivido una vida larga y feliz. No tenía miedo de morir. Pero se quedó afuera en la nieve
+          y enfrentó una decisión terrible.</span><span class="en">She was 82. She had lived a long and happy life. She was not afraid to die. But she stood outside in the snow and faced a terrible decision.</span></p>
+        <p><span class="es">De la noche a la mañana, una gruesa manta de polvo blanco nuevo cayó y enterró su acera. De pie en la nieve,
           miró fijamente a una bestia mecánica que sus hijos le habían regalado años antes. Representaba una elección
-          posible.</p>
-        <p>En una mano sostenía una pala. En la otra sostenía una pequeña cápsula. La cápsula era otro regalo que sus
+          posible.</span><span class="en">Overnight, a thick blanket of new white powder had fallen, burying her sidewalk. Standing in the snow, she stared at a mechanical beast her children had given her years before. It represented one possible choice.</span></p>
+        <p><span class="es">En una mano sostenía una pala. En la otra sostenía una pequeña cápsula. La cápsula era otro regalo que sus
           hijos le habían dado. Le habían suplicado que la tomara. Hasta ahora se había negado. La cápsula representaba
-          otra elección.</p>
-        <p>Le dolía la espalda. Era un dolor que a veces se expandía, lanzando picos de dolor por sus piernas. Ese día
-          el dolor era grande. No podía palear la acera.</p>
-        <p>La bestia mecánica era un robot, un quitanieves completamente automático. Podía accionar un interruptor y
+          otra elección.</span><span class="en">In one hand she held a shovel. In the other hand she held a small capsule. The capsule was another gift her children had given her. They had begged her to take it. Until now, she had refused. The capsule represented another choice.</span></p>
+        <p><span class="es">Le dolía la espalda. Era un dolor que a veces se expandía, lanzando picos de dolor por sus piernas. Ese día
+          el dolor era grande. No podía palear la acera.</span><span class="en">Her back was aching. It was an ache that sometimes expanded, shooting spikes of pain down her legs. Today the pain was great; she could not shovel the sidewalk.</span></p>
+        <p><span class="es">La bestia mecánica era un robot, un quitanieves completamente automático. Podía accionar un interruptor y
           arrojaría la nieve, pero eso parecía grotesco. El ruido sería terrible, los montones de nieve descartada sin
-          pensar quedarían como una cicatriz indecorosa hasta finales de primavera.</p>
-        <p>Abrió la mano y miró la cápsula. No era una pastilla para hacerla más joven. Eso se lo habían prometido sus
+          pensar quedarían como una cicatriz indecorosa hasta finales de primavera.</span><span class="en">The mechanical beast was a robot, a fully automatic snow remover. She could just flip a switch and it would hurl the snow away, but that seemed grotesque; the noise would be terrible, the mounds of thoughtlessly discarded snow would remain as an unseemly scar until late spring.</span></p>
+        <p><span class="es">Abrió la mano y miró la cápsula. No era una pastilla para hacerla más joven. Eso se lo habían prometido sus
           hijos. Sabían que ella rechazaría algo así de plano. Pero los millones de diminutas máquinas dentro de la
           cápsula se dispersarían por su cuerpo y repararían cada rastro de daño en sus huesos. También reconstruirían
-          su tejido muscular caído. En resumen, la pastilla curaría su espalda y haría que el dolor desapareciera.</p>
-        <p>La idea de todas esas pequeñas máquinas dentro de ella la hizo estremecerse. Pero la idea del quitanieves
-          automático la enfermaba.</p>
-        <p>Volvió a entrar a la casa para buscar un vaso de agua.</p>
-        <p>En pocos días su espalda se sintió bien. Sus músculos sanos le dieron una sensación de nuevo vigor, y el
+          su tejido muscular caído. En resumen, la pastilla curaría su espalda y haría que el dolor desapareciera.</span><span class="en">She opened her hand and looked at the capsule. It was not a pill to make her younger; that much her children had promised her. They knew she would reject such a thing out of hand. But the millions of tiny machines tucked inside the capsule would disperse throughout her body and repair every trace of damage to her bones. They would also rebuild her sagging muscle tissue. In short, the pill would cure her back and make the pain go away.</span></p>
+        <p><span class="es">La idea de todas esas pequeñas máquinas dentro de ella la hizo estremecerse. Pero la idea del quitanieves
+          automático la enfermaba.</span><span class="en">The thought of all those little machines inside her made her shudder. But the thought of the automatic snow remover made her sick.</span></p>
+        <p><span class="es">Volvió a entrar a la casa para buscar un vaso de agua.</span><span class="en">She went back inside the house to get a glass of water.</span></p>
+        <p><span class="es">En pocos días su espalda se sintió bien. Sus músculos sanos le dieron una sensación de nuevo vigor, y el
           vigor dio lugar a un anhelo de salir y hacer cosas que no había considerado durante muchos años. Comenzó a
           subir la Montaña, pero fue demasiado para ella. Resopló y tuvo que volver a casa. Molesta, fue a la farmacia y
           compró otra cápsula, una que restauraba su sistema circulatorio y sus pulmones. Su siguiente ataque a la
           Montaña la llevó tan lejos como se atrevió, y el latido constante de su corazón la impulsó a seguir a pesar de
-          la nieve desmoronada.</p>
-        <p>Pero estaba cada vez más olvidadiza. Las cosas que habían ocurrido años antes estaban claras en su mente,
+          la nieve desmoronada.</span><span class="en">In a few days her back felt fine; her healthy muscles gave her a feeling of new vigor, and the vigor gave rise to a yearning to go out and do things that she had not considered for many years. She started to climb the Mountain, but it was too much for her: she huffed and puffed and had to go home. Annoyed, she went to the drug store and bought another capsule, one that restored her circulatory system and her lungs. Her next assault on the Mountain carried her as far as she dared, and the steady beat of her heart urged her to go on despite the crumbling snow.</span></p>
+        <p><span class="es">Pero estaba cada vez más olvidadiza. Las cosas que habían ocurrido años antes estaban claras en su mente,
           pero no podía recordar lo que necesitaba en la tienda. Un día olvidó el número de teléfono de su hija, y
           descubrió que había olvidado dónde había puesto la guía telefónica. La tienda tenía otra cápsula que ajustaba
           su circuitería neuronal. Después de tomarla, descubrió un efecto secundario que nadie se había molestado en
           mencionar. La pastilla no solo volvió eficaz su memoria. En cambio, volvió perfecta su memoria. Con un vistazo
           breve a las páginas de la guía telefónica, descubrió que ya no la necesitaba. Se encogió de hombros y siguió
-          con su vida.</p>
-        <p>Un día, mientras esquiaba por las laderas, un extraño pasó en sentido contrario. Era alto y rudo, y le
+          con su vida.</span><span class="en">But she was getting increasingly forgetful. Things that had happened years earlier were clear in her mind, but she could not remember what she needed at the store. One day she forgot her daughter's telephone number, and found that she had forgotten where she had misplaced the phone book. The store had another capsule that tightened up her neural circuitry. After taking it, she discovered a side effect no one had bothered to mention. The pill did not merely make her memory effective again; rather, it made her memory perfect. With a brief glance through the pages of the phone book, she found she no longer needed it. She shrugged and continued on with her life.</span></p>
+        <p><span class="es">Un día, mientras esquiaba por las laderas, un extraño pasó en sentido contrario. Era alto y rudo, y le
           recordó a su esposo. Le molestó que ni siquiera la mirara, aunque ella le había sonreído. Cuando se miró en el
           espejo al volver a casa, entendió por qué. Tenía 95 años, se veía como una anciana. Era ridículo, por suerte
-          era fácil de arreglar.</p>
-        <p>Cuando cumplió 115 estabilizó su apariencia física. A partir de entonces, siempre parecía tener unos 32.</p>
+          era fácil de arreglar.</span><span class="en">One day as she skied across the slopes, a stranger passed her going the other way. He was tall and rugged, and he reminded her of her husband. She was annoyed that he did not even look at her, though she had smiled at him; when she looked in the mirror upon returning home, she understood why. She was 95 years old; she looked like an old woman. It was ridiculous; fortunately it was easily fixed.</span></p>
+        <p><span class="es">Cuando cumplió 115 estabilizó su apariencia física. A partir de entonces, siempre parecía tener unos 32.</span><span class="en">When she turned 115 she stabilized her physical appearance. Thereafter, she always appeared to be about the age of 32.</span></p>
 
         <hr class="section-break">
 
-        <p>Todavía poseía la casita acogedora que consideraba su hogar. Pero dormía más a menudo en la tienda que
+        <p><span class="es">Todavía poseía la casita acogedora que consideraba su hogar. Pero dormía más a menudo en la tienda que
           llevaba en su mochila. Construida con equipamiento nanofabricado, la mochila era más ligera que cualquier otra que
           hubiera tenido, y sin embargo era increíblemente resistente. Todas sus herramientas hacían proezas que antes
           habría considerado milagrosas, y ninguna pesaba más de medio kilo. Vivía con gran comodidad a pesar de los
-          rigores inherentes de las laderas cubiertas de glaciares.</p>
-        <p>Un día, subía por el antiguo sendero desde Camp Muir hacia la cumbre, cruzando las crestas para llegar a
+          rigores inherentes de las laderas cubiertas de glaciares.</span><span class="en">She still owned the snug little house she thought of as home. But she slept more often in the tent she carried in her pack. Built with nanomachined equipment, the pack was lighter than any other she had ever owned, yet it was impossibly strong. All her tools performed feats she would once have thought miraculous, and none weighed more than a pound. She lived in great comfort despite the inherent rigors of the glacier-crusted slopes.</span></p>
+        <p><span class="es">Un día, subía por el antiguo sendero desde Camp Muir hacia la cumbre, cruzando las crestas para llegar a
           Disappointment Cleaver. Al pasar la última cresta hacia la amplia planicie frente al Cleaver, vio a un hombre
           de pie, solo. Miraba las empinadas lenguas de hielo por encima. Dio un paso atrás, y otro, y se volvió para
-          caminar con prisa hacia ella. Ella siguió adelante para pasar a su lado, pero él gritó, "¡Alto!"</p>
-        <p>Ella obedeció el miedo en su voz. Él hizo una pausa, y sus ojos se desenfocaron por un momento. Señaló a la
+          caminar con prisa hacia ella. Ella siguió adelante para pasar a su lado, pero él gritó, "¡Alto!"</span><span class="en">One day, she was climbing along the ancient trail from Camp Muir toward the summit, crossing the ridges to reach Disappointment Cleaver. As she stepped over the last ridge to the broad flat in front of the Cleaver, she saw a man standing alone. He was staring up the steep ice flows overhead. He stepped backward, and backward, and turned to walk briskly in her direction. She continued forward to pass him, but he cried out, "Stop!"</span></p>
+        <p><span class="es">Ella obedeció el miedo en su voz. Él hizo una pausa, y sus ojos se desenfocaron por un momento. Señaló a la
           derecha de la cresta que ella acababa de cruzar, una aleta de roca que se elevaba rápidamente a lo largo del
           borde de la montaña. "Allí arriba", dijo, "rápido". Se lanzó a correr con torpeza sobre nieve que a veces se
-          hundía bajo su paso pesado. Ella lo siguió, con la adrenalina subiendo junto con su desconcierto.</p>
-        <p>Un <em>¡crac!</em> masivo llenó el aire. Muy por encima del Cleaver, una cornisa de hielo sobresaliente se
+          hundía bajo su paso pesado. Ella lo siguió, con la adrenalina subiendo junto con su desconcierto.</span><span class="en">She obeyed the fear in his voice. He paused, and his eyes came unfocussed for a moment. He pointed to the right of the ridge she had just crossed, a fin of rock rising rapidly along the mountain's edge. "Up there," he said, "Quickly." He broke into a hobbling run across snow that sometimes collapsed under his heavy step. She followed, her adrenalin rising with her bewilderment.</span></p>
+        <p><span class="es">Un <em>¡crac!</em> masivo llenó el aire. Muy por encima del Cleaver, una cornisa de hielo sobresaliente se
           desprendió y cayó con el movimiento acrobático y grácil de una voltereta hacia la planicie donde habían estado
           parados. La masa calificaba como una colina grande en sí misma. Al caer se rompió en mil pedazos enormes.
           Algunos se trituraron entre sí hasta volverse polvo, mientras otros rebotaron en la planicie, bajaron otro
-          precipicio de varios miles de pies y volvieron a estrellarse en una explosión de sonido más apagada.</p>
-        <p>La caída de hielo era un acontecimiento extraordinario de presenciar bajo cualquier circunstancia. La
-          estrechez del escape a la muerte que la acompañaba cubrió la experiencia con un asombro religioso.</p>
-        <p>Ella oyó al hombre jadear a su lado. Se volvió para estudiarlo con más cuidado.</p>
-        <p>No era notable para un montañista. Su forma delgada sostenía largas correas de músculo duro, y el sol
+          precipicio de varios miles de pies y volvieron a estrellarse en una explosión de sonido más apagada.</span><span class="en">A massive <em>Crack</em>! filled the air. Far above the Cleaver, an overhanging ledge of ice snapped off and fell with an acrobat's graceful tumbling motion to the flat where they had just been standing. The mass qualified as a large hill in its own right. When it landed it broke into a thousand huge pieces. Some of the pieces ground each other to powder, while others bounced off the flat, down another precipice of several thousand feet, to crash again in a duller explosion of sound.</span></p>
+        <p><span class="es">La caída de hielo era un acontecimiento extraordinario de presenciar bajo cualquier circunstancia. La
+          estrechez del escape a la muerte que la acompañaba cubrió la experiencia con un asombro religioso.</span><span class="en">The ice fall was an extraordinary event to witness under any circumstance; the narrowness of escape from death that accompanied it overlayed the experience with a religious awe.</span></p>
+        <p><span class="es">Ella oyó al hombre jadear a su lado. Se volvió para estudiarlo con más cuidado.</span><span class="en">She heard the man panting next to her. She turned to study him more carefully.</span></p>
+        <p><span class="es">No era notable para un montañista. Su forma delgada sostenía largas correas de músculo duro, y el sol
           reflejado en los glaciares le había dado un bronceado color café. Luego notó la banda de sudor en su cabeza.
           No era solo una banda de sudor. Podía ver por las marcas de estiramiento que una serie de discos delgados
           corría dentro de las capas de algodón. Se dio cuenta de que llevaba una <em>nection</em>, una cinta para
-          conectar su mente con computadoras distantes.</p>
-        <p>Ella retrocedió un poco. Él sonrió y se tocó la frente. "No te enfades", dijo. "Mi cinta acaba de salvarte la
-          vida".</p>
-        <p>Ella tartamudeó. "No estaba enfadada", dijo, aunque sabía que él sabía que mentía. "Es que nunca había visto
-          una tan de cerca".</p>
-        <p>Era cierto. Sus nietos le habían dicho que las nections eran bastante comunes en el espacio, pero en la
+          conectar su mente con computadoras distantes.</span><span class="en">He was unremarkable for a mountaineer; his lean form supported long straps of hard muscle, and the reflected sun from the glaciers had given him a coffee-colored tan. Then she noticed the sweatband across his head. It was not just a sweatband: she could see from the stretch marks that a series of thin disks ran across within the cotton layers. She realized he was wearing a <em>nection</em>, a headband to connect his mind with distant computers.</span></p>
+        <p><span class="es">Ella retrocedió un poco. Él sonrió y se tocó la frente. "No te enfades", dijo. "Mi cinta acaba de salvarte la
+          vida".</span><span class="en">She recoiled slightly; he smiled and touched his forehead. "Don't be too upset," he said, "my headband just saved your life."</span></p>
+        <p><span class="es">Ella tartamudeó. "No estaba enfadada", dijo, aunque sabía que él sabía que mentía. "Es que nunca había visto
+          una tan de cerca".</span><span class="en">She stuttered. "I wasn't upset," she said, though she knew that he knew she was lying. "I've just never seen one up close before."</span></p>
+        <p><span class="es">Era cierto. Sus nietos le habían dicho que las nections eran bastante comunes en el espacio, pero en la
           Tierra eran casi ilegales. Socialmente no se aceptaba llevar una, y cuando la policía veía a una persona con
-          nection usaba cualquier excusa para fastidiarla. Pero no había leyes específicas en su contra.</p>
-        <p>Cuando sus nietos le habían dicho que <em>ellos</em> usaban cintas todo el tiempo, ella solo intentó
+          nection usaba cualquier excusa para fastidiarla. Pero no había leyes específicas en su contra.</span><span class="en">It was true. Her grandchildren told her that nections were quite common in space, but on Earth they were almost illegal. It was socially unacceptable to wear one, and when the police saw a nection-wearing person they would use any excuse to hassle the individual. But there were no specific laws against them.</span></p>
+        <p><span class="es">Cuando sus nietos le habían dicho que <em>ellos</em> usaban cintas todo el tiempo, ella solo intentó
           disuadirlos brevemente. Pasó más tiempo escuchando sus descripciones de las capacidades de la cinta. La
           descripción de sus nietos sonaba bastante distinta de la lista de peligros que solían describir en las
-          noticias.</p>
-        <p>El hombre que había salvado su vida la observó unos segundos más, y luego al parecer se decidió. "De verdad
+          noticias.</span><span class="en">When her grandchildren had told her that <em>they</em> wore headbands all the time, she had tried only briefly to dissuade them; she had spent more time listening to their descriptions of the headband's capabilities. Her grandchildren's description sounded considerably different from the list of dangers usually described on the news.</span></p>
+        <p><span class="es">El hombre que había salvado su vida la observó unos segundos más, y luego al parecer se decidió. "De verdad
           deberías conseguir una tú también. ¿Te das cuenta de lo peligrosa que es esta montaña? Y se está volviendo más
-          peligrosa cada año".</p>
-        <p>Ella empezó a decirle que sabía perfectamente lo peligrosa que era, y luego se detuvo, recordando los años,
-          dándose cuenta de que <em>había</em> empeorado poco a poco cada año.</p>
-        <p>"Con mi cinta, veo las cosas mejor", explicó. "Confieso que no entiendo bien por qué. Quiero decir, no afecta
+          peligrosa cada año".</span><span class="en">The man who had saved her life watched her for several more seconds, then apparently made up his mind about something. "You really ought to get one yourself, you know. Do you realize how dangerous this mountain is? And it's getting more dangerous every year."</span></p>
+        <p><span class="es">Ella empezó a decirle que sabía perfectamente lo peligrosa que era, y luego se detuvo, recordando los años,
+          dándose cuenta de que <em>había</em> empeorado poco a poco cada año.</span><span class="en">She started to tell him that she knew perfectly well how dangerous it was--then stopped, thinking back over the years, realizing that it <em>had</em>, by gradual degrees, grown worse every year.</span></p>
+        <p><span class="es">"Con mi cinta, veo las cosas mejor", explicó. "Confieso que no entiendo bien por qué. Quiero decir, no afecta
           mi vista. Pero noto más cosas de lo que veo, y puedo obtener una visión de lo que significan esas cosas extra,
-          como cómo caería ese trozo de hielo y más o menos cuándo".</p>
-        <p>Ella asintió con la cabeza, pero su mente estaba distraída. La Montaña <em>estaba</em> cambiando. La Montaña
+          como cómo caería ese trozo de hielo y más o menos cuándo".</span><span class="en">"With my headband, I see things better," he explained. "I confess I don't understand why very well--I mean, it doesn't affect my eyesight. But I notice more things about what I see, and I can get a view of what the extra things mean--like how that piece of ice would fall, and more or less when."</span></p>
+        <p><span class="es">Ella asintió con la cabeza, pero su mente estaba distraída. La Montaña <em>estaba</em> cambiando. La Montaña
           <em>estaba</em> volviéndose más peligrosa. La rápida alternancia de días claros y soleados con días frescos y
           brumosos se había vuelto más intensa en el curso de los últimos 50 años, lo que llevaba a más capas débiles y
-          fallas de hielo. En realidad no lo había notado hasta ahora.
-        </p>
-        <p>Entonces el impacto completo de las palabras de su salvador la golpeó. Se llevó las manos a la garganta
+          fallas de hielo. En realidad no lo había notado hasta ahora.</span><span class="en">She nodded her head, but her mind was distracted. The Mountain <em>was</em> changing! The Mountain <em>was</em> getting more dangerous! The rapid alternation of clear, sunny days with cool, misty days had become more vigorous over the course of the last 50 years, leading to more weak layers and ice faults. She had never really noticed until now.</span></p>
+        <p><span class="es">Entonces el impacto completo de las palabras de su salvador la golpeó. Se llevó las manos a la garganta
           mientras pensaba en cómo había muerto su esposo. Se dio cuenta de que, con una nection, su muerte podría
-          haberse evitado.</p>
-        <p>Ella sonrió al hombre. Hablaron. Lo invitó a cenar en Alexander's.</p>
-        <p>Cuando regresó a casa, comenzó a buscar en catálogos de equipos electrónicos. Si compraba una por correo y la
-          usaba solo al hacer caminatas, no había razón para que ninguno de sus amigos se enterara.</p>
+          haberse evitado.</span><span class="en">Then the full impact of her savior's words struck her--she held her hands to her throat as she considered how her husband had died. She realized that, with a nection, his death could have been prevented.</span></p>
+        <p><span class="es">Ella sonrió al hombre. Hablaron. Lo invitó a cenar en Alexander's.</span><span class="en">She smiled at the man. They talked; she invited him to dinner at Alexander's.</span></p>
+        <p><span class="es">Cuando regresó a casa, comenzó a buscar en catálogos de equipos electrónicos. Si compraba una por correo y la
+          usaba solo al hacer caminatas, no había razón para que ninguno de sus amigos se enterara.</span><span class="en">When she returned home, she started searching through electronic equipment catalogs. If she bought one mail order and wore it only while hiking, there was no reason for any of her friends ever to know.</span></p>
 
         <hr class="section-break">
 
-        <p>Era una cinta blanca simple, de algodón suave y absorbente. Se la puso en la cabeza esperando sentir algo
+        <p><span class="es">Era una cinta blanca simple, de algodón suave y absorbente. Se la puso en la cabeza esperando sentir algo
           especial, pero no pasó nada. Comenzó a limpiar la casa, todavía esperando que pasara algo. Nunca pasó. Al
-          final se sentó y leyó las instrucciones que venían con la cinta.</p>
-        <p>Las instrucciones le decían que empezara con una solicitud simple, y que se visualizara proyectando la
+          final se sentó y leyó las instrucciones que venían con la cinta.</span><span class="en">It was a simple white headband, soft absorbent cotton. She slipped it on her head, expecting to feel something special, but nothing happened. She started to clean the house, still waiting for something to happen. It never did. Eventually she sat down and read the instructions that had come with the headband.</span></p>
+        <p><span class="es">Las instrucciones le decían que empezara con una solicitud simple, y que se visualizara proyectando la
           solicitud en la frente. Proyectó la solicitud, "¿2 por 2?", justo encima de los ojos. Parecía que no pasaba
-          nada. Ella sabía que la respuesta era 4.</p>
-        <p>Lo intentó de nuevo, y esta vez notó una especie de eco. Sabía que la respuesta era 4, pero el pensamiento de
+          nada. Ella sabía que la respuesta era 4.</span><span class="en">The instructions told her to start with a simple request, and to visualize herself projecting the request at her forehead. She projected the request, "2 times 2?" just above her eyes. Nothing seemed to happen. She knew the answer was 4.</span></p>
+        <p><span class="es">Lo intentó de nuevo, y esta vez notó una especie de eco. Sabía que la respuesta era 4, pero el pensamiento de
           la respuesta le llegó dos veces, en rápida sucesión. La siguiente vez que lo intentó, notó que el eco parecía
-          venir de su frente.</p>
-        <p>Luego proyectó una solicitud para dividir 12345 entre 6789. No sabía la respuesta, pero espera, claro que sí,
+          venir de su frente.</span><span class="en">She tried again, and this time she noticed a kind of echo--she knew the answer was 4, but the thought of the answer came to her twice, in rapid succession. The next time she tried it, she noticed that the echo seemed to come from her forehead.</span></p>
+        <p><span class="es">Luego proyectó una solicitud para dividir 12345 entre 6789. No sabía la respuesta, pero espera, claro que sí,
           era 1.81838. Por supuesto, no conocía la respuesta con tantos decimales, pero al pensarlo se dio cuenta de que
           el siguiente dígito era 2, el siguiente era 6, y luego, a un ritmo acelerado, más dígitos rugieron desde su
           memoria. Ella negó con la cabeza, y el flujo se detuvo. Se quitó la cinta, temblando un poco. No lo intentó de
-          nuevo hasta el día siguiente.</p>
-        <p>Una semana después, caminó más allá de Camp Schurman y miró la ladera. Proyectó su visión de la ladera a
-          través de la frente para estudiar los patrones de nieve y hielo.</p>
-        <p>Realmente se veía distinto cuando lo miraba de ese modo. Tuvo una sensación similar a la de mirar los bordes
+          nuevo hasta el día siguiente.</span><span class="en">Next she projected a request to divide 12345 by 6789. She didn't know the answer--but wait, of course she did, it was 1.81838. Of course, she didn't know the answer to many decimal places--but as she thought about it, she realized the next digit was 2, the next was 6, then at an accelerating pace more digits roared from her memory--she shook her head, and the stream stopped. She took the headband off, shaking a little. She didn't try it again until the next day.</span></p>
+        <p><span class="es">Una semana después, caminó más allá de Camp Schurman y miró la ladera. Proyectó su visión de la ladera a
+          través de la frente para estudiar los patrones de nieve y hielo.</span><span class="en">A week later, she hiked past Camp Schurman and peered up the slope. She projected her view of the slope through her forehead to study the patterns of snow and ice.</span></p>
+        <p><span class="es">Realmente se veía distinto cuando lo miraba de ese modo. Tuvo una sensación similar a la de mirar los bordes
           de un cubo en una hoja de papel. En un momento, las líneas formaban un cubo con la parte superior visible. En
           el siguiente momento era un cubo alterno con la parte inferior expuesta. Podía girar el cubo, o al menos la
-          forma en que lo miraba, a voluntad.</p>
-        <p>De la misma manera ahora podía ver patrones de deslizamiento en las capas de cristales de hielo. Luego giraba
-          la imagen y era solo nieve, la hermosa obra de la naturaleza que había amado toda su vida.</p>
-        <p>Por un momento deseó poder verlo también desde arriba, y el corazón le dio un salto cuando el deseo se hizo
+          forma en que lo miraba, a voluntad.</span><span class="en">It did indeed look different as she looked at it this way. She had a sensation similar to that of looking at the edges of a cube on a sheet of paper: at one moment, the lines formed a cube with the top showing. The next moment it was an alternate cube with the bottom exposed. She could flip the cube, or at least the way she looked at it, at will.</span></p>
+        <p><span class="es">De la misma manera ahora podía ver patrones de deslizamiento en las capas de cristales de hielo. Luego giraba
+          la imagen y era solo nieve, la hermosa obra de la naturaleza que había amado toda su vida.</span><span class="en">In the same manner she could now see patterns of slippage in the layers of ice crystals; then she would flip the image and it was just snow, the beautiful work of nature that she had loved all her life.</span></p>
+        <p><span class="es">Por un momento deseó poder verlo también desde arriba, y el corazón le dio un salto cuando el deseo se hizo
           realidad. De pronto estaba mirando desde una gran altura. Vio las largas curvas de sombras sobre la nieve
           desde lo alto, y vio la sombra más corta pero distintiva de una mujer con mochila de pie en el campo de nieve.
           Tiró la cinta al suelo incluso cuando se dio cuenta de lo que acababa de ver, una vista de la Montaña desde un
-          satélite que pasaba.</p>
-        <p>Miró fijamente la cinta blanca, casi invisible en la nieve blanca, durante mucho tiempo. Sintió desagrado,
+          satélite que pasaba.</span><span class="en">For a moment she wished she could see it from above as well--and her heart skipped a beat as the wish came true. Suddenly she was looking down from a great height. She saw the long curves of shadows across the snow from high above, and she saw the shorter but distinctive shadow of a woman with a pack standing on the snow field. She threw the headband to the ground even as she realized what she had just seen: a view of the Mountain from a satellite passing by.</span></p>
+        <p><span class="es">Miró fijamente la cinta blanca, casi invisible en la nieve blanca, durante mucho tiempo. Sintió desagrado,
           asombro, miedo y curiosidad. La curiosidad finalmente ganó. Se volvió a poner la cinta. Parpadeó el ojo de su
           mente, parpadeando de sus propios ojos a los ojos del satélite y de regreso, un instante de prueba de la nueva
-          sensación.</p>
-        <p>El vértigo la golpeó. Aunque el satélite era interesante, no era cómodo. No miraría el mundo desde la altura
+          sensación.</span><span class="en">She stared at the white headband, almost invisible in the white snow, for a long time. She felt distaste, wonder, fear, and curiousity. Curiousity finally won out. She twisted the headband back on. She blinked her mind's eye, blinking from her own eyes to the satellite's eyes and back again, a moment's taste of the new sensation.</span></p>
+        <p><span class="es">El vértigo la golpeó. Aunque el satélite era interesante, no era cómodo. No miraría el mundo desde la altura
           de un satélite a menudo, pero era otra forma de visión que podía salvar vidas. Desde lejos era fácil notar una
           depresión en la nieve que podía señalar una grieta subyacente, aunque la depresión era demasiado superficial
           para verse de cerca. Tales grietas eran invisibles hasta que uno caía en un largo salto mortal hacia el
-          corazón de la Montaña.</p>
-        <p>La cinta era tan claramente una herramienta que salvaba vidas. ¿Por qué la gente estaba tan en contra? ¿Por
-          qué algunos de sus amigos apoyaban leyes que la prohibían?</p>
-        <p>No hacía ninguna diferencia. No la necesitaba excepto aquí en la Montaña.</p>
+          corazón de la Montaña.</span><span class="en">Vertigo struck her. Though the satellite was interesting, it was not comfortable. She would not look at the world from a satellite's height often, but it was yet another life-saving form of sight: from a distance, it was easy to spot a depression in the snow that might signal an underlying crevasse, even though the depression was too shallow to be seen close up. Such crevasses were invisible until one stepped through to a long fatal plunge to the Mountain's heart.</span></p>
+        <p><span class="es">La cinta era tan claramente una herramienta que salvaba vidas. ¿Por qué la gente estaba tan en contra? ¿Por
+          qué algunos de sus amigos apoyaban leyes que la prohibían?</span><span class="en">The headband was so clearly a life saving tool, why were people so set against it? Why did some of her friends support laws proscribing it?</span></p>
+        <p><span class="es">No hacía ninguna diferencia. No la necesitaba excepto aquí en la Montaña.</span><span class="en">It didn't make any difference; she had no need of it except here on the Mountain.</span></p>
 
         <hr class="section-break">
 
-        <p>Aunque al principio la pelea por el estatus legal de la cinta no le interesaba, se convirtió en un obstáculo
+        <p><span class="es">Aunque al principio la pelea por el estatus legal de la cinta no le interesaba, se convirtió en un obstáculo
           creciente para su vida. La cinta era bastante útil de muchas maneras. Aunque cada uso individual era trivial,
           en conjunto cambiaban cualitativamente su vida. Dejó de llevar la chequera. Todo estaba en su cabeza, todas
           las transacciones, el saldo actual, e incluso los cargos pendientes. Cuando se despertaba por la mañana
-          podía encender la cafetera si quería, sin levantarse.</p>
-        <p>Usaba la cinta mientras hacía caminatas y mientras trabajaba en su casa, pero no se atrevía a usarla en el
+          podía encender la cafetera si quería, sin levantarse.</span><span class="en">Though the fight over the headband's legal status did not at first interest her, it became an increasing impediment to her life. The headband was quite useful in a number of ways; though each individual use was trivial, in sum they qualitatively effected her life. She stopped tracking her checkbook; it was all in her head, all the transactions, the current balance, and even the encumbrances. When she awoke in the morning she could turn on the coffee pot if she wanted to, without getting up.</span></p>
+        <p><span class="es">Usaba la cinta mientras hacía caminatas y mientras trabajaba en su casa, pero no se atrevía a usarla en el
           trabajo. Un día un ecólogo le hizo una pregunta sobre las marmotas que habitaban el parque. Se enojó al tener
           que buscar manualmente en los sistemas informáticos tratando de encontrar la respuesta, porque sabía que la
           respuesta estaba disponible con solo pensar en ella si podía usar su cinta. Esa noche se detuvo en la farmacia
-          y compró dos cápsulas más.</p>
-        <p>Se tragó una. Esta cápsula era más desagradable que las otras que había tomado en años anteriores. Antes, las
+          y compró dos cápsulas más.</span><span class="en">She wore her headband while hiking, and while working around her house; but she dared not wear it to work. One day an ecologist asked her a question about the marmots that inhabited the park. She grew angry as she had to manually root through the computer systems trying to find the answer, for she knew that the answer was available for the mere thinking about it if she could wear her headband. That night she stopped at the drugstore and bought two more capsules.</span></p>
+        <p><span class="es">Se tragó una. Esta cápsula era más desagradable que las otras que había tomado en años anteriores. Antes, las
           nanomáquinas que había tragado habían pasado por su cuerpo, arreglando lo que no estaba bien, y luego se
-          habían expulsado. Pero las máquinas de esta construirían, justo bajo su frente, una nection subcutánea.</p>
-        <p>La otra cápsula disolvería la nection si decidía que no le gustaba.</p>
-        <p>Cuando se despertó a la mañana siguiente tenía mucha hambre. Se tocó la frente, pero no había nada allí.</p>
-        <p>A la mañana siguiente se tocó la frente otra vez, y era diferente. Se miró en el espejo. Con la visión doble
+          habían expulsado. Pero las máquinas de esta construirían, justo bajo su frente, una nection subcutánea.</span><span class="en">She swallowed one. This capsule was nastier than the others she had taken in earlier years. Before, the nanomachines she had swallowed had gone through her body, fixing what was not right, then flushing themselves out again. But the machines in this one would build, just under her forehead, a subcutaneous nection.</span></p>
+        <p><span class="es">La otra cápsula disolvería la nection si decidía que no le gustaba.</span><span class="en">The other capsule would dissolve the nection away if she decided she didn't like it.</span></p>
+        <p><span class="es">Cuando se despertó a la mañana siguiente tenía mucha hambre. Se tocó la frente, pero no había nada allí.</span><span class="en">When she awoke the next morning she was very hungry. She felt her forehead, but there wasn't anything there.</span></p>
+        <p><span class="es">A la mañana siguiente se tocó la frente otra vez, y era diferente. Se miró en el espejo. Con la visión doble
           parpadeante de sus ojos y el análisis desde su frente, podía ver por un lado que se veía igual que siempre.
           Sin embargo, por otro lado, había curvas allí que no había notado antes. Cuando llegó al trabajo, un hombre la
-          felicitó por su nuevo color de cabello.</p>
-        <p>Nadie más comentó nada hasta que llegó su jefe. Cuando entró al área de recepción y la miró, se le iluminaron
-          los ojos y se rió.</p>
-        <p>Ella lo miró con leve molestia. Luego notó, otra vez con su visión doble, que había curvas muy suaves en
-          <em>su</em> frente.
-        </p>
-        <p>Él se acercó y se puso un dedo en los labios. "Escucha", dijo.</p>
-        <p>Ella escuchó. Al concentrarse, oyó suaves murmullos de fondo. Al enfocarse en los murmullos, se hicieron más
+          felicitó por su nuevo color de cabello.</span><span class="en">The next morning she felt her forehead again, and it was ... different. She looked in the mirror; with the flickering double vision of her eyes and the analysis from her forehead, she could see on the one hand that she looked the same as always. Yet on the other hand, there were curves there she hadn't noticed before. When she went in to work, one man complimented her on her new hair color.</span></p>
+        <p><span class="es">Nadie más comentó nada hasta que llegó su jefe. Cuando entró al área de recepción y la miró, se le iluminaron
+          los ojos y se rió.</span><span class="en">No one else commented until her boss arrived. When he entered the reception area and looked at her, his eyes lit up, and he laughed.</span></p>
+        <p><span class="es">Ella lo miró con leve molestia. Luego notó, otra vez con su visión doble, que había curvas muy suaves en
+          <em>su</em> frente.</span><span class="en">She looked at him with mild annoyance. Then she noticed, again with her double vision, that there were very shallow curves in <em>his</em> forehead.</span></p>
+        <p><span class="es">Él se acercó y se puso un dedo en los labios. "Escucha", dijo.</span><span class="en">He came up close, and put his finger to his lips. "Listen," he said.</span></p>
+        <p><span class="es">Ella escuchó. Al concentrarse, oyó suaves murmullos de fondo. Al enfocarse en los murmullos, se hicieron más
           fuertes, hasta que pudo oír que él estaba hablando, pero no con sus labios, no por sus oídos. Lo oyó por la
           frente. "Bienvenida a la banda", dijo. "¿No es muy divertido unirse a una rebelión? No me he divertido tanto
-          desde que era adolescente".</p>
-        <p>Ambos estallaron en carcajadas. Todos los demás en la sala se preguntaban de qué se trataba la broma.</p>
+          desde que era adolescente".</span><span class="en">She listened. As she concentrated, she heard heard soft murmurs in the background; as she focussed on the murmurs, they grew louder, until she could hear that he was speaking--but not with his lips, not through her ears. She heard him through her forehead. "Welcome to the gang," he said. "Isn't it great fun, joining a rebellion? I haven't had this much fun since I was a teenager."</span></p>
+        <p><span class="es">Ambos estallaron en carcajadas. Todos los demás en la sala se preguntaban de qué se trataba la broma.</span><span class="en">They both broke into laughter. Everyone else in the room wondered what the joke was about.</span></p>
 
         <hr class="section-break">
 
-        <p>Ahora hablaba con sus hijos y con los hijos de sus hijos más a menudo. Aunque estaban dispersos de Marte a
+        <p><span class="es">Ahora hablaba con sus hijos y con los hijos de sus hijos más a menudo. Aunque estaban dispersos de Marte a
           Mercurio, estaban a solo un pensamiento de distancia. Le sorprendió darse cuenta de que el proceso simple de
           marcar el número, y la incertidumbre de si lograría o no comunicarse, a menudo la habían disuadido de llamar
-          aunque el costo había caído en años recientes hasta ser prácticamente gratis.</p>
-        <p>Se sentía cada vez más cómoda con sus nietos lejanos. A través de enlaces visuales como el que tenía con el
+          aunque el costo había caído en años recientes hasta ser prácticamente gratis.</span><span class="en">She talked to her children, and her children's children, more often now; though they were spread from Mars to Mercury, they were but a thought away. It surprised her to realize that the simple process of dialing the number, and the uncertainty of whether or not she would get through, had often put her off from calling even though the cost had plummeted in recent years till it was virtually free.</span></p>
+        <p><span class="es">Se sentía cada vez más cómoda con sus nietos lejanos. A través de enlaces visuales como el que tenía con el
           satélite, la llevaban de paseo por la impresionante desnuda belleza de su planeta hogar, Marte. Cuando le
-          pidieron por centésima vez que fuera a visitarlos, ella aceptó.</p>
-        <p>En su juventud había viajado en tren por el país. Esperaba que el viaje espacial fuera igual, pero no lo fue.
+          pidieron por centésima vez que fuera a visitarlos, ella aceptó.</span><span class="en">She became increasingly comfortable with her distant grandchildren. Through visual links like the one she had with the satellite, they took her on outings into the stunning naked beauty of their home planet Mars. When they asked her for the hundredth time to come for a visit, she agreed.</span></p>
+        <p><span class="es">En su juventud había viajado en tren por el país. Esperaba que el viaje espacial fuera igual, pero no lo fue.
           La nave era mucho más cómoda que cualquier otro vehículo en el que hubiera viajado. Era más cómoda que su
-          propia casa, aunque todavía no le gustaba tanto.</p>
-        <p>Cuando llegó, descubrió que le encantaba caminar por las llanuras y los cañones de un planeta desconocido.
+          propia casa, aunque todavía no le gustaba tanto.</span><span class="en">In her youth she had ridden trains across the country. She had expected the space trip to be the same, but it was not. The ship was far more comfortable than any other vehicle she had ridden; it was more comfortable than her own home, though she still did not quite like it as well.</span></p>
+        <p><span class="es">Cuando llegó, descubrió que le encantaba caminar por las llanuras y los cañones de un planeta desconocido.
           Caminó entre bosques de árboles alienígenas, relacionados con los árboles terrestres de los que habían sido
           moldeados, y aun así diferentes. Comparar las tierras de Marte con las de la Tierra le recordó ver el sol
           ponerse dos días seguidos. Aunque el resultado era el mismo, el proceso era diferente de todos modos. La
-          extraña naturaleza le brindó nuevos tipos de soledad.</p>
-        <p>Conoció por primera vez a los hijos de sus nietos. Antes, esos niños habían representado una complicación
+          extraña naturaleza le brindó nuevos tipos de soledad.</span><span class="en">When she arrived, she found she loved to hike across the plains and the canyons of an unknown planet. She walked amid forests of alien trees, related to the Earthly trees from which they had been shaped, yet different. Comparing the lands of Mars to the lands of Earth reminded her of watching the sun set two days in a row: though the outcome was the same, the process was nevertheless different. The strange wilderness yielded for her new kinds of solitude.</span></p>
+        <p><span class="es">Conoció por primera vez a los hijos de sus nietos. Antes, esos niños habían representado una complicación
           silenciosa e incómoda en sus pensamientos sobre Marte. Eran <em>diferentes</em>. Eran de su sangre, pero no al
-          modo de los niños normales. Habían sido modificados genéticamente.</p>
-        <p>Sus nietos los habían diseñado, dándoles el cuidado amoroso de un padre mucho antes de que fueran concebidos.
+          modo de los niños normales. Habían sido modificados genéticamente.</span><span class="en">She came to know her grandchildren's children for the first time. Before, these children had represented an unspoken, uncomfortable complication in her thoughts of Mars. They were <em>different</em>. They were of her blood, but not in the manner of normal children. They had been genetically engineered.</span></p>
+        <p><span class="es">Sus nietos los habían diseñado, dándoles el cuidado amoroso de un padre mucho antes de que fueran concebidos.
           Solo las mejores características de su familia se les habían transmitido. Ella no sabía cómo habían sido
           elegidos los otros aspectos de esos niños radiantemente felices. Eran muy diferentes de ella, pero no del todo
-          alienígenas. Con el tiempo, aprendió a amarlos como ellos la amaban.</p>
-        <p>Un día fueron a un picnic de Longview. Primero caminaron hasta el borde alto de un cañón profundo. Ella miró
+          alienígenas. Con el tiempo, aprendió a amarlos como ellos la amaban.</span><span class="en">Her grandchildren had designed them, giving them a parent's loving care long before they had even been conceived. Only the best characteristics of her family had been passed on; she did not know how the other aspects of these radiantly happy children had been chosen. They were very different from her, but not quite alien. With time she learned to love them as they loved her.</span></p>
+        <p><span class="es">Un día fueron a un picnic de Longview. Primero caminaron hasta el borde alto de un cañón profundo. Ella miró
           por encima del borde. La altura no era grande comparada con las distancias en el espacio que había viajado
           para llegar allí. Sin embargo <em>esta</em> distancia la impresionó. La impresionó porque podía apreciarla.
           Miles de pequeños giros y ángulos de roca actuaban como señales, permitiéndole medir la inmensa distancia en
-          pasos diminutos. Sacudió la cabeza, sonrió y dio un paso al vacío.</p>
-        <p>Junto con su familia, descendió suavemente con suspensores. Su canasta de picnic y las copas de vino
+          pasos diminutos. Sacudió la cabeza, sonrió y dio un paso al vacío.</span><span class="en">One day they went on a longview picnic. First they walked to the high edge of a deep canyon. She looked over the rim. The height was not great by comparison with the distances in space she had traveled to come here. Yet <em>this</em> distance impressed her. It impressed her because she could appreciate it: thousands of tiny twists and angles of rock acted as signposts, allowing her to mark off the immense distance in tiny steps. She shook her head, smiled, and stepped over the edge.</span></p>
+        <p><span class="es">Junto con su familia, descendió suavemente con suspensores. Su canasta de picnic y las copas de vino
           descendieron con ellos en sus propios suspensores. Vieron al planeta subir a su encuentro mientras comían y
-          charlaban.</p>
-        <p>La conversación giró hacia la próxima expedición de la familia a Júpiter. Le habían pedido varias veces que
+          charlaban.</span><span class="en">Together with her family, she descended gently on suspensors; their picnic basket and wine glasses descended with them, on suspensors of their own. They watched the planet come up to meet them as they dined and chatted.</span></p>
+        <p><span class="es">La conversación giró hacia la próxima expedición de la familia a Júpiter. Le habían pedido varias veces que
           fuera, pero ella se había negado. Ahora se lo pidieron de nuevo. Ella observó el paisaje extraordinario flotar
           a su lado y consideró la pregunta una vez más. Un viaje a Júpiter habría estado bien si hubiera podido ser
-          como Marte. Pero no podía, y eso era tanto el atractivo como el horror.</p>
-        <p>Aunque la humanidad había vuelto a Marte parecido a la Tierra, no podían hacer lo mismo con Júpiter. Los
-          océanos de metano de Júpiter simplemente no eran aptos para terraformar. Nadie podía ir allí en persona.</p>
-        <p>Para ver Júpiter, en cierto sentido tendría que dejar su cuerpo. Oh, no tendría que dejarlo muy lejos. De
+          como Marte. Pero no podía, y eso era tanto el atractivo como el horror.</span><span class="en">The discussion turned to the family's upcoming expedition to Jupiter. They had asked her several times to come along, but she had refused. Now they asked her again. She watched the extraordinary scenery float past her and considered the question one last time. A trip to Jupiter would have been all right if it could have been like Mars. But it could not, and that was both the attraction and the horror.</span></p>
+        <p><span class="es">Aunque la humanidad había vuelto a Marte parecido a la Tierra, no podían hacer lo mismo con Júpiter. Los
+          océanos de metano de Júpiter simplemente no eran aptos para terraformar. Nadie podía ir allí en persona.</span><span class="en">Though humanity had made Mars Earthlike, they could not do the same for Jupiter. Jupiter's methane oceans simply were not amenable to terraforming. No one could go there in person.</span></p>
+        <p><span class="es">Para ver Júpiter, en cierto sentido tendría que dejar su cuerpo. Oh, no tendría que dejarlo muy lejos. De
           hecho, en un sentido se quedaría con su cuerpo en Marte durante todo el viaje. Pero así como había visto
           Rainier con los ojos del satélite en lugar de los suyos, así como hablaba con sus amigos con la cinta en lugar
-          de su voz, ahora tendría que usar la cinta para todos sus sentidos.</p>
-        <p>Y la máquina no solo <em>reemplazaría</em> su vista, su oído, su tacto, su olfato. La máquina los
+          de su voz, ahora tendría que usar la cinta para todos sus sentidos.</span><span class="en">To see Jupiter, she would in a sense have to leave her body. Oh, she wouldn't have to leave it very far; indeed, in one sense she would stay with her body on Mars throughout the journey. But just as she had seen Rainier through the satellite's eyes rather than her own, just as she spoke to her friends with her headband rather than her voice, now she would have to use her headband for all her senses.</span></p>
+        <p><span class="es">Y la máquina no solo <em>reemplazaría</em> su vista, su oído, su tacto, su olfato. La máquina los
           <em>transformaría</em>. La vista y el sonido ordinarios no funcionaban en Júpiter. Para cada uno de sus viejos
           sentidos se sustituiría uno nuevo. Vería vibraciones ultrasónicas. Olería cambios iónicos. Para todos los
-          fines prácticos, viviría como un ser diseñado para las comodidades del titánico pozo de gravedad de Júpiter.
-        </p>
-        <p>Por supuesto, no quedaría varada allí. Podría irse en cualquier momento.</p>
-        <p>El placer de su experiencia en Marte la hizo confiar. La silenciosa euforia del picnic de Longview la volvió
-          audaz. Aceptó ir.</p>
+          fines prácticos, viviría como un ser diseñado para las comodidades del titánico pozo de gravedad de Júpiter.</span><span class="en">And the machine would not merely <em>replace</em> her sight, her hearing, her touch, her smell--it would <em>transform</em> them. Ordinary sight and sound did not work on Jupiter; for each of her old senses a new one would be substituted. She would see ultrasonic vibrations; she would smell ionic changes. For all intents and purposes, she would live as a being designed for the comforts of Jupiter's titanic gravity well.</span></p>
+        <p><span class="es">Por supuesto, no quedaría varada allí. Podría irse en cualquier momento.</span><span class="en">Of course, she would not be marooned there: she could leave at any time.</span></p>
+        <p><span class="es">El placer de su experiencia en Marte la hizo confiar. La silenciosa euforia del picnic de Longview la volvió
+          audaz. Aceptó ir.</span><span class="en">The pleasure of her experience on Mars made her confident; the quiet exhiliaration of the longview picnic made her bold. She agreed to go along.</span></p>
 
         <hr class="section-break">
 
-        <p>Por un momento estuvo oscuro, un momento demasiado corto para desatar el pánico que llevaba listo, disparado
+        <p><span class="es">Por un momento estuvo oscuro, un momento demasiado corto para desatar el pánico que llevaba listo, disparado
           por un cable trampa. Luego hubo luz, una luz confusa que parecía extrañamente relacionada con los sonidos que
-          se unieron a ella. Levantó las manos. Eran de metal, y las miró con alarma. Cerró los ojos y fue mejor.</p>
-        <p>Los sonidos extraños tomaron ritmo. Instintivamente se volvió hacia ellos, y sus patas traseras giraron,
+          se unieron a ella. Levantó las manos. Eran de metal, y las miró con alarma. Cerró los ojos y fue mejor.</span><span class="en">For a moment it was dark, a moment too short to launch the panic she held in trip-wired readiness. Then there was light, a confusing light that seemed oddly related to the sounds that joined it. She held up her hands. They were metal, and she looked at them in alarm. She closed her eyes, and it was better.</span></p>
+        <p><span class="es">Los sonidos extraños tomaron ritmo. Instintivamente se volvió hacia ellos, y sus patas traseras giraron,
           impulsándola más cerca. Cuando sintió que estaba demasiado cerca, ya podía oler la fuente de los sonidos, un
           olor ácido y agradable, abrió los ojos. Al estudiar la forma que oscilaba ante ella, aparentemente separada
           por aire tembloroso, se dio cuenta de que era otro robot como ella. De hecho, lo reconoció. Estaba mirando a
-          su nieta.</p>
-        <p>Miró alrededor y tuvo una repentina sensación abrumadora de inmensidad.</p>
-        <p>La inmensidad del espacio había parecido empequeñecida por la altura del cañón marciano, porque había podido
+          su nieta.</span><span class="en">The strange sounds took on rhythm. Instinctively she turned toward them, and her back feet rotated, propelling her closer. When she felt she was too close--she could smell the source of the sounds now, a tangy, pleasant odor--she opened her eyes. Studying the shape as it wavered before her, seemingly separated by shimmering air, she realized it was another robot like herself. Indeed, she recognized it: she was looking at her granddaughter.</span></p>
+        <p><span class="es">Miró alrededor y tuvo una repentina sensación abrumadora de inmensidad.</span><span class="en">She looked around and had a sudden overwhelming sensation of immensity.</span></p>
+        <p><span class="es">La inmensidad del espacio había parecido empequeñecida por la altura del cañón marciano, porque había podido
           comprenderla a través de los pequeños grabados gastados de roca que podía ver a lo lejos. Aquí en Júpiter su
           comprensión era aún mayor, porque sus sentidos medían distancia con nueva claridad. Los ecos ultrasónicos le
           decían qué tan lejos estaba cada remolino de corriente que podía ver. Podía ver a distancias muy grandes. Le
           recordó cómo se había sentido de niña al mirar por primera vez una vasta llanura de Kansas. Era como si el
-          infinito estuviera <em>allí</em> mismo, al alcance de la mano. Lo saboreó un instante y luego salió.</p>
-        <p>Volvió a su propio cuerpo otra vez, sentada en Marte.</p>
-        <p>Volvió a entrar diez minutos y salió otra vez. Luego entró media hora. Después una hora.</p>
-        <p>Había jurado que no se quedaría en Júpiter más de una hora cada vez. Una estancia más larga requería el
+          infinito estuviera <em>allí</em> mismo, al alcance de la mano. Lo saboreó un instante y luego salió.</span><span class="en">The hugeness of space had seemed dwarfed by the height of the Martian canyon, for she had been able to comprehend it through the tiny weathered etchings of rock she could peer at in the distance. Here on Jupiter her comprehension was even greater, for her senses ranged distance with new clarity. The ultrasonic echoes told her how far it was to each whorl of current she could see; she could see to distances very great indeed. It made her think of the way she had felt as a child, looking across a vast Kansan plain for the first time. It seemed as if infinity was right <em>there</em>, within easy reach. She reveled in it for a moment, then stepped out.</span></p>
+        <p><span class="es">Volvió a su propio cuerpo otra vez, sentada en Marte.</span><span class="en">She was back in her own body again, sitting on Mars.</span></p>
+        <p><span class="es">Volvió a entrar diez minutos y salió otra vez. Luego entró media hora. Después una hora.</span><span class="en">She dipped back in for ten minutes and stepped out again. Next she went in for half an hour. Then an hour.</span></p>
+        <p><span class="es">Había jurado que no se quedaría en Júpiter más de una hora cada vez. Una estancia más larga requería el
           funcionamiento mecánico de partes de su cuerpo mientras ella estaba fuera. Pero una vez que se absorbió tanto
           explorando el paisaje joviano, se quedó una hora y media. Las máquinas de mantenimiento se desconectaron antes
-          de que ella regresara, y su intervención no pareció hacer diferencia. Así que se quedó más tiempo.</p>
-        <p>Júpiter, descubrió, era un mundo asombroso, verdaderamente alienígena a todo lo que había experimentado
+          de que ella regresara, y su intervención no pareció hacer diferencia. Así que se quedó más tiempo.</span><span class="en">She had sworn that she would not stay on Jupiter for more than an hour at a time; a longer stay required mechanical operation of parts of her body while she was away. But once she became so absorbed in exploring the Jovian landscape, she stayed for an hour and a half . The maintenance machines disconnected themselves before she returned, and their intervention didn't seem to make a difference. So she stayed longer.</span></p>
+        <p><span class="es">Júpiter, descubrió, era un mundo asombroso, verdaderamente alienígena a todo lo que había experimentado
           antes. Y los nuevos sentidos que adquirió a través de su nuevo robot requerían una exploración extensa por sí
-          mismos. Todo era increíblemente novedoso, y se dio cuenta de que necesitaría al menos un año para explorar.
-        </p>
-        <p>El enlace entre su mente en Marte y su cuerpo robot en Júpiter tenía demoras. Para tener una experiencia
-          completamente satisfactoria, necesitaría una residencia temporal que no requiriera ese desplazamiento.</p>
-        <p>Así que un pequeño cilindro, algo más pequeño que una lata de Coca Cola, fue lanzado a un asteroide que había
+          mismos. Todo era increíblemente novedoso, y se dio cuenta de que necesitaría al menos un año para explorar.</span><span class="en">Jupiter, she found, was an astonishing world, truly alien from all she had experienced before. And the new senses she acquired through her new robot required extensive exploration of their own. It was all incredibly novel, and she realized she would need at least a year to explore.</span></p>
+        <p><span class="es">El enlace entre su mente en Marte y su cuerpo robot en Júpiter tenía demoras. Para tener una experiencia
+          completamente satisfactoria, necesitaría una residencia temporal que no requiriera ese desplazamiento.</span><span class="en">The linkage between her mind on Mars and her robot body on Jupiter had delays; to have a completely satisfying experience, she would need a temporary residence that didn't require such a commute.</span></p>
+        <p><span class="es">Así que un pequeño cilindro, algo más pequeño que una lata de Coca Cola, fue lanzado a un asteroide que había
           sido estacionado en órbita alrededor de Júpiter para ese propósito. Mientras los miles de millones de robots
           del cilindro se desparramaban sobre el asteroide, transformándolo en un hogar maravilloso, ella abordó otra
           nave. Le parecía tonto pasar el tiempo de tránsito confinada en su cabina. Se fue a Júpiter durante todo el
-          trayecto. Tenía la intención de volver a su propio cuerpo cuando este llegara a la órbita.</p>
-        <p>Pero cuando llegó, ella estaba ocupada. Estaba aprendiendo sobre un nuevo robot diseñado para el mundo helado
+          trayecto. Tenía la intención de volver a su propio cuerpo cuando este llegara a la órbita.</span><span class="en">So a small cylinder, somewhat smaller than a Coke can, was launched at an asteroid that had been parked in orbit around Jupiter for this purpose. As the billions of robots from the cylinder swarmed across the asteroid, transforming it into a marvelous home, she boarded another ship. It seemed silly to spend any of her transit time stuck in the confines of her cabin; she went to Jupiter for the duration. She intended to return to her own body when it arrived in orbit.</span></p>
+        <p><span class="es">Pero cuando llegó, ella estaba ocupada. Estaba aprendiendo sobre un nuevo robot diseñado para el mundo helado
           de Europa, con otro conjunto completamente nuevo de sentidos, novedades por explorar. Dejó su cuerpo en
-          almacenamiento por un tiempo más.</p>
-        <p>Pasó un año. Y para entonces, ya no parecía importar.</p>
+          almacenamiento por un tiempo más.</span><span class="en">But when it arrived, she was busy. She was learning about a new robot designed for the frozen world of Europa, with another whole new set of senses, new novelties to explore. She left her body in storage for a short time longer.</span></p>
+        <p><span class="es">Pasó un año. Y para entonces, ya no parecía importar.</span><span class="en">A year passed. And by then, it just didn't seem to matter.</span></p>
 
         <hr class="section-break">
 
-        <p>Una burbuja se mantenía en equilibrio al borde del sistema solar, una esfera agujereada con miles de
+        <p><span class="es">Una burbuja se mantenía en equilibrio al borde del sistema solar, una esfera agujereada con miles de
           orificios, cada uno del ancho de un alfiler. Un rayo de luz golpeó la esfera, un rayo alimentado por
-          kilómetros de espejos moleculares cerca de la órbita de Mercurio.</p>
-        <p>La burbuja pareció explotar cuando miles de agujas saltaron de sus cunas, impulsadas por diminutos haces de
+          kilómetros de espejos moleculares cerca de la órbita de Mercurio.</span><span class="en">A bubble hung poised on the edge of the solar system, a sphere pockmarked with thousands of holes, each hole the width of a pin. A bolt of light struck the sphere, a bolt powered by kilometers of molecular mirrors near the orbit of Mercury.</span></p>
+        <p><span class="es">La burbuja pareció explotar cuando miles de agujas saltaron de sus cunas, impulsadas por diminutos haces de
           luz láser, astillas del titánico rayo del Sol. Las agujas aceleraron alejándose de la burbuja durante años,
-          hasta que su velocidad llegó cerca de la de la luz. Después de eso derivaron siempre hacia afuera.</p>
-        <p>En ocasiones, una aguja se acercaba a una estrella. La aguja se desviaría para asegurar un paso cercano. Si
+          hasta que su velocidad llegó cerca de la de la luz. Después de eso derivaron siempre hacia afuera.</span><span class="en">The bubble seemed to explode as thousands of needles leaped from their cradles, driven forth by tiny beams of laser light, slivers of the titanic bolt from the Sun. The needles accelerated away from the bubble for years, till their speed reached close to that of light. Thereafter they drifted ever outward.</span></p>
+        <p><span class="es">En ocasiones, una aguja se acercaba a una estrella. La aguja se desviaría para asegurar un paso cercano. Si
           planetas u otros elementos de interés la llamaban, la aguja se lanzaría en una espiral cerrada hacia la
           perdición. Sus miles de millones de nanomáquinas se romperían al tocar un asteroide, y construirían de nuevo.
           Donde antes había una aguja, ahora habría una burbuja, y un espejo molecular, y miles de agujas que
-          estallarían y viajarían para siempre.</p>
-        <p>Pero además, las nanomáquinas de ese sistema seguirían construyendo. Construirían máquinas y tejido vivo bien
+          estallarían y viajarían para siempre.</span><span class="en">Upon occasion, a needle approached a star. The needle would shift, to ensure a close passage. If planets or other items of note beckoned, the needle would swoop in, on a tight spiral to oblivion: its billions of nanomachines would break apart at the touch of an asteroid, and build anew. Where once there had been a needle, now there would be a bubble, and a molecular mirror, and thousands of needles that would explode out and travel forever.</span></p>
+        <p><span class="es">Pero además, las nanomáquinas de ese sistema seguirían construyendo. Construirían máquinas y tejido vivo bien
           adaptados a las condiciones del planeta. Y luego las nanomáquinas volverían a unirse en una sola estructura,
           ya no una aguja, sino una burbuja de comunicación. A través de la burbuja y su comunicación instantánea ella
-          podía vivir a través del espacio. Podía habitar en casa cerca de Júpiter y aun así vagar entre las estrellas.
-        </p>
-        <p>A menudo era una de las primeras humanas llamadas a planetas recién abiertos. Su sabiduría de la Tierra, su
+          podía vivir a través del espacio. Podía habitar en casa cerca de Júpiter y aun así vagar entre las estrellas.</span><span class="en">But in addition, the nanomachines in that system would continue to build. They would build machines and living flesh well suited to the conditions of the planet. And then the nanomachines would come back together into a single structure--not a needle now, but a communication bubble. Through the bubble and its instantaneous communication she could live across space. She could dwell at home near Jupiter yet roam among the stars.</span></p>
+        <p><span class="es">A menudo era una de las primeras humanas llamadas a planetas recién abiertos. Su sabiduría de la Tierra, su
           experiencia de Júpiter, la hacían invaluable como exploradora y guía. Así como había nadado en océanos de
           metano, ahora nadaba en atmósferas de dióxido de carbono, o volaba a través de mercurio líquido. Se imprimió
-          en sinapsis orgánicas y circuitos de silicio a años luz de casa, y vivió en muchos lugares.</p>
-        <p>Mentalmente era más grande ahora que a los 25. El significado de la complejidad había cambiado para ella.
+          en sinapsis orgánicas y circuitos de silicio a años luz de casa, y vivió en muchos lugares.</span><span class="en">She was often one of the first humans Called to newly opened planets. Her wisdom from earth, her expertise from Jupiter, these made her invaluble as an explorer and a guide. As she had swum within the methane oceans, so now she swam in carbon dioxide atmospheres, or flew through liquid mercury. She imprinted herself upon organic synapses and silicon circuits light years from home, and lived in many places.</span></p>
+        <p><span class="es">Mentalmente era más grande ahora que a los 25. El significado de la complejidad había cambiado para ella.
           Entendía las leyes de la física con la misma claridad simple con la que entendía las reglas de las damas.
-          Podía construir una nave estelar tan fácilmente como podía montar una tienda.</p>
-        <p>Su mente había crecido y se había desbordado de los límites de su cuerpo original. Podía dedicar fácilmente
+          Podía construir una nave estelar tan fácilmente como podía montar una tienda.</span><span class="en">Mentally she was bigger now than she had been at 25. The meaning of complexity had changed for her; she understood the laws of physics with the same simple clarity that she understood the rules of checkers. She could build a starship as easily as she could pitch a tent.</span></p>
+        <p><span class="es">Su mente había crecido y se había desbordado de los límites de su cuerpo original. Podía dedicar fácilmente
           una parte de su mente a cada una de varias tareas distintas. En particular, podía dirigir varios grupos
-          distintos, recorriendo varios planetas distintos, todo al mismo tiempo.</p>
-        <p>Pero de todas sus nuevas capacidades, fue el canto ilimitado lo que la llenó de asombro.</p>
-        <p>Ella no era una persona introspectiva. No pensaba a menudo en su propio pasado ni en lo extraño que le habría
+          distintos, recorriendo varios planetas distintos, todo al mismo tiempo.</span><span class="en">Her mind had grown and spilled from the confines of her original body. She could easily dedicate a part of her mind to each of several different tasks. Notably she could lead several different groups, touring several different planets, all at the same time.</span></p>
+        <p><span class="es">Pero de todas sus nuevas capacidades, fue el canto ilimitado lo que la llenó de asombro.</span><span class="en">But of all her new capacities, it was the boundless singing that filled her with wonder.</span></p>
+        <p><span class="es">Ella no era una persona introspectiva. No pensaba a menudo en su propio pasado ni en lo extraño que le habría
           parecido su presente. Pero cuando tenía esos pensamientos, el canto la asombraba más que todo lo demás. Cuando
           tenía 25, le gustaba el Fleetwood Mac clásico. A los 105, admitió su creciente afición por Beethoven. Cerca de
           los 200, se enamoró de Monteverdi. En siglos posteriores llegó a apreciar el doble compás de los Ecos de
           Saturno y las óperas de Ro Biljaan. Patrones tan sutiles que la mente humana no aumentada ni siquiera podía
-          percibirlos la llenaban de éxtasis.</p>
-        <p>Ya no escuchaba a uno u otro de esos maestros musicales en raras ocasiones. Más bien todos sonaban, todo el
+          percibirlos la llenaban de éxtasis.</span><span class="en">She was not an introspective person; she did not often think about her own past, and how strange she might have found her present. But when she did think such thoughts, the singing amazed her most of all. When she was 25, she had liked vintage Fleetwood Mac. At 105, she had admitted her growing fondness for Beethoven. Pressing 200, she had fallen in love with Monteverdi. In later centuries she had come to appreciate the double beat of the Echoes of Saturn and the operas of Ro Biljaan. Patterns so subtle that the unaugmented human mind could not even sense them filled her with ecstacy.</span></p>
+        <p><span class="es">Ya no escuchaba a uno u otro de esos maestros musicales en raras ocasiones. Más bien todos sonaban, todo el
           tiempo, cada uno en una parte subliminal distinta de su mente. Le daban una sensación ondulante de amor que
           casi nunca se iba. El constante trasfondo del canto formaba el tema que unía su mente, sin importar cuántas
-          cosas distintas pudiera hacer a la vez.</p>
-        <p>A medida que las melodías se impregnaban en su mente, se entremezclaban, a veces tocándose unas a otras en
+          cosas distintas pudiera hacer a la vez.</span><span class="en">She no longer listened to one or the other of these musical masters at rare opportunities. Rather, they all played, all the time, each in a different subliminal part of her mind. They gave to her a rippling sensation of love that never quite went away. The constant undertone of the singing formed the theme that bound her mind together, no matter how many different things she might do at one time.</span></p>
+        <p><span class="es">A medida que las melodías se impregnaban en su mente, se entremezclaban, a veces tocándose unas a otras en
           una concordancia de punto y contrapunto. Una vez, tal dúo evocó de varias obras maestras una armonía que se
           elevó para impulsar la cadencia de una eufonía más grandiosa, que capturó y potenció una polifonía aún mayor,
           llenando su mente con una sinfonía de sinfonías. Y en mil planetas, con mil cuerpos y mil voces, saltó al aire
-          y llenó el cielo con una risa melodiosa, un coro de alegría que abarcó el brazo de una galaxia.</p>
-        <p>De regreso al suelo en esos planetas dispersos de estrellas distantes, se sintió sorprendida por su
+          y llenó el cielo con una risa melodiosa, un coro de alegría que abarcó el brazo de una galaxia.</span><span class="en">As the melodies suffused her mind they intermingled, sometimes playing upon one another in a concordance of point and counterpoint. Once, such a duet evoked from several masterpieces a harmony, which surged to drive the cadence of a grander euphony, that captured and empowered an even greater polyphony, filling her mind with a symphony of symphonies. And on a thousand planets, with a thousand bodies and a thousand voices, she leapt in the air and filled the sky with lilting laughter, a chorus of joy that spanned the arm of a galaxy.</span></p>
+        <p><span class="es">De regreso al suelo en esos planetas dispersos de estrellas distantes, se sintió sorprendida por su
           estallido. Se maravilló de sí misma. En su infancia nunca se habría reído de esa manera. Había sido tan
           callada que era fácil pensar que era tímida. Los milenios la habían cambiado, y ella estaba encantada. Qué
-          triste habría sido no expresar la alegría más profunda de uno.</p>
-        <p>Aun así, era una mujer de gustos simples. En otros tiempos algunos la habrían llamado robusta. Otros quizá la
-          habrían llamado infantil.</p>
-        <p>Sin embargo esas no eran descripciones justas. Era mejor pensar en ella en términos de la mitología antigua.
+          triste habría sido no expresar la alegría más profunda de uno.</span><span class="en">Returning to ground on those scattered planets of distant stars, she felt surprised by her outburst. She marveled at herself. In her childhood she never would have laughed in such a way. She had once been so quiet it had been easy to think she was shy. The millennia had changed her, and she was delighted; how sad it would have been, never to express one's deepest joy!</span></p>
+        <p><span class="es">Aun así, era una mujer de gustos simples. En otros tiempos algunos la habrían llamado robusta. Otros quizá la
+          habrían llamado infantil.</span><span class="en">Still, she was a woman of simple tastes. In earlier times some would have called her sturdy. Others might have called her childlike.</span></p>
+        <p><span class="es">Sin embargo esas no eran descripciones justas. Era mejor pensar en ella en términos de la mitología antigua.
           Era un elemental, casi una fuerza de la naturaleza, con un núcleo de simplicidad que se burlaba de la
-          aceptación ansiosa y aun así ofrecía adaptabilidad, que rechazaba el pánico y aun así garantizaba cautela.</p>
-        <p>Sus cualidades elementales eran vitales, la humanidad llegó a comprenderlo. Aunque las agujas que viajaban
+          aceptación ansiosa y aun así ofrecía adaptabilidad, que rechazaba el pánico y aun así garantizaba cautela.</span><span class="en">Yet these were not fair descriptions; better to think of her in the terms of ancient mythology. She was an elemental, almost a force of nature, with a core of simplicity that mocked overeager acceptance yet offered adaptability, that rejected panic yet always guaranteed caution.</span></p>
+        <p><span class="es">Sus cualidades elementales eran vitales, la humanidad llegó a comprenderlo. Aunque las agujas que viajaban
           por el espacio nunca encontraron otros seres inteligentes, sí encontraron restos dispersos de lo que una vez
-          fue inteligencia. Otras especies habían llegado a la Singularidad y habían muerto allí.</p>
-        <p>Algunas habían muerto en un frenesí, mientras los constructores de nuevas tecnologías se entregaban a una
+          fue inteligencia. Otras especies habían llegado a la Singularidad y habían muerto allí.</span><span class="en">Her elemental qualities were vital, humanity had come to realize. Though the needles traveling through space never found other intelligent beings, they had found scattered remains of what had once been intelligence. Other species had come up to Singularity and had died there.</span></p>
+        <p><span class="es">Algunas habían muerto en un frenesí, mientras los constructores de nuevas tecnologías se entregaban a una
           orgía de inventos, liberando solo uno que los destruyó a todos. Otras habían muerto en la desesperación,
           mientras líderes llenos de miedo aplastaban a los innovadores, los estrangulaban, poniendo el futuro fuera de
           su alcance. Las especies llenas de miedo se asentaron en un largo deslizamiento hacia la desesperación que
-          terminó con descendientes degenerados ya incapaces de soñar.</p>
-        <p>Solo quienes conocían la cautela sin miedo, solo quienes estaban marcados por su forma elemental de
-          prudencia, lograron pasar. Solo la humanidad había sobrevivido.</p>
-        <p>Y la humanidad no había sobrevivido ilesa. Se habían cometido terribles errores, muchos se habían perdido.
+          terminó con descendientes degenerados ya incapaces de soñar.</span><span class="en">Some had died in a frenzy, as the builders of new technologies indulged an orgy of inventions, releasing just one that destroyed them all. Others had died in despair, as fear-filled leaders beat down the innovators, strangling them, putting the future beyond their grasp. The fear-ridden species settled into a long slide of despair that ended with degenerate descendants no longer able to dream.</span></p>
+        <p><span class="es">Solo quienes conocían la cautela sin miedo, solo quienes estaban marcados por su forma elemental de
+          prudencia, lograron pasar. Solo la humanidad había sobrevivido.</span><span class="en">Only those who knew caution without fear, only those marked by her elemental form of prudence, made it through. Only humanity had survived.</span></p>
+        <p><span class="es">Y la humanidad no había sobrevivido ilesa. Se habían cometido terribles errores, muchos se habían perdido.
           Incluso milenios después aún quedaba una forma de muerte, o quizá no muerte, sino una forma de aislamiento
           impenetrable. Los sueños podían volverse demasiado fuertes, tan fuertes que el individuo vivía siempre en
           sueños, sin llegar a tocar la realidad. Muchos de sus amigos de los primeros milenios se habían perdido en
-          esas infinitudes encantadas que no llevaban a ninguna parte.</p>
-        <p>Ella no temía esa muerte ligada al sueño. Al ver el alcance y la profunda intensidad de sus propios sueños,
+          esas infinitudes encantadas que no llevaban a ninguna parte.</span><span class="en">And humanity had not survived unscathed. Terrible mistakes had been made, many had been lost. Even millennia later there still remained a form of death--or perhaps not death, but a form of impenetrable isolation. The dreams could become too strong, so strong that the individual lived in dreams always, never reaching out to touch reality. Many of her friends from the early millennia had lost themselves to these enchanted infinities leading nowhere.</span></p>
+        <p><span class="es">Ella no temía esa muerte ligada al sueño. Al ver el alcance y la profunda intensidad de sus propios sueños,
           casi podía comprender a quienes se envolvían en ellos y desaparecían. Pero las cosas nuevas que la humanidad
           encontraba cada día eran igual de maravillosas. El volumen de espacio alcanzado por las naves aguja crecía a
           un ritmo geométrico, abriendo cientos de sistemas estelares. Incluso en días en que se encontraban pocos
           sistemas sorprendentemente nuevos, había nuevos planetas, construidos por artistas, esperando su exploración.
-          Y las cosas nuevas que aprendía en el ámbito de la mente igualaban esos tesoros y más.</p>
-        <p>Algún día, creía, ella también soñaría un sueño sin fin. No quería vivir para siempre. Pero el comienzo de
-          ese sueño estaba lejos.</p>
-        <p>El nuevo significado de la muerte fue complementado por un nuevo significado de la vida. Este nuevo
+          Y las cosas nuevas que aprendía en el ámbito de la mente igualaban esos tesoros y más.</span><span class="en">She did not fear such dream-bound death. Seeing the span and deep intensity of her own dreams, she could almost understand those who wrapped themselves within and disappeared. But the new things humanity found every day were just as wonderful. The volume of space touched by the needleships grew at a geometric pace, opening hundreds of star systems. Even on days when few strikingly new systems were found, there were new planets, constructed by artists, awaiting her exploration. And the new things she learned in the realm of the mind matched these treasures and more.</span></p>
+        <p><span class="es">Algún día, creía, ella también soñaría un sueño sin fin. No quería vivir para siempre. Pero el comienzo de
+          ese sueño estaba lejos.</span><span class="en">Someday, she believed, she too would dream an endless dream. She did not want to live forever. But the beginning of that dream was far away.</span></p>
+        <p><span class="es">El nuevo significado de la muerte fue complementado por un nuevo significado de la vida. Este nuevo
           significado era extremadamente complejo, incluso para ella. La vida trataba con totalidades mucho mayores que
           la suma de sus partes. Pero ella lo entendía de manera intuitiva. Era fácil distinguir una inteligencia de
           ingeniería, buena solo para la fabricación, de un miembro de la comunidad, aunque ese miembro alguna vez
           hubiera sido también una inteligencia de ingeniería. Los nuevos miembros de la humanidad solían nacer de este
           modo. Una inteligencia diseñada como máquina u obra de arte expresaba un genio especial, un genio que merecía
           la capacidad de apreciarse a sí mismo mediante la autoconciencia. Cuando esto ocurría, los ingenieros
-          psicológicos añadían esos elementos de la mente necesarios para la vida.</p>
-        <p>Así habían nacido sus tataranietos. Sus bisnietos los habían imaginado, dándoles el cuidado amoroso de un
+          psicológicos añadían esos elementos de la mente necesarios para la vida.</span><span class="en">The new meaning of death was complimented by a new meaning of life. This new meaning was extremely complex, even for her; life dealt with wholes much greater than the sums of their parts. But she understood it intuitively--it was easy to distinguish an engineering intelligence, good only for manufacture, from a member of the community, even though that member might once have been just an engineering intelligence as well. New members of humanity usually came to life this way: an intelligence designed as a machine or an artwork expressed a special genius, a genius that deserved the ability to appreciate itself through self-awareness. When this happened, the psychological engineers would add those elements of the mind needed for life.</span></p>
+        <p><span class="es">Así habían nacido sus tataranietos. Sus bisnietos los habían imaginado, dándoles el cuidado amoroso de un
           padre mucho antes de que fueran diseñados. Solo las mejores características de las mentes de su familia se les
           habían transmitido. Eran muy diferentes de ella, pero no del todo alienígenas. Con el tiempo, aprendió a
-          amarlos como ellos la amaban.</p>
+          amarlos como ellos la amaban.</span><span class="en">In this manner had her great-great grandchildren had been born. Her great grandchildren had envisioned them, giving them a parent's loving care long before they had even been designed. Only the best characteristics of the minds of her family had been passed on to them. They were very different from her, but not quite alien. With time, she learned to love them as they loved her.</span></p>
 
         <hr class="section-break">
 
-        <p>Llegó el día de decir adiós a su amigo más antiguo. Con su maravilloso viejo cuerpo nacido en la Tierra,
+        <p><span class="es">Llegó el día de decir adiós a su amigo más antiguo. Con su maravilloso viejo cuerpo nacido en la Tierra,
           regresó a la Tierra para subir Rainier una última vez. Rainier, cuya superficie yacía tan fría y eterna,
           hervía por dentro. Con el amanecer, lo sabía, la furia hirviente irrumpiría en el mayor evento volcánico en
           siglos terrestres. Se paró en la cumbre el día antes del final y contempló el horizonte. Su sentimiento de
-          aprecio creció hasta creer que estallaría. Eso era hogar en un sentido que pocos otros podían entender ahora.
-        </p>
-        <p>Descendió. Una marmota la encontró en el camino. Ella la alzó en sus brazos y la llevó a salvo, aunque la
+          aprecio creció hasta creer que estallaría. Eso era hogar en un sentido que pocos otros podían entender ahora.</span><span class="en">The day came to say goodby to her oldest friend. With her wonderful old earth-born body, she returned to Earth to hike Rainier one last time: Rainier, whose surface lay so cold and eternal, was boiling within. With dawn, she knew, the boiling fury would break through, in the greatest volcanic event in earthly centuries. She stood at the summit the day before the end and surveyed the horizon. Her feeling of appreciation grew till she thought she would burst. This was home in a sense few others could now understand.</span></p>
+        <p><span class="es">Descendió. Una marmota la encontró en el camino. Ella la alzó en sus brazos y la llevó a salvo, aunque la
           marmota luchó y la arañó y su sangrado parecía no terminar nunca. Aun así la marmota no pudo impedir que la
-          salvara.</p>
-        <p>Había considerado salvar la montaña misma. Podía hacerlo, lo sabía. Podía entrelazar la montaña con miles de
+          salvara.</span><span class="en">She descended. A marmot met her on the way down; she swooped him into her arms and carried him to safety, though he fought her and cut her and her bleeding would seem to never end. Still the marmot could not prevent her from saving him.</span></p>
+        <p><span class="es">Había considerado salvar la montaña misma. Podía hacerlo, lo sabía. Podía entrelazar la montaña con miles de
           millones de pequeños tubos, capilares tan pequeños que ningún ser vivo los notaría. Podía extraer el calor,
-          enfriar el corazón.</p>
-        <p>Pero negar a la Montaña su momento de brillo no parecía correcto. La uniformidad perpetua nunca era correcta,
-          aunque el cambio a menudo fuera incorrecto.</p>
-        <p>Así que al día siguiente, ella y la marmota observaron la erupción desde lejos. Fue tan hermosa como había
+          enfriar el corazón.</span><span class="en">She had considered saving the mountain itself; she could, she knew. She could lace the mountain with billions of tiny tubes, capillaries so small no living thing would notice. She could extract the heat, cool the heart.</span></p>
+        <p><span class="es">Pero negar a la Montaña su momento de brillo no parecía correcto. La uniformidad perpetua nunca era correcta,
+          aunque el cambio a menudo fuera incorrecto.</span><span class="en">But to deny the Mountain its moment of brilliance seemed not right: perpetual sameness was never right, though change might often be wrong.</span></p>
+        <p><span class="es">Así que al día siguiente, ella y la marmota observaron la erupción desde lejos. Fue tan hermosa como había
           esperado. Y aunque la secuela fue gris y lúgubre, sabía que en muy poco tiempo los hijos de la marmota
-          regresarían a la Montaña, y allí crecería un nuevo tipo de belleza.</p>
-        <p>Tampoco la Montaña se había perdido de verdad. Incluso mientras su cuerpo nacido en la Tierra regresaba a su
+          regresarían a la Montaña, y allí crecería un nuevo tipo de belleza.</span><span class="en">So the next day, she and the marmot watched the eruption from afar. It was as beautiful as she had expected. And though the aftermath was gray and dreary, she knew that in a very short time the marmot's children would return to the Mountain, and a new kind of beauty would grow there.</span></p>
+        <p><span class="es">Tampoco la Montaña se había perdido de verdad. Incluso mientras su cuerpo nacido en la Tierra regresaba a su
           asteroide que orbitaba Júpiter, construyó una réplica exacta de la Montaña, una imagen, molécula por molécula,
           de la superficie de la Montaña el día antes de que estallara. Cuando su cuerpo regresó, se unió a la Montaña
-          para caminar allí para siempre, en otra parte de su sueño eterno.</p>
-        <p>Haikku, su fiel compañero, había muerto hacía mucho. Pero ella rastreó los descendientes de sus
+          para caminar allí para siempre, en otra parte de su sueño eterno.</span><span class="en">Nor was the the Mountain truly lost. Even as her earth-born body returned to her asteroid circling Jupiter, she built an exact replica of the Mountain: an image, molecule for molecule, of the Mountain's surface the day before it erupted. When her body returned, she joined the Mountain, to walk there forever, in another part of her eternal dream.</span></p>
+        <p><span class="es">Haikku, su fiel compañero, había muerto hacía mucho. Pero ella rastreó los descendientes de sus
           descendientes. Arregló un apareamiento. Nació un cachorro con los genes de Haikku, a imagen de Haikku. Y así
-          Haikku2 vino a unirse a ella en las laderas del Monte Rainier, en la órbita de Júpiter.</p>
+          Haikku2 vino a unirse a ella en las laderas del Monte Rainier, en la órbita de Júpiter.</span><span class="en">Haikku, her loyal companion, was long dead; but she traced the descendants of his descendants. She arranged a mating. A new pup was born with Haikku's genes, in the image of Haikku. And so Haikku2 came to join her on the slopes of Mt. Rainier, on the orbit of Jupiter.</span></p>
 
         <hr class="section-break">
 
-        <p>Un día dos naves aguja se encontraron en el espacio. Esto no era raro. Agujas de distintos lanzadores a
+        <p><span class="es">Un día dos naves aguja se encontraron en el espacio. Esto no era raro. Agujas de distintos lanzadores a
           menudo se cruzaban y eran fáciles de ver, con los cientos de kilómetros de redes de sensores moleculares que
-          tejían.</p>
-        <p>Pero este encuentro fue especial, porque una de las agujas no tenía vínculo con un humano. Pertenecía a
-          alienígenas.</p>
-        <p>¡Alienígenas! Esperanzas salvajes y miedos aún más salvajes sacudieron a la comunidad humana. Ella observó la
-          histeria con calma, confiada en que pasaría y la sabiduría gobernaría.</p>
-        <p>Las agujas se cruzaron, demasiado rápido para encontrarse. Se desviaron en arcos largos y gráciles hacia un
-          encuentro distante.</p>
-        <p>Un sentido de calma y prudencia regresó a la humanidad. Seleccionaron un equipo de contacto para separarse y
-          encontrarse con los alienígenas.</p>
-        <p>Las agujas se cerraron. En sus últimos momentos danzaron en una órbita cerrada alrededor de la otra, una
+          tejían.</span><span class="en">One day two needleships met in space. This was not uncommon; needles from different launchers often crossed paths and were easy to spot, with the hundreds of kilometers of molecular sensor webs they spun.</span></p>
+        <p><span class="es">Pero este encuentro fue especial, porque una de las agujas no tenía vínculo con un humano. Pertenecía a
+          alienígenas.</span><span class="en">But this meeting was special, for one of the needles had no link to a human. It belonged to aliens.</span></p>
+        <p><span class="es">¡Alienígenas! Esperanzas salvajes y miedos aún más salvajes sacudieron a la comunidad humana. Ella observó la
+          histeria con calma, confiada en que pasaría y la sabiduría gobernaría.</span><span class="en">Aliens! Wild hopes and wilder fears rocked the human community. She watched the hysteria calmly, confident it would pass and wisdom would rule.</span></p>
+        <p><span class="es">Las agujas se cruzaron, demasiado rápido para encontrarse. Se desviaron en arcos largos y gráciles hacia un
+          encuentro distante.</span><span class="en">The needles passed one another, too fast to meet. They swerved in long, graceful arcs to a distant rendezvous.</span></p>
+        <p><span class="es">Un sentido de calma y prudencia regresó a la humanidad. Seleccionaron un equipo de contacto para separarse y
+          encontrarse con los alienígenas.</span><span class="en">A sense of calm, and prudence, returned to humanity. They selected a contact team to break off and meet the aliens.</span></p>
+        <p><span class="es">Las agujas se cerraron. En sus últimos momentos danzaron en una órbita cerrada alrededor de la otra, una
           danza de creación. Aunque las agujas murieron, se formó una burbuja donde se encontraron, una burbuja de
-          comunicación.</p>
-        <p>Las dos comunidades, humana y alienígena, se extendieron. Se tocaron, pero el contacto fue brusco. La
-          confusión reinó. Se produjo el estancamiento del desconcierto.</p>
-        <p>Ella observó con interés. Sintió tristeza porque no iba bien, pero su confianza se mantuvo.</p>
-        <p>Entonces, desde el equipo de contacto recibió un llamado. La necesitaban. Necesitaban su resiliencia y
-          adaptabilidad elementales.</p>
-        <p>Pero al necesitar su naturaleza elemental, necesitaban más de lo que ella había dado jamás. No necesitaban
+          comunicación.</span><span class="en">The needles closed. In their last moments they danced in a tight orbit about one another, a dance of creation: for though the needles died, a bubble formed where they met--a communications bubble.</span></p>
+        <p><span class="es">Las dos comunidades, humana y alienígena, se extendieron. Se tocaron, pero el contacto fue brusco. La
+          confusión reinó. Se produjo el estancamiento del desconcierto.</span><span class="en">The two communities, human and alien, reached out. They touched--but the touch was jarring. Bafflement ruled. The deadlock of confusion ensued.</span></p>
+        <p><span class="es">Ella observó con interés. Sintió tristeza porque no iba bien, pero su confianza se mantuvo.</span><span class="en">She watched with interest. She felt sorrow that it was not going well, but her confidence remained.</span></p>
+        <p><span class="es">Entonces, desde el equipo de contacto recibió un llamado. La necesitaban. Necesitaban su resiliencia y
+          adaptabilidad elementales.</span><span class="en">Then from the contact team she received a Call. They needed her; they needed her elemental resilience and adaptability.</span></p>
+        <p><span class="es">Pero al necesitar su naturaleza elemental, necesitaban más de lo que ella había dado jamás. No necesitaban
           los pensamientos ni los cálculos de su mente. Necesitaban los rasgos básicos de su personalidad, el núcleo
           mismo de su ser. Para reforzar al equipo, tendría que ampliar sus canales de comunicación, abrirlos tanto que
           lo que ella pensara ellos también lo pensarían. No habría filtro que protegiera sus pensamientos internos.
           Peor aún, lo que otros pensaran, ella lo pensaría. No habría filtro que protegiera sus recuerdos internos. Le
           parecía que sería fácil que sus recuerdos se mezclaran. Preferiría morir. Y así, por primera vez en milenios,
           tuvo miedo. El equipo pidió que otros de la comunidad que tenían su fuerza especial fueran con ellos en su
-          lugar. Ellos también estaban asustados.</p>
-        <p>Mientras tanto la humanidad fracasaba. La anticipación, el anhelo, la esperanza de contacto con nuevos seres
-          desarrolló un tinte de desesperación.</p>
-        <p>Le mostraron lo fácil que era abrir los canales de su mente. También le mostraron una y otra vez lo fácil que
+          lugar. Ellos también estaban asustados.</span><span class="en">But in needing her elemental nature, they needed more than she had ever given before. They did not need the thoughts or calculations of her mind: they needed the basic traits of her personality, the very core of her being. To reinforce the team, she would have to expand her communication channels, open them so wide that what she thought, they would also think; there would be no filter protecting her internal thoughts. Far worse, what others thought, she would think; there would be no filter protecting her internal memories. It seemed to her it would be easy for her memories to get scrambled; she would rather die. And so for the first time in millennia, she was afraid. The team asked others of the community that held her special strength to come with them instead; they too were afraid.</span></p>
+        <p><span class="es">Mientras tanto la humanidad fracasaba. La anticipación, el anhelo, la esperanza de contacto con nuevos seres
+          desarrolló un tinte de desesperación.</span><span class="en">Meanwhile humanity was failing. The anticipation, the yearning, the hope for contact with new beings developed a tinge of desperation.</span></p>
+        <p><span class="es">Le mostraron lo fácil que era abrir los canales de su mente. También le mostraron una y otra vez lo fácil que
           era cerrarlos. No creían que la necesitarían por mucho tiempo, como mucho miles de milisegundos. Le
-          garantizaron que estaría bien después. De mala gana, aceptó.</p>
-        <p>Abrió su mente. El choque del contacto en bruto la aturdió. Volvió un instante de casi pánico como el de su
-          primera exploración de Júpiter.</p>
-        <p>Y entonces se movía, allí dentro del equipo, y se acostumbró. La sensación le recordó a saltar a un lago de
+          garantizaron que estaría bien después. De mala gana, aceptó.</span><span class="en">They showed her how easy it was to open the channels of her mind--but more, they showed her again and again how easy it was to close them. They did not believe they would need her for long, thousands of milliseconds at most. They guaranteed she would be fine afterward. Reluctantly, she agreed.</span></p>
+        <p><span class="es">Abrió su mente. El choque del contacto en bruto la aturdió. Volvió un instante de casi pánico como el de su
+          primera exploración de Júpiter.</span><span class="en">She opened her mind; the shock of raw contact stunned her. A moment's near-panic like that of her first exploration of Jupiter returned.</span></p>
+        <p><span class="es">Y entonces se movía, allí dentro del equipo, y se acostumbró. La sensación le recordó a saltar a un lago de
           montaña, el chapuzón frío que borraba todo pensamiento, el calor lento de sus músculos respondiendo, el paso
           del frío fuera de su conciencia mientras se concentraba en el acto de nadar. Nadó entre los miembros de su
-          equipo.</p>
-        <p>Allí encontró muchas tareas que realizar, calmar y consolar a una miríada de almas en pánico mientras se
+          equipo.</span><span class="en">And then she was moving, there within the team, and she grew accustomed. The sensation reminded her of jumping into a mountain lake--the cold plunge that blotted out all thought, the sluggish warmth of her muscles responding, the passing of the coldness from her awareness as she concentrated on the act of swimming. She swam among the members of her team.</span></p>
+        <p><span class="es">Allí encontró muchas tareas que realizar, calmar y consolar a una miríada de almas en pánico mientras se
           lanzaban al lago helado de las mentes alienígenas. Se convirtió en el músculo que aportaba el calor, que
-          permitía que la conciencia del equipo se moviera más allá del frío, a nadar.</p>
-        <p>A medida que el equipo respondía, la sensación de frío cambió a una de calidez, una calidez alegre, y ella
+          permitía que la conciencia del equipo se moviera más allá del frío, a nadar.</span><span class="en">Here she found many tasks to perform, the calming and soothing of a myriad of panicked souls as they plunged into the ice-cold lake of alien minds. She became the muscle that supplied the warmth, that allowed the awareness of the team to move beyond the cold, to swim.</span></p>
+        <p><span class="es">A medida que el equipo respondía, la sensación de frío cambió a una de calidez, una calidez alegre, y ella
           era una burbuja flotando en un océano amplio y cálido, aferrándose y rebotando con las otras burbujas, algunas
           amigas, algunas humanas, algunas alienígenas. Luego eran burbujas de champán, efervescentes, expandiéndose y
-          flotando lejos.</p>
-        <p>Ella flotó a mayor distancia. Ya no la necesitaban. Era libre de irse. Cerró los canales de su mente con
+          flotando lejos.</span><span class="en">As the team responded, the sensation of cold changed to one of warmth, a merry warmth, and she was a bubble floating on a wide, warm ocean, clinging and bouncing with the other bubbles, some friends, some human, some alien. Then they were bubbles of champagne, effervescent, expanding and floating away.</span></p>
+        <p><span class="es">Ella flotó a mayor distancia. Ya no la necesitaban. Era libre de irse. Cerró los canales de su mente con
           gracia lenta, como lo haría una mujer caminando desde el mar a través del movimiento de succión del oleaje. Se
-          encontró sola de nuevo.</p>
-        <p>En esos primeros momentos de soledad, estar sola parecía antinatural, tan antinatural como había parecido la
+          encontró sola de nuevo.</span><span class="en">She floated to a greater distance; they no longer needed her; she was free to go. She closed the channels to her mind with slow grace, as would a woman walking from the sea through the sucking motions of the surf. She found herself alone again.</span></p>
+        <p><span class="es">En esos primeros momentos de soledad, estar sola parecía antinatural, tan antinatural como había parecido la
           comunión antes. Sintió el frío que llega después de nadar, cuando la brisa golpea la piel desnuda. Se
-          estremeció.</p>
-        <p>¿Seguía siendo ella misma?</p>
-        <p><em>Claro que sí. Eres todo lo que siempre has sido, y más.</em></p>
-        <p>La respuesta era suya, pero una vez había pertenecido a otra persona. Por un momento vaciló. La memoria
-          perfecta no garantizaba memoria instantánea, y estaba buscando pensamientos de su infancia. Entonces recordó.
-        </p>
-        <p><em>¡Jack!</em></p>
-        <p>Recordó que él había sabido que ella recordaría.</p>
-        <p><em>¡Qué le había pasado a Jack!</em></p>
-        <p>¿Podría haberlo echado de menos todos estos años? Inició una búsqueda en la comunidad, pero conocía su inutilidad
-          incluso mientras empezaba. Él no podía, no habría permanecido oculto.</p>
-        <p>Aun así su necesidad de conocerlo de nuevo creció a medida que abría más de sus recuerdos largos y no
-          solicitados.</p>
-        <p>Buscó velozmente hacia atrás en los anales de la historia. Su búsqueda se frenó de golpe al llegar a los
+          estremeció.</span><span class="en">In those first moments of solitude, being alone seemed unnatural, as unnatural as the communion had seemed earlier; she felt the coldness that comes after a swim, when breeze strikes bare skin. She shuddered.</span></p>
+        <p><span class="es">¿Seguía siendo ella misma?</span><span class="en">Was she still herself?</span></p>
+        <p><span class="es"><em>Claro que sí. Eres todo lo que siempre has sido, y más.</em></span><span class="en">Of course you are. You are all you have ever been, and more.</em></span></p>
+        <p><span class="es">La respuesta era suya, pero una vez había pertenecido a otra persona. Por un momento vaciló. La memoria
+          perfecta no garantizaba memoria instantánea, y estaba buscando pensamientos de su infancia. Entonces recordó.</span><span class="en">The answer was her own, but it had once belonged to another person. For a moment she stumbled; perfect memory did not guarantee instantaneous memory, and she was seeking thoughts from her infancy. Then she remembered.</span></p>
+        <p><span class="es"><em>¡Jack!</em></span><span class="en"><em>Jack!</em></span></p>
+        <p><span class="es">Recordó que él había sabido que ella recordaría.</span><span class="en">She remembered, he had known that she'd remember.</span></p>
+        <p><span class="es"><em>¡Qué le había pasado a Jack!</em></span><span class="en"><em>What had happened to Jack!</em></span></p>
+        <p><span class="es">¿Podría haberlo echado de menos todos estos años? Inició una búsqueda en la comunidad, pero conocía su inutilidad
+          incluso mientras empezaba. Él no podía, no habría permanecido oculto.</span><span class="en">Could she have missed him all these years? She initiated a search of the community, but knew its futility even as it began; he could not, would not have remained hidden.</span></p>
+        <p><span class="es">Aun así su necesidad de conocerlo de nuevo creció a medida que abría más de sus recuerdos largos y no
+          solicitados.</span><span class="en">Yet her need to know him again grew stronger as she opened more of her long unbidden memories.</span></p>
+        <p><span class="es">Buscó velozmente hacia atrás en los anales de la historia. Su búsqueda se frenó de golpe al llegar a los
           primeros momentos de la Singularidad. Antes del amanecer de la civilización, los registros se habían mantenido
           de forma rudimentaria, con enlaces insuficientes para permitir un escaneo rápido. Una analogía con telarañas
-          la hizo sonreír por un momento.</p>
-        <p>Solo un puñado de máquinas mantenían este conocimiento antiguo, máquinas viejas en lugares viejos. Su
+          la hizo sonreír por un momento.</span><span class="en">She searched swiftly back through the annals of history. Her search slowed suddenly to a crawl as she reached the early moments of Singularity: before the dawn of civilization, records had been crudely kept, with links insufficient to allow swift scanning. An analogy to cobwebs made her smile for a moment.&aacute;</span></p>
+        <p><span class="es">Solo un puñado de máquinas mantenían este conocimiento antiguo, máquinas viejas en lugares viejos. Su
           búsqueda se hundió hasta la superficie de la Tierra. Allí, en un lugar que una vez se llamó California, se
           habían reunido todos los restos de información prehistórica. Pero no se habían cotejado. Tomaría mucho tiempo
-          encontrar a Jack en ese laberinto. Pero ella tenía tiempo.</p>
-        <p>Un informe de salarios de una corporación de hace mucho, un artículo sobre el impacto de la tecnología
+          encontrar a Jack en ese laberinto. Pero ella tenía tiempo.</span><span class="en">Only a handful of machines maintained this ancient knowledge, older machines in older places. Her search plunged to the surface of Earth. There, in a place once called California, all the remnants of prehistoric information had been collected. But it had not been collated. It would take much time to find Jack in this maze. But she had the time.</span></p>
+        <p><span class="es">Un informe de salarios de una corporación de hace mucho, un artículo sobre el impacto de la tecnología
           acelerada en el individuo, un diseño de programa con las iniciales de su inventor, y de pronto lo encontró, en
           un pequeño tapiz ricamente interconectado dentro de la maraña de conexiones escasas. Lo leyó todo,
-          rápidamente, como si inhalara aire fresco después de demasiado tiempo en una habitación viciada.</p>
-        <p>Jack había salvado su vida, se dio cuenta. La cápsula que había tomado hacía tanto para curar su dolor de
+          rápidamente, como si inhalara aire fresco después de demasiado tiempo en una habitación viciada.</span><span class="en">A salary report from a corporation of long ago ... an article on accelerated technology's impact on the individual ... a program design with its inventor's initials ... and suddenly she found him, in a richly interconnected tiny tapestry within the sparsely connected morass. She read all of it, rapidly, as if she were inhaling fresh air after too long a stay in a stale room.</span></p>
+        <p><span class="es">Jack había salvado su vida, se dio cuenta. La cápsula que había tomado hacía tanto para curar su dolor de
           espalda, ese primer paso en el camino hacia la vida que ahora conocía, era de él. Él había diseñado la máquina
           que diseñó la máquina que diseñó esa pastilla. Resultó que él había aprendido mucho de ella aquel día en que
           caminaron en silencio entre la exuberante naturaleza verde. Y le había tomado a ella todos esos milenios
-          aprender lo que él ya sabía entonces.</p>
-        <p>De ella, Jack había aprendido la importancia de hacer pequeños los pasos de la tecnología, de hacer sus
+          aprender lo que él ya sabía entonces.</span><span class="en">Jack had saved her life, she realized. The capsule she had taken so long ago to heal her backache, that first step on the road to the life she now knew, was his--he had designed the machine that designed the machine that designed that pill. It turned out that he had learned much from her on that day when they walked quietly amidst the lush green wilderness. And it had taken her all these millennia to learn what he had known even then.</span></p>
+        <p><span class="es">De ella, Jack había aprendido la importancia de hacer pequeños los pasos de la tecnología, de hacer sus
           piezas en porciones pequeñas. Lo había aprendido al ver, en sus ojos incrédulos, su reacción al mundo que él
-          había planeado.</p>
-        <p>Para quienes amaban la tecnología y respiraban profundamente de ella, los pequeños pasos no eran importantes.
+          había planeado.</span><span class="en">From her, Jack had learned the importance of making technology's steps small, making its pieces bite-size. He had learned this as he watched, in her disbelieving eyes, her reaction to the world he had planned.</span></p>
+        <p><span class="es">Para quienes amaban la tecnología y respiraban profundamente de ella, los pequeños pasos no eran importantes.
           Habría sido fácil desechar con frialdad a quienes no entendían o tenían miedo. Pero Jack había pensado en
-          ella, y no había querido que muriera.</p>
-        <p>Leyendo estos destellos de su pasado, llegó a conocer a Jack mejor de lo que lo había conocido en vida. Con
+          ella, y no había querido que muriera.</span><span class="en">For those who loved technology and breathed of it deeply, small bite-size steps were not important. It would have been easy to callously cast off those who did not understand or who were afraid. But Jack had thought of her, and had not wanted her to die.</span></p>
+        <p><span class="es">Leyendo estos destellos de su pasado, llegó a conocer a Jack mejor de lo que lo había conocido en vida. Con
           su creciente sabiduría, pronto entendió incluso la claridad de organización que abarcaba esta única franja de
           antigüedad. Esa claridad también era obra suya. Él había creído en ella. Había creído que un día lo buscaría
           allí. Y había sabido que, cuando llegara, sus poderes ampliados de percepción le permitirían entender el
-          mensaje encarnado en la claridad y en todo su trabajo.</p>
-        <p><em>Te amé, ya sabes</em>, le dijo Jack a través de los milenios.</p>
-        <p>Ella quiso responder. Pero no había nadie que pudiera oírla.</p>
-        <p>Le dolía pensar en él perdido para siempre, y no había sentido dolor desde hacía mucho tiempo. Febril,
+          mensaje encarnado en la claridad y en todo su trabajo.</span><span class="en">Reading these glimpses of his past, she grew to know Jack better than she had ever known him in life. With her growing wisdom, she soon understood even the clarity of organization that encompassed this lone swatch of antiquity: the clarity too was of his making. He had believed in her. He had believed that one day she would search for him here. And he had known that, when she arrived, her expanded powers of perception would enable her to understand the message embodied in the clarity, and in all his work.</span></p>
+        <p><span class="es"><em>Te amé, ya sabes</em>, le dijo Jack a través de los milenios.</span><span class="en"><em>I loved you, you know</em>, Jack told her across the millennia.</span></p>
+        <p><span class="es">Ella quiso responder. Pero no había nadie que pudiera oírla.</span><span class="en">She wanted to answer. But there was no one to hear.</span></p>
+        <p><span class="es">Le dolía pensar en él perdido para siempre, y no había sentido dolor desde hacía mucho tiempo. Febril,
           trabajó para reconstruirlo. Las computadoras ligadas a la Tierra le dieron toda la ayuda que podían dar, cada
           recuerdo de cada momento de Jack que hubieran registrado. Rastreó sus propios recuerdos, ahora perfectos, de
           cada palabra que él dijo, cada frase que pronunció, cada mirada que le dio en sus largas caminatas. Construyó
           una simulación de él, la mejor y más perfecta simulación que pudo construir con todos sus recursos, recursos
           muy por encima de los de un millón de mentes humanas biológicas. Era ilegal construir una simulación así, una
-          de las pocas leyes reconocidas por la comunidad, pero eso no la detuvo.</p>
-        <p>La simulación se parecía a Jack. Hablaba como Jack. Incluso se reía como Jack. Pero no era Jack. Entonces
+          de las pocas leyes reconocidas por la comunidad, pero eso no la detuvo.</span><span class="en">It hurt her to think of him lost forever, and she had not felt hurt for a very long time. Feverish, she worked to rebuild him. The Earth-bound computers gave her all the help they had to give, every memory of every moment of Jack they had ever recorded. She traced her own memories, perfect now, of every word he spoke, every phrase he uttered, every look he gave her in their long walks. She built a simulation of him, the best and most perfect simulation she could build with all her resources, resources far beyond those of a million biological human minds. It was illegal to build a simulation such as this, one of the few laws recognized by the community, but this did not deter her.</span></p>
+        <p><span class="es">La simulación se parecía a Jack. Hablaba como Jack. Incluso se reía como Jack. Pero no era Jack. Entonces
           entendió por qué era ilegal construir una simulación así. También entendió por qué no era una ley que
-          necesitara ser aplicada. Tales simulaciones siempre fallaban.</p>
-        <p><em>Jack se había ido.</em></p>
-        <p>¿Qué podía hacer?</p>
-        <p><em>¿Qué tenía que hacer?</em> De repente se dio cuenta de lo tonta que había sido la simulación. ¿Cómo pudo
-          haber esperado acercarse más a él que viviendo su visión del futuro?</p>
-        <p>Solo una pequeña acción, una acción apropiada, le quedaba por realizar. Podía recordar para siempre.</p>
-        <p>Y así, así como una parte de ella vivía para siempre en la Montaña, así como una parte de ella vivía para
+          necesitara ser aplicada. Tales simulaciones siempre fallaban.</span><span class="en">The simulation looked like Jack; it talked like Jack; it even laughed like Jack. But it was not Jack. She then understood why it was illegal to build such a simulation; she also understood why it was not a law that needed to be enforced: such simulations always failed.</span></p>
+        <p><span class="es"><em>Jack se había ido.</em></span><span class="en"></em> <em>Jack was gone.</span></p>
+        <p><span class="es">¿Qué podía hacer?</span><span class="en">What could she do?</span></p>
+        <p><span class="es"><em>¿Qué tenía que hacer?</em> De repente se dio cuenta de lo tonta que había sido la simulación. ¿Cómo pudo
+          haber esperado acercarse más a él que viviendo su visión del futuro?</span><span class="en"><em>What did she have to do?</em> Suddenly she realized how silly the simulation had been: how could she have hoped to get closer to him, than to live his vision of the future?</span></p>
+        <p><span class="es">Solo una pequeña acción, una acción apropiada, le quedaba por realizar. Podía recordar para siempre.</span><span class="en">Only one small action, one appropriate action, remained that she could perform. She could remember forever.</span></p>
+        <p><span class="es">Y así, así como una parte de ella vivía para siempre en la Montaña, así como una parte de ella vivía para
           siempre cantando, ahora mantenía una parte de ella que pasaría todos sus momentos recordando sus momentos
-          anteriores con él. Se convirtió, en parte, en un memorial viviente para quien la trajo aquí.</p>
-        <p>Y aunque nadie pudiera oírla, la esencia de su memoria habría sido fácil de expresar. <em>Jack. Te amo.</em>
-        </p>
-        <p>Volvió su atención a los miembros vivos de la humanidad. Había muchos otros lugares en la comunidad, se dio
+          anteriores con él. Se convirtió, en parte, en un memorial viviente para quien la trajo aquí.</span><span class="en">And so, just as a part of her lived forever on the Mountain, just as a part of her lived forever singing, so now she maintained a part of her that would spend all its moments remembering her earlier moments with him. She became in part a living memorial to the one who brought her here.</span></p>
+        <p><span class="es">Y aunque nadie pudiera oírla, la esencia de su memoria habría sido fácil de expresar. <em>Jack. Te amo.</em></span><span class="en">And though no one could hear, the essence of her memory would have been easy to express: <em>Jack. I love you.</em></span></p>
+        <p><span class="es">Volvió su atención a los miembros vivos de la humanidad. Había muchos otros lugares en la comunidad, se dio
           cuenta, donde las técnicas que empleó en el contacto con los alienígenas podían ayudar. Había muchos lugares
           donde necesitaban su fuerza elemental investida con la plenitud de esa comunión ampliada. Estaba ansiosa por
-          ir. Pero aún quedaba una pregunta.</p>
-        <p><em>¿Seguiría siendo ella misma?</em></p>
-        <p>La respuesta que Jack había forjado tanto tiempo atrás surgió desde dentro, su legítima herencia de su
-          comprensión. Parte de la respuesta, sabía, yacía dentro de otra pregunta.</p>
-        <p><em>¿Sigues siendo tú, incluso ahora? ¿Eras tú misma, incluso cuando tenías 25?</em></p>
-        <p>Ella miró atrás con la visión que trae la memoria perfecta. Recordó quién había sido cuando tenía 25. Recordó
+          ir. Pero aún quedaba una pregunta.</span><span class="en">She turned her attention to the living members of humanity. There were many other places in the community, she realized, where the techniques she employed in contact with the aliens could help; there were many places where they needed her elemental force invested with the fullness of such expanded communion. She was eager to go. But still a question remained.</span></p>
+        <p><span class="es"><em>¿Seguiría siendo ella misma?</em></span><span class="en"><em>Would she still be herself?</span></p>
+        <p><span class="es">La respuesta que Jack había forjado tanto tiempo atrás surgió desde dentro, su legítima herencia de su
+          comprensión. Parte de la respuesta, sabía, yacía dentro de otra pregunta.</span><span class="en">The answer Jack had wrought so long ago welled up from within, her rightful inheritance of his understanding. Part of the answer, she knew, lay within another question:</span></p>
+        <p><span class="es"><em>¿Sigues siendo tú, incluso ahora? ¿Eras tú misma, incluso cuando tenías 25?</em></span><span class="en"><em>Are you still yourself, even now? Were you still yourself, even when you were 25?</em></span></p>
+        <p><span class="es">Ella miró atrás con la visión que trae la memoria perfecta. Recordó quién había sido cuando tenía 25. Recordó
           quién había sido cuando apenas tenía 10. De forma curiosa, también recordó cómo, a los 25, había recordado
           erróneamente sus pensamientos de los 10. Los cambios por los que había pasado durante esos 15 años de
           antigüedad polvorienta eran vastos, quizá tan vastos como todos los cambios que había aceptado en los milenios
           posteriores. Ciertamente, considerando las escalas involucradas, tenía tanto derecho hoy a pensarse como la
           misma persona que entonces. La comunión ampliada no la destruiría. Ella era su propia burbuja sin importar
-          cuán espumoso se volviera el océano.</p>
-        <p>Al menos, esta primera vez había seguido siendo su propia burbuja. ¿Sería siempre así?</p>
-        <p>Se sumergió en la comunión y se retiró para preguntar. Encontró la respuesta, y era buena. Se sumergió de
-          nuevo, por más tiempo, y la respuesta seguía siendo buena, quizá mejor.</p>
-        <p>Se sumergió mucho más tiempo y preguntó una vez más. Esta vez entendió. La respuesta era tan simple, tan
-          gloriosa, tan gozosa, que no volvió a hacer la pregunta durante mil millones de años.</p>
-        <p>Y para entonces, ya no parecía importar.</p>
+          cuán espumoso se volviera el océano.</span><span class="en">She looked back with the vision that perfect memory brings. She remembered who she had been when she was 25; she remembered who she had been when she was just 10. Amusingly, she also remembered how, at 25, she had erroneously remembered her thoughts of age 10. The changes she had gone through during those 15 years of dusty antiquity were vast, perhaps as vast as all the changes she had accepted in the millennia thereafter. Certainly, considering the scales involved, she had as much right today to think of herself as the same person as she had had then. Expanded communion would not destroy her; she was her own bubble no matter how frothy the ocean might become.</span></p>
+        <p><span class="es">Al menos, esta primera vez había seguido siendo su propia burbuja. ¿Sería siempre así?</span><span class="en">At least, this first time she had remained her own bubble. Would it be so always?</span></p>
+        <p><span class="es">Se sumergió en la comunión y se retiró para preguntar. Encontró la respuesta, y era buena. Se sumergió de
+          nuevo, por más tiempo, y la respuesta seguía siendo buena, quizá mejor.</span><span class="en">She dipped into communion, and withdrew to ask the question. She found the answer, and it was good. She dipped again, for a longer time; and still the answer was good, perhaps better.</span></p>
+        <p><span class="es">Se sumergió mucho más tiempo y preguntó una vez más. Esta vez entendió. La respuesta era tan simple, tan
+          gloriosa, tan gozosa, que no volvió a hacer la pregunta durante mil millones de años.</span><span class="en">She dipped much longer still and asked one more time. This time she understood. The answer was so simple, so glorious, so joyful, that she did not ask the question again for a billion years.</span></p>
+        <p><span class="es">Y para entonces, ya no parecía importar.</span><span class="en">And by then, it just didn't seem to matter.</span></p>
       </section>
 
       <div class="ornament" aria-hidden="true">~</div>
 
     </article>
   </main>
+  <script>
+    document.querySelectorAll(".prose p").forEach((paragraph) => {
+      paragraph.addEventListener("click", () => {
+        paragraph.classList.toggle("show-en");
+      });
+    });
+  </script>
 </body>
 
 </html>
