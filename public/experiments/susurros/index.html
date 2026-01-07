@@ -137,14 +137,22 @@
       opacity: 1;
     }
 
-    .prose p:hover .es,
     .prose p.show-en .es {
       opacity: 0;
     }
 
-    .prose p:hover .en,
     .prose p.show-en .en {
       opacity: 1;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .prose p:hover .es {
+        opacity: 0;
+      }
+
+      .prose p:hover .en {
+        opacity: 1;
+      }
     }
 
     .section-break {
@@ -822,9 +830,23 @@
     </article>
   </main>
   <script>
-    document.querySelectorAll(".prose p").forEach((paragraph) => {
+    const paragraphs = Array.from(document.querySelectorAll(".prose p"));
+    let activeParagraph = null;
+
+    paragraphs.forEach((paragraph) => {
       paragraph.addEventListener("click", () => {
-        paragraph.classList.toggle("show-en");
+        if (activeParagraph === paragraph) {
+          paragraph.classList.remove("show-en");
+          activeParagraph = null;
+          return;
+        }
+
+        if (activeParagraph) {
+          activeParagraph.classList.remove("show-en");
+        }
+
+        paragraph.classList.add("show-en");
+        activeParagraph = paragraph;
       });
     });
   </script>
