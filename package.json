@@ -17,9 +17,9 @@
     "@astrojs/check": "^0.9.6",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/rss": "^4.0.14",
-    "@astrojs/sitemap": "^3.6.0",
-    "@duckdb/node-api": "^1.4.3-r.1",
-    "astro": "^5.16.6",
+    "@astrojs/sitemap": "^3.6.1",
+    "@duckdb/node-api": "^1.4.3-r.3",
+    "astro": "^5.16.9",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-wiki-link": "^2.0.1",
@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "pagefind": "^1.4.0",
-    "prettier": "^3.7.4",
+    "prettier": "^3.8.0",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
