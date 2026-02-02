@@ -29,7 +29,9 @@ const { title, description, image } = Astro.props;
       <slot />
     </main>
     <footer>
-      <p>© {new Date().getFullYear()} David Gasquez</p>
+      <p>
+        © {new Date().getFullYear()} David Gasquez | <a href="/rss.xml">RSS</a>
+      </p>
     </footer>
   </body>
 </html>
