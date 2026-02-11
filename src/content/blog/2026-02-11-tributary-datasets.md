@@ -8,11 +8,11 @@ Open datasets are everywhere. Maintained datasets are rare.
 
 I keep seeing the same pattern in [open data ecosystems](/modern-open-data-portals). A few folks do expensive [curation work](/community-level-open-data-infrastructure), the rest of us [free-ride](/handbook/public-goods-funding/), and eventually the dataset goes stale because data wrangling is time consuming, tedious, and technically demanding. [Spending time curating and maintaining datasets for other people to use doesn't make economic sense, unless you can profit from that](https://davidgasquez.com/handbook/open-data).
 
-This post is about a simple question, and a potential solution. The question is: **Can we design a credibly neutral way to [incentivize and elicit useful datasets](/handbook/incentives/) for tasks with benchmarks?** The solution I came up with is a mechanism I call "Tributary". Let's dive in.
+This post is about a simple question, and a potential solution. The question is: **Can we design a credibly neutral way to [incentivize](/handbook/incentives/) and elicit useful datasets for tasks with benchmarks?** The solution I came up with is a mechanism I call "Tributary". Let's dive in.
 
 ## Mechanism
 
-Tributary is a PoC [mechanism](/handbook/mechanism-design/) that works like a [flipped Kaggle competition](/steering-ais). That is:
+Tributary is a PoC [mechanism](/handbook/mechanism-design/) that works like a flipped [open source Kaggle-ish competition](/steering-ais). That is:
 
 - Design a benchmarked task with a **hidden test set**.
 - Keep the **model fixed** (e.g., Random Forest).
