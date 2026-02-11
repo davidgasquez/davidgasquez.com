@@ -4,7 +4,7 @@ date: 2024-03-20
 slug: modern-open-data-portals
 ---
 
-If you look into the [Open Data ecosystem](https://publish.obsidian.md/davidgasquez/Open+Data) you'll realize tools and approaches we use there are different from the ones we use at the data teams of small to medium companies.
+If you look into the [Open Data ecosystem](https://davidgasquez.com/handbook/open-data) you'll realize tools and approaches we use there are different from the ones we use at the data teams of small to medium companies.
 
 I'm sure [these differences are there for many reasons](https://en.wiktionary.org/wiki/Chesterton%27s_fence), the main one being that open data is not a technological problem to begin with. That said, I wanted to explore the idea of **building open data portals** using some of the tools, libraries, frameworks, and ideas I've been using and loving in the last few years.
 
