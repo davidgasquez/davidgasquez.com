@@ -1,5 +1,5 @@
 ---
-title: "Tributary. Credibly neutral dataset elicitation for benchmarked tasks"
+title: "Eliciting useful datasets"
 date: 2026-02-11
 slug: tributary-datasets
 ---
