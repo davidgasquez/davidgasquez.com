@@ -54,13 +54,16 @@ Say you want to contribute a dataset. You play the game by:
 2. Opening a PR adding a URL to `submissions.yaml`. Ideally you point to a [CID](/handbook/ipfs/) (immutable hash of the content).
 3. The PR gets merged and `tributary` downloads, decrypts, trains a fixed model, computes score on hidden test set and updates the leaderboard based on the **marginal contribution** of your dataset.
 
-Since we cannot directly verify every row, the mechanism pays for information that improves predictive power or agreement structure. This is an idea that appears in a lot of [peer prediction and information elicitation work](/handbook/mechanism-design/):
-   - [Truthful Data Acquisition via Peer Prediction (NeurIPS 2020)](https://proceedings.neurips.cc/paper/2020/file/d35b05a832e2bb91f110d54e34e2da79-Paper.pdf)
-   - [Peer Truth Serum (2017)](https://arxiv.org/pdf/1704.05269)
-   - [A Market Framework for Eliciting Private Data (NeurIPS 2015)](https://proceedings.neurips.cc/paper/2015/file/7af6266cc52234b5aa339b16695f7fc4-Paper.pdf)
+Since we cannot directly verify every row, the mechanism pays for information that improves predictive power or agreement structure. We can use [Shapley values](https://christophm.github.io/interpretable-ml-book/shapley.html) or similar techniques to derive the marginal contribution of each row in the dataset.
 
 ## Conclusion
 
 I don't think this mechanism is perfect and definitely needs more work, but I do think it is a credibly neutral path to test a narrower claim. That is, **given a benchmarked task, can we reward the creation of useful data directly, in public, with rules everyone can audit?**.
 
 Hopefully, something like this can be used in the future to start rewarding the hard work of data curation of open datasets, and to start building a culture of dataset maintenance and stewardship.
+
+Finally, here are some extra resources on [peer prediction and information elicitation work](/handbook/mechanism-design/) you might find useful.
+
+- [Truthful Data Acquisition via Peer Prediction (NeurIPS 2020)](https://proceedings.neurips.cc/paper/2020/file/d35b05a832e2bb91f110d54e34e2da79-Paper.pdf)
+- [Peer Truth Serum (2017)](https://arxiv.org/pdf/1704.05269)
+- [A Market Framework for Eliciting Private Data (NeurIPS 2015)](https://proceedings.neurips.cc/paper/2015/file/7af6266cc52234b5aa339b16695f7fc4-Paper.pdf)
