@@ -6,11 +6,11 @@ slug: useful-agentic-workflows-2025
 
 ## 2025 Edition
 
-Last year, I shared [some LLM workflows](useful-llm-tools-2024) I was finding useful. Since then my workflows have changed and I now build many things I would not have attempted before. Here are some agentic workflows I use for work, data, productivity, and research.
+Last year, I shared [some LLM workflows](/useful-llm-tools-2024) I was finding useful. Since then my workflows have changed and I now build many things I would not have attempted before. Here are some agentic workflows I use for work, data, productivity, and research.
 
 ## Magical UNIX Pipelines
 
-I mentioned [`llm`](https://llm.datasette.io/) in last [year's post](useful-llm-tools-2024). My usage has only increased! For any small to medium task that involves text, I use [`llm`](https://llm.datasette.io/) with a custom template. It is amazingly simple and effective.
+I mentioned [`llm`](https://llm.datasette.io/) in last [year's post](/useful-llm-tools-2024). My usage has only increased! For any small to medium task that involves text, I use [`llm`](https://llm.datasette.io/) with a custom template. It is amazingly simple and effective.
 
 I've used it to summarize and interrogate YouTube videos, tag documents, extract structured data from many files, generate additional columns for datasets, caption images, and many more little things.
 
@@ -48,7 +48,7 @@ Another big takeaway is that there is lots of value in exploring different frame
 
 ## Curated Style Guides
 
-A powerful side effect of [maintaining a personal knowledge base](building-a-pkb) is that I've been passively curating style guides and useful resources for different kinds of tasks for the last few years. I have notes on [good writing](handbook/writing/), [making checklists](handbook/checklist/), crafting [good commit messages](handbook/git/), and many more [random things](/handbook).
+A powerful side effect of [maintaining a personal knowledge base](/building-a-pkb) is that I've been passively curating style guides and useful resources for different kinds of tasks for the last few years. I have notes on [good writing](/handbook/writing/), [making checklists](/handbook/checklist/), crafting [good commit messages](/handbook/git/), and many more [random things](/handbook).
 
 That means that when I need the model to produce a specific kind of artifact, I already have a bunch of links to give that I've previously verified and enjoyed.
 
@@ -58,7 +58,7 @@ I'm now thinking about packaging the handbook [as a skill](https://agentskills.i
 
 ## Agentic Data Engineering
 
-Folks always say you spend **80% of the time cleaning data** when working with any dataset. Well, now it might be different! I've used some agentic engineering techniques to automate cleanup scripts, letting me focus more on charting, design, and deeper analysis. I've shared before how I do [scrappy data cleaning](scrappy-data-cleaning) with Claude Code inline mode and how I'm [specializing Codex](specializing-codex) for different data tasks. Overall, you can use these techniques for a few different data tasks.
+Folks always say you spend **80% of the time cleaning data** when working with any dataset. Well, now it might be different! I've used some agentic engineering techniques to automate cleanup scripts, letting me focus more on charting, design, and deeper analysis. I've shared before how I do [scrappy data cleaning](/scrappy-data-cleaning) with Claude Code inline mode and how I'm [specializing Codex](/specializing-codex) for different data tasks. Overall, you can use these techniques for a few different data tasks.
 
 ### Data Enrichment
 

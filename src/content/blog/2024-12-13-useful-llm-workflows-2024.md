@@ -13,7 +13,7 @@ I reluctantly moved from VS Code to Cursor in June 2024. Once I tried Cursor, I 
 - Adding Rules for AI [^1] prompt.
 - Indexed lots of external documentation sites.
 - Use notepads to describe the environment and project goals. For example, in these notepads I'll specify that Cursor should use `uv` to manage the Python environment.
-- I wrote a post on how some of the [Cursor features are useful for note-taking](notetaking-with-ides).
+- I wrote a post on how some of the [Cursor features are useful for note-taking](/notetaking-with-ides).
 
 ## LLM CLI
 

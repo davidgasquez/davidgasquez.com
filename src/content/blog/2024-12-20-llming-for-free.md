@@ -64,5 +64,5 @@ Speaking of flags though, there are a few interesting ones you should know.
 
 ---
 
-There are many more ways to use `llm`. I've [written about some of them previously](useful-llm-tools-2024) and am sure you'll find some other interesting uses.
+There are many more ways to use `llm`. I've [written about some of them previously](/useful-llm-tools-2024) and am sure you'll find some other interesting uses.
 Enjoy LLMing for free while it lasts!

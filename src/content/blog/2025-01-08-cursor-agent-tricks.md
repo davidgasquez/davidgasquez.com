@@ -4,7 +4,7 @@ date: 2025-01-08
 slug: cursor-agent-tricks
 ---
 
-I've been using [Cursor](https://www.cursor.com/) during the last few months for both coding and [note-taking](notetaking-with-ides). They recently introduced a feature that makes their Composer model able to use an agent. That means it can write code and run shell commands iteratively.
+I've been using [Cursor](https://www.cursor.com/) during the last few months for both coding and [note-taking](/notetaking-with-ides). They recently introduced a feature that makes their Composer model able to use an agent. That means it can write code and run shell commands iteratively.
 
 That is amazing but I've found it lacking. For example, it doesn't know how to search the web or use tools like `uv` (it always tries to go with `pip`).
 
