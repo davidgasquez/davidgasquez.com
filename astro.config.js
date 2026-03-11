@@ -9,7 +9,10 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   site: "https://davidgasquez.com/",
   integrations: [sitemap(), mdx()],
-  trailingSlash: "ignore",
+  trailingSlash: "never",
+  build: {
+    format: "file",
+  },
   fonts: [
     {
       provider: fontProviders.google(),

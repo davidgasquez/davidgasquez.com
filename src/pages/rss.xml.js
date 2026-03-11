@@ -7,10 +7,11 @@ export async function GET(context) {
         title: 'David Gasquez',
         description: 'David Gasquez\'s Blog',
         site: context.site,
+        trailingSlash: false,
         items: blog.map((post) => ({
             title: post.data.title,
             pubDate: post.data.date,
-            link: `/${post.id}/`,
+            link: `/${post.id}`,
         })),
         customData: `<language>en-us</language>`,
     });
