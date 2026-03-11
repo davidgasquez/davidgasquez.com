@@ -1,0 +1,15 @@
+{
+  "name": "davidgasquez-com",
+  "workers_dev": false,
+  "compatibility_date": "2026-03-11",
+  "routes": [
+    {
+      "pattern": "davidgasquez.com",
+      "custom_domain": true
+    }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

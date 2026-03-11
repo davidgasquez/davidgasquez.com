@@ -10,8 +10,7 @@
 
   --max-width: 1120px;
   --font-size: 1.05rem;
-  --font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+  --font-family: var(--font-jetbrains-mono);
   --grid-size: 28px;
   --grid-line-color: rgba(255, 255, 255, 0.035);
   --panel-surface: rgba(255, 255, 255, 0.02);

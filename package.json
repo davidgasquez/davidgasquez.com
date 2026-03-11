@@ -11,15 +11,17 @@
     "start": "astro dev",
     "build": "npm run update-handbook && astro check && astro build && npx pagefind --site dist",
     "preview": "astro preview",
+    "preview:worker": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/check": "^0.9.7",
+    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/sitemap": "^3.7.1",
     "@duckdb/node-api": "^1.4.4-r.3",
-    "astro": "^5.18.0",
+    "astro": "^6.0.2",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-wiki-link": "^2.0.1",
@@ -29,6 +31,7 @@
   "devDependencies": {
     "pagefind": "^1.4.0",
     "prettier": "^3.8.1",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "wrangler": "^4.72.0"
   }
 }
