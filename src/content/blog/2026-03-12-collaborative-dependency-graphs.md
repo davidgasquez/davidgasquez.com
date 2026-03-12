@@ -35,6 +35,28 @@ And an attestation on top of it:
 
 The point is simple: the **edge and the disagreement are separate objects**. A maintainer can publish a claim, a bot can extract one, and other people can support, narrow, or challenge it without overwriting anything. That is a better default for [resolving disagreement](/handbook/resolving-disagreement/).
 
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="claims-title claims-desc" style="width:100%;height:auto;display:block;margin:1.5rem auto;">
+  <title id="claims-title">Claims and attestations are separate objects</title>
+  <desc id="claims-desc">A repository node points to a package node with a dependsOn claim, while a separate challenge attestation points to that claim.</desc>
+  <rect x="1.5" y="1.5" width="717" height="177" rx="18" fill="#111111" stroke="rgba(255,255,255,0.10)" stroke-width="1.5" />
+
+  <rect x="58" y="56" width="190" height="58" rx="14" fill="rgba(202,138,4,0.08)" stroke="#ca8a04" stroke-width="2" />
+  <text x="78" y="92" fill="#f5f5f5" font-size="17" font-family="JetBrains Mono, monospace">acme/app repo</text>
+
+  <rect x="472" y="56" width="190" height="58" rx="14" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.16)" stroke-width="2" />
+  <text x="492" y="92" fill="#f5f5f5" font-size="17" font-family="JetBrains Mono, monospace">pkg:npm react</text>
+
+  <path d="M248 85 C 320 85, 400 85, 472 85" fill="none" stroke="rgba(245,245,245,0.55)" stroke-width="2.5" />
+  <text x="289" y="66" fill="#9ca3af" font-size="16" font-family="JetBrains Mono, monospace">claim: dependsOn</text>
+
+  <rect x="293" y="108" width="134" height="34" rx="17" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" stroke-width="1.5" />
+  <text x="321" y="130" fill="#f5f5f5" font-size="15" font-family="JetBrains Mono, monospace">challenge</text>
+  <path d="M360 108 C 360 96, 360 92, 360 85" fill="none" stroke="rgba(156,163,175,0.75)" stroke-width="2" stroke-dasharray="5 5" />
+</svg>
+<figcaption style="font-size: 0.9rem;"><em>The edge is one object, support or challenge lives next to it, not inside it.</em></figcaption>
+</figure>
+
 ## Borrow what already works
 
 We do not need to invent this from scratch.
@@ -64,6 +86,7 @@ Imagine a repository that uses a library, implements a standard, and was heavily
 A maintainer-focused view may only include self-declared and reviewed software dependencies. A researcher-focused view may also include papers and standards. A funder may want a stricter view that only includes edges with multiple attestations. Same underlying claim pool, different derived graphs.
 
 That is a more [plural](/handbook/plurality/) design. It avoids turning one imperfect graph into a single source of truth for everyone.
+
 
 ## How it stays current
 
@@ -109,4 +132,4 @@ We do not need a perfect canonical map of interdependence. We need a shared, con
 
 ---
 
-* How could a POC look like? Keep the graph as a derived view and store only a few append-only record types in Git — `entity`, `claim`, `attestation`, `evidence`, and optional `label` — as small YAML files. Make `claim` the core unit (`subject`, `relation`, `object`, `qualifiers`, `evidence`, `issuer`, `createdAt`, `status`, `supersedes`), let `attestation` support, refine, or challenge claims, keep the relation set tiny (`dependsOn`, `uses`, `cites`, `implements`, `derivedFrom`, `maintainedBy`, `funds`), and generate each dependency graph by filtering those records through a trust policy and query. A first repo could just be directories of YAML plus a simple script that materializes a view.*
+*How could a POC look like? Keep the graph as a derived view and store only a few append-only record types in Git — `entity`, `claim`, `attestation`, `evidence`, and optional `label` — as small YAML files. Make `claim` the core unit (`subject`, `relation`, `object`, `qualifiers`, `evidence`, `issuer`, `createdAt`, `status`, `supersedes`), let `attestation` support, refine, or challenge claims, keep the relation set tiny (`dependsOn`, `uses`, `cites`, `implements`, `derivedFrom`, `maintainedBy`, `funds`), and generate each dependency graph by filtering those records through a trust policy and query. A first repo could just be directories of YAML plus a simple script that materializes a view.*
