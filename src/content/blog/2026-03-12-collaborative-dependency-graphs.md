@@ -4,7 +4,7 @@ date: 2026-03-12
 slug: collaborative-dependency-graphs
 ---
 
-We do not mostly need better allocators for the last step of [public goods funding](/handbook/public-goods-funding/). We need better [coordination](/handbook/coordination/) around what depends on what. A good dependency graph should be a shared pool of contestable, versioned, provenance-rich claims that many groups can turn into their own trusted views.
+We do not mostly need better allocators for the last step of [public goods funding](/handbook/public-goods-funding/). We need better [coordination](/handbook/coordination/) around what depends on what. **A good dependency graph should be a shared pool of contestable, versioned, provenance-rich claims that many groups can turn into their own trusted views**.
 
 Current dependency graphs usually fail in the same way. One actor publishes a graph, it goes stale, it mostly captures code, and nobody can tell which edges are well-supported, disputed, or simply missing. If the source graph is bad, better allocation [mechanisms](/handbook/mechanism-design/) downstream will not save us.
 
@@ -33,7 +33,7 @@ And an attestation on top of it:
 }
 ```
 
-The point is simple: the edge and the disagreement are separate objects. A maintainer can publish a claim, a bot can extract one, and other people can support, narrow, or challenge it without overwriting anything. That is a better default for [resolving disagreement](/handbook/resolving-disagreement/).
+The point is simple: the **edge and the disagreement are separate objects**. A maintainer can publish a claim, a bot can extract one, and other people can support, narrow, or challenge it without overwriting anything. That is a better default for [resolving disagreement](/handbook/resolving-disagreement/).
 
 ## Borrow what already works
 
@@ -91,24 +91,22 @@ Overall, funding should be downstream as there are really three layers here:
 
 That separation is useful. It prevents _"the graph says so, therefore money flows so"_. Communities can argue about whether an edge is supported without collapsing that argument into one hard binding allocation rule, and any downstream score should be traceable back to cited claims and recomputable from a public snapshot.
 
-With this approach we are not forcing one final answer, but helping groups find legible areas of agreement and disagreement.
+With this approach we are not forcing one final answer, but **helping groups find legible areas of agreement and disagreement**.
 
 ## Open questions
 
 A few hard problems remain:
 
-- How do we prevent spam without making contribution too hard?
 - What is the right balance between bot extraction and human review?
 - How do we model non-code dependencies without endless ontology fights?
-- When should a query return a graph, and when should it force a DAG projection?
 - What should challengers or curators have at stake when they make bad calls?
 
 ## Conclusion
 
 We do not need a perfect canonical map of interdependence. We need a shared, contestable substrate of claims about dependencies, with good provenance, durable identifiers, and versioning. Then different communities can derive their own views, trust their own curators, and plug those views into funding or coordination mechanisms.
 
-Better coordination starts upstream, with better legible artifacts.
+**Better coordination starts upstream, with better legible artifacts.**
 
 ---
 
-*Implementation note for a small POC: keep the graph as a derived view and store only a few append-only record types in Git — `entity`, `claim`, `attestation`, `evidence`, and optional `label` — as small YAML files. Make `claim` the core unit (`subject`, `relation`, `object`, `qualifiers`, `evidence`, `issuer`, `createdAt`, `status`, `supersedes`), let `attestation` support, refine, or challenge claims, keep the relation set tiny (`dependsOn`, `uses`, `cites`, `implements`, `derivedFrom`, `maintainedBy`, `funds`), and generate each dependency graph by filtering those records through a trust policy and query. A first repo could just be directories of YAML plus a simple script that materializes a view.*
+* How could a POC look like? Keep the graph as a derived view and store only a few append-only record types in Git — `entity`, `claim`, `attestation`, `evidence`, and optional `label` — as small YAML files. Make `claim` the core unit (`subject`, `relation`, `object`, `qualifiers`, `evidence`, `issuer`, `createdAt`, `status`, `supersedes`), let `attestation` support, refine, or challenge claims, keep the relation set tiny (`dependsOn`, `uses`, `cites`, `implements`, `derivedFrom`, `maintainedBy`, `funds`), and generate each dependency graph by filtering those records through a trust policy and query. A first repo could just be directories of YAML plus a simple script that materializes a view.*
