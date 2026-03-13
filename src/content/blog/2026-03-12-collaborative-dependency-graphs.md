@@ -4,9 +4,15 @@ date: 2026-03-12
 slug: collaborative-dependency-graphs
 ---
 
-We do not mostly need better allocators for the last step of [public goods funding](/handbook/public-goods-funding/). We need better [coordination](/handbook/coordination/) around what depends on what. **A good dependency graph should be a shared pool of contestable, versioned, provenance-rich claims that many groups can turn into their own trusted views**.
+We do not mostly need better allocators for the last step of [public goods funding](/handbook/public-goods-funding/) but better mechanisms for discussing and [coordinating](/handbook/coordination/) what to propose and how we get to consensus in a reliable way. 
 
-Current dependency graphs usually fail in the same way. One actor publishes a graph, it goes stale, it mostly captures code, and nobody can tell which edges are well-supported, disputed, or simply missing. If the source graph is bad, better allocation [mechanisms](/handbook/mechanism-design/) downstream will not save us.
+In the mechanisms I've been participating, the "source"/"map" has been in the shape of a graph of projects, or list of dependencies. This graph alway comes from one entity and is been "fixed" from the start. We need better around what depends on what. **A good dependency graph should be a shared pool of contestable, versioned, provenance-rich claims that many groups can turn into their own trusted views**.
+
+Current dependency graphs usually fail in the same way. One actor publishes a graph, it goes stale, it mostly captures code, and nobody can tell which edges are well-supported, disputed, or simply missing. If the source graph is bad, better allocation [mechanisms](/handbook/mechanism-design/) downstream will not save us. 
+
+This is more important now as we keep adding more AI into our processes. We need to make these contraptions legible for humans and machines!
+
+What follows is my initial proposal. Making something like a dependency tree legible is a lot more of a governance/consensus finding process (ontology fights, automation spam, ...) than a technical one, so you shouldn't listen to me seriously, I'm just sharing the idea.
 
 ## Claims, not facts
 
@@ -63,7 +69,7 @@ We do not need to invent this from scratch.
 
 - [Wikibase](https://www.mediawiki.org/wiki/Wikibase/DataModel/Primer) already models statements with qualifiers, references, and ranks.
 - [W3C PROV](https://www.w3.org/TR/prov-overview/) treats provenance as a first-class object.
-- [AT Protocol moderation](https://atproto.com/guides/moderation) separates the shared data layer from trust overlays, using free-standing signed labels published by third parties.
+- [AT Protocol moderation](https://atproto.com/guides/moderation) separates the shared data layer from trust overlays, using free-standing signed labels published by third parties. One underlying object space, but many competing trust overlays!
 - [Nanopublications](https://nanopub.net/guidelines/working_draft/) show how small assertions can carry attribution and provenance.
 - [Data on the Web Best Practices](https://www.w3.org/TR/dwbp/) pushes durable identifiers, resolvable identifiers, versioning, and reuse.
 
@@ -123,12 +129,14 @@ A few hard problems remain:
 - What is the right balance between bot extraction and human review?
 - How do we model non-code dependencies without endless ontology fights?
 - What should challengers or curators have at stake when they make bad calls?
+- How would a market-like mechanism that dynamically discovers and validates edges look like?
+- Should curators of "views"/"materializations"/"projections" earn some percentage of the funding for their services? 
 
 ## Conclusion
 
 We do not need a perfect canonical map of interdependence. We need a shared, contestable substrate of claims about dependencies, with good provenance, durable identifiers, and versioning. Then different communities can derive their own views, trust their own curators, and plug those views into funding or coordination mechanisms.
 
-**Better coordination starts upstream, with better legible artifacts.**
+Better allocation mechanisms (like Deep Funding) won’t help if the underlying layer is not credible neutral. **Better coordination starts upstream, with better legible artifacts.**
 
 ---
 
