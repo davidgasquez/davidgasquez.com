@@ -16,13 +16,11 @@ Values are plural. Impact can be fuzzy. Metrics get gamed. That does **not** mak
 
 > Do these mechanisms beat simpler or cheaper alternatives on the metrics/values we care about?
 
+There may never be one canonical benchmark, but we can still build shared, falsifiable evaluation loops.
+
 ## Evaluating Mechanism
 
-A mechanism might produce a decent allocation and still be a bad fit. Mechanism can be too opaque, too expensive, too easy to game, or too hard to explain. Each implementation will require diferent tradeoffs. Having an evaluation layer makes these explicit so the community can take better decissions.
-
-How does that look like?
-
-**specify → collect → score → analyze errors → update → rerun**
+A mechanism might produce a decent allocation and still be a bad fit. Mechanism can be too opaque, too expensive, too easy to game, or too hard to explain. Each round/implementation requires diferent tradeoffs. Having an evaluation layer makes these explicit so the community can take better decissions and know what are they giving away by choosing one mechanism over another.
 
 ### 1. Define "bettet"
 
@@ -35,6 +33,8 @@ What metric will be used to compare mechanisms?
 - Legitimacy with participants?
 - Cost per unit of improvement?
 
+The goal is not to find a perfect metric, but to coordinate on one and iterate. The act of discussing a metric is in itself useful!
+
 ### 2. Publish a Baseline
 
 No mechanism should be discussed without a baseline alternative to compare against. 
@@ -43,6 +43,8 @@ No mechanism should be discussed without a baseline alternative to compare again
 - Random allocation
 - Quick expert allocation
 - Simple agent based allocation
+
+This acts as the falsifiable hypotheses. E.g: "this mechanism beats an expert-in-an-afternoon baseline on holdout pairwise agreement" or "this mechanism is more stable under reruns"
 
 ### 3. Compare Blindly 
 
@@ -59,8 +61,10 @@ Do not stop at leaderboard scores. Look at where the mechanism failed:
 
 Then label the failure modes: noisy raters, confussing category, missing context, popularity bias, aggregation artifacts, gaming, overconfidence.
 
+These evaluations should be public, reproducible, and forkable: data, scoring, rules, and outputs should be inspectable by anyone for this process to be credible neutral.
+
 ## Conclusion
 
 With a principled approach, the output of a round is not only final allocation anymore. It is also the **cumulative learnings** the scientific method enables!
 
-Public goods funding does need experimentation. It may not need more mechanisms until we know how well the ones we already have work.
+Public goods funding does need experimentation. It may not need more mechanisms until we know how well the ones we already have work. There is still no widely accepted evaluation loop for comparing these mechanisms. That itself is a great public good we should strive for!
