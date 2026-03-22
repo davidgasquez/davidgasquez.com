@@ -4,7 +4,7 @@ date: 2026-03-12
 slug: collaborative-dependency-graphs
 ---
 
-We do not mostly need better allocators for the last step of [public goods funding](/handbook/public-goods-funding/) but better mechanisms for discussing and [coordinating](/handbook/coordination/) what to propose and how we get to consensus in a reliable way. 
+**TLDR: We do not mostly need better funding allocations for on [public goods funding](/handbook/public-goods-funding/) but better mechanisms for discussing and [coordinating](/handbook/coordination/) what to propose and how we get to consensus in a reliable way.**
 
 In the mechanisms I've been participating, the "source"/"map" has been in the shape of a graph of projects, or list of dependencies. This graph alway comes from one entity and is been "fixed" from the start. We need better around what depends on what. **A good dependency graph should be a shared pool of contestable, versioned, provenance-rich claims that many groups can turn into their own trusted views**.
 
