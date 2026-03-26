@@ -4,7 +4,7 @@ date: 2026-03-26
 slug: atmospheric-data-portals
 ---
 
-> _I wrote this quickly more as a sketch for people already familiar with `atproto` and the surrounding data/discovery context than a fully self-contained post._
+> _I wrote this quickly more as a sketch for people already familiar with `atproto` and the open data discovery challenges than a fully self-contained post._
 
 This post can be seen as a continuation of my [Open Data](https://davidgasquez.com/handbook/open-data) wranglings. Check them out if you are interested in some ideas to solve issues at earlier stages of the Open Data pipeline.
 
