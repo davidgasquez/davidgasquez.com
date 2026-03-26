@@ -23,7 +23,7 @@ So, how would I do it? Here are some ideas I haven't seen in these projects and 
 - Add an optional [DASL-CID field](https://dasl.ing/cid.html) for resources so we "pin" the bytes.
 - Core lexicon should be as agnostic as possible! That means:
   - Storage agnostic
-    - Datasets can have multiple snapshots with different `URI`s. These can be mirrors, updates, forks, ... They can also be produced by anyone, so I can back up some dataset on IPFS and provide that back.
+    - Datasets can have multiple snapshots with different `URI`s. These can be mirrors, updates, forks, partitions of the dataset... They can also be produced by anyone, so I can back up some dataset on IPFS and provide that back.
     - Snapshots point to "resources", which are `URI`s and perhaps an extra `CID`. E.g., `s3://owid/2021-04-25-covid_19.csv`
   - Format agnostic
     - Don't force specific formats. Use `URI`s and optional `MIME` types and let consumers figure things out. It is better than asking people to migrate to a specific format.
@@ -33,6 +33,6 @@ So, how would I do it? Here are some ideas I haven't seen in these projects and 
 
 Basically, whatever comes out of this should fit existing storage, files, and publishing habits and not require migration into a blessed stack (programming laguage, platform, ...). It should allow anyone to mirror, fix, annotate, and republish datasets.
 
- There are many interesting ideas to follow up on like curating datasets into collections, reputation, or simple things like linking datasets. I'm very excited to continue these discussions and see where we go!
+There are many interesting ideas to follow up too! Curating datasets into collections, reputation, or simple things like linking datasets. I'm very excited to continue these discussions and see where we go! For now, I think starting with something like this would be enough to see some interesting atmospheric data portals pop up.
 
 [^1]: For example, Hugging Face Datasets offers a git-repo-like space for you to put the data and a [metadata file](https://huggingface.co/docs/hub/datasets-manual-configuration). Since they own that space, they can search across all their datasets. Easy, but not open or decentralized. On the other hand, you have the [Data Package spec](https://datapackage.org/standard/data-package/), used by organizations like OWID and maintained by a more neutral actor. The issue there is discovery. The [best you can do today is search GitHub](https://github.com/search?q=path%3A**%2Fdatapackage.json&type=code). [There are many more examples here](https://davidgasquez.com/handbook/data-package-manager).
