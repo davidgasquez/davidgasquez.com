@@ -12,7 +12,6 @@ This post can be seen as a continuation of my [Open Data](https://davidgasquez.c
 - [Community Level Open Data Infrastructure](/community-level-open-data-infrastructure)
 - [Barefoot Data Platforms](/barefoot-data-platforms)
 
-
 In the last couple of days, I've come across two interesting projects that are working on making "datasets discoverable" using the AT Protocol: [Matadisco](https://matadisco.org/) and [`atdata`](https://github.com/forecast-bio/atdata). This is something I've [been thinking about for a while](https://github.com/orgs/datonic/discussions/42#discussioncomment-11303328), and I wanted to write down some thoughts and ideas!
 
 The [AT Protocol](https://atproto.com/) has a real chance to improve the main issue these projects point to: **finding useful data is hard**. A big part of the difficulty comes from the current state of things: isolated portals, weird APIs, lack of reputation and usage signals, ... Turns out, data discovery is also a [people problem](/community-level-open-data-infrastructure)! And the best ~[hammer](https://en.wikipedia.org/wiki/Law_of_the_instrument)~ protocol we have for this kind of social problem is indeed the AT Protocol.
