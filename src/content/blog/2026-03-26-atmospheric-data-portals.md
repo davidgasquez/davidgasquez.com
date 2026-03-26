@@ -4,14 +4,14 @@ date: 2026-03-26
 slug: atmospheric-data-portals
 ---
 
+> _I wrote this quickly more as a sketch for people already familiar with `atproto` and the surrounding data/discovery context than a fully self-contained post._
+
 This post can be seen as a continuation of my [Open Data](https://davidgasquez.com/handbook/open-data) wranglings. Check them out if you are interested in some ideas to solve issues at earlier stages of the Open Data pipeline.
 
 - [Building Open Data Portals](/modern-open-data-portals)
 - [Community Level Open Data Infrastructure](/community-level-open-data-infrastructure)
 - [Barefoot Data Platforms](/barefoot-data-platforms)
 
-> **Note**
-> I wrote this quickly more as a sketch for people already familiar with `atproto` and the surrounding data/discovery context than a fully self-contained post.
 
 In the last couple of days, I've come across two interesting projects that are working on making "datasets discoverable" using the AT Protocol: [Matadisco](https://matadisco.org/) and [`atdata`](https://github.com/forecast-bio/atdata). This is something I've [been thinking about for a while](https://github.com/orgs/datonic/discussions/42#discussioncomment-11303328), and I wanted to write down some thoughts and ideas!
 
