@@ -32,6 +32,7 @@ So, how would I do it? Here are some ideas I haven't seen in these projects and 
 - I'd keep anything related to schemas optional, as you can enforce them on specific file formats (e.g., Parquet vs. CSV).
 - Bootstrap the catalog. There are many [open indexes and organizations](https://github.com/datonic/hub/blob/main/notes/related-projects.md#indexes). Crawl them!
 - Integrate with external repositories. E.g., a service [that creates `JSON-LD` files](https://developers.google.com/search/docs/appearance/structured-data/dataset) from the datasets it sees appearing on the Atmosphere so [Google Datasets picks them up](https://datasetsearch.research.google.com/). The same cron job could push data into Hugging Face or any other tool that people are already using in their fields.
+- Convince and work with high quality organizations doing something like this! I'd [definitely collaborate with `source.coop` for example](https://source.coop/harvard-lil/gov-data).
 
 Basically, whatever comes out of this should fit existing storage, files, and publishing habits and not require migration into a blessed stack (programming laguage, platform, ...). It should allow anyone to mirror, fix, annotate, and republish datasets.
 
