@@ -29,6 +29,7 @@ So, how would I do it? Here are some ideas I haven't seen in these projects and 
     - Snapshots point to "resources", which are `URI`s and perhaps an extra `CID`. E.g., `s3://owid/2021-04-25-covid_19.csv`
   - Format agnostic
     - Don't force specific formats. Use `URI`s and optional `MIME` types and let consumers figure things out. It is better than asking people to migrate to a specific format.
+    - You can publics multiple "snapshots" of the dataset with multiple formats.
 - I'd keep anything related to schemas optional, as you can enforce them on specific file formats (e.g., Parquet vs. CSV).
 - Bootstrap the catalog. There are many [open indexes and organizations](https://github.com/datonic/hub/blob/main/notes/related-projects.md#indexes). Crawl them!
 - Integrate with external repositories. E.g., a service [that creates `JSON-LD` files](https://developers.google.com/search/docs/appearance/structured-data/dataset) from the datasets it sees appearing on the Atmosphere so [Google Datasets picks them up](https://datasetsearch.research.google.com/). The same cron job could push data into Hugging Face or any other tool that people are already using in their fields.
