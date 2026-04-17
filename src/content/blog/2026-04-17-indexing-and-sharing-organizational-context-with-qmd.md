@@ -4,7 +4,7 @@ date: 2026-04-17
 slug: sharing-a-qmd-index-with-a-team
 ---
 
-I found [`qmd`](https://github.com/tobi/qmd) to be great for turning a pile of docs, repos and other resources into something you can actually query without worring too much about the setup. I wanted to share the experience of having your agent figure something tricky out without having to force folks to run a bunch of CLI commands like `qmd embed`.
+I found [`qmd`](https://github.com/tobi/qmd) to be really great for data engineering work. The life of a data engineer is filled with tons of context gathering across code, docs, specs, issues, conversation and many more resources. So, `qmd` turning that pile of documents into something you can actually query without worring too much about the setup is ver useful for me and my agents! I wanted to share the experience/embedded knowledge with colleages but don't force them to run a bunch of CLI commands like `qmd embed`.
 
 I ended up with a setup I like a lot, having **the index managed declaratively in git and publishing daily SQLite databases with the embeddings**.
 
