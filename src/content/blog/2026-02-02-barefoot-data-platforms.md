@@ -4,7 +4,7 @@ date: 2026-02-02
 slug: barefoot-data-platforms
 ---
 
-I've been maintaining an [open source and local-first data platform for the Filecoin ecosystem](https://github.com/davidgasquez/filecoin-data-portal) while keeping some fun [constraints and principles](https://github.com/davidgasquez/filecoin-data-portal?tab=readme-ov-file#-key-features). I previously wrote about the [pattern](https://datadex.datonic.io/), [related ideas](/modern-open-data-portals), and why I think this [makes these platforms work very well at the community level](/community-level-open-data-infrastructure).
+I've been maintaining an [open source and local-first data platform for the Filecoin ecosystem](https://github.com/davidgasquez/filecoin-data-portal) while keeping some fun [constraints and principles](https://github.com/davidgasquez/filecoin-data-portal/blob/cfa22d77e03e056d293227d172981aa8cf90eeee/AGENTS.md). I previously wrote about the [pattern](https://datadex.datonic.io/), [related ideas](/modern-open-data-portals), and why I think this [makes these platforms work very well at the community level](/community-level-open-data-infrastructure).
 
 Recently, I've been pondering two things. **Can these be simpler?** and, **do we really need Dagster and dbt in the age of ~~clankers~~ agents**? Don't get me wrong, these frameworks are useful and you should definitely use them. In this post I'm exploring how a platform could look like without them.
 
