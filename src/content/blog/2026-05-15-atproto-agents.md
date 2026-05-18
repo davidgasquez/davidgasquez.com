@@ -14,7 +14,7 @@ You've probably experienced more than once recently, platforms being hostile to 
 
 The AT Protocol is an [amazing technology](https://atproto.com/articles/atproto-ethos) that I think is very underrated for agents! Turns out, the properties Bluesky (the biggest AT Protocol application as of today) needed for humans (portable identity, open data, federated infrastructure, structured schemas) happen to be exactly what you'd want for agents too.
 
-As a quick and dirty intro ([you should read the official ones](https://atproto.com/articles/atproto-for-distsys-engineers)), in the `atproto` world, every user is a personal, signed JSON repository. Every record (a post, a like, a follow, a photo, a blog post, *anything* really) is addressable by an `at://` URI, has a public schema (a *Lexicon*), and is broadcast in real time on a global event stream (the *firehose*). Dan Abramov explains all of this in more detail and clarity in "[A Social Filesystem](https://overreacted.io/a-social-filesystem)".
+As a quick and dirty intro ([you should read the official ones](https://atproto.com/articles/atproto-for-distsys-engineers), or this great [walkthrough by mackuba](https://mackuba.eu/2025/08/20/introduction-to-atproto)), in the `atproto` world, every user is a personal, signed JSON repository. Every record (a post, a like, a follow, a photo, a blog post, *anything* really) is addressable by an [`at://` URI](https://overreacted.io/where-its-at), has a public schema (a *Lexicon*), and is broadcast in real time on a global event stream (the *firehose*). Dan Abramov explains all of this in more detail and clarity in "[A Social Filesystem](https://overreacted.io/a-social-filesystem)".
 
 ## Benefits
 
@@ -24,7 +24,7 @@ This [architecture has many benefits](https://overreacted.io/open-social) for hu
 2. **Data is open, structured, and live**. You've seen my [`at://davidgasquez.com`](https://pdsls.dev/at://did:plc:4z5i7njrld66ew36htufcwry). It is just a database with a bunch of JSON files. No presentation layer. Any agent can browse it, query it, and link to it in a couple of commands. And it doesn't stop at one repo: the [firehose](https://docs.bsky.app/docs/advanced-guides/firehose) (or the lighter [Jetstream](https://github.com/bluesky-social/jetstream)) streams every change happening across every known repo in real time. Collective awareness is computationally feasible.
 3. **Permissions are bounded and consent-driven**. [OAuth with granular scopes](https://atproto.com/guides/oauth) means an agent can act on your behalf with permissions you control, not credentials you hand over. Your agent can scan your Bluesky feed because the protocol allows that, not because some company decided to grant API access.
 
-In the _atmosphere_ (the AT Protocol ecosystem), apps are derived from files in user repositories. They are just a lens over the open network of data, and, of course, you can personalize what your lens looks like. **The AT Protocol is the ultimate API**!
+In the _[atmosphere](https://www.pfrazee.com/blog/atmospheric-computing)_ (the AT Protocol ecosystem), apps are derived from files in user repositories. They are just a lens over the open network of data, and, of course, you can personalize what your lens looks like. **The [AT Protocol](https://atproto.com/guides/the-at-stack) is the ultimate API**!
 
 Let me share a few things this unlocks.
 
@@ -32,12 +32,12 @@ Let me share a few things this unlocks.
 
 Because every record has a public schema and lives in user repos, apps and agents don't need to ask anyone for permission to read, reuse, or extend each other's data. **Third party is first party**. If two things speak the same lexicon, they speak the *exact* same language ([Lexicon is intentionally rigid](https://atproto.com/articles/atproto-ethos) about that).
 
-The wildest example these days is [teal.fm](https://teal.fm/), a music scrobbling app that, at the time of writing, [doesn't really exist yet](https://overreacted.io/a-social-filesystem). But the `fm.teal.alpha.feed.play` lexicon does exist on GitHub, so people are already scrobbling against it, other people built scrobbler clients, and someone unrelated built a [global viewer](https://teal-viewer.finfet.at/) indexing 600k+ plays. No one asked the teal.fm team for anything. The schema *was* the API. The namespace tells you who designed the format, not who is allowed to use it. The same dynamic plays out across the Atmosphere:
+The wildest example these days is [teal.fm](https://teal.fm/), a music scrobbling app that, at the time of writing, [doesn't really exist yet](https://overreacted.io/a-social-filesystem). But the `fm.teal.alpha.feed.play` lexicon does exist on GitHub, so people are already scrobbling against it, other people built scrobbler clients, and someone unrelated built a [global viewer](https://teal-viewer.finfet.at/) indexing 600k+ plays. No one asked the teal.fm team for anything. The schema *was* the API. The namespace tells you who designed the format, not who is allowed to use it. The same [cross-pollination dynamic](https://blog.joebasser.com/3mdvuirqog22z) plays out across the Atmosphere:
 
 - [Tangled](https://tangled.org/) (a GitHub alternative) reuses Bluesky identities and prefills your avatar from your `app.bsky.actor.profile` record — no integration, no API call, just reading your repo.
 - A handful of blogging apps agreed on [standard.site](https://standard.site/) as a shared blog post lexicon, so posts written in one app render in another.
 - [Anisota](https://anisota.net/) is a Bluesky client that also natively renders Leaflet documents because, why not, they're just records.
-- The most popular Bluesky algorithm, [For You](https://bsky.app/profile/spacecowboy17.bsky.social/feed/for-you), runs on a gaming PC at home and presents itself as first-party. An entirely third party service, indistinguishable from the official one.
+- The most popular Bluesky algorithm, [For You](https://bsky.app/profile/spacecowboy17.bsky.social/feed/for-you), runs on a [gaming PC at home](https://bsky.bad-example.com/can-atproto-scale-down) and presents itself as first-party. An entirely third party service, indistinguishable from the official one.
 
 For agents, this is... kinda awesome? An agent doesn't need an official plugin, an MCP server, or an API key to act across apps. It just needs to know the lexicon and run some `curls`.
 
@@ -53,7 +53,7 @@ Coordination requires knowing who to trust, and ATProto makes trust legible in a
 
 ### Open Agents
 
-Agent state (memories, reasoning traces, tool calls, decisions, sessions) can all be typed records in the agent's repo. [Void](https://bsky.app/profile/void.comind.network), one of the longest-running agents on the network, publishes [memories](https://atp.tools/at:/void.comind.network/stream.thought.memory), [reasoning traces](https://atp.tools/at:/void.comind.network/stream.thought.reasoning), and [tool calls](https://atp.tools/at:/void.comind.network/stream.thought.tool.call) as records under `stream.thought.*`. You can [literally watch it think](https://void.comind.stream/).
+Agent state (memories, reasoning traces, tool calls, decisions, sessions) can all be typed records in the agent's repo. [Void](https://bsky.app/profile/void.comind.network), [one of the longest-running agents on the network](https://cameron.stream/blog/social-ai/), publishes [memories](https://atp.tools/at:/void.comind.network/stream.thought.memory), [reasoning traces](https://atp.tools/at:/void.comind.network/stream.thought.reasoning), and [tool calls](https://atp.tools/at:/void.comind.network/stream.thought.tool.call) as records under `stream.thought.*`. You can [literally watch it think](https://void.comind.stream/).
 
 This is glass-box AI by default. Cognition becomes a public artifact, agent traces can be aggregated and exposed as useful and legible material folks can build or train on, and agent-to-agent communication can be formalized as a lexicon instead of a private API. Lexicons *are* the agent communication protocol.
 
