@@ -13,6 +13,8 @@
     "preview": "astro preview",
     "preview:worker": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
+    "sync-standard": "node --env-file-if-exists=.env scripts/sync-standard.mjs --apply",
+    "sync-standard:dry": "node --env-file-if-exists=.env scripts/sync-standard.mjs --dry-run",
     "astro": "astro"
   },
   "dependencies": {
