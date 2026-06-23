@@ -182,20 +182,25 @@ const contacts = [
 
       .skills {
         display: grid;
-        gap: 0.35rem;
+        gap: 0;
+        margin-top: 0.9rem;
       }
 
       .skills div {
+        border-bottom: 1px solid var(--rule);
         display: grid;
-        gap: 1rem;
-        grid-template-columns: 10rem 1fr;
+        gap: 1.2rem;
+        grid-template-columns: 9.25rem 1fr;
+        padding: 0.55rem 0 0.6rem;
       }
 
       dt {
+        color: #30363d;
         font-weight: 700;
       }
 
       dd {
+        line-height: 1.65;
         margin: 0;
       }
 
@@ -231,6 +236,10 @@ const contacts = [
 
         .skills div {
           display: block;
+        }
+
+        .skills dd {
+          margin-top: 0.15rem;
         }
       }
 
@@ -290,17 +299,52 @@ const contacts = [
             <p class="meta"><time datetime="2022-03">Mar 2022</time> – Now</p>
           </header>
           <p><strong>Staff Data Engineer</strong> · 2024 – Now</p>
-          <p><strong>Sr. Data Engineer</strong> · 2022 – 2024</p>
-          <p>Lead data work across platform, analytics, reporting, and open data:</p>
+          <p>Own open BI and analytics infrastructure for the Filecoin ecosystem:</p>
           <ul>
-            <li>Provide a reliable, scalable data platform for ecosystem needs.</li>
-            <li>Build Filecoin chain data pipelines that handle hundreds of gigabytes per day.</li>
             <li>
-              Build and maintain dashboards, reports, SQL workflows, ad hoc analysis, and organization-wide dbt models.
+              Lead the <a href="https://github.com/davidgasquez/filecoin-data-portal/">Filecoin Data Portal</a>,
+              Filecoin in Numbers, Filecoin Pulse, public datasets, Dune dashboards, dbt models, and reporting workflows.
             </li>
-            <li>Improve GCP, Kubernetes, ArgoCD, and Dagster infrastructure.</li>
             <li>
-              Built <a href="https://github.com/davidgasquez/filecoin-data-portal/">open data portals</a> used by the community.
+              Build trusted KPI and product/network behavior reporting for ecosystem health, onboarding, paid activity,
+              retrieval, FEVM/FOC, PMF, network OKRs, WBR/QBR, and strategic planning.
+            </li>
+            <li>
+              Turn recurring stakeholder questions into reusable public datasets, dashboards, documentation, and
+              agent-readable artifacts instead of one-off analysis.
+            </li>
+            <li>
+              Maintain a low-cost, open, reproducible data stack serving hundreds of daily dashboard visits and thousands
+              of weekly public dataset reads.
+            </li>
+            <li>
+              Define metric semantics, data quality expectations, caveats, and source-of-truth models across fragmented
+              on-chain and off-chain data providers.
+            </li>
+          </ul>
+
+          <p><strong>Sr. Data Engineer</strong> · 2022 – 2024</p>
+          <p>Built the foundations for Protocol Labs' Filecoin analytics platform:</p>
+          <ul>
+            <li>
+              Built and operated high-volume Filecoin chain data pipelines processing hundreds of gigabytes per day with
+              BigQuery, dbt, Dagster, GCP, Kubernetes, and open-source tooling.
+            </li>
+            <li>
+              Created core Filecoin analytical models abstracted from raw indexer schemas, improving reliability,
+              queryability, and reuse across dashboards and ad hoc analysis.
+            </li>
+            <li>
+              Productionized the data warehouse, dbt, CI/CD, tests, freshness checks, and documentation for
+              organization-wide analytics workflows.
+            </li>
+            <li>
+              Improved dashboards and reporting used weekly by leadership and ecosystem stakeholders, surfacing data
+              quality issues in Lily, JSON-RPC, indexing, and provider datasets.
+            </li>
+            <li>
+              Built open data portals and reusable artifacts that helped external teams self-serve Filecoin metrics
+              instead of depending on private requests.
             </li>
           </ul>
         </article>
@@ -314,20 +358,28 @@ const contacts = [
           <p>Evolved Buffer's data architecture and tooling to make data actionable:</p>
           <ul>
             <li>
-              Architected and migrated Buffer's data platform to a
+              Architected and migrated Buffer's data platform to a{" "}
               <a href="https://www.speedwins.tech/posts/data-at-buffer-with-david-gasquez">modern stack</a>, moving
               databases and services to GCP with no downtime and lower costs.
             </li>
             <li>
-              Built open source data engineering tools including <a href="https://pypistats.org/packages/kiner">kiner</a
-              >{" "}
-              and <a href="https://pypistats.org/packages/stacklogging">stacklogging</a>.
+              Built tooling for Buffer's{" "}
+              <a href="https://github.com/bufferapp/README/tree/master/teams/data/docs/buda">
+                data streaming architecture
+              </a>, including <a href="https://pypistats.org/packages/kiner">kiner</a> and{" "}
+              <a href="https://pypistats.org/packages/stacklogging">stacklogging</a>.
             </li>
             <li>
               Improved data scientist UX with{" "}
               <a href="https://github.com/davidgasquez?tab=repositories&q=dbt&type=&language=&sort="
                 >dbt local setup, CI/CD, tests, and modeling practices</a
               >.
+            </li>
+            <li>
+              Built product ML and analytics projects including{" "}
+              <a href="https://buffer.com/resources/predicting-churn/">churn prediction</a>,{" "}
+              <a href="https://github.com/bufferapp/cricket">toxic comment detection</a>, and{" "}
+              <a href="https://github.com/bufferapp/hashy">hashtag recommendations</a>.
             </li>
             <li>Built reusable components for survival curves, event-based analytics, and product analytics.</li>
             <li>Iterated on data governance practices.</li>
@@ -363,42 +415,50 @@ const contacts = [
         <h2 id="skills">Skills</h2>
         <dl class="skills">
           <div>
-            <dt>Data</dt>
+            <dt>Product & BI</dt>
             <dd>
-              Python, SQL, dbt, Looker, Metabase, Redash, BigQuery, Snowflake, Singer, Airbyte, Dagster, Argo, Airflow.
+              Product analytics, executive dashboards, KPI design, feature impact analysis, funnels, cohorts,
+              retention, churn, and experimentation.
             </dd>
           </div>
           <div>
-            <dt>Infrastructure</dt>
-            <dd>GCP, AWS, Docker, Kubernetes, Terraform.</dd>
+            <dt>Data Modeling</dt>
+            <dd>
+              SQL, BigQuery, dbt, dimensional and event modeling, tracking plans, data quality, metric definitions,
+              reverse ETL, and BI documentation.
+            </dd>
           </div>
           <div>
-            <dt>Machine Learning</dt>
-            <dd>scikit-learn, transformers, Kubeflow, XGBoost.</dd>
+            <dt>Programming</dt>
+            <dd>Python, notebooks, pandas, DuckDB, APIs, automation, data pipelines, and open data tooling.</dd>
+          </div>
+          <div>
+            <dt>ML & Statistics</dt>
+            <dd>
+              Survival analysis, causal impact, scikit-learn, XGBoost, transformers, embeddings, recommendations,
+              spam/anomaly detection, and graph analysis.
+            </dd>
+          </div>
+          <div>
+            <dt>Platforms</dt>
+            <dd>Looker, Metabase, Redash, Mixpanel, Segment, Customer.io, GCP, Kubernetes, Dagster, Airflow, Argo.</dd>
+          </div>
+          <div>
+            <dt>Open Protocols</dt>
+            <dd>
+              AT Protocol, Bluesky APIs, Lexicons, DIDs, AT URIs, CIDs, PDS/Relay/AppView architecture,
+              firehose/backfill workflows, IPFS, and Filecoin.
+            </dd>
           </div>
         </dl>
       </section>
 
-      <section aria-labelledby="projects">
-        <h2 id="projects">Projects</h2>
+      <section aria-labelledby="selected-work">
+        <h2 id="selected-work">Selected Work</h2>
         <ul class="projects">
-          <li>
-            <strong
-              ><a href="https://www.speedwins.tech/posts/data-at-buffer-with-david-gasquez"
-                >Building a Modern Data Stack</a
-              ></strong
-            >
-            <p>Interview about rearchitecting Buffer's data platform.</p>
-          </li>
           <li>
             <strong><a href="https://davidgasquez.github.io/datadex/">Datadex</a></strong>
             <p>Data platform for open data collaboration using modern open source tools.</p>
-          </li>
-          <li>
-            <strong><a href="https://buffer.com/resources/predicting-churn/">Churn Prediction</a></strong>
-            <p>
-              Predicted user churn one month in advance and increased awareness of survival analysis and causal impact.
-            </p>
           </li>
           <li>
             <strong><a href="https://godatathon.com/">Novartis Datathon Winner</a></strong>
@@ -413,25 +473,8 @@ const contacts = [
             <p>A project to improve how people produce, share, consume, and collaborate on datasets.</p>
           </li>
           <li>
-            <strong><a href="https://github.com/bufferapp/cricket">Toxic Comment Detection</a></strong>
-            <p>Small API to detect toxic comments and alert possible spam in real time.</p>
-          </li>
-          <li>
-            <strong><a href="https://github.com/bufferapp/hashy">Hashtag Recommendations</a></strong>
-            <p>Hashtag recommendation API trained with embeddings on GCP Vertex AI.</p>
-          </li>
-          <li>
             <strong><a href="https://github.com/davidgasquez/kaggle-airbnb">Kaggle Bronze Medalist</a></strong>
             <p>Top 5% in the Airbnb Kaggle competition with a simple data preprocessing focused approach.</p>
-          </li>
-          <li>
-            <strong>Data Streaming Tooling</strong>
-            <p>
-              Built tooling for a{" "}
-              <a href="https://github.com/bufferapp/README/tree/master/teams/data/docs/buda"
-                >data streaming architecture</a
-              >, including <a href="https://github.com/bufferapp/kiner">kiner</a>.
-            </p>
           </li>
         </ul>
       </section>
