@@ -131,24 +131,47 @@ const projects = [
     <title>David Gasquez</title>
 
     <style is:global>
+      :root {
+        --ink: #24292e;
+        --muted: #6a737d;
+        --accent: #770000;
+        --rule: #e6e6e6;
+        --paper: #fdfdfc;
+      }
+
       body {
-        color: #24292e;
-        line-height: 1.5;
-        font-family: Inter;
-        font-size: 14px;
-        word-wrap: break-word;
-        max-width: 800px;
-        margin: 60px auto;
-        padding: 0 60px;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.55;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        font-size: 15px;
+        max-width: 760px;
+        margin: 48px auto;
+        padding: 0 32px;
+        overflow-wrap: break-word;
+        -webkit-font-smoothing: antialiased;
       }
 
       a {
-        color: #770000;
+        color: var(--accent);
         text-decoration: none;
+        text-underline-offset: 0.18em;
       }
 
-      a:hover {
+      a:hover,
+      a:focus-visible {
         text-decoration: underline;
+      }
+
+      a:focus-visible {
+        outline: 2px solid rgba(119, 0, 0, 0.45);
+        outline-offset: 3px;
       }
 
       h1,
@@ -157,54 +180,76 @@ const projects = [
       h4,
       h5,
       h6 {
-        font-weight: 600;
-        line-height: 1.25;
-        margin-bottom: 16px;
-        margin-top: 24px;
-      }
-
-      h1 {
-        font-size: 2em;
+        font-weight: 650;
+        line-height: 1.2;
+        margin: 28px 0 12px;
       }
 
       h1,
       h2 {
-        border-bottom: 1px solid #e6e6e6;
-        padding-bottom: 0.3em;
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 0.32em;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 6vw, 2.7rem);
+        letter-spacing: -0.035em;
+        margin-top: 0;
       }
 
       h2 {
-        font-size: 1.5em;
+        color: #30363d;
+        font-size: 1.35rem;
+        letter-spacing: -0.015em;
       }
 
       h3 {
-        font-size: 1.25em;
+        font-size: 1.15rem;
       }
 
       h4 {
-        font-size: 1em;
+        font-size: 1rem;
       }
 
       h5 {
-        font-size: 0.875em;
+        font-size: 0.875rem;
       }
 
       h6 {
-        color: #6a737d;
-        font-size: 0.85em;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      p,
+      ul,
+      ol {
+        margin: 0.75rem 0;
       }
 
       ol,
       ul {
-        padding-left: 2em;
-      }
-
-      li {
-        word-wrap: break-all;
+        padding-left: 1.5rem;
       }
 
       li + li {
-        margin-top: 0.25em;
+        margin-top: 0.35rem;
+      }
+
+      li > ul,
+      li > ol {
+        margin-top: 0.35rem;
+      }
+
+      ::selection {
+        background: #f2d8d8;
+      }
+
+      @media (max-width: 640px) {
+        body {
+          font-size: 14px;
+          margin: 24px auto;
+          padding: 0 20px;
+        }
       }
     </style>
   </head>
