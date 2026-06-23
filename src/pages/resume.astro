@@ -1,124 +1,11 @@
 ---
-const contactLinks = [
-  ["Website", "https://davidgasquez.github.io/"],
+const contacts = [
+  ["Website", "https://davidgasquez.com/"],
   ["GitHub", "https://github.com/davidgasquez"],
-  ["Twitter", "https://twitter.com/davidgasquez"],
+  ["Bluesky", "https://bsky.app/profile/davidgasquez.com"],
+  ["X", "https://X.com/davidgasquez"],
   ["LinkedIn", "https://www.linkedin.com/in/davidgasquez/"],
   ["Email", "mailto:davidgasquez@gmail.com"],
-];
-
-const experience = [
-  {
-    company: "Protocol Labs",
-    url: "https://protocol.ai/",
-    role: "Sr. Data Engineer",
-    dates: "2022-03 - Now",
-    intro: "Built, run and maintain Protocol Labs' Data Platorm. This includes:",
-    bullets: [
-      "Provide reliable and scalable data platform to support the ecosystem needs.",
-      "Create scalable data pipelines for Filecoin chain data (handling hundreds of gigabytes per day).",
-      "Maintain and improve the data models of the organization (dbt).",
-      "Collaborate and improve the infrastructure (GCP, Kubernetes) and Orchestration (ArgoCD, Dagster) layers.",
-      `Built <a href="https://github.com/davidgasquez/filecoin-data-portal/">multiple open data portals aligned with the company ethos</a> that are used by the community.`,
-    ],
-  },
-  {
-    company: "Buffer",
-    url: "https://buffer.com",
-    role: "Sr. Data Engineer",
-    dates: "2017-05 - 2022-03",
-    intro:
-      "Evolved Buffer's data architecture and tools to make data actionable. Overall, supported data needs at multiple levels by:",
-    bullets: [
-      `Architecting and migrating Buffer data platform to a <a href="https://www.speedwins.tech/posts/data-at-buffer-with-david-gasquez">modern one</a>. This involved migrating both databases and services to GCP with no downtime and reduced costs considerably.`,
-      `Building tools and new processes to smooth data engineering. Many of these tools (<a href="https://pypistats.org/packages/kiner">kiner</a>, <a href="https://pypistats.org/packages/stacklogging">stacklogging</a>, ...) are open source and still used across the world.`,
-      `Improving UX for data scientist (<a href="https://github.com/davidgasquez?tab=repositories&q=dbt&type=&language=&sort=">dbt local setup, CI/CD</a>, tests, modeling best practices).`,
-      "Making reusable components to help with deeper analysis (survival curves, event based analytics and product analytics).",
-      "Iterating data gobernance best practices.",
-    ],
-  },
-  {
-    company: "Buffer",
-    url: "https://buffer.com",
-    role: "Data Analyst",
-    dates: "2016-01 - 2017-05",
-    intro:
-      "Used data to help understand business problems and answer stakeholder's questions. Built a new Docker based Analytics stack to make analysis reproducible and improve developer experience.",
-  },
-  {
-    company: "Nucleoo",
-    url: "https://nucleoo.com",
-    role: "Software Developer",
-    dates: "2015-04 - 2016-01",
-    intro:
-      "Mostly did back-end developer in a business intelligence application. Focused on Data Analysis and Machine Learning, which were used to forecast promotion sales and provide useful reports to clients. Worked with Flask, MongoDB, pandas, numpy and scikit-learn among others python tools and frameworks to provide a reliable analytics application.",
-  },
-];
-
-const skills = [
-  [
-    "Data",
-    "Python, SQL, dbt, BI (Looker, Metabase, Redash), Data Warehouses (BigQuery, Snowflake), ETL (Singer/Airbyte connectors, custom scripts), Orchestration (Dagster, Argo, Airflow).",
-  ],
-  ["Infrastructure", "GCP, AWS (S3, Glue, Lambda, Kinesis), Docker, Kubernetes, Terraform."],
-  ["Machine Learning", "Scikit Learn, transformers, Kubeflow, XGBoost,"],
-];
-
-const projects = [
-  {
-    title: "Building a Modern Data Stack",
-    url: "https://www.speedwins.tech/posts/data-at-buffer-with-david-gasquez",
-    description: "Interview where I share my experience while rearchitecting Buffer's data platform.",
-  },
-  {
-    title: "Datadex",
-    url: "https://davidgasquez.github.io/datadex/",
-    description:
-      "Data platform where people can collaborate on Open Data using modern open source tools and frameworks.",
-  },
-  {
-    title: "Churn Prediction",
-    url: "https://buffer.com/resources/predicting-churn/",
-    description:
-      "Predicting when users are going to churn, 1 month in advance. A similar model was used for Trial Conversion. This helped to increased awareness about Survival Analysis and Causal Impact at the company.",
-  },
-  {
-    title: "Novartis Datathon Winner",
-    url: "https://godatathon.com/",
-    description: "First position on the Novartis weekend long data science challenge on financial data.",
-  },
-  {
-    title: "Data Handbook",
-    url: "https://publish.obsidian.md/davidgasquez/Data/Data+Culture",
-    description: "Evergreen notes about data, teamwork and life in general.",
-  },
-  {
-    title: "Datonic",
-    url: "https://datonic.io/",
-    description: "Aiming to improve the way the world produces, share, consume and collaborate on datasets.",
-  },
-  {
-    title: "Toxic Comment Detection",
-    url: "https://github.com/bufferapp/cricket",
-    description:
-      "Small API to detect toxic comments. Used to detect the perceived impact of a comment in real time and alert for possible SPAM.",
-  },
-  {
-    title: "Hashtag Recommendations",
-    url: "https://github.com/bufferapp/hashy",
-    description:
-      "Built a hashtag recommendation engine using embeddings and provided an API to get recommendations on the fly. Trained on the cloud using GCP Vertex AI.",
-  },
-  {
-    title: "Kaggle Bronze Medalist",
-    url: "https://github.com/davidgasquez/kaggle-airbnb",
-    description:
-      "Ended Airbnb Kaggle competition in the top 5% with a simple approach focusing on the data preprocessing instead of using a complex model.",
-  },
-  {
-    title: "Data Streaming Tooling",
-    description: `Built some tools to help with a <a href="https://github.com/bufferapp/README/tree/master/teams/data/docs/buda">data streaming architecture</a>. The most popular being <a href="https://github.com/bufferapp/kiner">kiner</a>, a Python AWS Kinesis producer with multiple features.`,
-  },
 ];
 ---
 
@@ -127,10 +14,17 @@ const projects = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Resume for David Gasquez, staff data engineer working on data platforms, analytics, open data, and distributed teams."
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>David Gasquez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;650;700&display=swap" rel="stylesheet" />
+    <title>David Gasquez · Resume</title>
 
-    <style is:global>
+    <style>
       :root {
         --ink: #24292e;
         --muted: #6a737d;
@@ -139,11 +33,15 @@ const projects = [
         --paper: #fdfdfc;
       }
 
-      body {
-        color: var(--ink);
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
         background: var(--paper);
-        line-height: 1.55;
+        color: var(--ink);
         font-family:
+          Inter,
           ui-sans-serif,
           system-ui,
           -apple-system,
@@ -151,11 +49,14 @@ const projects = [
           "Segoe UI",
           sans-serif;
         font-size: 15px;
-        max-width: 760px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
         margin: 48px auto;
         padding: 0 32px;
         overflow-wrap: break-word;
-        -webkit-font-smoothing: antialiased;
       }
 
       a {
@@ -174,15 +75,25 @@ const projects = [
         outline-offset: 3px;
       }
 
+      .resume {
+        margin-inline: auto;
+        max-width: 760px;
+      }
+
       h1,
       h2,
       h3,
-      h4,
-      h5,
-      h6 {
+      p,
+      ul,
+      dl {
+        margin-block: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
         font-weight: 650;
         line-height: 1.2;
-        margin: 28px 0 12px;
       }
 
       h1,
@@ -194,39 +105,25 @@ const projects = [
       h1 {
         font-size: clamp(2rem, 6vw, 2.7rem);
         letter-spacing: -0.035em;
-        margin-top: 0;
       }
 
       h2 {
         color: #30363d;
         font-size: 1.35rem;
         letter-spacing: -0.015em;
+        margin-top: 2rem;
       }
 
       h3 {
-        font-size: 1.15rem;
-      }
-
-      h4 {
-        font-size: 1rem;
-      }
-
-      h5 {
-        font-size: 0.875rem;
-      }
-
-      h6 {
-        color: var(--muted);
-        font-size: 0.85rem;
+        font-size: 1.05rem;
       }
 
       p,
       ul,
-      ol {
-        margin: 0.75rem 0;
+      dl {
+        margin-top: 0.75rem;
       }
 
-      ol,
       ul {
         padding-left: 1.5rem;
       }
@@ -235,9 +132,87 @@ const projects = [
         margin-top: 0.35rem;
       }
 
-      li > ul,
-      li > ol {
-        margin-top: 0.35rem;
+      .socials {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.92rem;
+        font-style: normal;
+        gap: 0.35rem 0.7rem;
+        margin-top: 0.85rem;
+      }
+
+      .socials a {
+        color: var(--muted);
+      }
+
+      .socials a:hover,
+      .socials a:focus-visible {
+        color: var(--accent);
+      }
+
+      .separator {
+        color: var(--rule);
+      }
+
+      .hero {
+        margin-bottom: 1.75rem;
+      }
+
+      .intro {
+        margin-top: 0.75rem;
+      }
+
+      .item {
+        margin-top: 1.1rem;
+      }
+
+      .item > header {
+        align-items: baseline;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 1rem;
+        justify-content: space-between;
+      }
+
+      .meta {
+        color: var(--muted);
+        margin-top: 0;
+      }
+
+      .skills {
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      .skills div {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 10rem 1fr;
+      }
+
+      dt {
+        font-weight: 700;
+      }
+
+      dd {
+        margin: 0;
+      }
+
+      .projects {
+        display: grid;
+        gap: 0.35rem;
+        list-style: none;
+        padding: 0;
+      }
+
+      .projects p {
+        display: inline;
+        margin: 0;
+      }
+
+      .projects strong::after {
+        content: ": ";
       }
 
       ::selection {
@@ -245,85 +220,226 @@ const projects = [
       }
 
       @media (max-width: 640px) {
-        body {
+        html {
           font-size: 14px;
+        }
+
+        body {
           margin: 24px auto;
           padding: 0 20px;
+        }
+
+        .skills div {
+          display: block;
+        }
+      }
+
+      @media print {
+        body {
+          margin: 0;
+          padding: 0;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        h2 {
+          break-after: avoid;
+        }
+
+        article,
+        li {
+          break-inside: avoid;
         }
       }
     </style>
   </head>
 
   <body>
-    <main>
-      <h1>David Gasquez</h1>
+    <main class="resume">
+      <header class="hero">
+        <h1>David Gasquez</h1>
+        <address class="socials" aria-label="Contact links">
+          {
+            contacts.map(([label, href], index) => (
+              <>
+                {index > 0 && (
+                  <span class="separator" aria-hidden="true">
+                    ·
+                  </span>
+                )}
+                <a href={href}>{label}</a>
+              </>
+            ))
+          }
+        </address>
+        <p class="intro">
+          Data engineer passionate about open source, useful data platforms, analytics, and distributed teams. Currently
+          helping <a href="https://protocol.ai/">Protocol Labs</a> coordinate better through data.
+        </p>
+      </header>
 
-      <p>
-        Engineer passionate about data, open source, and distributed/remote teams. Helping people coordinate better
-        through data at <a href="https://protocol.ai/">Protocol Labs</a>.
-        <br />
-      </p>
+      <section aria-labelledby="experience">
+        <h2 id="experience">Experience</h2>
 
-      <p>
-        {
-          contactLinks.map(([label, href], index) => (
-            <>
-              <a href={href}>{label}</a>
-              {index < contactLinks.length - 1 && " - "}
-            </>
-          ))
-        }
-      </p>
-
-      <h2>Experience</h2>
-      <ul>
-        {
-          experience.map(({ company, url, role, dates, intro, bullets }) => (
+        <article class="item">
+          <header>
+            <h3><a href="https://protocol.ai/">Protocol Labs</a></h3>
+            <p class="meta"><time datetime="2022-03">Mar 2022</time> – Now</p>
+          </header>
+          <p><strong>Staff Data Engineer</strong> · 2024 – Now</p>
+          <p><strong>Sr. Data Engineer</strong> · 2022 – 2024</p>
+          <p>Lead data work across platform, analytics, reporting, and open data:</p>
+          <ul>
+            <li>Provide a reliable, scalable data platform for ecosystem needs.</li>
+            <li>Build Filecoin chain data pipelines that handle hundreds of gigabytes per day.</li>
             <li>
-              <strong>
-                <a href={url}>{company}</a>: {role}
-              </strong>
-              . ({dates})
-              <br />
-              {intro}
-              {bullets && (
-                <ul>
-                  {bullets.map((bullet) => (
-                    <li set:html={bullet} />
-                  ))}
-                </ul>
-              )}
+              Build and maintain dashboards, reports, SQL workflows, ad hoc analysis, and organization-wide dbt models.
             </li>
-          ))
-        }
-      </ul>
-
-      <h2>Skills</h2>
-      <ul>
-        {
-          skills.map(([name, description]) => (
+            <li>Improve GCP, Kubernetes, ArgoCD, and Dagster infrastructure.</li>
             <li>
-              <strong>{name}</strong>: {description}
+              Built <a href="https://github.com/davidgasquez/filecoin-data-portal/">open data portals</a> used by the community.
             </li>
-          ))
-        }
-      </ul>
+          </ul>
+        </article>
 
-      <h2>Projects</h2>
-      <ul>
-        {
-          projects.map(({ title, url, description }) => (
+        <article class="item">
+          <header>
+            <h3><a href="https://buffer.com">Buffer</a></h3>
+            <p class="meta"><time datetime="2017-05">May 2017</time> – <time datetime="2022-03">Mar 2022</time></p>
+          </header>
+          <p><strong>Sr. Data Engineer</strong></p>
+          <p>Evolved Buffer's data architecture and tooling to make data actionable:</p>
+          <ul>
             <li>
-              <strong>{url ? <a href={url}>{title}</a> : title}</strong>: <Fragment set:html={description} />
+              Architected and migrated Buffer's data platform to a
+              <a href="https://www.speedwins.tech/posts/data-at-buffer-with-david-gasquez">modern stack</a>, moving
+              databases and services to GCP with no downtime and lower costs.
             </li>
-          ))
-        }
-      </ul>
+            <li>
+              Built open source data engineering tools including <a href="https://pypistats.org/packages/kiner">kiner</a
+              >{" "}
+              and <a href="https://pypistats.org/packages/stacklogging">stacklogging</a>.
+            </li>
+            <li>
+              Improved data scientist UX with{" "}
+              <a href="https://github.com/davidgasquez?tab=repositories&q=dbt&type=&language=&sort="
+                >dbt local setup, CI/CD, tests, and modeling practices</a
+              >.
+            </li>
+            <li>Built reusable components for survival curves, event-based analytics, and product analytics.</li>
+            <li>Iterated on data governance practices.</li>
+          </ul>
+        </article>
 
-      <h2>Education</h2>
-      <ul>
-        <li>Bachelor's Degree in Computer Science. <strong> UGR </strong>. <em> (2011 - 2017) </em></li>
-      </ul>
+        <article class="item">
+          <header>
+            <h3><a href="https://buffer.com">Buffer</a></h3>
+            <p class="meta"><time datetime="2016-01">Jan 2016</time> – <time datetime="2017-05">May 2017</time></p>
+          </header>
+          <p><strong>Data Analyst</strong></p>
+          <p>
+            Used data to answer stakeholder questions and built a Docker-based analytics stack to make analysis
+            reproducible and improve developer experience.
+          </p>
+        </article>
+
+        <article class="item">
+          <header>
+            <h3><a href="https://nucleoo.com">Nucleoo</a></h3>
+            <p class="meta"><time datetime="2015-04">Apr 2015</time> – <time datetime="2016-01">Jan 2016</time></p>
+          </header>
+          <p><strong>Software Developer</strong></p>
+          <p>
+            Built backend features for a business intelligence application focused on data analysis and machine
+            learning. Worked with Flask, MongoDB, pandas, NumPy, and scikit-learn.
+          </p>
+        </article>
+      </section>
+
+      <section aria-labelledby="skills">
+        <h2 id="skills">Skills</h2>
+        <dl class="skills">
+          <div>
+            <dt>Data</dt>
+            <dd>
+              Python, SQL, dbt, Looker, Metabase, Redash, BigQuery, Snowflake, Singer, Airbyte, Dagster, Argo, Airflow.
+            </dd>
+          </div>
+          <div>
+            <dt>Infrastructure</dt>
+            <dd>GCP, AWS, Docker, Kubernetes, Terraform.</dd>
+          </div>
+          <div>
+            <dt>Machine Learning</dt>
+            <dd>scikit-learn, transformers, Kubeflow, XGBoost.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="projects">
+        <h2 id="projects">Projects</h2>
+        <ul class="projects">
+          <li>
+            <strong
+              ><a href="https://www.speedwins.tech/posts/data-at-buffer-with-david-gasquez"
+                >Building a Modern Data Stack</a
+              ></strong
+            >
+            <p>Interview about rearchitecting Buffer's data platform.</p>
+          </li>
+          <li>
+            <strong><a href="https://davidgasquez.github.io/datadex/">Datadex</a></strong>
+            <p>Data platform for open data collaboration using modern open source tools.</p>
+          </li>
+          <li>
+            <strong><a href="https://buffer.com/resources/predicting-churn/">Churn Prediction</a></strong>
+            <p>
+              Predicted user churn one month in advance and increased awareness of survival analysis and causal impact.
+            </p>
+          </li>
+          <li>
+            <strong><a href="https://godatathon.com/">Novartis Datathon Winner</a></strong>
+            <p>First place in a weekend-long data science challenge on financial data.</p>
+          </li>
+          <li>
+            <strong><a href="https://publish.obsidian.md/davidgasquez/Data/Data+Culture">Data Handbook</a></strong>
+            <p>Evergreen notes about data, teamwork, and life.</p>
+          </li>
+          <li>
+            <strong><a href="https://datonic.io/">Datonic</a></strong>
+            <p>A project to improve how people produce, share, consume, and collaborate on datasets.</p>
+          </li>
+          <li>
+            <strong><a href="https://github.com/bufferapp/cricket">Toxic Comment Detection</a></strong>
+            <p>Small API to detect toxic comments and alert possible spam in real time.</p>
+          </li>
+          <li>
+            <strong><a href="https://github.com/bufferapp/hashy">Hashtag Recommendations</a></strong>
+            <p>Hashtag recommendation API trained with embeddings on GCP Vertex AI.</p>
+          </li>
+          <li>
+            <strong><a href="https://github.com/davidgasquez/kaggle-airbnb">Kaggle Bronze Medalist</a></strong>
+            <p>Top 5% in the Airbnb Kaggle competition with a simple data preprocessing focused approach.</p>
+          </li>
+          <li>
+            <strong>Data Streaming Tooling</strong>
+            <p>
+              Built tooling for a{" "}
+              <a href="https://github.com/bufferapp/README/tree/master/teams/data/docs/buda"
+                >data streaming architecture</a
+              >, including <a href="https://github.com/bufferapp/kiner">kiner</a>.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="education">
+        <h2 id="education">Education</h2>
+        <p>Bachelor's Degree in Computer Science, <strong>UGR</strong> · 2011–2017</p>
+      </section>
     </main>
   </body>
 </html>
