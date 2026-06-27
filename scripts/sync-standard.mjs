@@ -15,6 +15,11 @@ const COLLECTIONS = {
   document: "site.standard.document",
 };
 
+const CONTENT_TYPES = {
+  markdown: "at.markpub.markdown",
+  markdownText: "at.markpub.text",
+};
+
 const args = new Set(process.argv.slice(2));
 const apply = args.has("--apply");
 
@@ -148,10 +153,7 @@ function parseFrontmatter(source, file) {
 
 function parseScalar(value) {
   if (!value) return "";
-  if (
-    (value.startsWith('"') && value.endsWith('"')) ||
-    (value.startsWith("'") && value.endsWith("'"))
-  ) {
+  if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
     return value.slice(1, -1);
   }
   return value;
@@ -177,6 +179,7 @@ function normalizePost(file, data, body) {
     publishedAt: date.toISOString(),
     description: data.description || excerpt(body),
     body,
+    isMdx: file.endsWith(".mdx"),
   };
 }
 
@@ -331,10 +334,19 @@ function postToDocument(post, publicationUri) {
     path: post.path,
     description: post.description,
     textContent: stripMarkdown(post.body),
-    content: {
-      $type: "site.standard.content.markdown",
-      text: post.body,
-      version: "1.0",
+    content: postContent(post),
+  });
+}
+
+function postContent(post) {
+  return cleanRecord({
+    $type: CONTENT_TYPES.markdown,
+    flavor: "gfm",
+    renderingRules: "satteri",
+    extensions: post.isMdx ? ["MDX"] : undefined,
+    text: {
+      $type: CONTENT_TYPES.markdownText,
+      markdown: post.body,
     },
   });
 }
@@ -478,16 +490,23 @@ function printReport({ did, pds, publication, publicationAction, posts, creates,
   console.log(`Publication: ${publicationAction} ${publication.uri}`);
 
   console.log(`Local posts: ${posts.length}`);
-  console.log(`Documents: ${creates.length} create, ${updates.length} update, ${skips.length} skip, ${deletes.length} delete`);
+  console.log(
+    `Documents: ${creates.length} create, ${updates.length} update, ${skips.length} skip, ${deletes.length} delete`,
+  );
   console.log("");
 
-  printList("Create", creates.map((document) => document.path));
+  printList(
+    "Create",
+    creates.map((document) => document.path),
+  );
   printList(
     "Update",
     updates.map(({ desired, remote }) => `${desired.path} (${remote.uri})`),
   );
-  printList("Delete", deletes.map((record) => `${record.value.path} (${record.uri})`));
-
+  printList(
+    "Delete",
+    deletes.map((record) => `${record.value.path} (${record.uri})`),
+  );
 }
 
 function printList(label, items) {
