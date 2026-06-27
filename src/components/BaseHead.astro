@@ -1,7 +1,12 @@
 ---
 import { Font } from "astro:assets";
 
-const { title = "David Gasquez", description = "David Gasquez personal website", image = "/social.png", type = "website" } = Astro.props;
+const {
+  title = "David Gasquez",
+  description = "David Gasquez personal website",
+  image = "/social.png",
+  type = "website",
+} = Astro.props;
 
 const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
 const canonicalURL = new URL(canonicalPath, Astro.site);

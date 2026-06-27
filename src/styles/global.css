@@ -138,6 +138,13 @@ code {
   margin: 0 auto;
 }
 
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 var(--spacing-sm);
+}
+
 /* Typography Classes */
 .text-lg {
   font-size: 1.125rem;

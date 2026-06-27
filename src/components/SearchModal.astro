@@ -6,13 +6,7 @@
   <div class="search-modal-backdrop"></div>
   <div class="search-modal-content">
     <div class="search-input-container">
-      <input 
-        type="text" 
-        id="search-input" 
-        placeholder="Search handbook..."
-        autocomplete="off"
-        spellcheck="false"
-      />
+      <input type="text" id="search-input" placeholder="Search handbook..." autocomplete="off" spellcheck="false" />
       <button id="search-close" class="search-close">×</button>
     </div>
     <div id="search-results" class="search-results"></div>
@@ -20,272 +14,273 @@
 </div>
 
 <script is:inline>
-let pagefind;
+  let pagefind;
 
-async function initPagefind() {
-  if (pagefind) return pagefind;
-  
-  try {
-    pagefind = await import('/pagefind/pagefind.js');
-    await pagefind.init();
-    return pagefind;
-  } catch (error) {
-    console.warn('Pagefind not available. Build the project to enable search.');
-    return null;
-  }
-}
+  async function initPagefind() {
+    if (pagefind) return pagefind;
 
-function showSearchModal() {
-  const modal = document.getElementById('search-modal');
-  const input = document.getElementById('search-input');
-  modal?.classList.remove('hidden');
-  input?.focus();
-  document.body.style.overflow = 'hidden';
-}
-
-function hideSearchModal() {
-  const modal = document.getElementById('search-modal');
-  modal?.classList.add('hidden');
-  document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '';
-  document.body.style.overflow = '';
-}
-
-async function performSearch(query) {
-  const results = document.getElementById('search-results');
-  
-  if (!query.trim()) {
-    results.innerHTML = '';
-    return;
+    try {
+      pagefind = await import("/pagefind/pagefind.js");
+      await pagefind.init();
+      return pagefind;
+    } catch (error) {
+      console.warn("Pagefind not available. Build the project to enable search.");
+      return null;
+    }
   }
 
-  const pf = await initPagefind();
-  if (!pf) {
-    results.innerHTML = '<div class="search-dev-message">Search is only available in production. Run <code>npm run build</code> to test.</div>';
-    return;
+  function showSearchModal() {
+    const modal = document.getElementById("search-modal");
+    const input = document.getElementById("search-input");
+    modal?.classList.remove("hidden");
+    input?.focus();
+    document.body.style.overflow = "hidden";
   }
 
-  try {
-    const search = await pf.search(query);
-    displayResults(search.results);
-  } catch (error) {
-    console.error('Search error:', error);
-    results.innerHTML = '<div class="search-error">Search failed. Please try again.</div>';
-  }
-}
-
-async function displayResults(results) {
-  const container = document.getElementById('search-results');
-  
-  if (!results.length) {
-    container.innerHTML = '<div class="search-no-results">No results found</div>';
-    return;
+  function hideSearchModal() {
+    const modal = document.getElementById("search-modal");
+    modal?.classList.add("hidden");
+    document.getElementById("search-input").value = "";
+    document.getElementById("search-results").innerHTML = "";
+    document.body.style.overflow = "";
   }
 
-  const items = await Promise.all(
-    results.slice(0, 10).map(async r => {
-      const data = await r.data();
-      return `
+  async function performSearch(query) {
+    const results = document.getElementById("search-results");
+
+    if (!query.trim()) {
+      results.innerHTML = "";
+      return;
+    }
+
+    const pf = await initPagefind();
+    if (!pf) {
+      results.innerHTML =
+        '<div class="search-dev-message">Search is only available in production. Run <code>npm run build</code> to test.</div>';
+      return;
+    }
+
+    try {
+      const search = await pf.search(query);
+      displayResults(search.results);
+    } catch (error) {
+      console.error("Search error:", error);
+      results.innerHTML = '<div class="search-error">Search failed. Please try again.</div>';
+    }
+  }
+
+  async function displayResults(results) {
+    const container = document.getElementById("search-results");
+
+    if (!results.length) {
+      container.innerHTML = '<div class="search-no-results">No results found</div>';
+      return;
+    }
+
+    const items = await Promise.all(
+      results.slice(0, 10).map(async (r) => {
+        const data = await r.data();
+        return `
         <a href="${data.url}" class="search-result-item">
           <div class="search-result-header">
-            <div class="search-result-title">${data.meta.title || 'Untitled'}</div>
-            <div class="search-result-url">${data.url.replace(/^https?:\/\/[^\/]+/, '')}</div>
+            <div class="search-result-title">${data.meta.title || "Untitled"}</div>
+            <div class="search-result-url">${data.url.replace(/^https?:\/\/[^\/]+/, "")}</div>
           </div>
           <div class="search-result-excerpt">${data.excerpt}</div>
         </a>
       `;
-    })
-  );
+      }),
+    );
 
-  container.innerHTML = items.join('');
-}
+    container.innerHTML = items.join("");
+  }
 
-// Event listeners
-document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('search-modal');
-  const input = document.getElementById('search-input');
-  
-  // Close modal events
-  document.getElementById('search-close')?.addEventListener('click', hideSearchModal);
-  document.querySelector('.search-modal-backdrop')?.addEventListener('click', hideSearchModal);
+  // Event listeners
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("search-modal");
+    const input = document.getElementById("search-input");
 
-  // Keyboard events
-  document.addEventListener('keydown', (e) => {
-    if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
-      e.preventDefault();
-      showSearchModal();
-    }
-    if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
-      hideSearchModal();
-    }
+    // Close modal events
+    document.getElementById("search-close")?.addEventListener("click", hideSearchModal);
+    document.querySelector(".search-modal-backdrop")?.addEventListener("click", hideSearchModal);
+
+    // Keyboard events
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "/" && document.activeElement.tagName !== "INPUT") {
+        e.preventDefault();
+        showSearchModal();
+      }
+      if (e.key === "Escape" && !modal?.classList.contains("hidden")) {
+        hideSearchModal();
+      }
+    });
+
+    // Search input with debounce
+    let searchTimeout;
+    input?.addEventListener("input", (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => performSearch(e.target.value), 300);
+    });
+
+    // Make showSearchModal globally available
+    window.showSearchModal = showSearchModal;
   });
-
-  // Search input with debounce
-  let searchTimeout;
-  input?.addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => performSearch(e.target.value), 300);
-  });
-
-  // Make showSearchModal globally available
-  window.showSearchModal = showSearchModal;
-});
 </script>
 
 <style is:global>
-.search-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 10vh;
-}
+  .search-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10vh;
+  }
 
-.search-modal.hidden {
-  display: none;
-}
+  .search-modal.hidden {
+    display: none;
+  }
 
-.search-modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
+  .search-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
 
-.search-modal-content {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 var(--spacing-md);
-  background-color: var(--color-background);
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  z-index: 10;
-}
+  .search-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 var(--spacing-md);
+    background-color: var(--color-background);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    z-index: 10;
+  }
 
-.search-input-container {
-  position: relative;
-  padding: var(--spacing-md);
-  border-bottom: 1px solid var(--color-border);
-}
+  .search-input-container {
+    position: relative;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+  }
 
-#search-input {
-  width: 100%;
-  padding: var(--spacing-sm) var(--spacing-xl) var(--spacing-sm) var(--spacing-md);
-  font-size: 1.1rem;
-  background-color: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  color: var(--color-text);
-  outline: none;
-  box-sizing: border-box;
-}
+  #search-input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-xl) var(--spacing-sm) var(--spacing-md);
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    outline: none;
+    box-sizing: border-box;
+  }
 
-#search-input::placeholder {
-  color: var(--color-text-muted);
-}
+  #search-input::placeholder {
+    color: var(--color-text-muted);
+  }
 
-#search-input:focus {
-  border-color: var(--color-accent);
-}
+  #search-input:focus {
+    border-color: var(--color-accent);
+  }
 
-.search-close {
-  position: absolute;
-  top: 50%;
-  right: var(--spacing-lg);
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  padding: 0;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .search-close {
+    position: absolute;
+    top: 50%;
+    right: var(--spacing-lg);
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.search-close:hover {
-  color: var(--color-text);
-}
+  .search-close:hover {
+    color: var(--color-text);
+  }
 
-.search-results {
-  max-height: 400px;
-  overflow-y: auto;
-}
+  .search-results {
+    max-height: 400px;
+    overflow-y: auto;
+  }
 
-.search-result-item {
-  display: block;
-  padding: var(--spacing-md);
-  border-bottom: 1px solid var(--color-border);
-  text-decoration: none;
-  color: var(--color-text);
-  transition: background-color 0.2s;
-}
+  .search-result-item {
+    display: block;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: background-color 0.2s;
+  }
 
-.search-result-item:hover {
-  background-color: var(--color-background-hover);
-}
+  .search-result-item:hover {
+    background-color: var(--color-background-hover);
+  }
 
-.search-result-item:last-child {
-  border-bottom: none;
-}
+  .search-result-item:last-child {
+    border-bottom: none;
+  }
 
-.search-result-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--spacing-sm);
-  gap: var(--spacing-md);
-}
+  .search-result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    gap: var(--spacing-md);
+  }
 
-.search-result-title {
-  font-weight: 600;
-  flex: 1;
-}
+  .search-result-title {
+    font-weight: 600;
+    flex: 1;
+  }
 
-.search-result-url {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  font-family: var(--font-family);
-}
+  .search-result-url {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-family);
+  }
 
-.search-result-excerpt {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  line-height: 1.5;
-}
+  .search-result-excerpt {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
 
-.search-no-results,
-.search-error,
-.search-dev-message {
-  padding: var(--spacing-xl);
-  text-align: center;
-  color: var(--color-text-muted);
-}
+  .search-no-results,
+  .search-error,
+  .search-dev-message {
+    padding: var(--spacing-xl);
+    text-align: center;
+    color: var(--color-text-muted);
+  }
 
-.search-error {
-  color: #ef4444;
-}
+  .search-error {
+    color: #ef4444;
+  }
 
-.search-dev-message {
-  color: var(--color-accent);
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
+  .search-dev-message {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 
-/* Highlight search terms */
-.search-result-excerpt mark,
-.search-result-title mark {
-  background-color: var(--color-accent);
-  color: var(--color-background);
-  padding: 0.1rem 0.2rem;
-  border-radius: 2px;
-}
+  /* Highlight search terms */
+  .search-result-excerpt mark,
+  .search-result-title mark {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    padding: 0.1rem 0.2rem;
+    border-radius: 2px;
+  }
 </style>
