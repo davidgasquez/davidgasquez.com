@@ -1,20 +1,30 @@
 ---
 import Layout from "../layouts/Base.astro";
 import { getCollection, render } from "astro:content";
+import { getStandardDocumentUrisByPath } from "../lib/standard-site";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
+  const standardDocuments = await getStandardDocumentUrisByPath();
+
   return blogEntries.map((entry) => ({
     params: { slug: entry.id },
-    props: { entry },
+    props: {
+      entry,
+      standardDocumentUri: standardDocuments.get(`/${entry.id}`) ?? missingStandardDocument(entry.id),
+    },
   }));
 }
 
-const { entry } = Astro.props;
+function missingStandardDocument(slug: string) {
+  throw new Error(`Missing Standard.site document for /${slug}`);
+}
+
+const { entry, standardDocumentUri } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Layout title={`${entry.data.title} | David Gasquez`} type="article">
+<Layout title={`${entry.data.title} | David Gasquez`} type="article" standardDocumentUri={standardDocumentUri}>
   <div class="prose">
     <h1 class="pt-6">{entry.data.title}</h1>
     <em>{entry.data.date.toDateString()}</em>

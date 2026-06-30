@@ -1,11 +1,13 @@
 ---
 import { Font } from "astro:assets";
+import { STANDARD_PUBLICATION_URI } from "../lib/standard-site";
 
 const {
   title = "David Gasquez",
   description = "David Gasquez personal website",
   image = "/social.png",
   type = "website",
+  standardDocumentUri,
 } = Astro.props;
 
 const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
@@ -46,3 +48,7 @@ const ogImage = new URL(image, Astro.site);
 <!-- Sitemap & RSS -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" title="David Gasquez" href="/rss.xml" />
+
+<!-- Standard.site -->
+<link rel="site.standard.publication" href={STANDARD_PUBLICATION_URI} />
+{standardDocumentUri && <link rel="site.standard.document" href={standardDocumentUri} />}

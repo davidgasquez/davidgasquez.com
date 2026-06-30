@@ -2,12 +2,18 @@
 import BaseHead from "../components/BaseHead.astro";
 import "../styles/global.css";
 
-const { title, description, image, type } = Astro.props;
+const { title, description, image, type, standardDocumentUri } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} image={image} type={type} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      standardDocumentUri={standardDocumentUri}
+    />
   </head>
   <body>
     <header>
