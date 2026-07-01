@@ -2,25 +2,80 @@ import { satteri, satteriHeadingIdsPlugin } from "@astrojs/markdown-satteri";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig, fontProviders } from "astro/config";
+import { fileURLToPath } from "node:url";
 import { defineHastPlugin, defineMdastPlugin } from "satteri";
 
 function handbookSlug(name) {
-  return name.replace(/ /g, "-").toLowerCase();
+  return name
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/['’]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function isHandbookContent(ctx) {
+  return ctx.fileURL ? fileURLToPath(ctx.fileURL).includes("/src/content/handbook/") : false;
+}
+
+function isLocalHandbookLink(url) {
+  return (
+    !url.startsWith("#") &&
+    !url.startsWith("/") &&
+    !url.startsWith("./") &&
+    !url.startsWith("../") &&
+    !/^[a-z][a-z0-9+.-]*:/i.test(url)
+  );
+}
+
+function decodeHandbookLinkTarget(value) {
+  try {
+    return decodeURIComponent(value);
+  } catch (error) {
+    throw new Error(`Invalid handbook link target: ${value}`, { cause: error });
+  }
+}
+
+function handbookUrl(url) {
+  const [rawPage, rawHash] = url.split("#", 2);
+  const page = decodeHandbookLinkTarget(rawPage);
+  const hash = rawHash ? decodeHandbookLinkTarget(rawHash) : undefined;
+  return `/handbook/${handbookSlug(page)}${hash ? `#${handbookSlug(hash)}` : ""}`;
 }
 
 const handbookWikiLinks = defineMdastPlugin({
   name: "handbook-wiki-links",
   link(node, ctx) {
-    const start = node.position?.start.offset;
-    const end = node.position?.end.offset;
-    if (start === undefined || end === undefined || !ctx.source.slice(start, end).startsWith("[[")) return;
+    if (!isHandbookContent(ctx) || !isLocalHandbookLink(node.url)) return;
 
-    ctx.setProperty(node, "url", `/handbook/${handbookSlug(node.url)}`);
+    ctx.setProperty(node, "url", handbookUrl(node.url));
     ctx.setProperty(node, "data", {
       hProperties: {
         className: ["internal"],
       },
     });
+  },
+});
+
+const normalizeHandbookLinks = defineHastPlugin({
+  name: "normalize-handbook-links",
+  element: {
+    filter: ["a"],
+    visit(node, ctx) {
+      const href = node.properties?.href;
+      if (!isHandbookContent(ctx) || typeof href !== "string" || !isLocalHandbookLink(href)) return;
+
+      const className = node.properties.className;
+      const classes = Array.isArray(className)
+        ? className
+        : typeof className === "string"
+          ? className.split(/\s+/).filter(Boolean)
+          : [];
+
+      ctx.setProperty(node, "href", handbookUrl(href));
+      ctx.setProperty(node, "className", classes.includes("internal") ? classes : [...classes, "internal"]);
+    },
   },
 });
 
@@ -69,7 +124,7 @@ export default defineConfig({
         wikilinks: true,
       },
       mdastPlugins: [handbookWikiLinks],
-      hastPlugins: [satteriHeadingIdsPlugin(), autolinkHeadings],
+      hastPlugins: [satteriHeadingIdsPlugin(), normalizeHandbookLinks, autolinkHeadings],
     }),
   },
 });
