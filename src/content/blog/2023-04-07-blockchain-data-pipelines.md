@@ -49,7 +49,7 @@ If you do a bit of browsing, you'll find many companies and tools building ETLs 
 
 ## The Problem
 
-After [compiling the list](https://publish.obsidian.md/davidgasquez/Web3#Blockchain+Indexing+Projects), I realized that only a few of these projects are open. **We can read the source code of the chains we use, but can't read the code of their data pipelines?** That's a bit weird. Specially when the data world is moving towards the other direction [^1]!
+After [compiling the list](/handbook/decentralized-web#blockchain-indexing-projects), I realized that only a few of these projects are open. **We can read the source code of the chains we use, but can't read the code of their data pipelines?** That's a bit weird. Specially when the data world is moving towards the other direction [^1]!
 
 As the folks from [OpenDataCommunity](https://opendatacommunity.org/) pointed out, the data layer is, currently, mostly centralized [^2] and closed source. Properties that don't represent the open spirit of the movement.
 
@@ -64,7 +64,7 @@ Wouldn't it be great if we could do the same with blockchain data? **Add the `ta
 
 Personally, I think projects like [Trueblocks](https://trueblocks.io/), [Kamu](https://kamu.dev), and [Bacalhau](https://bacalhau.org/) hold the key to open the data layer a bit more [^4] but won't be possible without a community and standards we can all agree upon and share.
 
-[^1]: And the blockchains data is such a [great candidate for the open data movement](https://publish.obsidian.md/davidgasquez/Open+Data). **Chain data is open, verifiable and immutable! All great properties for open data.**
+[^1]: And the blockchains data is such a [great candidate for the open data movement](/handbook/open-data). **Chain data is open, verifiable and immutable! All great properties for open data.**
 
 [^2]: And I totally get it. Centralization makes working with data a less painful job!
 
