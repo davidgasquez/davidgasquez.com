@@ -16,7 +16,7 @@ The useful part was the handoff. I could click a button to copy the state and as
 
 This gave both of us a high-bandwidth way to share state and made the feedback loop faster than chat. Chat alone is a bad interface for this kind of work because too much state stays implicit, or even hidden from you. With the workbench, I could inspect both the applications and the changes the agent wanted to make.
 
-I have also applied this to other messy tasks: sorting and tagging invoices, [closing duplicate issues](https://x.com/badlogicgames/status/2017420406869594226), [understanding a diff](https://plannotator.ai/), exploring random datasets, and curating a reading/listening list. In all of them, I do not want the model making dumb decisions for me. I want a small tool that helps me make sense of the problem, see the state, change it, and bring the useful parts back to the model.
+I have also applied this to other messy tasks: sorting and tagging invoices, [closing duplicate issues](https://x.com/badlogicgames/status/2017420406869594226), exploring random datasets, [understanding a diff](https://plannotator.ai/), and curating a reading/listening list. In all of them, I do not want the model making dumb decisions for me. I want a small tool that helps me make sense of the problem, see the state, change it, and bring the useful parts back to the model.
 
 Some things that have worked well for me:
 
