@@ -22,7 +22,7 @@ There may never be one canonical benchmark, but we can still build shared, falsi
 
 A mechanism might produce a decent allocation and still be a bad fit. Mechanism can be too opaque, too expensive, too easy to game, or too hard to explain. Each round/implementation requires diferent tradeoffs. Having an evaluation layer makes these explicit so the community can take better decissions and know what are they giving away by choosing one mechanism over another.
 
-### 1. Define "bettet"
+### 1. Define "better"
 
 What metric will be used to compare mechanisms?
 
@@ -37,7 +37,7 @@ The goal is not to find a perfect metric, but to coordinate on one and iterate. 
 
 ### 2. Publish a Baseline
 
-No mechanism should be discussed without a baseline alternative to compare against. 
+No mechanism should be discussed without a baseline alternative to compare against.
 
 - Equal split
 - Random allocation
@@ -46,7 +46,7 @@ No mechanism should be discussed without a baseline alternative to compare again
 
 This acts as the falsifiable hypotheses. E.g: "this mechanism beats an expert-in-an-afternoon baseline on holdout pairwise agreement" or "this mechanism is more stable under reruns"
 
-### 3. Compare Blindly 
+### 3. Compare Blindly
 
 Do not ask people whether they like "the Deep Funding output" or "the expert allocation". Show _allocation A_ and _allocation B_ without labels. Ask which one looks better, which one looks most wrong, and why. Apps like [PGF Arena](/pgf-arena/) can make this kind of comparison easier.
 
