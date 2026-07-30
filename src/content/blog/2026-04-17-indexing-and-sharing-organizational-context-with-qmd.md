@@ -4,57 +4,56 @@ date: 2026-04-17
 slug: sharing-a-qmd-index-with-a-team
 ---
 
-Data engineering is mostly context gathering. Tons of moments of going though code, docs, specs, issues, conversations to figure out how stakeholders want active users to be counted. [`qmd`](https://github.com/tobi/qmd) turns that pile of documents into something you can actually query without worrying about setup, which makes it useful for both me and my agents. I wanted to share that indexed knowledge with colleagues without forcing them to run CLI commands like `qmd embed`.
+Data engineering is mostly context gathering. It involves tons of time spent going through code, docs, specs, issues, and conversations to figure out how stakeholders want active users to be counted. [`qmd`](https://github.com/tobi/qmd) turns that pile of documents into something you can actually query without worrying about low-level technical details (embeddings, rerankers, ...), which makes it useful for both me and my agents.
 
-I ended up with a setup I like: **the index is managed declaratively in git, and a daily CI job publishes a SQLite database with the embeddings**.
+Sharing only `qmd`'s `index.yml` still makes every consumer fetch the sources, run `qmd update` and `qmd embed`, and take responsibility for keeping everything fresh. Hosting `qmd`'s MCP server avoids that work, but introduces a service to deploy and operate.
 
-## Making It Declarative
+My goal was to share that indexed knowledge with colleagues without forcing them to run CLI commands like `qmd embed`.
 
-I wrote a [tiny ~10 line wrapper](https://github.com/davidgasquez/dotfiles/commit/5de0ae7112ecc4c3377083ce3485477dc860894c) so that if the current folder has a `.qmd/` directory, `qmd` points to that local config and index. Within a project, `qmd` only sees that project's index and collections.
+To explore this problem, I ended up building [a way](https://github.com/davidgasquez/filoscope) to **manage the corpus declaratively in Git and distribute a prebuilt SQLite index**.
 
-That also makes [`index.yml`](https://raw.githubusercontent.com/tobi/qmd/refs/heads/main/example-index.yml) easy to version control. Instead of living in my machine and memory, the index definition lives in the repo.
+## Tracking Sources
 
-## Making It Shared
+Each Filoscope collection is a small YAML file (similar to what you'd put in `qmd`'s `index.yml`) describing where its content comes from, what it means, and which files belong in the index:
 
-Once I wanted to share this with the team, I had two obvious options.
-
-### 1. Share the `index.yml`
-
-This works for technical folks but is not smooth for everyone else (even in the age of clankers, you need to know the right spells!). Consumers need the source code, need to run `qmd update`, need to run `qmd embed`, and need to keep everything fresh over time. Not great.
-
-### 2. Host an MCP server
-
-The "correct and boring" option. `qmd` supports MCP already, and you can even host MCP servers for free with [Hugging Face Spaces](https://huggingface.co/docs/hub/spaces-mcp-servers).
-
-I decided **not** to go this route. I prefer my infrastructure local-friendly and I don't like managing servers.
-
-## Making It Accessible
-
-Instead, I distribute a prebuilt index, similar to how I [distribute datasets](/barefoot-data-platforms). I put together the [`filecoin-docs-qmd`](https://github.com/davidgasquez/filecoin-docs-qmd) repo to package a curated Filecoin docs index and publish it.
-
-The flow is simple:
-
-1. A curated list of sources lives on GitHub.
-2. Every day, a GitHub Action runs `qmd update` and `qmd embed`, compresses the SQLite DB, and publishes it.
-3. Users run a small installation script that downloads the latest database (<50MB) and sets up `qmd`.
-
-After that, anyone can do:
-
-```bash
-qmd --index filecoin query "how does lotus handle deal onboarding"
+```yaml
+source: github:filecoin-project/lotus
+context: Go implementation of the Filecoin Lotus node, miner, worker, and gateway.
+pattern: "**/*.{md,go,sh,toml,json,yml,yaml}"
 ```
 
-A good middle ground:
+Filenames become collection names. Running `filoscope sync` invokes a bundled [connector](https://github.com/davidgasquez/filoscope/tree/main/connectors), which in this case materializes a GitHub repository into one folder per collection and generates the qmd configuration named `filoscope`.
 
-- Source of truth is declarative and version controlled.
-- The artifact is self-contained and easy to install.
-- UX stays local and CLI-friendly.
-- No MCP forced on anyone.
+The generated folders, qmd config, and SQLite database are derived state. The [collection manifests](https://github.com/davidgasquez/filoscope/tree/main/collections) and connectors are the only source of truth for the corpus.
 
-## Making It Smooth
+## Updating Embeddings
 
-Something I have not gotten to yet: forking `qmd` to support remote indexes. The entire process could be simplified to:
+A [daily GitHub Action](https://github.com/davidgasquez/filoscope/blob/main/.github/workflows/build-index.yml):
+
+1. Pulls the latest published index so unchanged documents keep their embeddings.
+2. Syncs every declared collection.
+3. Runs `qmd update`, `qmd embed`, and `qmd cleanup` (on CPU!).
+4. Validates the database and publishes it as a compressed GitHub release artifact.
+
+The resulting SQLite file contains the documents, full-text index, and vectors. Building it centrally means consumers do not need the source repositories or the compute required to embed them.
+
+## Sharing the Index
+
+I published a small [`SKILL.md`](https://github.com/davidgasquez/filoscope/blob/main/SKILL.md), so the main user-facing interface of `filoscope` can be a prompt:
+
+```text
+Read https://raw.githubusercontent.com/davidgasquez/filoscope/refs/heads/main/SKILL.md and tell me how Filecoin Pay Rails work
+```
+
+The skill tells the agent to pull the current artifact with `npx filoscope pull`. The command checks the latest release tag, downloads and validates the database only when the tag changes, and installs it as `~/.cache/qmd/filoscope.sqlite`.
+
+`filoscope` bundles `qmd`, which remains responsible for search and retrieval, so users can invoke both through `npx`.
 
 ```bash
-qmd --index https://awesomedomain.io/qmd.sqlite query "how do we count active users"
+npx --package filoscope qmd --index filoscope query \
+  "how do storage providers prove storage over time"
 ```
+
+## Conclusion
+
+This low-cost setup turns out to be a flexible and modular way of sharing packaged knowledge with agents and fellow humans! Thanks to `qmd`, the job of `filoscope` is stitching things together and writing boring unstructured data pipelines. Overall, I think this is a good approach for public, read-only knowledge bases that need to be curated by a community! You get easy-to-access resources with no maintenance or servers needed.
