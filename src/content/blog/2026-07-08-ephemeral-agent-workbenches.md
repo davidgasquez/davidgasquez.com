@@ -12,11 +12,11 @@ The idea is to have agents produce small pages/apps for the task at hand. For me
 
 In the workbench, I could see and sort every application, add random tags or notes as I read through them, visualize them on a 2D map to spot duplicates or core applications, etc.
 
-The useful part was the handoff. I could click a button to copy the state and ask my agent to do things like complete the labeling from my manual labels, recluster, add a new field to applications, suggest due diligence questions, etc.
+The useful part was the handoff. I could click a button to copy the state and ask my agent to do things like complete the labeling from my manual labels, recluster, add a new field to applications, suggest due diligence questions, etc. Intent did not have to fit in a prompt: it could also come through chat, images, or the selections, tags, and notes already in the workbench.
 
 This gave both of us a high-bandwidth way to share state and made the feedback loop faster than chat. Chat alone is a bad interface for this kind of work because too much state stays implicit, or even hidden from you. With the workbench, I could inspect both the applications and the changes the agent wanted to make.
 
-I have also applied this to other messy tasks: sorting and tagging invoices, [closing duplicate issues](https://x.com/badlogicgames/status/2017420406869594226), exploring random datasets, [understanding a diff](https://plannotator.ai/), and curating a reading/listening list. In all of them, I do not want the model making dumb decisions for me. I want a small tool that helps me make sense of the problem, see the state, change it, and bring the useful parts back to the model.
+I have also applied this to other messy tasks: sorting and tagging invoices, [closing duplicate issues](https://x.com/badlogicgames/status/2017420406869594226), exploring random datasets, [understanding a diff](https://plannotator.ai/), and curating a reading/listening list. In all of them, I do not want the model making dumb decisions for me. I want a small shared space where I can make sense of the problem, inspect and change its state, and invite the agent in as an extra pair of hands.
 
 Some things that have worked well for me:
 
