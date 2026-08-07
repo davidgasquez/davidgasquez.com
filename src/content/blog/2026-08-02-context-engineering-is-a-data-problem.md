@@ -4,14 +4,14 @@ date: 2026-08-02
 slug: context-engineering-is-a-data-problem
 ---
 
-More than ever, it is clear that all a company wants from you is your data and context. Your [context is their moat](https://x.com/samzliu/status/2080210797465379147).
-Each product owning your context makes you use their agent. And I've never seen a good hosted agent.
+Companies want your data and context because [your context is their moat](https://x.com/samzliu/status/2080210797465379147).
+Products that own your context can force you to use their agent... and, I've never seen a good hosted agent!
 
 Organizations need to own their context, and the way to do so effectively already exists and is well understood.
 
 ## Context as Data Infrastructure
 
-Did you notice the [shape of the diagrams](https://storage.googleapis.com/gweb-cloudblog-publish/images/WorkspaceIntelligence.max-2200x2200.png) that every company is adding to their "intelligence" products? I see that and it seems like I'm looking at a Fivetran or dbt product page in 2018. That is because they're the same thing!
+Have you noticed the [shape of the diagrams](https://storage.googleapis.com/gweb-cloudblog-publish/images/WorkspaceIntelligence.max-2200x2200.png) that every company is adding to their "intelligence" products? I see that and it seems like I'm looking at a Fivetran or dbt product page in 2018. That is because they're the same thing!
 
 Most organizations will need to build and maintain a model-agnostic knowledge base ([aka ontology, company brain, ...](https://x.com/DBredvick/status/2078150905078206789)) for the same reasons they maintain a data warehouse. A curated and normalized layer helps both humans and agents make sense of all the structure that outlives any particular model, harness, tool, or product. Context engineering is [that same work](https://x.com/JoshARosen/status/2084693306722705629): extracting, filtering, curating, modeling, and publishing artifacts to help the organization make better decisions.
 
