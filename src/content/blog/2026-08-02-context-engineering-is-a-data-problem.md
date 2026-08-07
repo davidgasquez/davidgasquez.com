@@ -31,7 +31,7 @@ This means a company brain is built, tested and released like any other data pro
 
 I'm not against agents connecting to the raw sources, though. In many cases, that will be better than a poorly maintained knowledge base (garbage in, garbage out). What I'm saying is that, at some point, you need a process to derive meaning and codify what "truth" means in your context. Agents will just read the 3 differently defined OKRs and carry on, with a small note at best. Also, context is finite (for now) and has diminishing returns.
 
-Even if they got that right. That won't compound! In data, once someone figures out how a "key action" is defined, it gets encoded as code in a `dbt` model that downstream users will consume and help evolve. Without a Knowledge Build System, we'd be missing this compounding layer on the context side. Ingestion is not the product here. The processes of sense-making, modeling, and coordination are. Talking, rejecting PRs, and renaming fields are the ways the organization "thinks" and compacts knowledge. Each curated text file at the end is a cached materialized view optimized for something.
+Even if they got that right. That won't compound! In data, once someone figures out how a "key action" is defined, it gets encoded as code in a `dbt` model that downstream users will consume and help evolve. Without a Knowledge Build System, we'd be missing this compounding layer on the context side. Talking, rejecting PRs, and renaming fields are the ways the organization "thinks" and compacts knowledge. Each curated text file at the end is a cached materialized view optimized for something.
 
 Working on this context layer should feel similar to data folks:
 
@@ -40,3 +40,5 @@ Working on this context layer should feel similar to data folks:
 - Building "marts" for different areas. There is no universal package of "company context"; each area, project, and team might need their own subset or combination of sources and modeling.
 - Analyzing recurring questions and updating models to help these.
 - Fighting something like context debt: accumulated ambiguity, staleness and untraceable interpretation that make agents confidently retrieve the wrong thing.
+
+Ingestion is not the product here. The processes of sense-making, modeling, and coordination are what allow organizational knowledge to compound.
