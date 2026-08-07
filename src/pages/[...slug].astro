@@ -7,17 +7,17 @@ export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   const standardDocuments = await getStandardDocumentUrisByPath();
 
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.id },
-    props: {
-      entry,
-      standardDocumentUri: standardDocuments.get(`/${entry.id}`) ?? missingStandardDocument(entry.id),
-    },
-  }));
-}
+  return blogEntries.map((entry) => {
+    const standardDocumentUri = standardDocuments.get(`/${entry.id}`);
+    if (!standardDocumentUri) {
+      throw new Error(`Missing Standard.site document for /${entry.id}`);
+    }
 
-function missingStandardDocument(slug: string) {
-  throw new Error(`Missing Standard.site document for /${slug}`);
+    return {
+      params: { slug: entry.id },
+      props: { entry, standardDocumentUri },
+    };
+  });
 }
 
 const { entry, standardDocumentUri } = Astro.props;
