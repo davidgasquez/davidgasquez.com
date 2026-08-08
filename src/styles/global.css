@@ -219,7 +219,7 @@ code {
   margin: 0 auto;
 }
 
-/* Responsive images */
+/* Responsive media */
 img {
   max-width: 100%;
   height: auto;
@@ -228,9 +228,22 @@ img {
 }
 
 .prose img {
-  max-width: 100%;
+  max-width: 100% !important;
   height: auto;
   display: block;
+  margin: 1.5rem auto;
+}
+
+.prose iframe {
+  display: block;
+  max-width: 100%;
+}
+
+.prose iframe[src*="youtube.com/embed"],
+.prose iframe[src*="youtube-nocookie.com/embed"] {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
   margin: 1.5rem auto;
 }
 
