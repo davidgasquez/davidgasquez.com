@@ -8,6 +8,13 @@ function assets() {
     ["/about", ["<h1>About</h1>", "text/html; charset=utf-8"]],
     ["/index.md", ["# Home\n", "text/markdown"]],
     ["/about.md", ["# About\n", "text/markdown"]],
+    [
+      "/404.md",
+      [
+        "# Not found\n\nTry [home](/), [the handbook](/handbook), or [the sitemap](/sitemap-index.xml).\n",
+        "text/markdown",
+      ],
+    ],
     ["/experiments/demo/", ["<h1>Demo</h1>", "text/html; charset=utf-8"]],
     ["/experiments/demo/index.md", ["# Demo\n", "text/markdown"]],
     ["/robots.txt", ["User-agent: *\n", "text/plain"]],
@@ -76,6 +83,16 @@ test("returns 406 when no page representation is acceptable", async () => {
 
   assert.equal(response.status, 406);
   assertNegotiated(response, "text/plain; charset=utf-8");
+});
+
+test("returns a recoverable Markdown 404 for a missing page", async () => {
+  const response = await request("/missing", "text/markdown");
+
+  assert.equal(response.status, 404);
+  assertNegotiated(response, "text/markdown; charset=utf-8");
+  const body = await response.text();
+  assert.match(body, /\/handbook/);
+  assert.match(body, /\/sitemap-index\.xml/);
 });
 
 test("passes machine-readable files through without page negotiation", async () => {

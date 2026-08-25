@@ -119,6 +119,30 @@ async function findMarkdown(request, env, method) {
   return null;
 }
 
+async function markdownNotFound(request, env) {
+  const url = new URL("/404.md", request.url);
+  const asset = await env.ASSETS.fetch(new Request(url, { headers: request.headers, method: request.method }));
+
+  if (asset.status !== 200) {
+    const response = new Response("Markdown 404 representation is missing\n", {
+      status: 500,
+      headers: { "Content-Type": "text/plain; charset=utf-8" },
+    });
+    setVary(response.headers);
+    return response;
+  }
+
+  const response = new Response(asset.body, {
+    status: 404,
+    statusText: "Not Found",
+    headers: asset.headers,
+  });
+  response.headers.set("Content-Type", "text/markdown; charset=utf-8");
+  setVary(response.headers);
+
+  return response;
+}
+
 async function servePage(request, env) {
   const accept = request.headers.get("Accept");
   const chosen = preferredType(accept);
@@ -135,9 +159,7 @@ async function servePage(request, env) {
       return response;
     }
 
-    if (!preferredType(accept, ["text/html"])) {
-      return notAcceptable("Not Acceptable. Markdown representation is unavailable");
-    }
+    return markdownNotFound(request, env);
   }
 
   const response = mutableResponse(await env.ASSETS.fetch(request));

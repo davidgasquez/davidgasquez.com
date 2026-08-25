@@ -32,6 +32,18 @@ for (const path of machineReadableFiles) {
   if ((await readFile(path)).byteLength === 0) throw new Error(`Empty machine-readable file: ${path}`);
 }
 
+const homepage = await readFile(join(dist, "index.html"), "utf8");
+if (!/<h1\b[^>]*>\s*David Gasquez\s*<\/h1>/i.test(homepage)) {
+  throw new Error("Homepage is missing its David Gasquez h1");
+}
+
+const markdown404 = await readFile(join(dist, "404.md"), "utf8");
+for (const recoveryPath of ["/", "/handbook", "/sitemap-index.xml"]) {
+  if (!markdown404.includes(`](${recoveryPath})`)) {
+    throw new Error(`404.md is missing recovery link ${recoveryPath}`);
+  }
+}
+
 console.log(
   `Verified ${htmlFiles.length} HTML/Markdown pairs and ${machineReadableFiles.length} machine-readable files.`,
 );

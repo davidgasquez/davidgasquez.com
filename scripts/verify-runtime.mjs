@@ -100,6 +100,19 @@ const notAcceptable = await fetch(baseUrl, { headers: { Accept: "application/pdf
 assert(notAcceptable.status === 406, `Unsupported media type returned ${notAcceptable.status}`);
 assertVary(notAcceptable, "/");
 
+const missing = await fetch(new URL("/__agent_readiness_missing_page__", baseUrl), {
+  headers: { Accept: "text/markdown" },
+});
+assert(missing.status === 404, `Missing Markdown page returned ${missing.status}`);
+assert(
+  missing.headers.get("Content-Type") === "text/markdown; charset=utf-8",
+  "Missing Markdown page Content-Type is invalid",
+);
+assertVary(missing, "/__agent_readiness_missing_page__");
+const missingBody = await missing.text();
+assert(missingBody.includes("/handbook"), "404 Markdown is missing its handbook recovery link");
+assert(missingBody.includes("/sitemap-index.xml"), "404 Markdown is missing its sitemap recovery link");
+
 const qualityPreference = await fetch(baseUrl, {
   headers: { Accept: "text/markdown;q=0.2, text/html;q=0.8" },
 });
