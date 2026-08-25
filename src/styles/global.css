@@ -274,6 +274,13 @@ img {
   margin: var(--spacing-lg) 0 var(--spacing-sm);
 }
 
+.prose .home-posts-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  margin: var(--spacing-lg) 0 var(--spacing-sm);
+}
+
 .prose p {
   margin: 1.25rem 0;
 }

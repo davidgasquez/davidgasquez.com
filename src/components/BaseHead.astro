@@ -13,6 +13,24 @@ const {
 const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
 const canonicalURL = new URL(canonicalPath, Astro.site);
 const ogImage = new URL(image, Astro.site);
+const homepageURL = new URL("/", Astro.site).href;
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${homepageURL}#person`,
+  name: "David Gasquez",
+  description: "Data engineer building data systems for open networks, public goods, and communities.",
+  url: homepageURL,
+  jobTitle: "Data Engineer",
+  email: "davidgasquez@gmail.com",
+  knowsAbout: ["Data engineering", "Open data", "Public goods", "Agentic engineering", "Decentralized protocols"],
+  sameAs: [
+    "https://github.com/davidgasquez/",
+    "https://bsky.app/profile/davidgasquez.com",
+    "https://x.com/davidgasquez",
+    "https://www.linkedin.com/in/davidgasquez/",
+  ],
+};
 ---
 
 <meta charset="utf-8" />
@@ -26,6 +44,9 @@ const ogImage = new URL(image, Astro.site);
 <!-- General Meta Tags -->
 <title>{title}</title>
 <meta name="description" content={description} />
+
+<!-- Structured Data -->
+{canonicalPath === "/" && <script type="application/ld+json" is:inline set:html={JSON.stringify(person)} />}
 
 <!-- Open Graph -->
 <meta property="og:type" content={type} />

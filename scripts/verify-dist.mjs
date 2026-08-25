@@ -36,6 +36,25 @@ const homepage = await readFile(join(dist, "index.html"), "utf8");
 if (!/<h1\b[^>]*>\s*David Gasquez\s*<\/h1>/i.test(homepage)) {
   throw new Error("Homepage is missing its David Gasquez h1");
 }
+if (!/<h2\b[^>]*>\s*Posts\s*<\/h2>/i.test(homepage)) {
+  throw new Error("Homepage is missing its Posts h2");
+}
+
+const personMatch = homepage.match(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/i);
+if (!personMatch) throw new Error("Homepage is missing JSON-LD");
+
+const person = JSON.parse(personMatch[1]);
+if (person["@context"] !== "https://schema.org" || person["@type"] !== "Person") {
+  throw new Error("Homepage JSON-LD does not identify a Schema.org Person");
+}
+for (const property of ["name", "description", "url", "jobTitle", "email"]) {
+  if (typeof person[property] !== "string" || person[property].length === 0) {
+    throw new Error(`Homepage Person JSON-LD is missing ${property}`);
+  }
+}
+if (!Array.isArray(person.sameAs) || person.sameAs.length === 0) {
+  throw new Error("Homepage Person JSON-LD is missing sameAs profiles");
+}
 
 const markdown404 = await readFile(join(dist, "404.md"), "utf8");
 for (const recoveryPath of ["/", "/handbook", "/sitemap-index.xml"]) {

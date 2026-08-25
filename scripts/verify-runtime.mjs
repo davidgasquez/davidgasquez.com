@@ -113,6 +113,19 @@ const missingBody = await missing.text();
 assert(missingBody.includes("/handbook"), "404 Markdown is missing its handbook recovery link");
 assert(missingBody.includes("/sitemap-index.xml"), "404 Markdown is missing its sitemap recovery link");
 
+const homepage = await fetch(baseUrl, { headers: { Accept: "text/html" } });
+const homepageBody = await homepage.text();
+assert(/<h1\b[^>]*>\s*David Gasquez\s*<\/h1>/i.test(homepageBody), "Homepage is missing its h1");
+assert(/<h2\b[^>]*>\s*Posts\s*<\/h2>/i.test(homepageBody), "Homepage is missing its Posts h2");
+
+const personMatch = homepageBody.match(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/i);
+assert(personMatch, "Homepage is missing JSON-LD");
+const person = JSON.parse(personMatch[1]);
+assert(person["@context"] === "https://schema.org", "Homepage JSON-LD context is invalid");
+assert(person["@type"] === "Person", "Homepage JSON-LD does not identify a Person");
+assert(person.name === "David Gasquez", "Homepage Person JSON-LD name is invalid");
+assert(Array.isArray(person.sameAs) && person.sameAs.length > 0, "Homepage Person JSON-LD is missing sameAs");
+
 const qualityPreference = await fetch(baseUrl, {
   headers: { Accept: "text/markdown;q=0.2, text/html;q=0.8" },
 });
