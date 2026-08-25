@@ -1,15 +1,18 @@
 {
   "name": "davidgasquez-com",
+  "main": "src/worker.js",
   "workers_dev": false,
   "compatibility_date": "2026-03-11",
   "routes": [
     {
       "pattern": "davidgasquez.com",
-      "custom_domain": true
-    }
+      "custom_domain": true,
+    },
   ],
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page"
-  }
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "404-page",
+  },
 }

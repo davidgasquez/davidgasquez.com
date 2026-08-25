@@ -9,12 +9,15 @@
     "update-handbook": "rm -rf src/content/handbook && git clone --depth=1 https://github.com/davidgasquez/handbook.git src/content/handbook",
     "dev": "npm run update-handbook && astro dev --host 0.0.0.0",
     "start": "astro dev",
-    "build": "npm run update-handbook && astro check && astro build && npx pagefind --site dist",
+    "build": "npm run update-handbook && astro check && astro build && node scripts/generate-markdown.mjs && npx pagefind --site dist && npm run verify:dist",
     "preview": "astro preview",
     "preview:worker": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
     "sync-standard": "node --env-file-if-exists=.env scripts/sync-standard.mjs --apply",
     "sync-standard:dry": "node --env-file-if-exists=.env scripts/sync-standard.mjs --dry-run",
+    "test": "node --test",
+    "verify:dist": "node scripts/verify-dist.mjs",
+    "verify:runtime": "node scripts/verify-runtime.mjs",
     "astro": "astro"
   },
   "dependencies": {
@@ -33,6 +36,8 @@
     "pagefind": "^1.5.2",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2",
     "wrangler": "^4.120.0"
   }
 }
