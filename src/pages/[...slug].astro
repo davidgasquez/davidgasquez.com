@@ -25,13 +25,17 @@ const { Content } = await render(entry);
 ---
 
 <Layout title={`${entry.data.title} | David Gasquez`} type="article" standardDocumentUri={standardDocumentUri}>
-  <div class="prose">
-    <h1 class="pt-6">{entry.data.title}</h1>
-    <em>{entry.data.date.toDateString()}</em>
+  <article class="prose post">
+    <header class="post-header">
+      <h1>{entry.data.title}</h1>
+      <time datetime={entry.data.date.toISOString()}>
+        {entry.data.date.toLocaleDateString("en", { day: "numeric", month: "short", year: "numeric" })}
+      </time>
+    </header>
     <Content />
-  </div>
+  </article>
 
-  <div class="p-6 text-center">
+  <div class="post-navigation text-center">
     <a href="/">← Back to home</a>
   </div>
 </Layout>

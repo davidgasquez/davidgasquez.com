@@ -16,8 +16,8 @@ const { title, description, image, type, standardDocumentUri } = Astro.props;
     />
   </head>
   <body>
-    <header>
-      <nav>
+    <header class="site-header">
+      <nav aria-label="Primary">
         <ul>
           <li>
             <a href="/">David Gasquez</a>
@@ -34,7 +34,7 @@ const { title, description, image, type, standardDocumentUri } = Astro.props;
     <main>
       <slot />
     </main>
-    <footer>
+    <footer class="site-footer">
       <p>
         © {new Date().getFullYear()} David Gasquez | <a href="/rss.xml">RSS</a>
       </p>
