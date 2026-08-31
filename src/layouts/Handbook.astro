@@ -2,6 +2,8 @@
 import Base from "./Base.astro";
 import SearchModal from "../components/SearchModal.astro";
 import { getCollection } from "astro:content";
+import { getHandbookTitle } from "../lib/handbook-title";
+import { socialImagePath } from "../lib/social-image";
 
 export interface Props {
   currentSlug?: string;
@@ -12,21 +14,12 @@ const { currentSlug } = Astro.props;
 // Get all handbook entries for sidebar navigation
 const handbookEntries = await getCollection("handbook");
 
-// Function to extract the first header from markdown content
-function extractFirstHeader(content: string): string | null {
-  const headerMatch = content.match(/^#\s+(.+)$/m);
-  return headerMatch ? headerMatch[1].trim() : null;
-}
-
-// Sort entries alphabetically by title or filename
+// Sort entries alphabetically by title
 const sortedEntries = handbookEntries
-  .filter((entry) => entry.id !== "README") // Exclude README
   .map((entry) => {
-    const title =
-      entry.data.title || extractFirstHeader(entry.body || "") || entry.id.replace(/\.md$/, "").replace(/^.*\//, "");
     return {
       ...entry,
-      displayTitle: title,
+      displayTitle: getHandbookTitle(entry),
     };
   })
   .sort((a, b) => a.displayTitle.localeCompare(b.displayTitle));
@@ -36,9 +29,15 @@ const activeEntryTitle = currentSlug
   : undefined;
 
 const pageTitle = activeEntryTitle ? `${activeEntryTitle} | Handbook | David Gasquez` : undefined;
+const socialImage =
+  currentSlug && activeEntryTitle ? socialImagePath("handbook", currentSlug, activeEntryTitle) : undefined;
 ---
 
-<Base title={pageTitle}>
+<Base
+  title={pageTitle}
+  image={socialImage}
+  imageAlt={activeEntryTitle ? `${activeEntryTitle} in David Gasquez's handbook` : undefined}
+>
   <div class="handbook-container">
     <!-- Sidebar -->
     <aside id="handbook-sidebar" class="handbook-sidebar">

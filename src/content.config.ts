@@ -11,7 +11,7 @@ const blogCollection = defineCollection({
 });
 
 const handbookCollection = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/handbook" }),
+  loader: glob({ pattern: ["**/*.md", "!**/README.md"], base: "./src/content/handbook" }),
   schema: z.object({
     title: z.string().optional(),
   }),

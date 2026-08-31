@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Base.astro";
 import { getCollection, render } from "astro:content";
+import { socialImagePath } from "../lib/social-image";
 import { getStandardDocumentUrisByPath } from "../lib/standard-site";
 
 export async function getStaticPaths() {
@@ -24,7 +25,13 @@ const { entry, standardDocumentUri } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Layout title={`${entry.data.title} | David Gasquez`} type="article" standardDocumentUri={standardDocumentUri}>
+<Layout
+  title={`${entry.data.title} | David Gasquez`}
+  image={socialImagePath("blog", entry.id, entry.data.title)}
+  imageAlt={`${entry.data.title} by David Gasquez`}
+  type="article"
+  standardDocumentUri={standardDocumentUri}
+>
   <article class="prose post">
     <header class="post-header">
       <h1>{entry.data.title}</h1>

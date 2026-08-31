@@ -6,6 +6,7 @@ const {
   title = "David Gasquez",
   description = "David Gasquez personal website",
   image = "/social.png",
+  imageAlt,
   type = "website",
   standardDocumentUri,
 } = Astro.props;
@@ -13,6 +14,7 @@ const {
 const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
 const canonicalURL = new URL(canonicalPath, Astro.site);
 const ogImage = new URL(image, Astro.site);
+const resolvedImageAlt = imageAlt || title;
 const homepageURL = new URL("/", Astro.site).href;
 const person = {
   "@context": "https://schema.org",
@@ -54,8 +56,10 @@ const person = {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
-<meta property="og:image:width" content="800" />
-<meta property="og:image:height" content="420" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={resolvedImageAlt} />
 <meta property="og:site_name" content="David Gasquez" />
 <meta property="og:locale" content="en_US" />
 
@@ -65,6 +69,7 @@ const person = {
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={resolvedImageAlt} />
 
 <!-- Sitemap & RSS -->
 <link rel="sitemap" href="/sitemap-index.xml" />
