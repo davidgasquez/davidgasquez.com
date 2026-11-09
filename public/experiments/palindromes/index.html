@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Is there a number above 9 that reads the same backwards in decimal, binary, and hex? How the search works and how far it has reached.">
+<meta name="author" content="David Gasquez">
+<title>The triple palindrome search</title>
+<style>
+  :root {
+    --bg: #f7f7f4;
+    --text: #2a2723;
+    --muted: color-mix(in srgb, var(--text) 62%, var(--bg));
+    --line: #e2ded5;
+    --link: #2a62c9;
+    --blue: #2a62c9;
+    --pink: #c42a63;
+    --green: #16794a;
+    --amber: #a05f00;
+    --good: var(--green);
+    --bad: #c62d2d;
+    --cell: 1.5rem;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", P052, Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121212;
+      --text: #ebe8e2;
+      --line: #34322e;
+      --link: #7fb2ff;
+      --blue: #7fb2ff;
+      --pink: #ff7eb0;
+      --green: #6fd69a;
+      --amber: #ffc04d;
+      --bad: #ff8a85;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 18px;
+    line-height: 1.75;
+    text-rendering: optimizeLegibility;
+  }
+  /* One centered reading column. Prose and figures share its edges and center line; text inside stays flush left. */
+  main { max-width: calc(42rem + 48px); margin: 0 auto; padding: 64px 24px 80px; overflow-wrap: break-word; }
+  h1, h2 { font-family: var(--serif); text-wrap: balance; }
+  h1 {
+    font-size: clamp(2.5rem, 1.5rem + 4.4vw, 4rem);
+    font-weight: 700; line-height: 1.02; letter-spacing: -0.02em;
+    margin: 0 0 14px;
+  }
+  h1 em { color: var(--pink); font-style: italic; letter-spacing: -0.01em; }
+  /* Number checker under the header: a big input on the left, the three bases with a check each on the right.
+     Flat like the figures. The results table shrinks to fit and sits at the right; values are right-aligned so each
+     check follows its own digits with the same small gap, and long digit strings wrap inside the value column. */
+  .checker {
+    display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+    column-gap: 28px; row-gap: 12px; align-items: center; margin: 26px 0 36px;
+  }
+  .check-in { margin: 0; }
+  .check-in input {
+    display: block; width: 100%;
+    font: 700 28px/1.2 var(--mono); font-variant-numeric: tabular-nums; color: var(--text);
+    /* A plain text field: full outline, faint tint, and a stronger outline while typing. */
+    background: color-mix(in srgb, var(--text) 5%, var(--bg));
+    border: 2px solid color-mix(in srgb, var(--text) 40%, var(--bg)); border-radius: 6px; padding: 10px 14px;
+  }
+  .check-in input:hover { border-color: color-mix(in srgb, var(--text) 60%, var(--bg)); }
+  .check-in input:focus { outline: none; border-color: var(--link); box-shadow: 0 0 0 3px color-mix(in srgb, var(--link) 30%, transparent); }
+  .check-in input[aria-invalid="true"] { border-color: var(--bad); }
+  .check-err { display: block; margin: 4px 0 0; font-size: 13px; line-height: 1.3; color: var(--bad); }
+  .check-err:empty { display: none; }
+  .bases { justify-self: end; width: auto; max-width: 100%; border-collapse: collapse; line-height: 1.5; }
+  .bases th, .bases td { padding: 2px 0; text-align: left; vertical-align: baseline; }
+  .bases th { font-size: 13px; font-weight: 400; color: var(--muted); padding-right: 16px; white-space: nowrap; }
+  .bases .val {
+    font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 19px; letter-spacing: .04em;
+    text-align: right; overflow-wrap: anywhere; word-break: break-all;
+  }
+  /* Short values color each mirrored pair like the figures; a pair that disagrees gets the near-miss red wavy mark. */
+  .bases .val .k1, .bases .val .k2, .bases .val .k3, .bases .val .k4 { font-weight: 700; }
+  .bases .val .x { color: var(--bad); text-decoration: underline wavy var(--bad); text-underline-offset: 4px; }
+  .bases .pal { text-align: left; font-weight: 700; font-size: 16px; padding-left: 8px; white-space: nowrap; }
+  .vh {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+    overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+  }
+  /* Narrow phones: the input goes on top and the three rows use the full width. */
+  @media (max-width: 440px) {
+    .checker { grid-template-columns: minmax(0, 1fr); }
+    .bases { justify-self: start; }
+  }
+  .dek { font-family: var(--serif); font-size: 1.3rem; line-height: 1.45; margin: 0 0 6px; text-wrap: pretty; }
+  .date { font-size: 14px; color: var(--muted); margin: 0 0 8px; }
+  h2 {
+    font-size: 1.6rem; font-weight: 700; line-height: 1.2;
+    margin: 2.4em 0 .6em;
+    text-decoration-line: underline; text-decoration-thickness: 3px; text-underline-offset: 7px;
+  }
+  h2:nth-of-type(4n+1) { text-decoration-color: var(--blue); }
+  h2:nth-of-type(4n+2) { text-decoration-color: var(--pink); }
+  h2:nth-of-type(4n+3) { text-decoration-color: var(--green); }
+  h2:nth-of-type(4n+4) { text-decoration-color: var(--amber); }
+  p { margin: 0 0 1.05em; text-wrap: pretty; }
+  a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+  code, .num { font-family: var(--mono); font-size: .9em; font-variant-numeric: tabular-nums; }
+  sup { line-height: 0; font-size: .7em; }
+  .nowrap { white-space: nowrap; }
+
+  /* Mirror pair accents. Each class sets one color for a pair's digits and its arc. */
+  .k1 { --c: var(--blue); }
+  .k2 { --c: var(--pink); }
+  .k3 { --c: var(--green); }
+  .k4 { --c: var(--amber); }
+  .k5 { --c: var(--text); }
+  .k1, .k2, .k3, .k4, .k5 { color: var(--c); }
+
+  /* Figures are flat. Hairlines with generous space set them off from the text. */
+  /* Figures sit in the reading flow: no frame or rule, just a little more air than a paragraph. */
+  figure { margin: 1.6em 0 1.8em; padding: 0; }
+  .fig-label { margin: 0 0 14px; font-size: 13px; color: var(--muted); letter-spacing: .02em; }
+  .fig-label b { color: var(--text); font-weight: 600; }
+  figcaption {
+    margin-top: 14px;
+    font-family: var(--serif); font-size: 1.05rem; line-height: 1.5;
+  }
+
+  /* near misses */
+  .case + .case { margin-top: 26px; }
+  .case h3 {
+    margin: 0 0 6px; font-size: 15px; font-weight: 700;
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px;
+  }
+  .case h3 .num { font-size: 22px; }
+  .case h3 span:last-child { font-weight: 500; color: var(--muted); font-size: 13px; }
+  /* The pruning stage is centered at a fixed width inside the column; the near-miss examples start at the text edge. */
+  .stage { width: min(100%, 31.5rem); margin-inline: auto; }
+  #near-misses { --cell: 2.2rem; }
+  .row {
+    display: grid; grid-template-columns: 4.5rem minmax(0, max-content) max-content;
+    justify-content: start; align-items: end; column-gap: 14px; margin-top: 4px;
+  }
+  .lab { font-size: 13px; color: var(--muted); padding-bottom: 3px; }
+  /* A word is at most n cells wide and shrinks with its track. */
+  .word { width: calc(var(--n) * var(--cell)); max-width: 100%; min-width: 0; }
+  .arcs { display: block; width: 100%; height: 16px; overflow: visible; }
+  .arcs.tall { height: 22px; }
+  .arcs.taller { height: 34px; margin-top: 4px; }
+  .arcs path {
+    fill: none; stroke: var(--c, var(--muted)); stroke-width: 1.8;
+    vector-effect: non-scaling-stroke;
+  }
+  .arcs path.bad { stroke: var(--bad); stroke-dasharray: 3 3; }
+  .cells {
+    display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    font-family: var(--mono); font-variant-numeric: tabular-nums;
+    font-size: 17px; line-height: 1.6; text-align: center;
+  }
+  /* Every cell keeps a 3px bottom border, transparent by default, so highlighting never changes the row height.
+     The thin base line is a background drawn in that border area. */
+  .cells span {
+    border-bottom: 3px solid transparent;
+    background: linear-gradient(var(--line), var(--line)) left bottom / 100% 1px no-repeat border-box;
+  }
+  .cells .k1, .cells .k2, .cells .k3, .cells .k4, .cells .k5 { font-weight: 700; }
+  .cells span.g { border-left: 1px dotted color-mix(in srgb, var(--text) 30%, transparent); }
+  .cells .span4 { grid-column: span 4; }
+  .cells .q { color: var(--muted); }
+  .cells .x { color: var(--bad); text-decoration: underline wavy var(--bad); text-underline-offset: 4px; }
+  .cells .hi-no { border-bottom-style: dashed; border-bottom-color: var(--bad); }
+  .cells .hi-ok { border-bottom-color: var(--good); }
+  .verdict { font-size: 13px; padding-bottom: 3px; white-space: nowrap; font-weight: 600; }
+  .ok { color: var(--good); }
+  .no { color: var(--bad); }
+  .maybe { color: var(--amber); }
+
+  /* live pruning figure */
+  /* Controls, digits and table form one stage; 14 cells of 2.25rem fill its 31.5rem. */
+  #prune { --cell: 2.25rem; }
+  .stage { margin-bottom: 20px; }
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 22px; font-size: 14px; }
+  .controls[hidden] { display: none; }
+  .controls .flip-label { font-weight: 600; flex-basis: 100%; }
+  .toggles { display: flex; gap: 6px; align-items: center; }
+  .toggles .fixed, .toggles .bit {
+    width: 2.75rem; height: 2.75rem; display: grid; place-items: center;
+    font: 700 20px/1 var(--mono); font-variant-numeric: tabular-nums;
+    color: var(--c); border-bottom: 3px solid currentColor;
+  }
+  .toggles .fixed { opacity: .7; border-bottom-style: dotted; }
+  .toggles .bit {
+    background: transparent; cursor: pointer; padding: 0;
+    border: 1px solid var(--line); border-bottom: 3px solid currentColor; border-radius: 4px 4px 0 0;
+    touch-action: manipulation;
+  }
+  .toggles .bit[aria-pressed="true"] { background: color-mix(in srgb, var(--c) 14%, transparent); }
+  .controls .reset {
+    font: 600 14px/1.2 var(--sans); color: var(--muted); background: transparent;
+    border: 0; padding: 10px 4px; min-height: 2.75rem; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .controls .reset .num { color: var(--text); }
+  /* A changed top bit and its mirrored partner flash in their shared pair color. */
+  @media (prefers-reduced-motion: no-preference) {
+    .cells .flip { animation: flip .6s ease-out; }
+    @keyframes flip {
+      0% { background-color: color-mix(in srgb, var(--c, var(--text)) 28%, transparent); transform: translateY(-3px); }
+      100% { background-color: transparent; transform: none; }
+    }
+  }
+  .controls .hint { color: var(--muted); }
+  .group-head { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; line-height: 1.3; color: var(--muted); }
+  .bits14 { --n: 14; width: 100%; }
+  .bits14 .cells { font-size: 19px; }
+  /* Four rows, always, filling the stage width. Decimal and binary are fixed at 6ch and 14ch (the widest value each
+     can hold: 16,383 and 14 bits), and hex is always 4 digits, so changing a value never resizes the table or moves the rows below. */
+  .members {
+    width: 100%; margin: 20px 0 0; border-collapse: collapse;
+    font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 16px; line-height: 1.5;
+  }
+  .members th {
+    font: 400 13px/1.3 var(--sans); color: var(--muted); text-align: right; white-space: nowrap;
+    padding: 0 0 4px; border-bottom: 1px solid var(--line);
+  }
+  .members td { text-align: right; white-space: nowrap; padding: 2px 0 0; }
+  .members th + th, .members td + td { padding-left: clamp(10px, 4vw, 28px); }
+  .members td:nth-child(1) { width: 6ch; }
+  /* Decimal and binary keep fixed widths at the stage edges, under the first and last digits; hex takes the middle. */
+  .members th:nth-child(2), .members td:nth-child(2) { text-align: center; }
+  .members td:nth-child(3) { width: 14ch; }
+  .members b { color: var(--blue); }
+  .members .shared { color: var(--muted); }
+  .table-note { font-size: 13px; line-height: 1.4; color: var(--muted); margin: 6px 0 0; }
+  .drow {
+    display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) 6.5rem;
+    column-gap: 14px; align-items: baseline;
+    padding: 9px 0;
+    font-size: 15px; line-height: 1.45;
+  }
+  /* Hairlines only between the three reasoning rows, where they pair each label with its sentence. */
+  .drow + .drow { border-top: 1px solid var(--line); }
+  .drow .k { font-size: 13px; color: var(--muted); }
+  .drow .end { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+  /* The compared last bits take the decision's color: red while they disagree (the static default), green once they agree. */
+  .drow .end b { color: var(--bad); }
+  #prune[data-state="keep"] .drow .end b { color: var(--good); }
+  .drow.out { font-weight: 600; }
+  /* Each changing sentence shares one grid cell with hidden copies of every other version,
+     so the row is always as tall as its longest version at the current width. */
+  .stack { display: grid; min-width: 0; }
+  .stack > * { grid-area: 1 / 1; }
+  .stack .ghost { visibility: hidden; }
+
+  .claim { font-family: var(--serif); font-weight: 700; font-size: 1.4rem; line-height: 1.4; margin: .4em 0 .8em; }
+  .claim .num { color: var(--green); font-size: .85em; }
+
+  @media (max-width: 620px) {
+    body { font-size: 17px; }
+    main { padding: 40px 16px 60px; }
+    /* Label and resulting bits share the first line; the sentence gets the full width below. */
+    .drow { grid-template-columns: minmax(0, 1fr) auto; row-gap: 2px; }
+    .drow .k { grid-area: 1 / 1; }
+    .drow .end { grid-area: 1 / 2; }
+    .drow .stack { grid-area: 2 / 1 / 3 / -1; }
+    .bits14 .cells { font-size: 17px; }
+  }
+  /* Below 480px the label moves above its digits, so the digits get the full width minus the verdict. */
+  @media (max-width: 480px) {
+    .row { grid-template-columns: minmax(0, max-content) max-content; }
+    .lab { grid-column: 1 / -1; padding-bottom: 0; margin-top: 6px; line-height: 1.3; }
+    .cells { font-size: 15px; }
+  }
+  @media (max-width: 360px) {
+    main { padding: 28px 10px 44px; }
+    .cells { font-size: 14px; }
+    .members { font-size: 14px; }
+    .bits14 .cells { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>The triple <em>palindrome</em> search</h1>
+  <p class="dek">Is there a number above 9 that reads the same backwards in decimal, binary, and hexadecimal?</p>
+  <p class="date">By David Gasquez · November 2026</p>
+
+  <div id="checker" class="checker">
+    <p class="check-in" hidden>
+      <label class="vh" for="check-num">Decimal number to check</label>
+      <input id="check-num" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" value="99" aria-describedby="check-err check-status">
+      <span class="check-err" id="check-err" data-c="err"></span>
+    </p>
+    <table class="bases">
+      <caption class="vh">Is the number a palindrome in each base?</caption>
+      <thead class="vh"><tr><th scope="col">Base</th><th scope="col">Digits</th><th scope="col">Palindrome</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Decimal</th><td class="val" data-c="dec"><span class="k1">9</span><span class="k1">9</span></td><td class="pal ok" data-c="dec-p">✓<span class="vh"> yes</span></td></tr>
+        <tr><th scope="row">Binary</th><td class="val" data-c="bin"><span class="k1">1</span><span class="k2">1</span><span class="k3">0</span><span>0</span><span class="k3">0</span><span class="k2">1</span><span class="k1">1</span></td><td class="pal ok" data-c="bin-p">✓<span class="vh"> yes</span></td></tr>
+        <tr><th scope="row">Hex</th><td class="val" data-c="hex"><span class="x">6</span><span class="x">3</span></td><td class="pal no" data-c="hex-p">✗<span class="vh"> no</span></td></tr>
+      </tbody>
+    </table>
+    <p class="vh" id="check-status" data-c="status" aria-live="polite"></p>
+  </div>
+  <script>
+  (function () {
+    var box = document.getElementById('checker');
+    if (!box || !box.querySelector || typeof BigInt !== 'function') return;
+    var input = box.querySelector('input');
+    var NAMES = ['decimal', 'binary', 'hex'];
+    var MAX_DIGITS = 5000;  // a pasted wall of digits gets an explicit error, never a silent cut
+    var SHORT = 24;         // up to this many digits each one gets its own colored span; longer values stay plain text
+    function out(name) { return box.querySelector('[data-c="' + name + '"]'); }
+    function isPal(s) { return s === s.split('').reverse().join(''); }
+
+    // Writes a representation into its cell. Short ones color each mirrored pair (k1 to k4, cycling)
+    // and mark pairs that disagree with the near-miss red; the middle digit of an odd length stays plain.
+    function paint(cell, s) {
+      cell.textContent = '';
+      if (s.length > SHORT) { cell.textContent = s; return; }
+      for (var i = 0; i < s.length; i++) {
+        var j = s.length - 1 - i, d = Math.min(i, j);
+        var span = document.createElement('span');
+        span.textContent = s.charAt(i);
+        if (i !== j) span.className = s.charAt(i) === s.charAt(j) ? 'k' + (d % 4 + 1) : 'x';
+        cell.appendChild(span);
+      }
+    }
+
+    // Reads the input as an exact whole number (BigInt, so no rounding above 2^53) and fills the three rows.
+    function show() {
+      var raw = input.value.trim();
+      var digits = raw.replace(/^0+(?=[0-9])/, '');
+      var err = '';
+      if (raw && !/^[0-9]+$/.test(raw)) err = 'Digits 0 to 9 only.';
+      else if (digits.length > MAX_DIGITS) err = 'Up to ' + MAX_DIGITS.toLocaleString('en-US') + ' digits.';
+      var n = raw && !err ? BigInt(digits) : null;
+      var reps = n === null ? ['–', '–', '–'] : [n.toString(10), n.toString(2), n.toString(16).toUpperCase()];
+      var said = [];
+      ['dec', 'bin', 'hex'].forEach(function (key, i) {
+        var p = out(key + '-p');
+        p.textContent = '';
+        p.classList.remove('ok', 'no');
+        if (n === null) { out(key).textContent = reps[i]; return; }
+        paint(out(key), reps[i]);
+        var yes = isPal(reps[i]);
+        var hidden = document.createElement('span');
+        hidden.className = 'vh';
+        hidden.textContent = yes ? ' yes' : ' no';
+        p.appendChild(document.createTextNode(yes ? '✓' : '✗'));
+        p.appendChild(hidden);
+        p.classList.add(yes ? 'ok' : 'no');
+        said.push(NAMES[i] + (yes ? ' yes' : ' no'));
+      });
+      out('err').textContent = err;
+      input.setAttribute('aria-invalid', err ? 'true' : 'false');
+      out('status').textContent = n === null ? '' : 'Palindrome: ' + said.join(', ') + '.';
+    }
+    input.addEventListener('input', show);
+    box.querySelector('.check-in').hidden = false;
+    show();
+  })();
+  </script>
+
+  <p>I got nerd-sniped by an episode of The Rest Is Science, <a href="https://podcasts.apple.com/nz/podcast/is-100-better-than-101/id1853007888?i=1000799281343">Is 100 Better Than 101?</a>. They talk about numbers that are palindromes in decimal, binary, and hexadecimal at once, noting that we don't know any non-trivial one.</p>
+
+  <p>Rick Regan asked this question back in 2010 in a short blog post, <a href="https://www.exploringbinary.com/in-search-of-decimal-binary-hexadecimal-palindromes/">In search of decimal/binary/hexadecimal palindromes</a>. He wrote some code and checked candidates up to 32 hex digits. He found no example longer than one digit! I wanted to see how far I could get in this day and age, when AI can do math better than I ever could.</p>
+
+  <p>My first instinct was that it should be easy, since I quickly found many near misses, like <em>585</em> and <em>153</em>.</p>
+
+  <figure id="near-misses">
+    <div class="case" role="img" aria-label="585 passes two bases. Decimal 585 reads the same backwards. Binary 1001001001 reads the same backwards. Hex 249 reads 942 backwards, so it fails.">
+      <h3><span class="num">585</span><span>passes decimal and binary</span></h3>
+      <div class="row"><span class="lab">Decimal</span>
+        <div class="word" style="--n:3"><svg class="arcs" viewBox="0 0 3 1" preserveAspectRatio="none" aria-hidden="true"><path class="k1" d="M0.5 1C0.5 -0.200 2.5 -0.200 2.5 1"/></svg>
+          <div class="cells"><span class="k1">5</span><span>8</span><span class="k1">5</span></div></div>
+        <span class="verdict ok">✓ same</span></div>
+      <div class="row"><span class="lab">Binary</span>
+        <div class="word" style="--n:10"><svg class="arcs tall" viewBox="0 0 10 1" preserveAspectRatio="none" aria-hidden="true"><path class="k1" d="M0.5 1C0.5 -0.200 9.5 -0.200 9.5 1"/><path class="k2" d="M1.5 1C1.5 0.013 8.5 0.013 8.5 1"/><path class="k3" d="M2.5 1C2.5 0.227 7.5 0.227 7.5 1"/><path class="k4" d="M3.5 1C3.5 0.440 6.5 0.440 6.5 1"/><path class="k5" d="M4.5 1C4.5 0.653 5.5 0.653 5.5 1"/></svg>
+          <div class="cells"><span class="k1">1</span><span class="k2">0</span><span class="k3">0</span><span class="k4">1</span><span class="k5">0</span><span class="k5">0</span><span class="k4">1</span><span class="k3">0</span><span class="k2">0</span><span class="k1">1</span></div></div>
+        <span class="verdict ok">✓ same</span></div>
+      <div class="row"><span class="lab">Hex</span>
+        <div class="word" style="--n:3"><svg class="arcs" viewBox="0 0 3 1" preserveAspectRatio="none" aria-hidden="true"><path class="bad" d="M0.5 1C0.5 -0.200 2.5 -0.200 2.5 1"/></svg>
+          <div class="cells"><span class="x">2</span><span>4</span><span class="x">9</span></div></div>
+        <span class="verdict no">✗ reads 942</span></div>
+    </div>
+
+    <div class="case" role="img" aria-label="153 passes binary and hex. Decimal 153 reads 351 backwards, so it fails. Binary 10011001 reads the same backwards. Hex 99 reads the same backwards. Each hex 9 corresponds to the four bits 1001, so both rules hold on the same bits.">
+      <h3><span class="num">153</span><span>passes binary and hex</span></h3>
+      <div class="row"><span class="lab">Decimal</span>
+        <div class="word" style="--n:3"><svg class="arcs" viewBox="0 0 3 1" preserveAspectRatio="none" aria-hidden="true"><path class="bad" d="M0.5 1C0.5 -0.200 2.5 -0.200 2.5 1"/></svg>
+          <div class="cells"><span class="x">1</span><span>5</span><span class="x">3</span></div></div>
+        <span class="verdict no">✗ reads 351</span></div>
+      <div class="row"><span class="lab">Binary</span>
+        <div class="word" style="--n:8"><svg class="arcs tall" viewBox="0 0 8 1" preserveAspectRatio="none" aria-hidden="true"><path class="k1" d="M0.5 1C0.5 -0.200 7.5 -0.200 7.5 1"/><path class="k2" d="M1.5 1C1.5 0.074 6.5 0.074 6.5 1"/><path class="k3" d="M2.5 1C2.5 0.349 5.5 0.349 5.5 1"/><path class="k4" d="M3.5 1C3.5 0.623 4.5 0.623 4.5 1"/></svg>
+          <div class="cells"><span class="k1">1</span><span class="k2">0</span><span class="k3">0</span><span class="k4">1</span><span class="k4 g">1</span><span class="k3">0</span><span class="k2">0</span><span class="k1">1</span></div></div>
+        <span class="verdict ok">✓ same</span></div>
+      <div class="row"><span class="lab">Hex</span>
+        <div class="word" style="--n:8"><svg class="arcs" viewBox="0 0 8 1" preserveAspectRatio="none" aria-hidden="true"><path class="k1" d="M2 1C2 0.211 6 0.211 6 1"/></svg>
+          <div class="cells"><span class="span4 k1">9</span><span class="span4 g k1">9</span></div></div>
+        <span class="verdict ok">✓ same</span></div>
+    </div>
+  </figure>
+
+  <p>None of them pass all three, though. I had a couple of chats with an agent and came up with a heuristic good enough to push the search further.</p>
+
+  <h2>The search heuristic</h2>
+
+  <p>Each base has a mirror rule. In a palindrome, the first digit matches the last, the second matches the second to last, and so on. I start with the binary and hex mirror rules. The program ties together the bits that have to match, so it only builds candidates that pass both. These two rules alone narrow things a lot. For example, Regan showed in <a href="https://www.exploringbinary.com/the-structure-of-binary-hexadecimal-palindromes/">the structure of binary/hexadecimal palindromes</a> that a number that is a palindrome in both binary and hex and starts with hex 9 can only use the digits 0, 6, 9, and F.</p>
+
+  <p>As the program fills in the bits, it uses the decimal mirror to rule out whole groups of candidates at once. If every number in a group starts with the same decimal digits, a decimal palindrome must end with those digits reversed. That decimal ending fixes the last few binary bits. The binary mirror has already fixed those same bits by copying the top bits in reverse. When the two disagree, no number in the group can work, so the search skips the whole group.</p>
+
+  <p>Why does a decimal ending fix binary bits? The last two bits of a number give its remainder when divided by 4. Any multiple of 100 divides evenly by 4, so only the last two decimal digits affect that remainder. Take 11, 111, and 211. They all leave a remainder of 3, and 3 in binary is 11, so all three end in the bits 11. In the same way, the last decimal digit fixes the last bit, which says whether the number is odd or even.</p>
+
+  <p>The figure below shows this on 14-bit numbers, using only the binary mirror. The top five bits are fixed and the bottom five mirror them. Since the four middle bits must also read the same backwards, each group holds only four numbers.</p>
+
+  <figure id="prune">
+    <div class="stage">
+    <div class="controls" hidden>
+      <span class="flip-label" id="flip-label">Mirror bits</span>
+      <span class="toggles" role="group" aria-labelledby="flip-label">
+        <span class="fixed k1" title="Bit 1 is always 1" aria-hidden="true">1</span>
+        <button type="button" class="bit k2" data-i="1" aria-pressed="false" aria-label="Bit 2, mirrors bit 13">0</button>
+        <button type="button" class="bit k3" data-i="2" aria-pressed="true" aria-label="Bit 3, mirrors bit 12">1</button>
+        <button type="button" class="bit k4" data-i="3" aria-pressed="true" aria-label="Bit 4, mirrors bit 11">1</button>
+        <button type="button" class="bit k5" data-i="4" aria-pressed="false" aria-label="Bit 5, mirrors bit 10">0</button>
+      </span>
+      <button type="button" class="reset">Reset to <span class="num">10110</span></button>
+    </div>
+    <div class="word bits14" aria-hidden="true">
+      <div class="group-head"><span>fixed top bits</span><span>mirrored bottom bits</span></div>
+      <svg class="arcs taller" viewBox="0 0 14 1" preserveAspectRatio="none"><path class="k1" d="M0.5 1C0.5 -0.200 13.5 -0.200 13.5 1"/><path class="k2" d="M1.5 1C1.5 -0.052 12.5 -0.052 12.5 1"/><path class="k3" d="M2.5 1C2.5 0.095 11.5 0.095 11.5 1"/><path class="k4" d="M3.5 1C3.5 0.243 10.5 0.243 10.5 1"/><path class="k5" d="M4.5 1C4.5 0.391 9.5 0.391 9.5 1"/><path d="M5.5 1C5.5 0.538 8.5 0.538 8.5 1"/><path d="M6.5 1C6.5 0.686 7.5 0.686 7.5 1"/></svg>
+      <div class="cells"><span class="k1">1</span><span class="k2">0</span><span class="k3">1</span><span class="k4">1</span><span class="k5">0</span><span class="q g">?</span><span class="q">?</span><span class="q">?</span><span class="q">?</span><span class="k5 g">0</span><span class="k4">1</span><span class="k3">1</span><span class="k2 hi-no">0</span><span class="k1 hi-no">1</span></div>
+    </div>
+    <table class="members">
+      <thead><tr><th scope="col">Decimal</th><th scope="col">Hex</th><th scope="col">Binary (14 bits)</th></tr></thead>
+      <tbody data-out="members">
+        <tr><td><b>11</b>,277</td><td>2C0D</td><td><span class="shared">10110</span>0000<span class="shared">01101</span></td></tr>
+        <tr><td><b>11</b>,469</td><td>2CCD</td><td><span class="shared">10110</span>0110<span class="shared">01101</span></td></tr>
+        <tr><td><b>11</b>,565</td><td>2D2D</td><td><span class="shared">10110</span>1001<span class="shared">01101</span></td></tr>
+        <tr><td><b>11</b>,757</td><td>2DED</td><td><span class="shared">10110</span>1111<span class="shared">01101</span></td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">The four numbers in this group, in decimal, hex, and binary.</p>
+    </div>
+    <div class="drow"><span class="k">From decimal</span><span class="stack"><span data-out="dec">All four start with 11, so a palindrome must end in 11, which fixes the last two bits as 11.</span></span><span class="end" data-out="dec-end">bits …<b>11</b></span></div>
+    <div class="drow"><span class="k">From the binary mirror</span><span class="stack"><span data-out="mir">The top bits 10110 force the bottom bits 01101.</span></span><span class="end" data-out="mir-end">bits …<b>01</b></span></div>
+    <div class="drow out" aria-live="polite" aria-atomic="true"><span class="k">Decision</span><span class="stack"><span data-out="why">Skip all four. Decimal needs last bits 11, but the binary mirror gives 01.</span></span><span class="end no" data-out="verdict" aria-hidden="true">✗ skip</span></div>
+    <figcaption>Try flipping the bits to find groups that the heuristic doesn't skip!</figcaption>
+  </figure>
+  <script>
+  (function () {
+    var fig = document.getElementById('prune');
+    if (!fig || !fig.querySelector || !document.body.classList) return;
+
+    var MIDDLES = [0, 6, 9, 15]; // middle bits 0000, 0110, 1001, 1111
+    var BIT_WORDS = ['', 'last bit', 'last two bits'];
+
+    function pad(s, w) { while (s.length < w) s = '0' + s; return s; }
+    function reverse(s) { return s.split('').reverse().join(''); }
+
+    // Pure model of one 14-bit group with top bits p (16 to 31). No DOM access.
+    function model(p) {
+      var top = pad(p.toString(2), 5);
+      var bottom = reverse(top);
+      var low = parseInt(bottom, 2);
+      var nums = MIDDLES.map(function (m) { return p * 512 + m * 32 + low; });
+      var strs = nums.map(String);
+      var len = strs[0].length;
+      var sameLength = strs.every(function (s) { return s.length === len; });
+      var k = 0;
+      if (sameLength) {
+        var cap = Math.floor(len / 2);
+        while (k < cap && strs.every(function (s) { return s.charAt(k) === strs[0].charAt(k); })) k++;
+      }
+      var prefix = strs[0].slice(0, k);
+      var suffix = reverse(prefix);
+      // The last k decimal digits fix N mod 10^k, and 2^k divides 10^k, so they fix the last k bits.
+      var c = Math.min(k, bottom.length);
+      var need = c ? pad((parseInt(suffix, 10) % Math.pow(2, c)).toString(2), c) : '';
+      var have = bottom.slice(bottom.length - c);
+      var state = c === 0 ? 'undecided' : (need === have ? 'keep' : 'skip');
+      return { top: top, bottom: bottom, nums: nums, sameLength: sameLength, k: k,
+               prefix: prefix, suffix: suffix, c: c, need: need, have: have, state: state };
+    }
+
+    var cells = fig.querySelectorAll('.cells span');
+    var shownTop = '10110';
+
+    // Flash each top bit that changed and its partner at the other end.
+    function flipChanged(top) {
+      for (var i = 0; i < 5; i++) {
+        if (top.charAt(i) === shownTop.charAt(i)) continue;
+        [cells[i], cells[13 - i]].forEach(function (cell) {
+          cell.classList.remove('flip');
+          void cell.offsetWidth; // restart the animation
+          cell.classList.add('flip');
+        });
+      }
+      shownTop = top;
+    }
+    var START = '10110';
+    var top = START;
+    var toggles = fig.querySelectorAll('.toggles .bit');
+    var controls = fig.querySelector('.controls');
+    function out(name) { return fig.querySelector('[data-out="' + name + '"]'); }
+
+    function setBits(el, bits, fallback) {
+      el.textContent = '';
+      if (!bits) { el.textContent = fallback; return; }
+      el.appendChild(document.createTextNode('bits …'));
+      var b = document.createElement('b');
+      b.textContent = bits;
+      el.appendChild(b);
+    }
+
+    function render(m) {
+      var i;
+      for (i = 0; i < 5; i++) {
+        cells[i].textContent = m.top.charAt(i);
+        cells[9 + i].textContent = m.bottom.charAt(i);
+      }
+      flipChanged(m.top);
+      for (i = 0; i < cells.length; i++) cells[i].classList.remove('hi-no', 'hi-ok');
+      for (i = cells.length - m.c; i < cells.length; i++) {
+        cells[i].classList.add(m.state === 'skip' ? 'hi-no' : 'hi-ok');
+      }
+
+      var members = out('members');
+      members.textContent = '';
+      // One row per candidate: decimal (known prefix in bold), hex, and all 14 bits,
+      // with the five shared bits at each end muted around the four middle bits.
+      m.nums.forEach(function (n) {
+        var text = n.toLocaleString('en-US');
+        var bold = '', rest = '', digits = 0;
+        for (var j = 0; j < text.length; j++) {
+          var ch = text.charAt(j);
+          if (digits < m.k) { bold += ch; if (ch !== ',') digits++; } else { rest += ch; }
+        }
+        var tr = document.createElement('tr');
+        var dec = document.createElement('td');
+        if (bold) { var b = document.createElement('b'); b.textContent = bold; dec.appendChild(b); }
+        dec.appendChild(document.createTextNode(rest));
+        var hex = document.createElement('td');
+        hex.textContent = pad(n.toString(16).toUpperCase(), 4);
+        var bin = document.createElement('td');
+        var bits = pad(n.toString(2), 14);
+        [[0, 5, 'shared'], [5, 9, ''], [9, 14, 'shared']].forEach(function (part) {
+          var s = document.createElement('span');
+          if (part[2]) s.className = part[2];
+          s.textContent = bits.slice(part[0], part[1]);
+          bin.appendChild(s);
+        });
+        tr.appendChild(dec); tr.appendChild(hex); tr.appendChild(bin);
+        members.appendChild(tr);
+      });
+
+      TEXT_ROWS.forEach(function (name) { out(name).textContent = TEXT[name](m); });
+      setBits(out('dec-end'), m.need, 'none');
+      setBits(out('mir-end'), m.have, 'none');
+
+      var verdict = out('verdict');
+      verdict.classList.remove('ok', 'no', 'maybe');
+      verdict.textContent = VERDICT[m.state][0];
+      verdict.classList.add(VERDICT[m.state][1]);
+      fig.setAttribute('data-state', m.state);
+    }
+
+    // Sentence formatters, shared by the live text and its hidden sizing copies.
+    var TEXT = {
+      dec: function (m) {
+        if (!m.sameLength) return 'The four numbers differ in length, so no shared start applies.';
+        if (!m.k) return 'The four numbers share no first digit.';
+        return 'All four start with ' + m.prefix + ', so a palindrome must end in ' + m.suffix +
+               ', which fixes the ' + (BIT_WORDS[m.c] || 'last ' + m.c + ' bits') + ' as ' + m.need + '.';
+      },
+      mir: function (m) { return 'The top bits ' + m.top + ' force the bottom bits ' + m.bottom + '.'; },
+      why: function (m) {
+        var last = (m.c === 1 ? 'last bit ' : 'last bits ');
+        if (m.state === 'skip') return 'Skip all four. Decimal needs ' + last + m.need + ', but the binary mirror gives ' + m.have + '.';
+        if (m.state === 'keep') return 'Keep for closer checks. Decimal and the binary mirror agree on ' + last + m.need + ', but that does not make a match.';
+        return 'Undecided. With no shared start, this check cannot skip.';
+      }
+    };
+    var TEXT_ROWS = ['dec', 'mir', 'why'];
+    var VERDICT = { skip: ['✗ skip', 'no'], keep: ['✓ keep', 'ok'], undecided: ['? undecided', 'maybe'] };
+
+    // Add a hidden copy of every distinct sentence for all 16 starts next to each live sentence.
+    // The browser then sizes each row for its longest version, with no measuring code.
+    var everyModel = [];
+    for (var p = 16; p <= 31; p++) everyModel.push(model(p));
+    TEXT_ROWS.forEach(function (name) {
+      var stack = out(name).parentNode, seen = {};
+      everyModel.forEach(function (m) {
+        var text = TEXT[name](m);
+        if (seen[text]) return;
+        seen[text] = true;
+        var ghost = document.createElement('span');
+        ghost.className = 'ghost';
+        ghost.setAttribute('aria-hidden', 'true');
+        ghost.textContent = text;
+        stack.appendChild(ghost);
+      });
+    });
+
+    // One state, the five top bits, feeds the buttons and every output.
+    // Buttons are updated in place, never rebuilt, so keyboard focus stays put.
+    function update(next) {
+      top = next;
+      for (var i = 0; i < toggles.length; i++) {
+        var bit = top.charAt(Number(toggles[i].getAttribute('data-i')));
+        toggles[i].textContent = bit;
+        toggles[i].setAttribute('aria-pressed', bit === '1' ? 'true' : 'false');
+      }
+      render(model(parseInt(top, 2)));
+    }
+
+    Array.prototype.forEach.call(toggles, function (button) {
+      button.addEventListener('click', function () {
+        var i = Number(button.getAttribute('data-i'));
+        update(top.slice(0, i) + (top.charAt(i) === '1' ? '0' : '1') + top.slice(i + 1));
+      });
+    });
+    fig.querySelector('.reset').addEventListener('click', function () { update(START); });
+    update(START);
+    controls.hidden = false;
+  })();
+  </script>
+
+  <p>When the decimal ending and the binary mirror agree, the search keeps the group and checks it more closely. The program the agent wrote applies this check each time it fills in more bits. It also splits the work for each bit length, meaning each count of binary digits, into thousands of tasks that can run independently across machines or CPUs.</p>
+
+  <h2>Results</h2>
+
+  <p>I came back after a few hours and...</p>
+
+  <p class="claim">No number with <span class="num">9 &lt; N &lt; 2<sup>448</sup></span> is a palindrome in decimal, binary, and hex.</p>
+
+  <p>That covers every number above 9 with up to 112 hex digits, up to about <span class="nowrap">7.27 × 10<sup>134</sup></span>.</p>
+
+  <p>So, if you want to pick this up, the next range to search starts at 2<sup>448</sup>. Good luck!</p>
+</main>
+</body>
+</html>
