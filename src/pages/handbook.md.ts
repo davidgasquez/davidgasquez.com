@@ -9,11 +9,13 @@ export const GET: APIRoute = async () => {
 
   const notes = entries.map(({ id, title }) => {
     const label = title.replace(/[\\`*_[\]<>]/g, "\\$&");
-    return `- [${label}](/handbook/${id})`;
+    return `- [${label}](/handbook/${id}.md)`;
   });
 
   return new Response(
-    ["# Handbook", "", "An index of all handbook notes, generated automatically at build time.", "", ...notes, ""].join("\n"),
+    ["# Handbook", "", "An index of all handbook notes, generated automatically at build time.", "", ...notes, ""].join(
+      "\n",
+    ),
     {
       headers: {
         "Content-Type": "text/markdown; charset=utf-8",

@@ -1,12 +1,14 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import { createHandbookMarkdown } from "../../lib/handbook-markdown";
 
 export async function getStaticPaths() {
   const handbookEntries = await getCollection("handbook");
+  const toMarkdown = createHandbookMarkdown(handbookEntries);
 
   return handbookEntries.map((entry) => ({
     params: { slug: entry.id },
-    props: { body: entry.body },
+    props: { body: toMarkdown(entry.body ?? "", entry.id) },
   }));
 }
 
