@@ -6,7 +6,7 @@ slug: building-a-pkb
 
 For about 2 years now, I've been maintaining a **Personal Handbook**. In this collection of documents I add everything that I find worth remembering. It contains multiple topics. Some of them share my personal view of the world and how I aim to interact with it. Others are more technical and help me capture important principles and techniques.
 
-[![davidgasquez/handbook - GitHub](https://gh-card.dev/repos/davidgasquez/handbook.svg)](https://github.com/davidgasquez/handbook)
+[View the Personal Handbook on GitHub](https://github.com/davidgasquez/handbook)
 
 ## Why?
 
